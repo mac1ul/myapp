@@ -1,0 +1,76 @@
+.setview{
+    margin: 15px;
+    padding: 10px;
+    margin-bottom:30px;
+}
+
+.breadcrumb{
+    margin: 15px;
+    padding: 10px;
+}
+.button{
+    float: right;
+    margin-bottom: 15px;
+}
+
+table tr th{
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+table tr td{
+    font-size: 1rem;
+    font-weight: 400;
+}
+.iconheader{
+    margin-left: 12px;
+    font-size: 30px;
+}
+
+.icon{
+    margin-right: 5px;
+}
+
+label.xng-breadcrumb-trail {
+    margin-bottom: 0!important;
+}
+
+.xng-breadcrumb-root {
+    color: rgba(0,0,0,.6);
+    margin: 0;
+    color: red;
+}
+
+.fasttrack{
+    margin-right: 10px;
+}
+.module-table {
+    margin-bottom: 0;
+    position: relative;
+    background: #ffffff;
+    background: var(--color-white);
+    color: #002b49;
+    color: var(--color-prussian-blue);
+    font-size: 0.875rem;
+}
+.module-block {
+    margin-bottom: 0;
+}
+.danger{
+    color: red;
+    background-color: white;
+    font-size: 16px;
+}
+
+body { min-height:100%;  margin:0; }
+body{ 
+display: table;
+width: 100%; 
+}
+.footer {
+height: 50px;
+}
+
+body > .footer{
+display: table-row; 
+}

@@ -1,0 +1,25 @@
+.component-result-list-highlight {
+	border: 1px solid var(--color-heather);
+	box-shadow: 0 10px 20px 0 rgba(0,43,73,0.2);
+	margin: 0 0 40px 0;
+	overflow: hidden;
+
+	> div {
+		border: 0;
+		border-bottom: 1px solid var(--color-casper);
+
+		&:first-of-type {
+			border-top: 0;
+		}
+
+		&:last-of-type {
+			border-bottom: 0;
+		}
+	}
+
+	@media #{$media-to-sm}{
+		> div {
+			border: 0;
+		}
+	}
+}

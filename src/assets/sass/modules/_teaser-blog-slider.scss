@@ -1,0 +1,168 @@
+.module-teaser-blog-slider {
+	h2 {
+		text-align: center;
+	}
+
+	.slider-wrapper {
+		position: relative;
+
+		&:hover {
+			.arrows {
+				opacity: 1;
+			}
+		}
+	}
+
+	.slider-container {
+		display: flex;
+		opacity: 0;
+
+		&.tns-slider {
+			opacity: 1;
+		}
+	}
+
+	.tns-ovh {
+		padding-bottom: 52px;
+	}
+
+	.tns-nav {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		height: 12px;
+		pointer-events: auto;
+		transform: translate(-50%, 0);
+		line-height: 8px;
+		white-space: nowrap;
+		align-items: center;
+
+		button {
+			height: 8px;
+			width: 8px;
+			border: none;
+			border-radius: 50%;
+			background: var(--color-heather);
+			display: inline-block;
+			margin-right: 16px;
+			transition: all $transition-duration;
+			outline: none;
+			cursor: pointer;
+			padding: 0;
+			vertical-align: middle;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+
+			&.tns-nav-active {
+				background: var(--color-prussian-blue);
+				height: 12px;
+				width: 12px;
+			}
+
+			&:hover {
+				background: var(--color-prussian-blue);
+			}
+		}
+	}
+
+	.arrows-wrapper {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		pointer-events: none;
+
+		@media #{$media-to-sm} {
+			display: none;
+		}
+
+		.arrows {
+			position: absolute;
+			top: 0;
+			opacity: 0;
+			left: 0;
+			right: 0;
+			transform: translateY(-50%);
+			pointer-events: none;
+			transition: all $transition-duration;
+
+			.module-button {
+				.button-content {
+					height: 72px;
+
+					.icon {
+						margin-left: 8px;
+						margin-right: 8px;
+						font-size: 40px;
+					}
+				}
+
+				@media #{$media-to-lg} {
+					.button-content {
+						height: 46px;
+
+						.icon {
+							margin-left: 6px;
+							margin-right: 6px;
+							font-size: 24px;
+						}
+					}
+				}
+			}
+
+			.prev {
+				float: left;
+				pointer-events: auto;
+			}
+
+			.next {
+				float: right;
+				pointer-events: auto;
+			}
+		}
+	}
+
+	.component-blog-teaser {
+		padding: 0;
+
+		&:before {
+			content: none;
+		}
+
+		.module-image {
+			transition: transform ($transition-duration * 8);
+		}
+
+		&:hover {
+			.image-wrapper {
+				&:after {
+					background-color: rgba($color-prussian-blue, 0.4);
+				}
+
+				.module-image {
+					transform: scale(1.1);
+				}
+			}
+		}
+
+		.image-wrapper {
+			position: relative;
+			overflow: hidden;
+
+			&:after {
+				content: "";
+
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+
+				transition: background-color ($transition-duration * 8);
+			}
+		}
+	}
+}

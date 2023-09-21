@@ -1,0 +1,185 @@
+<app-su-navigation></app-su-navigation>
+<div style="margin: 10px; padding: 15px">
+  <h2 class="maintitle">Stock of System Integrator</h2>
+  <div class="row">
+    <div class="col-3">
+      <div class="module-search" data-plugin="moduleSearch">
+        <form action="#" method="post">
+          <div class="module-input form-group floating-label" data-plugin="moduleInput">
+            <label for="inputID">Type Code Search</label>
+            <div class="input-animation-wrapper">
+              <input type=search #searchbytypecode id="inputID" (keydown)="searchbytypecodes(searchbytypecode.value, 'typecode')" class="form-control " value="" placeholder="" name="search" data-search-url="data/search-result.json?q={queue}&amount=5" />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div class="module-button ">
+            <button type="submit" class="btn btn-link btn-lg " disabled="disabled"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_search"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="module-search" data-plugin="moduleSearch">
+        <form action="#" method="post">
+          <div class="module-input form-group floating-label" data-plugin="moduleInput">
+            <label for="inputID1"> Part Number Search </label>
+            <div class="input-animation-wrapper">
+              <input type=search #searchbypartnumber id="inputID1" (keydown)="searchbypartnumbers(searchbypartnumber.value, 'partnumber')" class="form-control " value="" placeholder="" name="search" data-search-url="data/search-result.json?q={queue}&amount=5" />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div class="module-button ">
+            <button type="submit" class="btn btn-link btn-lg " disabled="disabled"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_search"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="module-button "(click)="downloadFile()">
+        <button type="button" class="btn btn-primary " ></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="icon icon-dc_download"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="component-file-selector show-file-name "
+          data-plugin="moduleFileSelector" >
+        <div class="form-group" style="border: 1px solid black;">
+          <div class="file-selector-wrapper">
+            <input type="file" name="file" id="file" class="file-selector" (change)="incomingfile($event)" multiple="false">
+            <div class="file-name-container">
+              <span class="file-name"></span>
+            </div>
+            <div class="module-button ">
+              <button type="button" class="btn btn-light " ></button>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">Select File</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="module-button ">
+        <button type="button" class="btn btn-secondary " (click)="sendFiledata()"></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="icon icon-dc_upload"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-5" >
+      <div class="row">
+          <div class="col-12">
+            <h3>Please find your Stock here:</h3>
+          </div>
+      </div>
+
+    <div class="module-tab-navigation module-block" data-plugin="moduleTabNavigation">
+        <div class="">
+            <div class="tab-head">
+                <div class="head-item">
+                  <button type="button" class="btn btn-secondary">
+                    Your Stock
+                  </button>
+                </div>
+                <div class="head-item">
+                  <button type="button" class="btn btn-secondary">
+                    Global Stock
+                  </button>
+                </div>
+            </div>
+          <div class="tab-content">
+            <div class="content-item">
+              <section class="module-text">
+                <h2>
+                  Last updated on :
+                </h2>
+                  <div class="page-wrapper module-table table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th class="text-center highlight">Part Nr.</th>
+                          <th class="text-center highlight">Type Code</th>
+                          <th class="text-center highlight">Country</th>
+                          <th class="text-center highlight">Quantity</th>
+                          <th class="text-center highlight">Company</th>
+                          <th class="text-center highlight">Email</th>
+                          <th class="text-center highlight">Telephone</th>
+                          <th class="text-center highlight">Mobile</th>
+                          <th class="text-center highlight">Website</th>
+                          <th class="text-center highlight">Update</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor = "let stock of partner_stock">
+                          <td class="text-center">{{stock.partnumber}}</td>
+                          <td class="text-center">{{stock.typecode}}</td>
+                          <td class="text-center">{{stock.country}}</td>
+                          <td class="text-center">{{stock.quantity}}</td>
+                          <td class="text-center">{{stock.company_name}}</td>
+                          <td class="text-center">{{stock.contact_person_email}}</td>
+                          <td class="text-center">{{stock.telephone}}</td>
+                          <td class="text-center">{{stock.mobile}}</td>
+                          <td class="text-center">{{stock.website}}</td>
+                          <td class="text-center">{{stock.update}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </section>
+            </div>
+            <div class="content-item">
+              <div class="page-wrapper module-table table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="text-center highlight">Part Nr.</th>
+                      <th class="text-center highlight">Type Code</th>
+                      <th class="text-center highlight">Country</th>
+                      <th class="text-center highlight">Quantity</th>
+                      <th class="text-center highlight">Company</th>
+                      <th class="text-center highlight">Email</th>
+                      <th class="text-center highlight">Telephone</th>
+                      <th class="text-center highlight">Mobile</th>
+                      <th class="text-center highlight">Website</th>
+                      <th class="text-center highlight">Update</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor = "let global of global_stock">
+                      <td class="text-center">{{global.partnumber}}</td>
+                      <td class="text-center">{{global.typecode}}</td>
+                      <td class="text-center">{{global.country}}</td>
+                      <td class="text-center">{{global.quantity}}</td>
+                      <td class="text-center">{{global.company_name}}</td>
+                      <td class="text-center">{{global.contact_person_email}}</td>
+                      <td class="text-center">{{global.telephone}}</td>
+                      <td class="text-center">{{global.mobile}}</td>
+                      <td class="text-center">{{global.website}}</td>
+                      <td class="text-center">{{global.update | date: 'dd-MM-yyyy'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+ </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

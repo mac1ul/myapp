@@ -1,0 +1,13 @@
+.component-alert {
+	// TODO - from invision it should #E8EEF1, but has no definition in variables
+	background-color: var(--color-mystic);
+	padding: 20px;
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+	h5 {
+		margin-bottom: rem(14);
+	}
+}

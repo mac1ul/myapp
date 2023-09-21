@@ -1,0 +1,206 @@
+.module-callout {
+	@include module-name('Callout');
+
+	position: relative;
+
+	line-height: $line-height-text-xs;
+	margin-bottom: $spacing-default;
+
+	padding: $spacing-tiny;
+	padding-left: $spacing-atomic-tiny;
+	padding-right: $spacing-large;
+
+	font-size: $font-size-text-xs;
+
+	&.callout-error {
+		color: var(--color-monza);
+		background-color: var(--color-azalea);
+
+		.icon {
+			@include icon($icon-dc_callout_error);
+		}
+
+		a {
+			color: var(--color-monza);
+
+			&:hover {
+				color: var(--color-guardsman-red);
+			}
+		}
+	}
+
+	&.callout-confirmation {
+		color: var(--color-apple);
+		background-color: var(--color-kidnapper);
+
+		.icon {
+			@include icon($icon-dc_callout_confirmation);
+		}
+
+		a {
+			color: var(--color-apple);
+
+			&:hover {
+				color: var(--color-fern-green);
+			}
+		}
+	}
+
+	&.callout-information,
+	&.callout-hint {
+		background-color: var(--color-geyser);
+		color: var(--color-prussian-blue);
+
+		.icon {
+			@include icon($icon-dc_callout_information);
+		}
+
+		a {
+			color: var(--color-prussian-blue);
+
+			&:hover {
+				color: var(--color-black);
+			}
+		}
+	}
+
+	&.callout-hint {
+		.icon {
+			@include icon($icon-dc_callout_hint);
+		}
+	}
+
+	&.callout-danger {
+		color: var(--color-white); 
+		background-color: #EE2E23;
+
+		.icon {
+			@include icon($icon-dc_warning);
+		}
+
+		a {
+			color: var(--color-apple);
+
+			&:hover {
+				color: var(--color-fern-green);
+			}
+		}
+
+		.headline {
+			color: var(--color-white);
+			font-size: 15px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+
+	&.callout-warning {
+		color: var(--color-black); 
+		background-color: #F3901D;
+
+		.icon {
+			@include icon($icon-dc_warning);
+		}
+
+		a {
+			color: var(--color-apple);
+
+			&:hover {
+				color: var(--color-fern-green);
+			}
+		}
+
+		.headline {
+			color: var(--color-black); 
+			font-size: 15px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+
+	&.callout-note {
+		color: var(--color-white); 
+		background-color: #0089D0;
+
+		a {
+			color: var(--color-apple);
+
+			&:hover {
+				color: var(--color-fern-green);
+			}
+		}
+
+		.headline {
+			color: var(--color-white);
+			font-size: 15px;
+			font-weight: bold;
+			text-transform: uppercase;
+			font-style: italic;
+			padding-left: 30px;
+		}
+	}
+
+	&.callout-caution {
+		color: var(--color-black); 
+		background-color: #FFDD00;
+
+		.icon {
+			@include icon($icon-dc_warning);
+		}
+
+		a {
+			color: var(--color-apple);
+
+			&:hover {
+				color: var(--color-fern-green);
+			}
+		}
+
+		.headline { 
+			color: var(--color-black);
+			font-size: 15px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+
+	&.has-icon {
+		.text-wrapper {
+			padding-left: $spacing-default;
+		}
+	}
+
+	.icon {
+		position: absolute;
+		top: rem(12);
+		left: rem(12);
+
+		font-size: $font-size-text-xl;
+	}
+
+	.headline {
+		font-weight: bold;
+		margin-bottom: 0;
+
+		& + .paragraph,
+		& + .linktext {
+			margin-top: $spacing-atomic;
+		}
+	}
+
+	.paragraph {
+		margin-bottom: 0;
+
+		& + a {
+			margin-top: $spacing-atomic;
+		}
+	}
+
+	a {
+		margin-bottom: $spacing-atomic;
+		text-decoration: underline;
+	}
+}
+
+
+

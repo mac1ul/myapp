@@ -1,0 +1,289 @@
+<div class="module-form setview" data-plugin="moduleForm">
+	<form [formGroup]="addFastTrackForm">
+		<h1>Price Request</h1>
+		<div class="row">
+            <h1 class="col-12">Project Details</h1>
+			<div class="col-sm-12 col-md-3">
+				<div class="module-input form-group has-placeholder hover-demo read-only"
+					 data-plugin="moduleInput">
+					<label for="demo-default-input-1">
+						Partner Name
+					</label>
+					<div class="input-animation-wrapper">
+						<input type="text"
+								id="demo-default-input-1"
+								class="form-control"
+								placeholder="Min Max Example"
+								name="demo-default-input-1"
+								data-bouncer-target="#demo-default-input-1-error"
+								required="required" formControlName="partnername" readonly
+							/>
+						<div class="input-animation"></div>
+					</div>
+					<div id="demo-default-input-1-error"
+						 class="error-message-wrapper"></div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-3">
+				<div class="module-input form-group has-placeholder hover-demo read-only"
+					 data-plugin="moduleInput">
+					<label for="demo-default-input-4">
+						Customer Name
+					</label>
+					<div class="input-animation-wrapper">
+						<input type="text"
+								id="demo-default-input-4"
+								class="form-control"
+								placeholder="Min Max Example"
+								name="demo-default-input-4"
+								data-bouncer-target="#demo-default-input-4-error"
+								required="required" formControlName="projectname" readonly
+							/>
+						<!--data-search-url="url" is needed to use the AutoComplete function.-->
+						<div class="input-animation"></div>
+					</div>
+					<div id="demo-default-input-4-error"
+						 class="error-message-wrapper"></div>
+				</div>
+			</div>
+            <div class="col-sm-12 col-md-3">
+				<div class="module-input form-group has-placeholder hover-demo read-only"
+					 data-plugin="moduleInput">
+					<label for="demo-default-input-2">
+						Machine Name
+					</label>
+					<div class="input-animation-wrapper">
+						<input type="text"
+								id="demo-default-input-2"
+								class="form-control"
+								placeholder="Machine Name"
+								name="demo-default-input-2"
+								data-bouncer-target="#demo-default-input-2-error"
+								required="required" formControlName="machinename" readonly
+							/>
+						<div class="input-animation"></div>
+					</div>
+					<div id="demo-default-input-2-error"
+						 class="error-message-wrapper"></div>
+				</div>
+			</div>
+            <div class="col-sm-12 col-md-3">
+				<div class="module-input form-group has-placeholder hover-demo read-only"
+					 data-plugin="moduleInput">
+					<label for="demo-default-input-3">
+						Appication / Machine Type *
+					</label>
+					<div class="input-animation-wrapper">
+						<input type="text"
+								id="demo-default-input-3"
+								class="form-control"
+								placeholder="Enter Contact Person"
+								name="demo-default-input-3"
+								data-bouncer-target="#demo-default-input-3-error"
+								required="required" formControlName="application" readonly
+							/>
+						<!--data-search-url="url" is needed to use the AutoComplete function.-->
+						<div class="input-animation"></div>
+					</div>
+					<div id="demo-default-input-3-error"
+						 class="error-message-wrapper"></div>
+				</div>
+			</div>
+
+		</div>
+        <div class="row">
+            <h1 class="col-12">Quantity of Machines</h1>
+			<div class="col-sm-12 col-md-3">
+				<div class="module-input form-group has-placeholder hover-demo read-only"
+					 data-plugin="moduleInput">
+					<label for="demo-default-input-5">
+						Quantity of {{currentYear}}
+					</label>
+					<div class="input-animation-wrapper">
+						<input type="text"
+								id="demo-default-input-5"
+								class="form-control"
+								placeholder="Min Max Example"
+								name="demo-default-input-5"
+								data-bouncer-target="#demo-default-input-5-error"
+								required="required" formControlName="q2021" readonly
+							/>
+						<!--data-search-url="url" is needed to use the AutoComplete function.-->
+						<div class="input-animation"></div>
+					</div>
+					<div id="demo-default-input-5-error"
+						 class="error-message-wrapper"></div>
+				</div>
+			</div>
+            <div class="col-sm-12 col-md-3">
+				<div class="module-input form-group has-placeholder hover-demo read-only"
+					 data-plugin="moduleInput">
+					<label for="demo-default-input-6">
+						Quantity of {{futureYear1}}
+					</label>
+					<div class="input-animation-wrapper">
+						<input type="text"
+								id="demo-default-input-6"
+								class="form-control"
+								placeholder="Min Max Example"
+								name="demo-default-input-6"
+								data-bouncer-target="#demo-default-input-6-error"
+								required="required" formControlName="q2022" readonly
+							/>
+						<!--data-search-url="url" is needed to use the AutoComplete function.-->
+						<div class="input-animation"></div>
+					</div>
+					<div id="demo-default-input-6-error"
+						 class="error-message-wrapper"></div>
+				</div>
+			</div>
+            <div class="col-sm-12 col-md-3">
+				<div class="module-input form-group has-placeholder hover-demo read-only"
+					 data-plugin="moduleInput">
+					<label for="demo-default-input-7">
+						Quantity of {{futureYear2}}
+					</label>
+					<div class="input-animation-wrapper">
+						<input type="text"
+								id="demo-default-input-7"
+								class="form-control"
+								placeholder="Min Max Example"
+								name="demo-default-input-7"
+								data-bouncer-target="#demo-default-input-7-error"
+								required="required" formControlName="q2023" readonly
+							/>
+						<!--data-search-url="url" is needed to use the AutoComplete function.-->
+						<div class="input-animation"></div>
+					</div>
+					<div id="demo-default-input-7-error"
+						 class="error-message-wrapper"></div>
+				</div>
+			</div>
+            <div class="col-sm-12 col-md-3">
+				<div class="module-input form-group has-placeholder hover-demo read-only"
+					 data-plugin="moduleInput">
+					<label for="demo-default-input-8">
+						Quantity of {{futureYear3}}
+					</label>
+					<div class="input-animation-wrapper">
+						<input type="text"
+								id="demo-default-input-8"
+								class="form-control"
+								placeholder="Min Max Example"
+								name="demo-default-input-8"
+								data-bouncer-target="#demo-default-input-8-error"
+								required="required" formControlName="q2024" readonly
+							/>
+						<!--data-search-url="url" is needed to use the AutoComplete function.-->
+						<div class="input-animation"></div>
+					</div>
+					<div id="demo-default-input-8-error"
+						 class="error-message-wrapper"></div>
+				</div>
+			</div>
+		</div>
+
+    <div class="module-table table-responsive">
+        <h1>Product Information</h1>
+		<div class="row" formArrayName="contacts">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="highlight text-center">
+                        PartNumber
+                    </th>
+                    <th class="highlight text-center">
+                        TypeCode
+                    </th>
+                    <th class="text-center highlight">
+                        Parts/Machine
+                    </th>
+                    <th class="text-center highlight">
+                        Price/Unit Code (€)
+                    </th>
+                    <th class="text-center highlight">
+                        Competitor Product
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of contactFormGroup.controls; let i = index;" [formGroupName]="i">
+                    <td class="text-center">
+                        <input type="text" class="rexroth-predata-input1 rexroth-table-text inputable hover-demo read-only" id="part_number" name="part_number" formControlName="part_number" required readonly>
+                    </td>
+                    <td class="text-center">
+                        <input type="text" class="rexroth-predata-input1 rexroth-table-text inputable hover-demo read-only" id="description" name="description" formControlName="description" required readonly>
+                    </td>
+                    <td class="text-center">
+                        <input type="text" class="rexroth-predata-input1 rexroth-table-text inputable" placeholder="Parts and machine" id="nettpriceSI_unit1" name="nettpriceSI_unit1" formControlName="nettpriceSI_unit1" required>
+                    </td>
+                    <td class="">
+						<div class="col-sm-12 col-md-12">
+							<div class="module-input form-group has-placeholder "
+								 data-plugin="moduleInput">
+								<label for="range_unit1">
+									Price/Unit Code (€)
+								</label>
+								<div class="input-animation-wrapper">
+									<input type="text"
+											id="range_unit1"
+											class="form-control"
+											placeholder="Price per unit"
+											name="range_unit1"
+											data-bouncer-target="#range_unit1-error"
+											required="required" formControlName="range_unit1"
+										/>
+									<div class="input-animation"></div>
+								</div>
+								<div id="range_unit1-error"
+									 class="error-message-wrapper"></div>
+							</div>
+						</div>
+                        <!-- <input type="text" class="rexroth-predata-input1 rexroth-table-text inputable" placeholder="Price per unit" id="range_unit1" name="range_unit1" formControlName="range_unit1" required> -->
+                    </td>
+                    <td class="">
+						<div class="col-sm-12 col-md-12">
+							<div class="module-input form-group has-placeholder "
+								 data-plugin="moduleInput">
+								<label for="competition_unit1">
+									Competitor Product
+								</label>
+								<div class="input-animation-wrapper">
+									<input type="text"
+											id="competition_unit1"
+											class="form-control"
+											placeholder="Competition unit"
+											name="competition_unit1"
+											data-bouncer-target="#competition_unit1-error"
+											required="required" formControlName="competition_unit1"
+										/>
+									<div class="input-animation"></div>
+								</div>
+								<div id="competition_unit1-error"
+									 class="error-message-wrapper"></div>
+							</div>
+						</div>
+                        <!-- <input type="text" class="rexroth-predata-input1 rexroth-table-text inputable" placeholder="Competition unit" id="competition_unit1" name="competition_unit1" formControlName="competition_unit1" required> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+    </div>
+	<!-- Submit Form with All Data -->
+	<div class="module-button" (click)="SendPrototype()">
+		<button type="submit" class="btn btn-secondary"></button>
+		<div class="button-animation"></div>
+		<div class="button-content">
+		  <span class="content-text">Submit</span>
+		</div>
+	  </div>
+	  <div class="module-button" style="margin-left: 15px;" (click)="Goback()">
+		<button type="submit" class="btn btn-danger"></button>
+		<div class="button-animation"></div>
+		<div class="button-content">
+			<span class="content-text">Back</span>
+		</div>
+	</div>
+	</form>
+</div>

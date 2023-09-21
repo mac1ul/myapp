@@ -1,0 +1,40 @@
+.headline{
+    margin-bottom: 0;
+    font-size: 26px;
+}
+
+.module-table {
+    margin-bottom: 0;
+    position: relative;
+    background: #ffffff;
+    background: var(--color-white);
+    color: #002b49;
+    color: var(--color-prussian-blue);
+    font-size: 0.875rem;
+}
+.module-block {
+    margin-bottom: 0;
+}
+.pn{
+    height: 47px;
+    width: 360px;
+    margin-right: 20px;
+    // background-color: white;
+    outline: none;
+}
+.iconheader{
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 30px;
+}
+.maintitle{
+    font-size: 1.75rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+body{
+  display:flex;
+  flex-direction:column;
+  min-height:51vh;
+}

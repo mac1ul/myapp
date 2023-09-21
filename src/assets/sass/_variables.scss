@@ -1,0 +1,269 @@
+//
+// Colors
+// ------
+// Colornames are defined by http://chir.ag/projects/name-that-color/
+
+// Basic Colors
+$color-prussian-blue: #002b49;
+$color-aqua: #00ccff;
+$color-monza: #df0024;
+$color-alabaster: #fcfcfc;
+$color-white: #ffffff;
+$color-black-haze: #E5E5E5;
+$color-smalt-blue: #5a7c91;
+$color-casper: #a3bac8;
+$color-heather: #c0ced8;
+$color-mine-shaft: #333333;
+$color-dusty-gray: #969696;
+$color-catskill-white: #E8EEF1;
+$color-mystic: #E8EEF1;
+$color-athens-gray: #F2F4F6;
+$color-regent-gray: #7f95a4;
+$color-loblolly: #BFCAD1;
+$color-athens-gray-darker: #E5EAED;
+$color-anakiwa: #7FE5FF;
+$color-onahau: #BFF2FF;
+$color-heather-darker: #ACBDC8;
+$color-geyser-brighter: #D6DEE3;
+$color-mauvelous: #EF7F91;
+$color-gray: #7F7F7F;
+$color-silver: #BFBFBF;
+
+
+// Hover States
+$color-midnight: #00243e;
+$color-cerulian: #00add9;
+$color-bali-hai: #8a9eaa;
+$color-blue-bayoux: #4c697b;
+$color-guardsman-red: #bd001e;
+$color-fern-green: #528236;
+$color-black: #000000;
+
+// Functional Colors Website
+$color-azalea: #f7bfc8;
+$color-sprout: #b3d1a1;
+$color-apple: #67a344;
+$color-kidnapper: #d9e8d0;
+$color-geyser: #D1DCE3;
+
+// Functional Colors Diagramms
+$color-allports: #0066a2;
+$color-deep-cerulean: #0182ae;
+$color-lochinvar: #2a958d;
+$color-atlantis: #aec32c;
+$color-barberry: #ebd417;
+$color-sea-buckthorn: #fbb034;
+$color-jaffa: #f47932;
+
+
+:root {
+	// Basic Colors
+	--color-prussian-blue: #{$color-prussian-blue};
+	--color-aqua: #{$color-aqua};
+	--color-monza: #{$color-monza};
+	--color-alabaster: #{$color-alabaster};
+	--color-white: #{$color-white};
+	--color-black-haze: #{$color-black-haze};
+	--color-smalt-blue: #{$color-smalt-blue};
+	--color-casper: #{$color-casper};
+	--color-heather: #{$color-heather};
+	--color-mine-shaft: #{$color-mine-shaft};
+	--color-dusty-gray: #{$color-dusty-gray};
+	--color-catskill-white: #{$color-catskill-white};
+	--color-mystic: #{$color-mystic};
+	--color-athens-gray: #{$color-athens-gray};
+	--color-regent-gray: #{$color-regent-gray};
+	--color-loblolly: #{$color-loblolly};
+	--color-athens-gray-darker: #{$color-athens-gray-darker};
+	--color-anakiwa: #{$color-anakiwa};
+	--color-onahau: #{$color-onahau};
+	--color-heather-darker: #{$color-heather-darker};
+	--color-geyser-brighter: #{$color-geyser-brighter};
+	--color-mauvelous: #{$color-mauvelous};
+	--color-gray: #{$color-gray};
+	--color-silver: #{$color-silver};
+
+
+	// Hover States
+	--color-midnight: #{$color-midnight};
+	--color-cerulian: #{$color-cerulian};
+	--color-bali-hai: #{$color-bali-hai};
+	--color-blue-bayoux: #{$color-blue-bayoux};
+	--color-guardsman-red: #{$color-guardsman-red};
+	--color-fern-green: #{$color-fern-green};
+	--color-black: #{$color-black};
+
+	// Functional Colors Website
+	--color-azalea: #{$color-azalea};
+	--color-sprout: #{$color-sprout};
+	--color-apple: #{$color-apple};
+	--color-kidnapper: #{$color-kidnapper};
+	--color-geyser: #{$color-geyser};
+
+	// Functional Colors Diagramms
+	--color-allports: #{$color-allports};
+	--color-deep-cerulean: #{$color-deep-cerulean};
+	--color-lochinvar: #{$color-lochinvar};
+	--color-atlantis: #{$color-atlantis};
+	--color-barberry: #{$color-barberry};
+	--color-sea-buckthorn: #{$color-sea-buckthorn};
+	--color-jaffa: #{$color-jaffa};
+}
+
+//
+// Typography
+// ----------
+
+@function rem($size, $base: 16) {
+	@return ($size / $base) + rem;
+}
+
+// Headlines
+$font-size-headline-xs: rem(16);
+$font-size-headline-s: rem(20);
+$font-size-headline-m: rem(24);
+$font-size-headline-l: rem(28);
+$font-size-headline-xl: rem(32);
+$font-size-headline-xxl: rem(36);
+$font-size-headline-xxxl: rem(42);
+
+$line-height-headline-xs: rem(20);
+$line-height-headline-s: rem(24);
+$line-height-headline-m: rem(28);
+$line-height-headline-l: rem(32);
+$line-height-headline-xl: rem(36);
+$line-height-headline-xxl: rem(40);
+$line-height-headline-xxxl: rem(52);
+
+// Text
+$font-size-text-xxs: rem(10);
+$font-size-text-xs: rem(12);
+$font-size-text-s: rem(14);
+$font-size-text-m: rem(16);
+$font-size-text-l: rem(20);
+$font-size-text-xl: rem(24);
+$font-size-text-xxl: rem(28);
+
+$line-height-text-xxs: rem(10);
+$line-height-text-xs: rem(20);
+$line-height-text-s: rem(23);
+$line-height-text-m: rem(26);
+$line-height-text-l: rem(30);
+$line-height-text-xl: rem(36);
+$line-height-text-xxl: rem(42);
+
+$font-stack-default: sans-serif;
+
+//
+// Breakpoints
+// -----------
+
+$screen-xs-min: 360px; // Smallest supported resolution defined by mobile requirements.
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
+$screen-lg-max: 1600px;
+$screen-max: 1920px;
+
+//
+// Media Queries
+// -------------
+
+// The first two should always be the standard setting.
+$media-from-xs: "screen and (min-width: #{$screen-xs-min})";
+$media-to-sm: "screen and (max-width: #{$screen-xs-max})";
+$media-from-sm: "screen and (min-width: #{$screen-sm-min})";
+$media-from-sm-to-md: "screen and (min-width: #{$screen-sm-min}) and (max-width: #{$screen-sm-max})";
+$media-to-md: "screen and (max-width: #{$screen-sm-max})";
+$media-from-md: "screen and (min-width: #{$screen-md-min})";
+$media-from-md-to-lg: "screen and (min-width: #{$screen-md-min}) and (max-width: #{$screen-md-max})";
+$media-to-lg: "screen and (max-width: #{$screen-md-max})";
+$media-from-lg: "screen and (min-width: #{$screen-lg-min})";
+$media-from-lg-to-xl: "screen and (min-width: #{$screen-lg-min}) and (max-width: #{$screen-lg-max})";
+$media-to-xl: "screen and (max-width: #{$screen-lg-max})";
+
+//
+// Offsets
+// -------
+
+$spacing-apart: 160px;
+$spacing-offset: 100px;
+$spacing-largest: 60px;
+$spacing-larger: 50px;
+$spacing-large: 40px;
+$spacing-default: 30px;
+$spacing-small: 20px;
+$spacing-tiny: 10px;
+$spacing-atomic-tiny: 15px; // Shorthand for tiny + atomic.
+$spacing-atomic: 5px; // Only to fill really tiny gaps. Example: padding-top: @spacing-small + @spacing-atomic;
+
+$gutter-width: 30px;
+
+$transition-duration-fast: 250ms;
+$transition-duration: 350ms;
+
+
+//
+// Header
+// ------
+
+$header-height: 80px;
+$header-height-breadcrumb: 120px;
+$header-height-mobile: 55px;
+$header-height-breadcrumb-mobile: 93px;
+$header-z-index: 100;
+
+
+//
+// Sidebar
+//
+
+$sidebar-width: 80px;
+
+
+//
+// Fonts
+// -----------
+
+// Bosch Sans Black
+$font-bosch-sans-black-woff: '../fonts/BoschSans-Black.woff';
+$font-bosch-sans-black-svg: '../fonts/BoschSans-Black.svg';
+$font-bosch-sans-black-eot: '../fonts/BoschSans-Black.eot';
+
+// Bosch Sans Black Italic
+$font-bosch-sans-black-italic-woff: '../fonts/BoschSans-BlackItalic.woff';
+$font-bosch-sans-black-italic-svg: '../fonts/BoschSans-BlackItalic.svg';
+$font-bosch-sans-black-italic-eot: '../fonts/BoschSans-BlackItalic.eot';
+
+// Bosch Sans Bold
+$font-bosch-sans-bold-woff: '../fonts/BoschSans-Bold.woff';
+$font-bosch-sans-bold-svg: '../fonts/BoschSans-Bold.svg';
+$font-bosch-sans-bold-eot: '../fonts/BoschSans-Bold.eot';
+
+// Bosch Sans Bold Italic
+$font-bosch-sans-bold-italic-woff: '../fonts/BoschSans-BoldItalic.woff';
+$font-bosch-sans-bold-italic-svg: '../fonts/BoschSans-BoldItalic.svg';
+$font-bosch-sans-bold-italic-eot: '../fonts/BoschSans-BoldItalic.eot';
+
+// Bosch Sans Medium
+$font-bosch-sans-medium-woff: '../fonts/BoschSans-Medium.woff';
+$font-bosch-sans-medium-svg: '../fonts/BoschSans-Medium.svg';
+$font-bosch-sans-medium-eot: '../fonts/BoschSans-Medium.eot';
+
+// Bosch Sans Medium Italic
+$font-bosch-sans-medium-italic-woff: '../fonts/BoschSans-MediumItalic.woff';
+$font-bosch-sans-medium-italic-svg: '../fonts/BoschSans-MediumItalic.svg';
+$font-bosch-sans-medium-italic-eot: '../fonts/BoschSans-MediumItalic.eot';
+
+// Bosch Sans Regular
+$font-bosch-sans-regular-woff: '../fonts/BoschSans-Regular.woff';
+$font-bosch-sans-regular-svg: '../fonts/BoschSans-Regular.svg';
+$font-bosch-sans-regular-eot: '../fonts/BoschSans-Regular.eot';
+
+// Bosch Sans Regular Italic
+$font-bosch-sans-regular-italic-woff: '../fonts/BoschSans-RegularItalic.woff';
+$font-bosch-sans-regular-italic-svg: '../fonts/BoschSans-RegularItalic.svg';
+$font-bosch-sans-regular-italic-eot: '../fonts/BoschSans-RegularItalic.eot';

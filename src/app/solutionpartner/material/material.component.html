@@ -1,0 +1,2207 @@
+<!-- <app-header></app-header> -->
+<div class="breadcrumb">
+  <xng-breadcrumb
+    [separator]="iconTemplate"
+    style="background-color: red"
+    (click)="onmaterials()"
+  ></xng-breadcrumb>
+  <ng-template #iconTemplate>
+    <i class="icon icon-dc_forward_right"></i>
+  </ng-template>
+</div>
+<router-outlet></router-outlet>
+<div class="setview" *ngIf="Reach_At_Material === true">
+  <!-- <div class="setview"> -->
+  <form [formGroup]="AddMaterial">
+    <div class="row">
+    <div class="col-sm-12 col-md-2 col-lg-2">
+        <div
+          class="module-input form-group has-placeholder read-only hover-demo"
+          data-plugin="moduleInput"
+        >
+          <p class="mainlabel">Machine Name:</p>
+          <div class="input-animation-wrapper">
+            <input
+              type="text"
+              id="demo-placeholder44"
+              class="form-control"
+              formControlName="model"
+              readonly
+              [ngClass]="{
+                'is-invalid':
+                  projectdetails_submitted && projectDetails.model.errors
+              }"
+            />
+            <div
+              *ngIf="projectdetails_submitted && projectDetails.model.errors"
+            >
+              <div *ngIf="projectDetails.model.errors.required" class="danger">
+                Machine name is required.
+              </div>
+            </div>
+            <div class="input-animation"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-3 col-lg-2" style="margin-top: 0px">
+                 <label class="label-above-sm" for="demo-default">
+         Application Experience: *
+    </label>
+
+        <div class="module-dropdown   ">
+            <div class="input-animation-wrapper module-input bg-success">
+
+                <select id="demo-dropdown-1"
+                class="custom-select "
+                formControlName="experience"
+                name="demo-dropdown-1"
+                data-bouncer-target="#demo-dropdown-1-error"
+                required="required"
+                [ngClass]="{ 'is-invalid': projectdetails_submitted && projectDetails.experience.errors }">
+            <option disabled
+                    selected
+                    value="">--- Please select ---</option>
+                    <option value="Projects 0">Projects 0</option>
+                    <option value="Projects < 5">Projects < 5</option>
+                    <option value="Projects < 10">Projects < 10</option>
+                    <option value="Projects > 10">Projects > 10</option>
+                    <option value="Projects > 20">Projects > 20</option>
+        <div class="input-animation"></div>
+        </select>                     </div>
+
+
+            <div id="demo-dropdown-1-error"
+                 class="error-message-wrapper">
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-3 col-lg-2">
+        <div class="module-date-picker form-group">
+          <p class="mainlabel">Prototype Required: *</p>
+          <div class="input-animation-wrapper">
+            <input
+            [type]="myInputFocus === true ? 'text' : 'date'"
+              id="demo-value"
+              class="form-control"
+              formControlName="prototype"
+              #prototypeInput [(ngModel)]="prototypeDate" (change)="changeDateFormat(prototypeInput.value)" (focus)="changeDateFormat(prototypeInput.value)"
+              [ngClass]="{
+                'is-invalid':
+                  projectdetails_submitted && projectDetails.prototype.errors
+              }"
+            />
+            <!-- <div
+              *ngIf="
+                projectdetails_submitted && projectDetails.prototype.errors
+              "
+            >
+              <div
+                *ngIf="projectDetails.prototype.errors.required"
+                class="danger"
+              >
+                Please select prototype required date.
+              </div>
+            </div> -->
+            <div class="input-animation"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Demo -->
+      <!-- <div class="col-sm-12 col-md-2 col-lg-2">
+        <input class="form-control" formControlName="sop" [type]="myInputFocus === true ? 'text' : 'date'" id="myInput" name="myInput" #myInput [(ngModel)]="myDate" (focus)="changeDateFormat(myInput.value)" >
+      </div> -->
+      <div class="col-sm-12 col-md-2 col-lg-2">
+        <div class="module-date-picker form-group">
+          <p class="mainlabel" tooltip="Start of Production"
+          placement="top">SOP: *</p>
+          <div class="input-animation-wrapper">
+            <input
+            [type]="myInputFocus1 === true ? 'text' : 'date'"
+              id="demo-value1"
+              class="form-control"
+              #sopInput [(ngModel)]="myDate" (change)="changeDateFormat1(sopInput.value)" (focus)="changeDateFormat1(sopInput.value)"
+              formControlName="sop"
+              [ngClass]="{
+                'is-invalid':
+                  projectdetails_submitted && projectDetails.sop.errors
+              }"
+            />
+            <div *ngIf="projectdetails_submitted && projectDetails.sop.errors">
+              <div *ngIf="projectDetails.sop.errors.required" class="danger">
+                Please select sop date.
+              </div>
+            </div>
+            <div class="input-animation"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-2 col-lg-2">
+        <div class="module-date-picker form-group">
+          <p class="mainlabel" tooltip="End of Production"
+          placement="top">EOP: *</p>
+          <div class="input-animation-wrapper">
+            <input #endInput [(ngModel)]="endDate" (change)="changeDateFormat2(endInput.value)" (focus)="changeDateFormat2(endInput.value)"
+            [type]="myInputFocus2 === true ? 'text' : 'date'"
+              id="demo-value2"
+              class="form-control"
+              formControlName="eop"
+            />
+            <!-- <p *ngIf="AddMaterial.get('eop').touched && AddMaterial.get('eop').invalid" class="danger">Please
+                        select eop date.</p> -->
+            <!-- <div *ngIf="projectdetails_submitted && projectDetails.eop.errors">
+                        <div *ngIf="projectDetails.eop.errors.required" class="danger">Please select eop date.</div>
+                    </div> -->
+            <div class="input-animation"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-2 col-lg-2">
+        <div
+          class="module-input form-group has-placeholder read-only hover-demo"
+          data-plugin="moduleInput"
+        >
+          <p class="mainlabel">Application:</p>
+          <div class="input-animation-wrapper">
+            <input
+              type="text"
+              id="demo-placeholder44"
+              class="form-control"
+              formControlName="selectedapplication"
+              readonly
+            />
+            <div class="input-animation"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row data">
+      <div class="col-md-2">
+        <div class="top">
+          <p class="head"> {{ previousYear2 }}</p>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder1" class="inlinetitle">
+              Machine Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input #previousYear22
+                type="number"
+                id="demo-placeholder1"
+                class="form-control"
+                formControlName="previousyear2MachineQty"
+                placeholder="Enter Quantity"
+                disable-validation=""
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder2" class="inlinetitle">
+              Rexroth Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input [max]="previousYear22.value"
+                type="number"
+                id="demo-placeholder2"
+                class="form-control"
+                formControlName="previousyear2RexrothQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="top">
+          <p class="head"> {{ previousYear1 }}</p>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder3" class="inlinetitle">
+              Machine Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input #previousYear11
+                type="number"
+                id="demo-placeholder3"
+                class="form-control"
+                formControlName="previousyear1MachineQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder4" class="inlinetitle">
+              Rexroth Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input [max]="previousYear11.value"
+                type="number"
+                id="demo-placeholder4"
+                class="form-control"
+                formControlName="previousyear1RexrothQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="top">
+          <p class="head" style="background-color: #0b6bb9">
+            {{ currentYear }}
+          </p>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder5" class="inlinetitle">
+              Machine Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input #currentYearr
+                type="number"
+                id="demo-placeholder5"
+                class="form-control"
+                formControlName="presentyearMachineQty"
+                placeholder="Enter Quantity"
+                [ngClass]="{
+                  'is-invalid':
+                    projectdetails_submitted &&
+                    projectDetails.presentyearMachineQty.errors
+                }"
+              />
+              <!-- <p *ngIf="AddMaterial.get('mqty2021').touched && AddMaterial.get('mqty2021').invalid"
+                                class="danger">Please enter machine quntity.</p> -->
+              <div
+                *ngIf="
+                  projectdetails_submitted &&
+                  projectDetails.presentyearMachineQty.errors
+                "
+              >
+                <div
+                  *ngIf="projectDetails.presentyearMachineQty.errors.required"
+                  class="danger"
+                >
+                  Please enter machine quantity.
+                </div>
+              </div>
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder6" class="inlinetitle">
+              Rexroth Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input [max]="currentYearr.value"
+                type="number"
+                id="demo-placeholder6"
+                class="form-control"
+                formControlName="presentyearRexrothQty"
+                placeholder="Enter Quantity"
+                [ngClass]="{
+                  'is-invalid':
+                    projectdetails_submitted &&
+                    projectDetails.presentyearRexrothQty.errors
+                }"
+              />
+              <!-- <p *ngIf="AddMaterial.get('rexroth2021').touched && AddMaterial.get('rexroth2021').invalid"
+                                class="danger">Please enter rexroth quntity.</p> -->
+              <div
+                *ngIf="
+                  projectdetails_submitted &&
+                  projectDetails.presentyearRexrothQty.errors
+                "
+              >
+                <div
+                  *ngIf="projectDetails.presentyearRexrothQty.errors.required"
+                  class="danger"
+                >
+                  Please enter rexroth quntity.
+                </div>
+              </div>
+              <div class="input-animation"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="top">
+          <p class="head" style="background-color: #002b49">
+             {{ futureYear1 }}
+          </p>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder7" class="inlinetitle">
+              Machine Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input #futureYear11
+                type="number"
+                id="demo-placeholder7"
+                class="form-control"
+                formControlName="futureyear1MachineQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder8" class="inlinetitle">
+              Rexroth Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input [max]="futureYear11.value"
+                type="number"
+                id="demo-placeholder8"
+                class="form-control"
+                formControlName="featureyear1RexrothQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="top">
+          <p class="head" style="background-color: #002b49">
+             {{ futureYear2 }}
+          </p>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder9" class="inlinetitle">
+              Machine Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input #futureYear22
+                type="number"
+                id="demo-placeholder9"
+                class="form-control"
+                formControlName="futureyear2MachineQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder10" class="inlinetitle">
+              Rexroth Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input [max]="futureYear22.value"
+                type="number"
+                id="demo-placeholder10"
+                class="form-control"
+                formControlName="featureyear2RexrothQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="top">
+          <p class="head" style="background-color: #002b49">
+             {{ futureYear3 }}
+          </p>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder11" class="inlinetitle">
+              Machine Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input #futureYear33
+                type="number"
+                id="demo-placeholder11"
+                class="form-control"
+                formControlName="futureyear3MachineQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div
+            class="module-input form-group has-placeholder mqty"
+            data-plugin="moduleInput"
+          >
+            <label for="demo-placeholder12" class="inlinetitle">
+              Rexroth Qty:
+            </label>
+            <div class="input-animation-wrapper">
+              <input [max]="futureYear33.value"
+                type="number"
+                id="demo-placeholder12"
+                class="form-control"
+                formControlName="featureyear3RexrothQty"
+                placeholder="Enter Quantity"
+              />
+              <div class="input-animation"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br />
+  
+    <!-- upload start  -->
+    <!-- <div >
+      <div class="col-4" style="    display: inline-block;  ">
+        <div class="component-file-selector show-file-name "
+            data-plugin="moduleFileSelector" >
+          <div class="form-group" style="border: 1px solid black;">
+            <div class="file-selector-wrapper">
+              <input type="file" name="file" id="file" class="file-selector" (change)="incomingfile($event)" multiple="false">
+              <div class="file-name-container">
+                <span class="file-name"></span>
+              </div>
+              <div class="module-button ">
+                <button type="button" class="btn btn-light " ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">Select File</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1">
+        <div class="module-button ">
+          <button type="button" class="btn btn-secondary " (click)="sendFiledata()"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="icon icon-dc_upload"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+   -->
+  
+      <!-- end upload  -->
+  
+
+      <div class="module-button button" style="float: right; margin-left:15px" (click)="modalToOpen1()">
+        <button type="button" class="btn btn-secondary"></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="iconheader rb-document-add"></i>
+          <span class="content-text" style="font-weight: 700; user-select: none;">upload parts </span>
+        </div>
+      </div>
+
+  
+  <div
+    class="module-button button"
+    style="float: right"
+    (click)="AddMachineDetails()"
+  >
+    <button
+      type="button"
+      tooltip="Save Project Details"
+      placement="top"
+      class="btn btn-secondary"
+    ></button>
+    <div class="button-animation"></div>
+    <div class="button-content">
+      <i class="iconheader rb-save"></i>
+      <!-- <span class="content-text">Add New Machine</span> -->
+    </div>
+  </div>
+  <br /><br />
+
+  <div class="component-headline">
+    <div
+      class="row col-12"
+      style="margin: 0; padding: 0"
+      *ngIf="showmateriallist"
+    >
+      <div class="col-md-6 col-sm-12 tableheader">
+        <span class="maintitle">Material List</span>
+        <!-- <div class="ml-2">
+          <span class="stepnumber">1</span><span class="maintitle ml-2 mr-2">Select Product</span>
+        </div>
+        <div class="ml-2">
+          <span class="stepnumber">2</span><span class="maintitle ml-2 mr-2">Configurator</span>
+        </div>
+        <div class="ml-2">
+          <span class="stepnumber">3</span><span class="maintitle ml-2 mr-2">Type Code</span>
+        </div> -->
+      </div>
+      <div class="col-md-6 col-sm-12 materialbutton">
+        <div class="module-button mr-2" (click)="modalToOpen()">
+          <button
+            type="button"
+            tooltip="Add Material"
+            placement="top"
+            class="btn btn-secondary"
+          ></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="iconheader rb-document-add"></i>
+          </div>
+        </div>
+        <div class="module-button mr-2" (click)="gotofasttrack()">
+          <button type="button" class="btn btn-primary"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="iconheadertext rb-box-delivery"></i>
+            <span
+              class="content-text"
+              style="font-weight: 700; user-select: none"
+              >Fast Track</span
+            >
+          </div>
+        </div>
+        <div class="module-button mr-2" (click)="gotopricerequest()">
+          <button type="button" class="btn btn-primary"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="iconheadertext rb-money-euro"></i>
+            <span
+              class="content-text"
+              style="font-weight: 700; user-select: none"
+              >Price Request</span
+            >
+          </div>
+        </div>
+        <div class="module-button" (click)="modalToOpen2()">
+          <button type="button" class="btn btn-primary"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="iconheadertext rb-cube"></i>
+            <span
+              class="content-text"
+              style="font-weight: 700; user-select: none"
+              >3D Model</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!-- Manual add Materials -->
+    <div class="module-modal modal" id="addmaterial" data-plugin="moduleModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-close">
+            <div class="module-button">
+              <button
+                type="button"
+                class="btn btn-link"
+                (click)="modalClose()"
+              ></button>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_close"></i>
+              </div>
+            </div>
+          </div>
+          <div class="modal-header">
+            <p class="headline h5 modal-title">Create Project Material</p>
+          </div>
+          <div class="modal-body">
+            <form
+              [formGroup]="AddMateriallist"
+              (ngSubmit)="AddProjectMachindetails()"
+            >
+              <div class="row">
+                <div class="col-12">
+                  <div
+                    class="module-input form-group has-placeholder"
+                    data-plugin="moduleInput"
+                  >
+                    <label for="demo-default-input-1"> Part Number * </label>
+                    <div class="input-animation-wrapper">
+                      <input
+                        type="text"
+                        id="demo-default-input-1"
+                        class="form-control"
+                        value=""
+                        placeholder="Enter Part Number"
+                        name="demo-default-input-1"
+                        data-bouncer-target="#demo-default-input-1-error"
+                        required="required"
+                        formControlName="partnumber"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.partnumber.errors
+                        }"
+                      />
+                      <!-- <p *ngIf = "AddMateriallist.get('partnumber').touched && AddMateriallist.get('partnumber').invalid" class="danger">Please enter partnumber.</p> -->
+                      <div *ngIf="submitted && f.partnumber.errors">
+                        <div
+                          *ngIf="f.partnumber.errors.required"
+                          class="danger"
+                        >
+                          Please enter partnumber.
+                        </div>
+                      </div>
+                      <div class="input-animation"></div>
+                    </div>
+                    <div
+                      id="demo-default-input-1-error"
+                      class="error-message-wrapper"
+                    ></div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div
+                    class="module-input form-group has-placeholder"
+                    data-plugin="moduleInput"
+                  >
+                    <label for="demo-default-input-2"> Type Code * </label>
+                    <div class="input-animation-wrapper">
+                      <input
+                        type="text"
+                        id="demo-default-input-2"
+                        class="form-control"
+                        placeholder="Enter Type Code"
+                        name="demo-default-input-2"
+                        data-bouncer-target="#demo-default-input-2-error"
+                        required="required"
+                        formControlName="description"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.description.errors
+                        }"
+                      />
+                      <!-- <p *ngIf = "AddMateriallist.get('description').touched && AddMateriallist.get('description').invalid" class="danger">Please enter description.</p> -->
+                      <div *ngIf="submitted && f.description.errors">
+                        <div
+                          *ngIf="f.description.errors.required"
+                          class="danger"
+                        >
+                          Please enter Type Code.
+                        </div>
+                      </div>
+                      <div class="input-animation"></div>
+                    </div>
+                    <div
+                      id="demo-default-input-2-error"
+                      class="error-message-wrapper"
+                    ></div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="module-dropdown">
+                    <div class="input-animation-wrapper">
+                      <label for="demo-dropdown-11">SUPPLIER *</label>
+                      <select
+                        id="demo-dropdown-11"
+                        class="custom-select"
+                        name="demo-dropdown-11"
+                        data-bouncer-target="#demo-dropdown-11-error"
+                        required="required"
+                        #companyname
+                        (change)="selectedOption(companyname.value)"
+                        formControlName="supplier"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.supplier.errors
+                        }"
+                      >
+                        <option disabled selected value="null">
+                          --- Please select ---
+                        </option>
+                        <option value="Bosch Rexroth">Bosch Rexroth</option>
+                        <option value="others">Other Suppliers</option>
+                      </select>
+                      <!-- <p *ngIf = "AddMateriallist.get('supplier').touched && AddMateriallist.get('supplier').invalid" class="danger">Please select supplier.</p> -->
+                      <div *ngIf="submitted && f.supplier.errors">
+                        <div *ngIf="f.supplier.errors.required" class="danger">
+                          Please select supplier.
+                        </div>
+                      </div>
+                      <div class="input-animation"></div>
+                    </div>
+                    <div
+                      id="demo-dropdown-11-error"
+                      class="error-message-wrapper"
+                    ></div>
+                  </div>
+                </div>
+                <div class="col-12" *ngIf="showothersinput">
+                  <div
+                    class="module-input form-group has-placeholder"
+                    data-plugin="moduleInput"
+                  >
+                    <label for="demo-default-input-2"> Supplier Name * </label>
+                    <div class="input-animation-wrapper">
+                      <input
+                        type="text"
+                        id="demo-default-input-2"
+                        class="form-control"
+                        placeholder="Enter other supplier name"
+                        name="demo-default-input-2"
+                        data-bouncer-target="#demo-default-input-2-error"
+                        required="required"
+                        formControlName="othersupplier"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.othersupplier.errors
+                        }"
+                      />
+                      <!-- <p *ngIf = "AddMateriallist.get('othersupplier').touched && AddMateriallist.get('othersupplier').invalid && showothersinput && !showcompanydetails" class="danger">Please enter supplier name.</p> -->
+                      <div *ngIf="submitted && f.othersupplier.errors">
+                        <div
+                          *ngIf="f.othersupplier.errors.required"
+                          class="danger"
+                        >
+                          Please enter supplier name.
+                        </div>
+                      </div>
+                      <div class="input-animation"></div>
+                    </div>
+                    <div
+                      id="demo-default-input-2-error"
+                      class="error-message-wrapper"
+                    ></div>
+                  </div>
+                </div>
+                <div class="col-12" *ngIf="showcompanydetails">
+                  <div class="module-dropdown">
+                    <div class="input-animation-wrapper">
+                      <label for="demo-dropdown-12">PRODUCT * </label>
+                      <select
+                        id="demo-dropdown-12"
+                        #manualproductc
+                        class="custom-select"
+                        (change)="onchangeproduct(manualproductc.value)"
+                        name="demo-dropdown-12"
+                        data-bouncer-target="#demo-dropdown-12-error"
+                        required="required"
+                        formControlName="product"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.product.errors
+                        }"
+                      >
+                        <option disabled selected value="null">
+                          --- Please select ---
+                        </option>
+                        <option
+                          *ngFor="let manual_product of manual_product"
+                          [value]="manual_product.product"
+                        >
+                          {{ manual_product.product }}
+                        </option>
+                      </select>
+                      <!-- <p *ngIf="AddMateriallist.get('product').touched && AddMateriallist.get('product').invalid && showothersinput === false"
+                                                class="danger">Please select product.</p> -->
+                      <div *ngIf="submitted && f.product.errors">
+                        <div *ngIf="f.product.errors.required" class="danger">
+                          Please select product.
+                        </div>
+                      </div>
+                      <div class="input-animation"></div>
+                    </div>
+                    <div
+                      id="demo-dropdown-12-error"
+                      class="error-message-wrapper"
+                    ></div>
+                  </div>
+                </div>
+                <div class="col-12" *ngIf="showcompanydetails">
+                  <div class="module-dropdown">
+                    <div class="input-animation-wrapper">
+                      <label for="demo-dropdown-13">PRODUCT DETAILED *</label>
+                      <select
+                        id="demo-dropdown-13"
+                        #manualproductdetailed
+                        class="custom-select"
+                        (change)="filterPF(manualproductdetailed.value)"
+                        name="demo-dropdown-13"
+                        data-bouncer-target="#demo-dropdown-13-error"
+                        required="required"
+                        formControlName="productdetailed"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.productdetailed.errors
+                        }"
+                      >
+                        <option disabled selected value="null">
+                          --- Please select ---
+                        </option>
+                        <option
+                          *ngFor="
+                            let manual_productd of manual_product_detailed
+                          "
+                          [value]="manual_productd.product_detailed"
+                        >
+                          {{ manual_productd.product_detailed }}
+                        </option>
+                      </select>
+                      <!-- <p *ngIf="AddMateriallist.get('productdetailed').touched && AddMateriallist.get('productdetailed').invalid && showothersinput === false"
+                                                class="danger">Please select product detailed.</p> -->
+                      <div *ngIf="submitted && f.productdetailed.errors">
+                        <div
+                          *ngIf="f.productdetailed.errors.required"
+                          class="danger"
+                        >
+                          Please select product detailed.
+                        </div>
+                      </div>
+                      <div class="input-animation"></div>
+                    </div>
+                    <div
+                      id="demo-dropdown-13-error"
+                      class="error-message-wrapper"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="col-12" *ngIf="showcompanydetails">
+                  <div class="module-dropdown">
+                    <div class="input-animation-wrapper">
+                      <label for="demo-dropdown-2">Product Family *</label>
+                      <select
+                        id="demo-dropdown-2"
+                        class="custom-select"
+                        name="demo-dropdown-2"
+                        data-bouncer-target="#demo-dropdown-2-error"
+                        required="required"
+                        formControlName="phase"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.phase.errors
+                        }"
+                      >
+                        <option disabled selected value="null">
+                          --- Please select ---
+                        </option>
+                        <option
+                          *ngFor="let manualPF of manual_product_family"
+                          [value]="manualPF.product_family"
+                        >
+                          {{ manualPF.product_family }}
+                        </option>
+                        <option value="others">Others</option>
+                      </select>
+                      <!-- <p *ngIf="AddMateriallist.get('phase').touched && AddMateriallist.get('phase').invalid && showothersinput === false"
+                                                class="danger">Please select product family.</p> -->
+                      <div *ngIf="submitted && f.phase.errors">
+                        <div *ngIf="f.phase.errors.required" class="danger">
+                          Please select product family.
+                        </div>
+                      </div>
+                      <div class="input-animation"></div>
+                    </div>
+                    <div
+                      id="demo-dropdown-2-error"
+                      class="error-message-wrapper"
+                    ></div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div
+                    class="module-input form-group has-placeholder mqty"
+                    data-plugin="moduleInput"
+                  >
+                    <label for="demo-placeholder" class="inlinetitle">
+                      Qty per Machine:
+                    </label>
+                    <div class="input-animation-wrapper">
+                      <input
+                        type="number"
+                        id="demo-placeholder"
+                        class="form-control"
+                        formControlName="qtypermachine"
+                        placeholder="Material Quantity"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.qtypermachine.errors
+                        }"
+                      />
+                      <!-- <p *ngIf="AddMateriallist.get('qtypermachine').touched && AddMateriallist.get('qtypermachine').invalid"
+                                                class="danger">Please enter quantity per machine.</p> -->
+                      <div *ngIf="submitted && f.qtypermachine.errors">
+                        <div
+                          *ngIf="f.qtypermachine.errors.required"
+                          class="danger"
+                        >
+                          Please enter quantity per machine.
+                        </div>
+                      </div>
+                      <div class="input-animation"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-2 col-md-2">
+                  <span class="mandatory-info">* Mandatory</span>
+                </div>
+                <div class="col-xl-4 col-md-4"></div>
+                <div class="col-xl-6 col-md-6">
+                  <div class="module-button-group">
+                    <div class="module-button" (click)="modalClose()">
+                      <button type="button" class="btn btn-primary"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <span class="content-text">Cancel</span>
+                      </div>
+                    </div>
+                    <div class="module-button">
+                      <button type="submit" class="btn btn-secondary"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <span class="content-text">Create Material</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- New 3D Model -->
+    <div
+      class="module-modal mainnn modal modal-dark"
+      id="3dmodels"
+      data-plugin="moduleModal"
+    >
+      <div class="modal-dialog bodyyy">
+        <div class="modal-content">
+          <div class="modal-close">
+            <div class="module-button">
+              <button
+                type="button"
+                class="btn btn-link"
+                (click)="modalClose2()"
+              ></button>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_close"></i>
+              </div>
+            </div>
+          </div>
+          <div class="modal-header">
+            <p class="headline h5 modal-title">3D MAP</p>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div
+                class="module-input form-group has-placeholder col-md-3"
+                data-plugin="moduleInput"
+              >
+                <p class="mainlabel">Part Number:</p>
+                <div class="input-animation-wrapper">
+                  <input  [(ngModel)]="selected_partnumber"
+                    type="text"
+                    id="demo-placeholder44"
+                    #partnumber
+                    class="pn"
+                    placeholder="Search by Global Material"
+                  />
+                  <div class=""></div>
+                </div>
+              </div>
+
+              <div
+                class="module-input form-group has-placeholder col-md-3"
+                data-plugin="moduleInput"
+              >
+                <p class="mainlabel">Type Code:</p>
+                <div class="input-animation-wrapper">
+                  <input [(ngModel)]="selected_typecodes"
+                    type="text"
+                    id="demo-placeholder44"
+                    #typeval
+                    class="pn"
+                    placeholder="Search by Type Code"
+                  />
+                  <div class=""></div>
+                </div>
+              </div>
+            </div>
+            <!-- Industry Sector Group 1, 2, and Application -->
+            <div class="row">
+              <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                    <label class="label-above-sm" for="demo-default">
+                        Industry Sector Group 1:
+                    </label>
+                    <select id="demo-default" class="custom-select" [(ngModel)]="selected_industrysector1" #industrygroup1 (change)="onchangeindustrysectorGroup1(industrygroup1.value)">
+                        <option value="" selected disabled>Please Select</option>
+                        <option *ngFor = "let sector1 of group1" [value]="sector1.group1_id">
+                            {{sector1.group1_name}}
+                        </option>
+                    </select>
+                    <div class="input-animation"></div>
+                </div>
+              </div>
+              <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                    <label class="label-above-sm" for="demo-default">
+                        Industry Sector Group 2:
+                    </label>
+                    <select id="demo-default" class="custom-select" [(ngModel)]="selected_industrysector2" #industrygroup2 (change)="onchangeindustrysectorGroup2(industrygroup2.value)">
+                        <option value="" selected disabled>Please Select</option>
+                        <option *ngFor = "let sector2 of group2" [value]="sector2.group2_id">
+                            {{sector2.group2_name}}
+                        </option>
+                    </select>
+                    <div class="input-animation"></div>
+                </div>
+              </div>
+              <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                    <label class="label-above-sm" for="demo-default">
+                        Application:
+                    </label>
+                    <select id="demo-default" class="custom-select" [(ngModel)]="selected_application">
+                        <option value="" selected disabled>Please Select</option>
+                        <option *ngFor = "let app of sector_application" [value]="app.industry_sector_code">
+                            {{app.group3_name}}
+                        </option>
+                    </select>
+                    <div class="input-animation"></div>
+                </div>
+              </div>
+            </div>
+            <!-- search from here -->
+            <div class="row">
+              <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                  <label class="label-above-sm" for="demo-default">
+                    Product:
+                  </label>
+                  <!-- <p class="mainlabel">Your Application Experience:</p> -->
+                  <select
+                    id="demo-default"
+                    class="custom-select"
+                    [(ngModel)]="selected_product" #selectedproducts (change)="onchangeproduct(selectedproducts.value)"
+                  >
+                    <option value="">Please Select</option>
+                    <option *ngFor = "let product of manual_product" [value]="product.product">
+                      {{product.product}}
+                    </option>
+                  </select>
+                  <div class="input-animation"></div>
+                </div>
+                <div
+                  id="demo-default-error"
+                  class="error-message-wrapper"
+                ></div>
+              </div>
+
+              <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                  <label class="label-above-sm" for="demo-default">
+                    Product Detailed:
+                  </label>
+                  <select
+                    id="demo-default"
+                    class="custom-select" #selectedproductdetailed
+                    [(ngModel)]="selected_product_detailed"
+                    (change)="filterPF(selectedproductdetailed.value)"
+                  >
+                    <option value="">Please Select</option>
+                    <option selected *ngFor = "let fill_product_detailed of manual_product_detailed" [value]="fill_product_detailed.product_detailed">
+                      {{fill_product_detailed.product_detailed}}
+                    </option>
+                  </select>
+                  <div class="input-animation"></div>
+                </div>
+                <div
+                  id="demo-default-error"
+                  class="error-message-wrapper"
+                ></div>
+              </div>
+
+              <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                  <label class="label-above-sm" for="demo-default">
+                    PRODUCT FAMILY:
+                  </label>
+                  <!-- <p class="mainlabel">Your Application Experience:</p> -->
+                  <select
+                    id="demo-default"
+                    class="custom-select"
+                    [(ngModel)]="selected_product_family"
+                  >
+                    <option value="">Please Select</option>
+                    <option *ngFor = "let pf of manual_product_family" [value]="pf.product_family">
+                      {{pf.product_family}}
+                    </option>
+                  </select>
+                  <div class="input-animation"></div>
+                </div>
+                <div
+                  id="demo-default-error"
+                  class="error-message-wrapper"
+                ></div>
+              </div>
+              <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                  <label class="label-above-sm" for="demo-default">
+                    S3D_MODEL_AVAILABLE:
+                  </label>
+                  <select
+                    id="demo-default"
+                    class="custom-select"
+                    [(ngModel)]="selected_model"
+                  >
+                    <option
+                      *ngFor="let model of fill_model"
+                      [value]="model.value"
+                    >
+                      {{ model.value }}
+                    </option>
+                  </select>
+                  <div class="input-animation"></div>
+                </div>
+                <div
+                  id="demo-default-error"
+                  class="error-message-wrapper"
+                ></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="module-button" (click)="resetForm()">
+                    <button type="button" class="btn btn-primary " ></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <span class="content-text">RESET</span>
+                    </div>
+                </div>
+                <div class="module-button ml-3" (click)="selectedvalues()">
+                  <button type="button" class="btn btn-primary" ></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                      <span class="content-text">FILTER</span>
+                  </div>
+              </div>
+                <div class="module-button ml-3" (click)="save3dmap()">
+                  <button type="button" class="btn btn-secondary"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <span class="content-text">SAVE DATA INTO SPM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-12">
+                <h3 class="h3">Results</h3>
+                <b><label style="text-align: right">RESULTS FOUND: </label></b>
+                <b
+                  ><span style="text-align: right" id="counter">{{
+                    anzahl
+                  }}</span></b
+                >
+                <div class="module-table table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th class="highlight text-center">Select</th>
+                        <th class="highlight text-center">Product</th>
+                        <th class="highlight text-center">Product Details</th>
+                        <th class="text-center highlight">Product Family</th>
+                        <th class="text-center highlight">Delivery Time (D)</th>
+                        <th class="text-center highlight">Global Material</th>
+                        <th class="text-center highlight">Type Code</th>
+                        <th class="text-center highlight">
+                          3D Model Available
+                        </th>
+                        <th class="text-center highlight">3D Model</th>
+                        <th class="text-center highlight">Spare Parts</th>
+                        <th class="text-center highlight">Data Sheets</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let products of showProducts">
+                        <td class="text-center">
+                          <input
+                            type="checkbox"
+                            (change)="LoadtoSPM(products, $event)"
+                          />
+                        </td>
+                        <td class="text-center">
+                          {{ products.product }}
+                        </td>
+                        <td class="text-center">
+                          {{ products.get_product_detailed }}
+                        </td>
+                        <td class="text-center">
+                          {{ products.product_family }}
+                        </td>
+                        <td>
+                          {{ products.quick_delivery_time }}
+                        </td>
+                        <td class="text-center">
+                          {{ products.material_number }}
+                        </td>
+                        <td class="text-center">
+                          {{ products.type_code }}
+                        </td>
+                        <td class="text-center">
+                          {{ products.s3d_model_available }}
+                        </td>
+                        <td class="text-center" *ngIf = "products.status == true">
+                          <a href="https://www.boschrexroth.com/de/de/search?orderby=mes%3Adate&order_direction=DESCENDING&origin=direct&getfields=Search%252Edc_filename.Search_dc_asset_identifier.Search%252Edc_prd_grp.Search%252Edc_mediatype.Search%252Edc_filetype.Search%252Edc_title_en.Search%252Edc_subtitle_en.Search_dc_description_en.Search_dc_document_status.Search%252Edc_asset_version_identifier.Search%252Edc_subtitle_de.Search%252Edc_title_de.Search_dc_description_de&q={{products.material}}&num=100&s=catalog" target="_blank">
+                          <div class="module-button">
+                              <button type="button" class="btn btn-secondary"></button>
+                              <div class="button-animation"></div>
+                              <div class="button-content">
+                                  <span class="content-text">3DModel</span>
+                              </div>
+                          </div>
+                        </a>
+                      </td>
+                      <td class="text-center" *ngIf = "products.status == false">
+                        <div class="module-button" (click)="requestThreeDModel()">
+                            <button type="button" class="btn btn-secondary"></button>
+                            <div class="button-animation"></div>
+                            <div class="button-content">
+                                <span class="content-text">REQUEST</span>
+                            </div>
+                        </div>
+                      </td>
+                        <td
+                          class="text-center"
+                          *ngIf="products.nofound === false"
+                        >
+                          <a
+                            href="https://www.boschrexroth.com/ics/spc/?p=p662658&language=en&typecode={{
+                              products.material
+                            }}"
+                            target="_blank"
+                          >
+                            <div
+                              class="module-button"
+                              style="margin-left: 20px"
+                            >
+                              <button
+                                type="button"
+                                class="btn btn-secondary btn-sm"
+                              ></button>
+                              <div class="button-animation"></div>
+                              <div class="button-content">
+                                <span class="content-text">SPARE PARTS</span>
+                              </div>
+                            </div>
+                          </a>
+                        </td>
+                        <td
+                          class="text-center"
+                          *ngIf="products.nofound === false"
+                        >
+                            <div
+                              class="module-button"
+                              style="margin-left: 20px"
+                            >
+                              <button
+                                type="button"
+                                class="btn btn-secondary btn-sm" (click)="DataSheet(products.type_code)"
+                              ></button>
+                              <div class="button-animation"></div>
+                              <div class="button-content">
+                                <span class="content-text">DATA SHEETS</span>
+                              </div>
+                            </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <hr class="my-0" />
+            <br />
+            <!-- Pagination -->
+            <div
+              class="module-pagination module-block"
+              data-plugin="modulePagination"
+            >
+              <div class="paging-container">
+                <div class="results-per-page">
+                  <p class="paging-title">Results per page:</p>
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div
+                      class="module-button"
+                      (click)="onChangeRowsPerPage(10)"
+                    >
+                      <a class="btn btn-light btn-sm"></a>
+                      <div class="button-animation"></div>
+                      <div
+                        class="button-content"
+                        [ngClass]="{ 'active-class': rowsPerPage == 10 }"
+                      >
+                        <span class="content-text">10</span>
+                      </div>
+                    </div>
+                    <div
+                      class="module-button"
+                      (click)="onChangeRowsPerPage(15)"
+                    >
+                      <a class="btn btn-light btn-sm btn-ghost"></a>
+                      <div class="button-animation"></div>
+                      <div
+                        class="button-content"
+                        [ngClass]="{ 'active-class': rowsPerPage == 15 }"
+                      >
+                        <span class="content-text">15</span>
+                      </div>
+                    </div>
+                    <div
+                      class="module-button"
+                      (click)="onChangeRowsPerPage(20)"
+                    >
+                      <a class="btn btn-light btn-sm btn-ghost"></a>
+                      <div class="button-animation"></div>
+                      <div
+                        class="button-content"
+                        [ngClass]="{ 'active-class': rowsPerPage == 20 }"
+                      >
+                        <span class="content-text">20</span>
+                      </div>
+                    </div>
+                    <!-- <div class="module-button " (click)="onChangeRowsPerPage(100)">
+                                  <a class="btn btn-light btn-sm btn-ghost"></a>
+                                  <div class="button-animation"></div>
+                                  <div class="button-content" [ngClass]="{'active-class': rowsPerPage==100}">
+                                    <span class="content-text">ALL</span>
+                                  </div>
+                                </div> -->
+                  </div>
+                </div>
+                <div class="paging">
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div
+                      class="module-button"
+                      *ngIf="actualPage !== 1"
+                      (click)="onPageChange(actualPage - 1)"
+                    >
+                      <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <i class="icon icon-dc_backward_left"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="module-button"
+                      *ngIf="actualPage - 1 > 0"
+                      (click)="onPageChange(actualPage - 1)"
+                    >
+                      <a class="btn btn-light btn-sm"></a>
+                      <div class="button-animation"></div>
+                      <div
+                        class="button-content"
+                        style="
+                          background-color: white;
+                          color: black;
+                          border: black;
+                        "
+                      >
+                        <span class="content-text">{{ actualPage - 1 }}</span>
+                      </div>
+                    </div>
+                    <div
+                      class="module-button"
+                      (click)="onPageChange(actualPage)"
+                    >
+                      <a class="btn btn-light btn-sm btn-ghost"></a>
+                      <div class="button-animation"></div>
+                      <div class="button-content active-class">
+                        <span class="content-text">{{ actualPage }}</span>
+                      </div>
+                    </div>
+                    <div
+                      class="module-button hide-mobile"
+                      *ngIf="endPaging >= 2 && actualPage + 1 <= endPaging"
+                      (click)="onPageChange(actualPage + 1)"
+                    >
+                      <a class="btn btn-light btn-sm btn-ghost"></a>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <span class="content-text">{{ actualPage + 1 }}</span>
+                      </div>
+                    </div>
+                    <div
+                      class="module-button hide-mobile"
+                      *ngIf="actualPage - 1 == 0 && endPaging > 2"
+                      (click)="onPageChange(actualPage + 2)"
+                    >
+                      <a class="btn btn-light btn-sm btn-ghost"></a>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <span class="content-text">{{ actualPage + 2 }}</span>
+                      </div>
+                    </div>
+                    <!-- option -->
+                    <div class="module-button" *ngIf="endPaging >= 5">
+                      <button
+                        type="button"
+                        class="btn btn-light btn-sm btn-ghost dots"
+                        (click)="prevnext()"
+                      ></button>
+                      <div class="button-content">
+                        <i class="icon icon-dc_options"></i>
+                      </div>
+                    </div>
+                    <!-- option end -->
+
+                    <div
+                      class="module-button"
+                      *ngIf="
+                        endPaging >= 4 &&
+                        actualPage != endPaging &&
+                        actualPage + 1 != endPaging
+                      "
+                      (click)="onPageChange(endPaging)"
+                    >
+                      <a class="btn btn-light btn-sm btn-ghost"></a>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <span class="content-text">{{ endPaging }}</span>
+                      </div>
+                    </div>
+                    <div
+                      class="module-button"
+                      *ngIf="actualPage + 1 <= endPaging"
+                      (click)="onPageChange(actualPage + 1)"
+                    >
+                      <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <i class="icon icon-dc_forward_right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Pagination End -->
+          </div>
+        </div>
+        <!-- <app-checkdeliverytime *ngIf="!showloader"></app-checkdeliverytime> -->
+        <div class="component-progress-icon loading fixed" *ngIf="!showloader">
+          <div class="spinner-wrapper">
+            <svg
+              version="1.1"
+              id="L6"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 100 100"
+              enable-background="new 0 0 100 100"
+              xml:space="preserve"
+            >
+              <circle
+                cx="50"
+                cy="50"
+                r="46"
+                stroke="#002b49"
+                stroke-width="8"
+                stroke-linecap="square"
+                fill="none"
+                transform="rotate(0 50 50)"
+              >
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="0 50 50;180 50 50;360 50 50;"
+                  keyTimes="0;0.5;1"
+                ></animateTransform>
+                <animate
+                  attributeName="stroke-dasharray"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="72.25663103256524 216.76989309769573;173.41591447815657 115.61060965210439;72.25663103256524 216.76989309769573"
+                  keyTimes="0;0.5;1"
+                ></animate>
+              </circle>
+              <circle
+                cx="50"
+                cy="50"
+                r="34"
+                stroke="#00ccff"
+                stroke-width="8"
+                stroke-linecap="square"
+                fill="none"
+                transform="rotate(0 50 50)"
+              >
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  repeatCount="indefinite"
+                  dur="2s"
+                  values="0 50 50;180 50 50;720 50 50"
+                  keyTimes="0;0.5;1"
+                ></animateTransform>
+                <animate
+                  attributeName="stroke-dasharray"
+                  repeatCount="indefinite"
+                  dur="2s"
+                  values="21.362830044410593 192.26547039969535;149.53981031087417 64.08849013323177;21.362830044410593 192.26547039969535"
+                  keyTimes="0;0.5;1"
+                ></animate>
+              </circle>
+              <circle
+                cx="50"
+                cy="50"
+                r="22"
+                stroke="#df0024"
+                stroke-width="8"
+                stroke-linecap="square"
+                fill="none"
+                transform="rotate(0 50 50)"
+              >
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  repeatCount="indefinite"
+                  dur="2.5s"
+                  values="0 50 50;180 50 50;720 50 50"
+                  keyTimes="0;0.5;1"
+                ></animateTransform>
+                <animate
+                  attributeName="stroke-dasharray"
+                  repeatCount="indefinite"
+                  dur="2.5s"
+                  values="6.911503837897544 131.31857292005333;34.55751918948772 103.67255756846316;6.911503837897544 131.31857292005333"
+                  keyTimes="0;0.5;1"
+                ></animate>
+              </circle>
+            </svg>
+            <span>
+              <strong>Searching in progress, please wait ...</strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+    <div class="subline lead" *ngIf="showmateriallist">
+      <div class="module-table table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="highlight text-center" *ngIf="!warning">Select</th>
+              <th class="highlight text-center">Part Number</th>
+              <th class="text-center highlight">Type Code</th>
+              <th class="text-center highlight" *ngIf="warning">
+                Product
+              </th>
+              <th class="text-center highlight" *ngIf="warning">
+                Product Detailed
+              </th>
+              <th class="text-center highlight">Product Family</th>
+              <th class="text-center highlight" *ngIf="!warning">
+                Delivery time(Days)
+              </th>
+              <th class="text-center highlight">Supplier</th>
+              <th class="text-center highlight" *ngIf="!warning">
+                Material Status
+              </th>
+              <th class="text-center highlight">Material Quantity Per Machine</th>
+              <th class="text-center highlight" *ngIf="!warning">
+                 {{ previousYear2 }}
+              </th>
+              <th class="text-center highlight" *ngIf="!warning">
+                 {{ previousYear1 }}
+              </th>
+              <th class="text-center highlight" *ngIf="!warning">
+                {{ currentYear }}
+              </th>
+              <th class="text-center highlight" *ngIf="!warning">
+                 {{ futureYear1 }}
+              </th>
+              <th class="text-center highlight" *ngIf="!warning">
+                 {{ futureYear2 }}
+              </th>
+              <th class="text-center highlight" *ngIf="!warning">
+                 {{ futureYear3 }}
+              </th>
+              <th class="text-center highlight">Comment</th>
+
+              <th class="highlight text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let materials of Material_list; let i = index">
+              <td class="text-center" *ngIf="!warning">
+                <input
+                  type="checkbox"
+                  value="{{ materials.material_id }}"
+                  (click)="rowIsSelected(materials.material_id)"
+                />
+              </td>
+              <td class="text-center">
+                <span *ngIf="!materials.editable">{{
+                  materials.part_number
+                }}</span>
+                <input
+                  type="text"
+                  style="text-align: center; width: 200px"
+                  class="form-control"
+                  [(ngModel)]="materials.part_number"
+                  *ngIf="materials.editable"
+                />
+              </td>
+              <td class="text-center">
+                <span *ngIf="!materials.editable">{{
+                  materials.description
+                }}</span>
+                <input
+                  type="text"
+                  style="text-align: center; width: 215px"
+                  class="form-control"
+                  [(ngModel)]="materials.description"
+                  *ngIf="materials.editable"
+                />
+              </td>
+              <td
+                class="text-center"
+                *ngIf="warning"
+              >
+                <span>{{ materials.product }}</span>
+              </td>
+              <td
+                class="text-center"
+                *ngIf="warning"
+              >
+                <span>{{
+                  materials.product_detailed
+                }}</span>
+              </td>
+              <td class="text-center">
+                <span >{{
+                  materials.product_family
+                }}</span>
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                <span *ngIf="!materials.editable">{{
+                  materials.quick_delivery_time
+                }}</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="materials.quick_delivery_time"
+                  *ngIf="materials.editable"
+                />
+              </td>
+              <td class="text-center">
+                <span class="text-center">{{
+                  materials.supplier
+                }}</span>
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                <span
+                  *ngIf="
+                    !materials.editable && materials.material_phase === false
+                  "
+                >
+                  <div class="module-button">
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-sm"
+                      (click)="checkmaterialstatus(materials)"
+                    ></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                      <span class="content-text">Check</span>
+                    </div>
+                  </div>
+                </span>
+                <span
+                  *ngIf="
+                    !materials.editable && materials.material_phase !== false
+                  "
+                  >{{ materials.material_phase }}</span
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="materials.material_phase"
+                  *ngIf="materials.editable"
+                />
+              </td>
+              <td class="text-center">
+                <span *ngIf="!materials.editable">{{
+                  materials.qtypermachine
+                }}</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="materials.qtypermachine"
+                  *ngIf="materials.editable"
+                />
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{ materials.previousYear2Qty }}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{ materials.previousYear1Qty }}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{ materials.currentYearQty }}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{ materials.futureYear1Qty }}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{ materials.futureYear2Qty }}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{ materials.futureYear3Qty }}
+              </td>
+              <td class="text-center">
+                <span *ngIf="!materials.editable">     {{ materials.commentt }}</span>
+                <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="materials.commentt"
+                *ngIf="materials.editable"
+              />
+
+              </td>
+
+              <td class="d-flex justify-content-center align-items-center">
+
+                <div
+                  class="module-button icon"
+                  *ngIf="!materials.editable && !warning && materials.freeze  !==1  "
+                >
+                  <button
+                    type="button"
+                    tooltip="Edit"
+                    placement="top"
+                    class="btn btn-light"
+                    (click)="editmaterial(materials, materials.supplier)"
+                  ></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <i class="icon icon-dc_edit"></i>
+                  </div>
+                </div>
+             <span>
+              <div class="module-button mr-1" *ngIf="!materials.editable">
+                <span
+                  type="button"
+                  class="btn btn-secondary"
+                  (click)="checkFreeze(materials)"
+                ></span>
+                <div class="button-animation"></div>
+                <div class="button-content p-1">
+                  <span class="content-text">                    {{materials?.freeze ===   1 ? 'Unfreeze' :'Freeze'}}
+                  </span>
+                </div>
+              </div>
+             </span>
+
+                <div class="module-button" *ngIf="!materials.editable && materials.freeze  !==1">
+                  <button
+                    type="button"
+                    tooltip="Delete"
+                    placement="top"
+
+                    class="btn btn-primary"
+                    (click)="deletemodelopen(materials.material_id)"
+                  ></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <i class="icon icon-dc_delete"></i>
+                  </div>
+                </div>
+                <div
+                  class="module-button icon"
+                  (click)="save(materials)"
+                  *ngIf="materials.editable"
+                >
+                  <button type="button" class="btn btn-secondary"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <i class="icon icon-dc_save"></i>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Delete Model Start -->
+    <div
+      class="module-modal modal modal-dark modal-danger deletemodel"
+      id="opendeletemodel"
+      data-plugin="moduleModal"
+    >
+      <div class="modal-dialog deletemodeldialog">
+        <div class="modal-content">
+          <div class="modal-close">
+            <div class="module-button">
+              <button
+                type="button"
+                class="btn btn-link"
+                (click)="deletemodelclose()"
+              ></button>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_close" style="color: white"></i>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal-header"
+            style="
+              padding-top: 15px;
+              padding-bottom: 15px;
+              background-color: red;
+            "
+          >
+            <p class="headline h5 modal-title" style="color: white">
+              Are you sure?
+            </p>
+          </div>
+          <div class="modal-body">
+            <!-- <div class="module-callout callout-caution has-icon" data-plugin="moduleCallout" data-display-time="">
+                            <i class="icon"></i>
+                            <div class="text-wrapper">
+                                <p class="headline">Do you want to delete this Material?</p>
+                            </div>
+                        </div> -->
+            <p style="font-size: 20px">
+              <i
+                class="icon icon-dc_warning"
+                style="color: red; font-size: 24px"
+              ></i>
+              Do you want to delete this Material?
+            </p>
+            <div class="col-12" style="text-align: right; padding-right: 0">
+              <div class="module-button fasttrack">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  (click)="DeleteMaterials(delete_material_id)"
+                ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">YES</span>
+                </div>
+              </div>
+              <div class="module-button fasttrack">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="deletemodelclose()"
+                ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">NO</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+    <!-- Message Box -->
+    <div
+      class="module-modal modal modal-dark modal-danger"
+      id="messagebox"
+      data-plugin="moduleModal"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- <div class="modal-close" *ngIf = "expired">
+                        <div class="module-button ">
+                            <button type="button" class="btn btn-link " (click)="gotologin()"></button>
+                            <div class="button-animation"></div>
+                            <div class="button-content">
+                                <i class="icon icon-dc_close" style="color: white;"></i>
+                            </div>
+                        </div>
+                    </div> -->
+          <div class="modal-close">
+            <div class="module-button">
+              <button
+                type="button"
+                class="btn btn-link"
+                (click)="deletemodelclose()"
+              ></button>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_close" style="color: white"></i>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal-header"
+            style="
+              padding-top: 15px;
+              padding-bottom: 15px;
+              background-color: #00ccff;
+            "
+          >
+            <p class="headline h5 modal-title" style="color: white">
+              Messagebox
+            </p>
+          </div>
+          <div class="modal-body" *ngIf="!insertedby3dmap">
+            <p style="font-size: 20px">
+              {{ message }}
+            </p>
+            <div class="col-12" style="text-align: right; padding-right: 0">
+              <div class="module-button fasttrack">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="deletemodelclose()"
+                ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">CLOSE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body" *ngIf="insertedby3dmap">
+            <div *ngFor="let separatedata of dataarr">
+              <p style="font-size: 20px">{{ separatedata.message }}</p>
+            </div>
+            <div class="col-12" style="text-align: right; padding-right: 0">
+              <div class="module-button fasttrack">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="deletemodelclose()"
+                ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">CLOSE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- End -->
+  </div>
+</div>
+<!-- <app-footer *ngIf = "ManagepagesService.currenturl3() === true"></app-footer> -->
+
+
+
+
+
+
+<div class="module-modal modal" id="uploadmodule" data-plugin="moduleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-close">
+        <div class="module-button ">
+          <button type="button" class="btn btn-link " (click)="modalClose1()"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="icon icon-dc_close"></i>
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal-body">
+      
+    
+
+      
+        <!-- excel sheet upload  -->
+        <div class="row upload" style="margin-bottom: 20px;margin-top: 0px;">
+          <div class="modal-header upload">
+            <p class="headline h5 modal-title">
+             Upload Excel data
+            </p>
+          </div>
+        </div>
+        <div class="row">
+                <div class="col">
+                  <div class="module-button ">
+                    <button type="button" class="btn btn-primary " (click)="downloadFile()"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                      <i class="icon icon-dc_download"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="component-file-selector show-file-name "
+                      data-plugin="moduleFileSelector" >
+                    <div class="form-group" style="border: 1px solid black;">
+                      <div class="file-selector-wrapper">
+                        <input type="file" name="file" id="file" class="file-selector" (change)="incomingfile($event)" multiple="false">
+        
+                        <div class="file-name-container">
+                          <span class="file-name"></span>
+                        </div>
+                        <div class="module-button ">
+                          
+                          <button type="button" class="btn btn-light " ></button>
+                          <div class="button-animation"></div>
+                          <div class="button-content">
+                            <span class="content-text">Select File</span>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="error-message">Please select a different file.</div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <div class="module-button ">
+                    <button type="button" class="btn btn-secondary " (click)="sendFiledata()"></button>
+        
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                      <i class="icon icon-dc_upload"></i>
+                    </div>
+                  </div>
+                </div>
+        <!-- end excel sheet uplaod  -->
+
+        
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Message Box -->
+<div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- <div class="modal-close" *ngIf = "expired">
+              <div class="module-button ">
+                  <button type="button" class="btn btn-link " (click)="gotologin()"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                      <i class="icon icon-dc_close" style="color: white;"></i>
+                  </div>
+              </div>
+          </div> -->
+      <div class="modal-close">
+        <div class="module-button ">
+          <button type="button" class="btn btn-link " (click)="deletemessagebox1()"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="icon icon-dc_close" style="color: white;"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+        <p class="headline h5 modal-title" style="color: white;">
+          Messagebox
+        </p>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 20px;">
+          {{message}}
+        </p>
+        <!-- <div class="col-12" style="text-align: right; padding-right: 0;" *ngIf = "expired">
+                  <div class="module-button fasttrack">
+                      <button type="button" class="btn btn-primary " (click)="gotologin()"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                          <span class="content-text">CLOSE</span>
+                      </div>
+                  </div>
+              </div> -->
+
+        <div class="col-12" style="text-align: right; padding-right: 0;">
+          <div class="module-button fasttrack">
+            <button type="button" class="btn btn-primary " (click)="deletemessagebox1()"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">CLOSE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- End -->
+<!-- Delete Model Start -->
+<div class="module-modal modal modal-dark modal-danger deletemodel" id="opendeletemodel" data-plugin="moduleModal">
+  <div class="modal-dialog deletemodeldialog">
+    <div class="modal-content">
+      <div class="modal-close">
+        <div class="module-button ">
+          <button type="button" class="btn btn-link " (click)="deletemodelclose1()"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="icon icon-dc_close" style="color: white;"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: red;">
+        <p class="headline h5 modal-title" style="color: white;">
+          Are you sure?
+        </p>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 20px;">
+          <i class="icon icon-dc_warning" style="color: red; font-size: 24px;"></i> Do you want to delete this
+          Material?
+        </p>
+        <div class="col-12" style="text-align: right; padding-right: 0;">
+          <div class="module-button fasttrack">
+            <!-- <button type="button" class="btn btn-secondary " (click)="DeleteMaterials(delete_machine_id)"></button> -->
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">YES</span>
+            </div>
+          </div>
+          <div class="module-button fasttrack">
+            <button type="button" class="btn btn-primary " (click)="deletemodelclose1()"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">NO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- End -->
+</div>

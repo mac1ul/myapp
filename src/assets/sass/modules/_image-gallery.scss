@@ -1,0 +1,68 @@
+.module-image-gallery {
+	@include module-name('Image Gallery');
+
+	.image-gallery-wrapper {
+		position: relative;
+		padding-bottom: 35px;
+		@include dot-styles-image-gallery;
+
+		.controls {
+			.arrows {
+				opacity: 0;
+				transition: opacity ($transition-duration * 1.5) ease-in-out;
+			}
+		}
+
+		&:hover {
+			.arrows {
+				opacity: 1;
+			}
+		}
+	}
+
+	.controls {
+		@include arrow-styles;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 0;
+		padding-bottom: 56.25%;
+		pointer-events: none;
+	}
+
+	.slide-info {
+		margin-top: 12px;
+		opacity: 0;
+		animation: animation-text-out $transition-duration-fast forwards;
+		font-size: 14px;
+	}
+
+	.tns-slide-active {
+		.slide-info {
+			animation: animation-text-in $transition-duration forwards;
+			animation-delay: $transition-duration; // Keep in sync with js #gallery-animation-speed
+		}
+	}
+
+	@keyframes animation-text-out {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes animation-text-in {
+		0% {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}

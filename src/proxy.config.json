@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://rb-mobileweb.de.bosch.com/SPM/backend",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

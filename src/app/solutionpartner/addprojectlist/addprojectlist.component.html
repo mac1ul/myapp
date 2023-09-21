@@ -1,0 +1,725 @@
+<!-- <app-header *ngIf = "ManagepagesService.currenturl1() === true"></app-header> -->
+<app-spheader></app-spheader>
+
+<div *ngIf="checkRouteUrl()" class="breadcrumb">
+    <xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+    <ng-template #iconTemplate>
+        <i class="icon icon-dc_forward_right"></i>
+    </ng-template>
+</div>
+<router-outlet></router-outlet>
+<div class="setview" *ngIf = "ManagepagesService.currenturl1() === true" style="user-select: none;">
+    <div class="component-headline" style="min-height: 353px;">
+        <h2 class="maintitle">
+          Project Overviewsss
+        </h2>
+        <div class="subline lead">
+            <div class="module-button button" style="float: right;" (click)="modalToOpen()" >
+                <button type="button" class="btn btn-secondary"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                    <i class="icon icon-dc_add" style="font-weight: bold;"></i>
+                    <span class="content-text" style="font-weight: 700; user-select: none;">Add Customer</span>
+                </div>
+            </div>
+
+
+            
+<!-- heree -->
+
+        <!-- <div class="col">
+          <div class="module-button ">
+            <button type="button" class="btn btn-primary " ></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_download"></i>
+            </div>
+          </div>
+        </div> -->
+        <!-- <div class="col-4">
+          <div class="component-file-selector show-file-name "
+              data-plugin="moduleFileSelector" >
+            <div class="form-group" style="border: 1px solid black;">
+              <div class="file-selector-wrapper">
+                <input type="file" name="file" id="file" class="file-selector" (change)="incomingfile($event)" multiple="false">
+
+                <div class="file-name-container">
+                  <span class="file-name"></span>
+                </div>
+                <div class="module-button ">
+                  
+                  <button type="button" class="btn btn-light " ></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <span class="content-text">Select File</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-1">
+          <div class="module-button ">
+            <button type="button" class="btn btn-secondary " (click)="sendFiledata()"></button>
+
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_upload"></i>
+            </div>
+          </div>
+        </div>
+ -->
+
+
+<!-- heree -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="module-modal modal" data-plugin="moduleModal" id="createproject">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-close">
+                      <div class="module-button ">
+                        <button type="button" class="btn btn-link " (click)="modalClose()"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                          <i class="icon icon-dc_close"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-header">
+                      <p class="headline h5 modal-title">
+                        Create Customers
+                      </p>
+                    </div>
+                    <div class="modal-body">
+
+                        <form [formGroup]="addproject">
+                            <div class="row">
+                                <div class="col-12">
+                                  <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                    <label for="demo-default-input-1"> Customer Number * </label>
+                                    <div class="input-animation-wrapper">
+                                      <input type="text" id="demo-default-input-1" class="form-control"
+                                        placeholder="Enter Customer Number" name="demo-default-input-1"
+                                        data-bouncer-target="#demo-default-input-1-error" required="required" formControlName="projectnumber"/>
+                                        <p *ngIf = "addproject.get('projectnumber').touched && addproject.get('projectnumber').invalid" class="danger">Please enter unique project number.</p>
+                                      <div class="input-animation"></div>
+                                    </div>
+                                    <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                      <label for="demo-default-input-2"> Customer Name * </label>
+                                      <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-2" class="form-control"
+                                          placeholder="Enter Customer Name" name="demo-default-input-2"
+                                          data-bouncer-target="#demo-default-input-2-error" required="required"  formControlName="projectname"/>
+                                          <p *ngIf = "addproject.get('projectname').touched && addproject.get('projectname').invalid" class="danger">Please enter project name.</p>
+                                        <div class="input-animation"></div>
+                                      </div>
+                                      <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+                                    </div>
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                      <label for="demo-default-input-3"> Location * </label>
+                                      <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-3" class="form-control" value=""
+                                          placeholder="Enter Location" name="demo-default-input-3"
+                                          data-bouncer-target="#demo-default-input-3-error" required="required"  formControlName="location"/>
+                                          <p *ngIf = "addproject.get('location').touched && addproject.get('location').invalid" class="danger">Please enter your location.</p>
+                                        <div class="input-animation"></div>
+                                      </div>
+                                      <div id="demo-default-input-3-error" class="error-message-wrapper"></div>
+                                    </div>
+                                   </div>
+
+
+
+<!-- add pic  -->
+<!-- <div class="col-12">
+  <label for="demo-default-input-3">  </label>
+
+  <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+   
+      <div class="module-button ">
+        <button type="button" class="btn btn-light " ></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <span class="content-text"></span>
+        </div>
+      </div>
+        <p *ngIf = "addproject.get('location').touched && addproject.get('location').invalid" class="danger">Please enter your location.</p>
+      <div class="input-animation"></div>
+    
+    <div id="demo-default-input-3-error" class="error-message-wrapper"></div>
+  </div>
+</div> -->
+<!-- add pic -->
+                                  <div class="col-12">
+                                    <div class="module-button-group">
+                                        <div class="module-button" (click)="OnSubmitPartner()">
+                                          <button type="submit" class="btn btn-secondary"></button>
+                                          <div class="button-animation"></div>
+                                          <div class="button-content">
+                                            <span class="content-text">Submit</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                            </div>
+                        </form>
+                        <hr> 
+<!-- excel sheet upload  -->
+<div class="row upload" style="margin-bottom: 20px;margin-top: 0px;">
+  <div class="modal-header upload">
+    <p class="headline h5 modal-title">
+     Upload Excel data
+    </p>
+  </div>
+</div>
+<div class="row">
+        <div class="col">
+          <div class="module-button ">
+            <button type="button" class="btn btn-primary " (click)="downloadFile()"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_download"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="component-file-selector show-file-name "
+              data-plugin="moduleFileSelector" >
+            <div class="form-group" style="border: 1px solid #5a7c91;">
+              <div class="file-selector-wrapper">
+                <input type="file" name="file" id="file" class="file-selector" (change)="incomingfile($event)" multiple="false">
+
+                <div class="file-name-container">
+                  <span class="file-name"></span>
+                </div>
+                <div class="module-button ">
+                  
+                  <button type="button" class="btn btn-light " ></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <span class="content-text">Select File</span>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="error-message">Please select a different file.</div> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-1">
+          <div class="module-button ">
+            <button type="button" class="btn btn-secondary " (click)="sendFiledata()"></button>
+
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_upload"></i>
+            </div>
+          </div>
+        </div>
+<!-- end excel sheet uplaod  -->
+</div>
+
+                    </div>
+
+                    
+                  </div>
+                  
+                </div>
+                
+            </div>
+            <div class="module-table table-responsive">
+                <table class="table
+                              table-hover">
+                    <thead>
+                        <tr *ngIf = "recordcount">
+                            <th class="highlight text-center">
+                                ID
+                            </th>
+                            <th class="highlight text-center">
+                                CUSTOMER NUMBER
+                            </th>
+                            <th class="text-center highlight">
+                              CUSTOMER NAME
+                            </th>
+                            <th class="text-center highlight">
+                                LOCATION
+                            </th>
+                            <th class="text-center highlight">
+                                ACTIONS
+                            </th>
+                        </tr>
+                        <tr *ngIf = "!recordcount">
+                          <th class="text-center highlight">
+                            Message
+                          </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf = "!recordcount">
+                          <td class="text-center">
+                            {{displaymessage}}
+                          </td>
+                        </tr>
+                        <tr *ngFor = 'let project of showProducts; let i = index;'>
+                            <td class="text-center" *ngIf = "recordcount">
+                                <span>{{i+1}}</span>
+                                <!-- <input type="text" class="form-control" [(ngModel)]="project.project_id" *ngIf="project.editable"/> -->
+                            </td>
+                            <td class="text-center" *ngIf = "recordcount">
+                              <span *ngIf="!project.editable">{{project.project_number}}</span>
+                              <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="project.project_number" *ngIf="project.editable"/>
+                            </td>
+                            <td class="text-center" *ngIf = "recordcount">
+                              <span *ngIf="!project.editable">{{project.project_name}}</span>
+                              <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="project.project_name" *ngIf="project.editable"/>
+                            </td>
+                            <td class="text-center" *ngIf = "recordcount">
+                              <span *ngIf="!project.editable">{{project.project_location}}</span>
+                              <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="project.project_location" *ngIf="project.editable"/>
+                            </td>
+                            <td class="text-center" *ngIf = "recordcount">
+                                <!-- [routerLink]="['/SPDashboard/Add_project/Add_Machine']" -->
+                                <div class="module-button icon" [routerLink]="['/SPDashboard/Add_project/Add_Machine', project.project_id]" *ngIf = "!project.editable">
+                                    <button type="button" class="btn btn-secondary" ></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_folder_open"></i>
+                                    </div>
+                                </div>
+                                <div class="module-button icon" (click)="editDomain(project)" *ngIf = "!project.editable">
+                                    <button type="button" class="btn btn-light " ></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_edit"></i>
+                                    </div>
+                                </div>
+                                <div class="module-button icon" (click)="save(project)" *ngIf = "project.editable">
+                                  <button type="button" tooltip="Save" placement="top" class="btn btn-secondary " ></button>
+                                  <div class="button-animation"></div>
+                                  <div class="button-content">
+                                      <i class="icon icon-dc_save"></i>
+                                  </div>
+                                </div>
+                                <!-- <div class="module-button " *ngIf= "superuser === true">
+                                    <button type="button" class="btn btn-primary " ></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <span class="content-text"><i class="icon icon-dc_delete"></i></span>
+                                    </div>
+                                </div> -->
+                                <div class="module-button" *ngIf= "!project.editable" (click)="deletemodelopen(project.project_id)">
+                                  <button type="button" class="btn btn-primary " ></button>
+                                  <div class="button-animation"></div>
+                                  <div class="button-content">
+                                      <i class="icon icon-dc_delete"></i>
+                                  </div>
+                              </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Delete Model -->
+        <div class="module-modal modal modal-dark modal-danger deletemodel" id="opendeletemodel" data-plugin="moduleModal">
+          <div class="modal-dialog deletemodeldialog">
+              <div class="modal-content">
+                  <div class="modal-close">
+                      <div class="module-button ">
+                          <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+                          <div class="button-animation"></div>
+                          <div class="button-content">
+                              <i class="icon icon-dc_close" style="color: white;"></i>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: rgba(223, 00, 36);">
+                      <p class="headline h5 modal-title" style="color: white;">
+                          Are you sure?
+                      </p>
+                  </div>
+                  <div class="modal-body">
+                      <!-- <div class="module-callout callout-caution has-icon" data-plugin="moduleCallout" data-display-time="">
+                          <i class="icon"></i>
+                          <div class="text-wrapper">
+                              <p class="headline">Do you want to delete this Material?</p>
+                          </div>
+                      </div> -->
+                      <p style="font-size: 20px;">
+                        <i class="icon icon-dc_warning" style="color: red; font-size: 24px;"></i> Do you want to delete this Customer?
+                      </p><br>
+                      <div class="col-12" style="text-align: center; margin: auto;">
+                          <div class="module-button fasttrack" style="margin-right: 10px;">
+                              <button type="button" class="btn btn-dark  " (click)="DeleteMaterials(delete_machine_id)"></button>
+                              <div class="button-animation"></div>
+                              <div class="button-content">
+                                  <span class="content-text">YES</span>
+                              </div>
+                          </div>
+                          <div class="module-button fasttrack">
+                              <button type="button" class="btn btn-primary " (click)="deletemodelclose()"></button>
+                              <div class="button-animation"></div>
+                              <div class="button-content">
+                                  <span class="content-text">NO</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+        </div>
+        <!-- End -->
+        <!-- <div>
+            <form [formGroup]="addproject">
+                <div class="row">
+                    <div class="col-3">
+                      <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                        <label for="demo-default-input-1"> Project Number * </label>
+                        <div class="input-animation-wrapper">
+                          <input type="text" id="demo-default-input-1" class="form-control" value=""
+                            placeholder="Enter Project Number" name="demo-default-input-1"
+                            data-bouncer-target="#demo-default-input-1-error" required="required" minlength="7"
+                            maxlength="24" formControlName="projectnumber"/>
+                          <div class="input-animation"></div>
+                        </div>
+                        <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                          <label for="demo-default-input-1"> Project Name * </label>
+                          <div class="input-animation-wrapper">
+                            <input type="text" id="demo-default-input-1" class="form-control" value=""
+                              placeholder="Enter Project Name" name="demo-default-input-1"
+                              data-bouncer-target="#demo-default-input-1-error" required="required" minlength="7"
+                              maxlength="24" formControlName="projectname"/>
+                            <div class="input-animation"></div>
+                          </div>
+                          <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                          <label for="demo-default-input-1"> Location * </label>
+                          <div class="input-animation-wrapper">
+                            <input type="text" id="demo-default-input-1" class="form-control" value=""
+                              placeholder="Enter Location" name="demo-default-input-1"
+                              data-bouncer-target="#demo-default-input-1-error" required="required" minlength="7"
+                              maxlength="24" formControlName="location"/>
+                            <div class="input-animation"></div>
+                          </div>
+                          <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="module-button-group">
+                            <div class="module-button" (click)="OnSubmitPartner()">
+                              <button type="submit" class="btn btn-secondary"></button>
+                              <div class="button-animation"></div>
+                              <div class="button-content">
+                                <span class="content-text">Submit</span>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+            </form>
+        </div> -->
+    </div>
+    <div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-close">
+                  <div class="module-button ">
+                      <button type="button" class="btn btn-link " (click)="gotologin()"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                          <i class="icon icon-dc_close" style="color: white;"></i>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-close">
+                <div class="module-button ">
+                    <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <i class="icon icon-dc_close" style="color: white;"></i>
+                    </div>
+                </div>
+            </div>
+              <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+                  <p class="headline h5 modal-title" style="color: white;">
+                      Messageboxs
+                  </p>
+              </div>
+              <div class="modal-body">
+                  <!-- <div class="module-callout callout-caution has-icon" data-plugin="moduleCallout" data-display-time="">
+                      <i class="icon"></i>
+                      <div class="text-wrapper">
+                          <p class="headline">Do you want to delete this Material?</p>
+                      </div>
+                  </div> -->
+                  <p style="font-size: 20px;">
+                    <tr *ngFor="let msg of messages">
+                      <td>{{msg.message}}</td>
+                  </tr>
+                  </p>
+                  <div class="col-12" style="text-align: right; padding-right: 0;" *ngIf = "expired">
+                      <div class="module-button fasttrack">
+                          <button type="button" class="btn btn-primary " (click)="gotologin()"></button>
+                          <div class="button-animation"></div>
+                          <div class="button-content">
+                              <span class="content-text">CLOSE</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-12" style="text-align: right; padding-right: 0;" *ngIf = "!expired">
+                    <div class="module-button fasttrack">
+                        <button type="button" class="btn btn-primary " (click)="deletemodelclose2()"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <span class="content-text">CLOSE</span>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+          </div>
+      </div>
+    </div>
+    <!-- Pagination Starts -->
+    <div class="module-pagination module-block" data-plugin="modulePagination" *ngIf = "recordcount">
+      <div class="paging-container">
+        <div class="results-per-page">
+          <p class="paging-title">Results per page:</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button " (click)="onChangeRowsPerPage(10)">
+              <a class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==10}">
+                <span class="content-text">10</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onChangeRowsPerPage(15)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==15}">
+                <span class="content-text">15</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onChangeRowsPerPage(20)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==20}">
+                <span class="content-text">20</span>
+              </div>
+            </div>
+            <!-- <div class="module-button " (click)="onChangeRowsPerPage(100)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==100}">
+                <span class="content-text">ALL</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="paging">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button " *ngIf="actualPage !== 1" (click)="onPageChange(actualPage-1)">
+              <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-button " *ngIf="actualPage-1>0" (click)="onPageChange(actualPage-1)">
+              <a class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content" style="background-color: white; color: black; border: black;">
+                <span class="content-text">{{actualPage-1}}</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onPageChange(actualPage)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content active-class">
+                <span class="content-text ">{{actualPage}}</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile" *ngIf="endPaging>=2 && actualPage+1<=endPaging"
+              (click)="onPageChange(actualPage+1)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{actualPage+1}}</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile" *ngIf="actualPage-1==0 && endPaging>2"
+              (click)="onPageChange(actualPage+2)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{actualPage+2}}</span>
+              </div>
+            </div>
+            <!-- option -->
+            <div class="module-button" *ngIf="endPaging>=5">
+              <button type="button" class="btn btn-light btn-sm btn-ghost dots" (click)="prevnext()"></button>
+              <div class="button-content">
+                <i class="icon icon-dc_options"></i>
+              </div>
+            </div>
+            <!-- option end -->
+
+
+            <div class="module-button " *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging"
+              (click)="onPageChange(endPaging)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{endPaging}}</span>
+              </div>
+            </div>
+            <div class="module-button " *ngIf="actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">
+              <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+</div>
+<!-- <app-footer *ngIf = "ManagepagesService.currenturl1() === true"></app-footer> -->
+
+
+<div class="col-4">
+  <div class="component-file-selector show-file-name "
+      data-plugin="moduleFileSelector" >
+    <div class="form-group" style="border: 1px solid #5a7c91;">
+      <div class="file-selector-wrapper">
+        <input type="file" name="file" id="file" class="file-selector" (change)="incomingfile($event)" multiple="false">
+        <div class="file-name-container">
+          <span class="file-name"></span>
+        </div>
+        <div class="module-button ">
+          <button type="button" class="btn btn-light " ></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <span class="content-text">Select File</span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="error-message">Please select a different file.</div> -->
+    </div>
+  </div>
+</div>
+<div class="col-1">
+  <div class="module-button ">
+    <button type="button" class="btn btn-secondary " (click)="sendFiledata()"></button>
+    <div class="button-animation"></div>
+    <div class="button-content">
+      <i class="icon icon-dc_upload"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-close">
+              <div class="module-button ">
+                  <button type="button" class="btn btn-link " (click)="gotologin()"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                      <i class="icon icon-dc_close" style="color: white;"></i>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-close">
+            <div class="module-button ">
+                <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                    <i class="icon icon-dc_close" style="color: white;"></i>
+                </div>
+            </div>
+        </div>
+          <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+              <p class="headline h5 modal-title" style="color: white;">
+                  Messageboxs
+              </p>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: 20px;">
+             done
+            </p>
+              <div class="col-12" style="text-align: right; padding-right: 0;" *ngIf = "expired">
+                  <div class="module-button fasttrack">
+                      <button type="button" class="btn btn-primary " (click)="gotologin()"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                          <span class="content-text">CLOSE</span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-12" style="text-align: right; padding-right: 0;" *ngIf = "!expired">
+                <div class="module-button fasttrack">
+                    <button type="button" class="btn btn-primary " (click)="deletemodelclose()"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <span class="content-text">CLOSE</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+
+
+<!-- <app-footer></app-footer> -->

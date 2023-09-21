@@ -1,0 +1,16 @@
+.side-headline-wrapper {
+	margin: $spacing-default 0;
+
+	h1, h2, h3, h4, h5, h6 {
+		display: inline-block;
+		margin: 0 $spacing-atomic-tiny 0 0;
+	}
+
+	.side-headline {
+		color: var(--color-smalt-blue);
+		font-size: $font-size-text-m;
+		line-height: $line-height-text-m;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+}

@@ -1,0 +1,84 @@
+<!-- Navigation Tab for Administrator -->
+<app-admin-navigation></app-admin-navigation>
+<!-- Section 1 -->
+<!-- Sales Unit User Entry Form -->
+
+<!-- Section 2 -table -->
+<div class="container-fluid mt-5">
+  <!-- Heading and Search Field for Table -->
+  <div class="row">
+    <div class="col-6">
+        <h2 class="maintitle">
+            User activity tracker
+          </h2>
+        
+    </div>
+    <div class="col-6">
+
+    <div class="module-button button" style="float: right;"  >
+        <button type="button" class="btn btn-secondary"></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+            <i class="icon icon-dc_export" style="font-weight: bold;"></i>
+            <span class="content-text" style="font-weight: 700; user-select: none;">export report</span>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-6">
+      <div class="module-search" data-plugin="moduleSearch">
+        <form action="#" method="post">
+          <div class="module-input form-group floating-label" data-plugin="moduleInput">
+            <label for="inputID"> </label>
+            <div class="input-animation-wrapper">
+              <!-- <input type=search id="inputID" class="form-control" [(ngModel)]="search" (keydown)="searchnow()" value=""
+                placeholder="Search here" name="search" data-search-url="data/search-result.json?q={queue}&amount=5" /> -->
+                <input type=search id="inputID" class="form-control" value=""
+                placeholder="Search user" name="search" data-search-url="data/search-result.json?q={queue}&amount=5" />
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div class="module-button ">
+            <button type="submit" class="btn btn-link btn-lg " disabled="disabled"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_search"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <!-- Sales Unit User Table -->
+  <div class=" page-wrapper module-table table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">Date</th>
+          <th class="text-center">Element ID</th>
+          <th class="text-center">Target</th>
+          <th class="text-center">Modified By</th>
+          <th class="text-center">Email Address</th>
+          <th class="text-center">Action Made </th>
+          
+          <!-- <th class="text-center">Country</th> -->
+          
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr *ngFor='let data of salesunitdata'>
+          <td class="text-center">{{data.salesunit_registered_id}}</td>
+          <td class="text-center">Bosch Rexroth AG</td>
+          <td class="text-center">{{data.first_name}}</td>
+          <td class="text-center">{{data.last_name}}</td>
+          <td class="text-center">{{data.email}}</td>
+          <td class="text-center">{{data.location_name}}</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- Footer Tab for Administrator  -->
+<app-footer></app-footer>

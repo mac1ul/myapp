@@ -1,0 +1,28 @@
+.setview{
+    margin: 15px;
+    padding: 10px;
+    margin-bottom:30px;
+}
+
+.danger{
+    color: red;
+    background-color: white;
+    font-size: 16px;
+}
+
+.inputable {
+    width: 95%;
+    height: 54px;
+    text-align: center;
+}
+
+.editDisable:disabled{color: #aaa;
+cursor: not-allowed;
+
+}
+
+.editDisable:disabled:hover{color: #aaa;
+    cursor: not-allowed;
+
+
+}

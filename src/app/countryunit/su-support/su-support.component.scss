@@ -1,0 +1,40 @@
+.parent{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+.displaytext {
+    overflow: auto;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+.sidebar-item {
+    display: block;
+    height: 541px;
+}
+
+body { min-height:100%;  margin:0; }
+body{ 
+  display: table;
+  width: 100%; 
+}
+.footer {
+  height: 50px;
+}
+
+body > .footer{
+  display: table-row; 
+}
+
+.page-wrapper{
+  user-select: none;
+  margin: 20px;
+  padding: 15px;
+}
+
+.maintitle{
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 600;
+}

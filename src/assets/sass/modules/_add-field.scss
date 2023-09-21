@@ -1,0 +1,60 @@
+.module-add-field {
+	$form-element-error-spacing: 27px;
+
+	.field-wrapper {
+		display: flex;
+
+		&.animate-in {
+			animation: field-in ($transition-duration * 2) forwards;
+		}
+
+		&.animate-out {
+			animation: field-out ($transition-duration * 2) forwards;
+		}
+
+		.input-wrapper {
+			width: 100%;
+		}
+
+		.control-wrapper {
+			margin-left: 14px;
+			min-width: 54px;
+		}
+	}
+
+	.module-input:after {
+		animation: animation-field-opacity ($transition-duration * 3) forwards;
+		margin-top: -$form-element-error-spacing;
+	}
+
+	@keyframes field-out {
+		0% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		100% {
+			opacity: 0;
+			transform: translateX(-150px);
+		}
+	}
+
+	@keyframes field-in {
+		0% {
+			opacity: 0;
+			transform: translateX(-150px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes animation-field-opacity {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}

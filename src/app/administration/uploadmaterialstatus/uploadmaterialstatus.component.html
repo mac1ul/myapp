@@ -1,0 +1,300 @@
+<app-admin-navigation></app-admin-navigation>
+<br>
+<body style="margin: 20px; padding: 10px;">
+<h2>Add Data to 3D Map</h2>
+<!-- <div class="row">
+    <div class="col-12">
+        <div class="component-file-selector show-file-name " data-plugin="moduleFileSelector">
+            <div class="form-group">
+                <div class="file-selector-wrapper">
+                    <input type="file" name="file" id="file" class="file-selector" (change)="onFileChanged($event)" multiple="false">
+                    <div class="file-name-container">
+                        <span class="file-name"></span>
+                    </div>
+                    <div class="module-button ">
+                        <button type="button" class="btn btn-light " ></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <span class="content-text">Select File</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="col-12 ">
+<div class="col-5 module-step-navigation module-block highlight">
+	<div class="step active" [ngClass]="toggle === false? 'active' : 'completed'">
+		<div class="anchor">
+			1
+		</div>
+		<div class="label completed">
+			3D-MAP Master
+		</div>
+	</div>
+	<div class="connecter"></div>
+	<div class="step" [ngClass]="toggle === true? 'active' : ''">
+		<div class="anchor">
+			2
+		</div>
+		<div class="label">
+			Upload Data in 3D MAP Master Table
+		</div>
+	</div>
+</div>
+<div class="col-5 highlights">
+    <div *ngIf="!toggle">
+    <h3 style="text-align: justify;"><b>Required Column in Excel file:</b> material_number, typecode, product_family, product_hier, product and Product Detailed.  </h3>
+    <div class="row">
+        <div class="col-5">
+            <div class="component-file-selector show-file-name " data-plugin="moduleFileSelector">
+	            <div class="form-group">
+                    <div class="file-selector-wrapper">
+                        <input type="file" name="file" id="file" class="file-selector" multiple="false" (change)="incomingfile($event)">
+                        <div class="file-name-container">
+                            <span class="file-name"></span>
+                        </div>
+                        <div class="module-button ">
+                            <button type="button" class="btn btn-light " ></button>
+                            <div class="button-animation"></div>
+                            <div class="button-content">
+                                <span class="content-text">Select File</span>
+                            </div>
+                        </div>
+                    </div>
+	            </div>
+                <span style="margin-left: 20px;" *ngIf = "showstartlable">Loading...</span>
+                <span style="margin-left: 20px;" *ngIf = "showprogress">Done</span>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="module-button ">
+                <button type="button" class="btn btn-secondary " (click)="add3dmapmaster()"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                    <i class="icon icon-dc_download"></i>
+                    <span class="content-text">Submit</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Do you want to <b>Update</b> new excel file with the old Data?</h3>
+            <div class="module-radio custom-control custom-radio"> <input type="radio" id="custom-radio-1" name="custom-radio-1" class="custom-control-input"
+                checked="checked"
+            >
+                <label class="custom-control-label"
+                    for="custom-radio-1">
+                    Yes, I want to update this record </label>
+            </div>
+            <div class="module-radio custom-control custom-radio"> <input type="radio" id="custom-radio-2" name="custom-radio-2" class="custom-control-input"
+            
+            >
+                <label class="custom-control-label"
+                    for="custom-radio-2">
+                    No, Please add new entry for this product family and delete all existing record </label>
+            </div>
+        </div>
+        <div class="col-12" style="text-align: right;margin-top: 5px;">
+            <div class="module-button " (click)="gotoNext()">
+                <button type="button" class="btn btn-light"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                    <i class="icon icon-dc_download"></i>
+                    <span class="content-text">NEXT</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div *ngIf="toggle">
+        <h1>Update Quick Delivery time and Material Status</h1>
+        <h3>1. Load all Product Hierarchy from Master tables</h3>
+        <div class="module-button ">
+            <button type="button" class="btn btn-secondary " (click)="updateph()"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+                <i class="icon icon-dc_download"></i>
+                <span class="content-text">UPDATE</span>
+            </div>
+        </div>
+        <span style="margin-left: 20px;" *ngIf = "showstartlable">Loading...</span>
+        <span style="margin-left: 20px;" *ngIf = "showprogress">Done</span>
+        <h3>2. Update Quick delivery times & Material status</h3>
+    <div class="row">
+            <div class="col-6">
+                <div class="component-file-selector show-file-name " data-plugin="moduleFileSelector">
+                    <div class="form-group">
+                        <div class="file-selector-wrapper">
+                            <input type="file" name="file" id="file" class="file-selector"  (change)="onFileChanged($event)" multiple="false">
+                            <div class="file-name-container">
+                                <span class="file-name"></span>
+                            </div>
+                            <div class="module-button ">
+                                <button type="button" class="btn btn-light " ></button>
+                                <div class="button-animation"></div>
+                                <div class="button-content">
+                                    <span class="content-text">Select File</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="module-button ">
+                    <button type="button" class="btn btn-secondary " (click)="Upload()"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <i class="icon icon-dc_download"></i>
+                        <span class="content-text">Submit</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+<br><br>
+<h3>Unique Materials and Typecode</h3>
+<div class=" page-wrapper module-table table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">Company ID</th>
+          <th class="text-center">Sales Unit Name</th>
+          <th class="text-center">Company Name</th>
+          <th class="text-center">Part Number</th>
+          <th class="text-center">Typecode</th>
+          <th class="text-center">Material Status</th>
+          <th class="text-center">Product Hierarchy</th>
+          <th class="text-center">Material Qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-center">x</td>
+          <td class="text-center">x</td>
+          <td class="text-center">x</td>
+          <td class="text-center">x</td>
+          <td class="text-center">x</td>
+          <td class="text-center">x</td>
+          <td class="text-center">x</td>
+          <td class="text-center">x</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<!-- <div class="col-12 ">
+<div class="col-5 module-step-navigation module-block highlight">
+	<div class="step active" [ngClass]="toggle === false? 'active' : 'completed'">
+		<div class="anchor">
+			1
+		</div>
+		<div class="label completed">
+			Upload Product Family
+		</div>
+	</div>
+	<div class="connecter"></div>
+	<div class="step" [ngClass]="toggle === true? 'active' : ''">
+		<div class="anchor">
+			2
+		</div>
+		<div class="label">
+			Upload PartNumber and Typecode
+		</div>
+	</div>
+</div>
+<div class="col-5 highlights">
+    <div *ngIf="!toggle">
+    <h1>Please Upload Product Family and Delivery Time Excel Sheet</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="component-file-selector show-file-name " data-plugin="moduleFileSelector">
+	            <div class="form-group">
+                    <div class="file-selector-wrapper">
+                        <input type="file" name="file" id="file" class="file-selector">
+                        <div class="file-name-container">
+                            <span class="file-name"></span>
+                        </div>
+                        <div class="module-button ">
+                            <button type="button" class="btn btn-light " ></button>
+                            <div class="button-animation"></div>
+                            <div class="button-content">
+                                <span class="content-text">Select File</span>
+                            </div>
+                        </div>
+                    </div>
+	            </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="module-button ">
+                <button type="button" class="btn btn-secondary " ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                    <i class="icon icon-dc_download"></i>
+                    <span class="content-text">Submit</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Do you want to <b>Update</b> new excel file with the old Data?</h3>
+            <div class="module-radio custom-control custom-radio"> <input type="radio" id="custom-radio-1" name="" class="custom-control-input"
+                checked="checked"
+            >
+                <label class="custom-control-label"
+                    for="custom-radio-1">
+                    Yes, I want to update this record </label>
+            </div>
+            <div class="module-radio custom-control custom-radio"> <input type="radio" id="custom-radio-2" name="custom-radio-2" class="custom-control-input"
+            
+            >
+                <label class="custom-control-label"
+                    for="custom-radio-2">
+                    No, Please add new entry for this product family and delete all existing record </label>
+            </div>
+        </div>
+        <div class="col-12" style="text-align: right;margin-top: 5px;">
+            <div class="module-button " (click)="gotoNext()">
+                <button type="button" class="btn btn-light"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                    <i class="icon icon-dc_download"></i>
+                    <span class="content-text">NEXT</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div *ngIf="toggle">
+        <h1>Please Upload Partnumber and Typecode Excel Sheet</h1>
+    
+    <div class="row">
+            <div class="col-4">
+                
+            </div>
+            <div class="col-5">
+                <div class="module-button ">
+                    <button type="button" class="btn btn-secondary " ></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <i class="icon icon-dc_download"></i>
+                        <span class="content-text">Submit</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+</div> -->
+</body>
+<app-footer></app-footer>

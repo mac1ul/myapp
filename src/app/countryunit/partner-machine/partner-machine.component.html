@@ -1,0 +1,520 @@
+<body>
+<app-su-navigation></app-su-navigation>
+  <!-- <app-material></app-material> -->
+<div class="setview">
+    <p> <span style="cursor: pointer;" (click)="onclickPartner()">Partner List</span> > <span style="cursor: pointer;" (click)="onclickProject()">Customer List</span> > <span style="cursor: pointer; font-weight: bold;" (click)="onclickMachine()">Machine List</span></p>
+    <!-- <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb> -->
+    <div class="component-headline">
+        <h2 class="maintitle">
+            Machine List
+        </h2>
+        <div class="subline lead">
+            <!-- <div class="module-button button" style="float: right;" (click)="modalToOpen()">
+                <button type="button" class="btn btn-secondary " ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <i class="iconheader rb-document-add"></i>
+                  <span class="content-text" style="font-weight: 700; user-select: none;">Add New Machine</span>
+                </div>
+            </div> -->
+
+            <div class="module-table table-responsive">
+                <table class="table
+                              table-hover">
+                    <thead>
+                        <tr>
+                            <!-- <th class="highlight ">
+                                ID
+                            </th> -->
+                            <th class="highlight ">
+                                Machine Name
+                            </th>
+                            <th class="highlight">
+                                Description
+                            </th>
+                            <th class="highlight">
+                                Phase
+                            </th>
+                            <th class=" highlight">
+                              Industry Sector 1
+                            </th>
+                            <th class=" highlight">
+                              Industry Sector 2
+                            </th>
+                            <th class="highlight">
+                                Application
+                            </th>
+                            <th class="text-center highlight">
+                                Actions
+                            </th>
+                            <!-- <th class="text-center highlight">
+                              Last Access
+                          </th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let machinedetails of showProducts; let i = index">
+                            <!-- <td class="">
+                                <span>{{i+1}}</span>
+                            </td> -->
+                            <td class="">
+                              <span *ngIf = "!machinedetails.editable">{{machinedetails.machine_name}}</span>
+                              <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="machinedetails.machine_name" *ngIf="machinedetails.editable"/>
+                            </td>
+                            <td class="">
+                              <span *ngIf = "!machinedetails.editable">{{machinedetails.machine_description}}</span>
+                              <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="machinedetails.machine_description" *ngIf="machinedetails.editable"/>
+                            </td>
+                            <td class="">
+                              <span *ngIf = "!machinedetails.editable">{{machinedetails.machine_phase}}</span>
+                              <div class="module-dropdown" *ngIf="machinedetails.editable">
+                                <div class="input-animation-wrapper">
+                                  <label for="demo-dropdown-3">Machine Status *</label>
+                                  <select id="demo-dropdown-3" class="custom-select " name="demo-dropdown-3"
+                                    data-bouncer-target="#demo-dropdown-3-error" required="required"
+                                    [(ngModel)]="machinedetails.machine_phase">
+                                    <option disabled selected value="">--- Please select ---</option>
+                                    <option value="LEAD - Potential">LEAD - Potential</option>
+                                    <option value="HG0 - Request for Quotation = 15%">HG0 - Request for Quotation = 15%</option>
+                                    <option value="HG1 - Initial Offering = 25%">HG1 - Initial Offering = 25%</option>
+                                    <option value="HG2 - Positive Negotiation = 50%">HG2 - Positive Negotiation = 50%</option>
+                                    <option value="HG3 - Prototype Construction Done = 75%">HG3 - Prototype Construction Done = 75%
+                                    </option>
+                                    <option value="HG4 - Series Production Order Advised = 100%">HG4 - Series Production Order Advised
+                                      = 100%</option>
+                                    <option value="HG5 - In serial Production / Production finished">HG5 - In serial Production /
+                                      Production finished</option>
+                                    <option value="LOST - Machine to Competitor">LOST - Machine to Competitor</option>
+                                    <option value="STOP - Machine by Customer / Inactive">STOP - Machine by Customer / Inactive
+                                    </option>
+                                  </select>
+                                  <p *ngIf="addmachine.get('phase').touched && addmachine.get('phase').invalid" class="danger">Please
+                                    select machine status.</p>
+                                  <div class="input-animation"></div>
+                                </div>
+                                <div id="demo-dropdown-3-error" class="error-message-wrapper"></div>
+                              </div>
+                              <!-- <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="machinedetails.machine_phase" *ngIf="machinedetails.editable"/> -->
+                            </td>
+
+                            <td>
+                              <span *ngIf="!machinedetails.editable">{{machinedetails.group1_name}}</span>
+                              <div class="module-dropdown" *ngIf="machinedetails.editable">
+                                <div class="input-animation-wrapper">
+                                  <label for="demo-default">Industry Sector 1</label>
+                                  <select #industrygroup1 (change)="onchangeindustrysectorGroup(industrygroup1.value)"
+                                   id="demo-default" class="custom-select "
+                                  [(ngModel)]="machinedetails.industry_sector_1">
+                                    <!-- <option disabled selected value="">--- Please select ---</option> -->
+                                    <option *ngFor="let i of industrysectorgroup1" [value]="i.industry_sec_group_1">
+                                      {{i.industry_sec_group_1}}
+                                    </option>
+                                  </select>
+                                  <div class="input-animation"></div>
+                                </div>
+                                <div id="demo-default-error" class="error-message-wrapper"></div>
+                              </div>
+                            </td>
+
+                            <td>
+                              <span *ngIf = "!machinedetails.editable">{{machinedetails.group2_name}}</span>
+                              <div class="module-dropdown" *ngIf="machinedetails.editable">
+                                <div class="input-animation-wrapper">
+                                  <label for="demo-default">Industry Sector 2</label>
+                                  <select #industry (change)="onchangeindustrysector(industry.value)" (click)="onchangeindustrysector(industry.value)" id="demo-default"
+                          class="custom-select " [(ngModel)]="machinedetails.industry_sector">
+                          <option *ngIf = "disabled_industry_s2" selected [value]="machinedetails.industry_sector">{{machinedetails.industry_sector}}</option>
+                                    <option *ngFor="let i of industrysectors" [value]="i.industry_sec_group_2">
+                                      {{i.industry_sec_group_2}}
+                                    </option>
+                                  </select>
+                                  <div class="input-animation"></div>
+                                </div>
+                                <div id="demo-default-error" class="error-message-wrapper"></div>
+                              </div>
+                            </td>
+                            <td>
+                              <span *ngIf = "!machinedetails.editable">{{machinedetails.group3_name}}</span>
+                              <div class="module-dropdown" *ngIf="machinedetails.editable">
+                                <div class="input-animation-wrapper">
+                                  <label for="demo-default">Application</label>
+                                  <select id="demo-default" class="custom-select " [(ngModel)]="machinedetails.application">
+                                    <option *ngIf = "disabled_industry_s2" selected [value]="machinedetails.application">{{machinedetails.application}}</option>
+                                    <option *ngFor="let app of application" [value]="app.industry_sec_description">
+                                      {{app.industry_sec_description}}
+                                    </option>
+                                  </select>
+                                  <div class="input-animation"></div>
+                                </div>
+                                <div id="demo-default-error" class="error-message-wrapper"></div>
+                              </div>
+                            </td>
+                            <td style="width: 18%;" class="text-center">
+                              <!-- [routerLink]="['/SPDashboard/Add_project/Add_Machine/Add_Material']" -->
+                                <div class="module-button icon" *ngIf = "!machinedetails.editable">
+                                    <button type="button" class="btn btn-secondary" [routerLink]="['/partner_material_overview', machinedetails.machine_id]"></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_folder_open"></i>
+                                    </div>
+                                </div>
+                                <!-- <div class="module-button icon" (click)="inlineedit(machinedetails)" *ngIf = "!machinedetails.editable">
+                                    <button type="button" class="btn btn-light " ></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_edit"></i>
+                                    </div>
+                                </div>
+                                <div class="module-button icon" (click)="save(machinedetails)" *ngIf = "machinedetails.editable">
+                                    <button type="button" class="btn btn-secondary " ></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_save"></i>
+                                    </div>
+                                  </div> -->
+                            </td>
+                            <!-- <td class="text-center">{{machinedetails.last_update}}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="module-modal modal" id="addmachinemodel" data-plugin="moduleModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-close">
+              <div class="module-button ">
+                <button type="button" class="btn btn-link " (click)="modalClose()"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <i class="icon icon-dc_close"></i>
+                </div>
+              </div>
+            </div>
+            <div class="modal-header">
+              <p class="headline h5 modal-title">
+                Add Machine
+              </p>
+            </div>
+            <div class="modal-body">
+              <p>
+                Customer Name: <b style="text-transform: uppercase;">{{projectname}}</b>
+              </p>
+              <form [formGroup]="addmachine">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                      <label for="demo-default-input-1"> Machine Name * </label>
+                      <div class="input-animation-wrapper">
+                        <input type="text" id="demo-default-input-1" class="form-control" value=""
+                          placeholder="Enter Machine Name" name="demo-default-input-1"
+                          data-bouncer-target="#demo-default-input-1-error" required="required" formControlName="machinename" [ngClass]="{ 'is-invalid': submitted && f.machinename.errors }"/>
+                        <!-- <p *ngIf = "addmachine.get('machinename').touched && addmachine.get('machinename').invalid" class="danger">Please enter machine name.</p> -->
+                        <div *ngIf="submitted && f.machinename.errors">
+                          <div *ngIf="f.machinename.errors.required" class="danger">Machine name is required.</div>
+                        </div>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                      <label for="demo-default-input-2"> Description * </label>
+                      <div class="input-animation-wrapper">
+                        <input type="text" id="demo-default-input-2" class="form-control" value=""
+                          placeholder="Description" name="demo-default-input-2"
+                          data-bouncer-target="#demo-default-input-2-error" required="required" formControlName="desc" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }"/>
+                        <!-- <p *ngIf = "addmachine.get('desc').touched && addmachine.get('desc').invalid" class="danger">Please enter machine's description.</p> -->
+                        <div *ngIf="submitted && f.desc.errors">
+                          <div *ngIf="f.desc.errors.required" class="danger">Machine's description is required.</div>
+                        </div>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="module-dropdown">
+                      <div class="input-animation-wrapper">
+                        <label for="demo-dropdown-1">Industry Sector Group 1</label>
+                        <select #industrygroup1 (change)="onchangeindustrysectorGroup(industrygroup1.value)" id="demo-dropdown-11" class="custom-select " name="demo-dropdown-11"
+                          data-bouncer-target="#demo-dropdown-11-error" required="required" formControlName="industrygroup1" [ngClass]="{ 'is-invalid': submitted && f.industrygroup1.errors }">
+                          <option disabled selected value="">--- Please select ---</option>
+                          <option *ngFor="let i of industrysectorgroup1" [value]="i.industry_sec_group_1">
+                            {{i.industry_sec_group_1}}
+                          </option>
+                        </select>
+                        <!-- <p *ngIf = "addmachine.get('industry').touched && addmachine.get('industry').invalid" class="danger">Please select industry sector.</p> -->
+                        <div *ngIf="submitted && f.industry.errors">
+                          <div *ngIf="f.industrygroup1.errors.required" class="danger">Please select industry sector.</div>
+                        </div>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-dropdown-11-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="module-dropdown">
+                      <div class="input-animation-wrapper">
+                        <label for="demo-dropdown-1">Industry Sector Group 2</label>
+                        <select #industry (change)="onchangeindustrysector(industry.value)" id="demo-dropdown-1" class="custom-select " name="demo-dropdown-1"
+                          data-bouncer-target="#demo-dropdown-1-error" required="required" formControlName="industry" [ngClass]="{ 'is-invalid': submitted && f.industry.errors }">
+                          <option disabled selected value="">--- Please select ---</option>
+                          <option *ngFor="let i of industrysectors" [value]="i.industry_sec_group_2">
+                            {{i.industry_sec_group_2}}
+                          </option>
+                        </select>
+                        <!-- <p *ngIf = "addmachine.get('industry').touched && addmachine.get('industry').invalid" class="danger">Please select industry sector.</p> -->
+                        <div *ngIf="submitted && f.industry.errors">
+                          <div *ngIf="f.industry.errors.required" class="danger">Please select industry sector.</div>
+                        </div>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-dropdown-1-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="module-dropdown">
+                      <div class="input-animation-wrapper">
+                        <label for="demo-dropdown-2">Application *</label>
+                        <select id="demo-dropdown-2" class="custom-select " name="demo-dropdown-2"
+                          data-bouncer-target="#demo-dropdown-2-error" required="required" formControlName="application" [ngClass]="{ 'is-invalid': submitted && f.application.errors }">
+                          <option disabled selected value="">--- Please select ---</option>
+                          <option *ngFor="let app of application" [value]="app.industry_sec_description">
+                            {{app.industry_sec_description}}
+                          </option>
+                        </select>
+                        <!-- <p *ngIf = "addmachine.get('application').touched && addmachine.get('application').invalid" class="danger">Please select application.</p> -->
+                        <div *ngIf="submitted && f.application.errors">
+                          <div *ngIf="f.application.errors.required" class="danger">Please select application.</div>
+                        </div>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-dropdown-2-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="module-dropdown">
+                      <div class="input-animation-wrapper">
+                        <label for="demo-dropdown-3">Machine Status *</label>
+                        <select id="demo-dropdown-3" class="custom-select " name="demo-dropdown-3"
+                          data-bouncer-target="#demo-dropdown-3-error" required="required" formControlName="phase" [ngClass]="{ 'is-invalid': submitted && f.phase.errors }">
+                          <option disabled selected value="">--- Please select ---</option>
+                          <option value="LEAD - Potential">LEAD - Potential</option>
+                          <option value="HG0 - Request for Quotation = 15%">HG0 - Request for Quotation = 15%</option>
+                          <option value="HG1 - Initial Offering = 25%">HG1 - Initial Offering = 25%</option>
+                          <option value="HG2 - Positive Negotiation = 50%">HG2 - Positive Negotiation = 50%</option>
+                          <option value="HG3 - Prototype Construction Done = 75%">HG3 - Prototype Construction Done = 75%</option>
+                          <option value="HG4 - Series Production Order Advised = 100%">HG4 - Series Production Order Advised = 100%</option>
+                          <option value="HG5 - In serial Production / Production finished">HG5 - In serial Production / Production finished</option>
+                          <option value="LOST - Machine to Competitor">LOST - Machine to Competitor</option>
+                          <option value="STOP - Machine by Customer / Inactive">STOP - Machine by Customer / Inactive</option>
+                        </select>
+                        <!-- <p *ngIf = "addmachine.get('phase').touched && addmachine.get('phase').invalid" class="danger">Please select machine status.</p> -->
+                        <div *ngIf="submitted && f.phase.errors">
+                          <div *ngIf="f.phase.errors.required" class="danger">Please select machine status.</div>
+                        </div>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-dropdown-3-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-2 col-md-2">
+                    <span class="mandatory-info">* Mandatory</span>
+                  </div>
+                  <div class="col-xl-6 col-md-6"></div>
+                  <div class="col-xl-4 col-md-4">
+                    <div class="module-button-group">
+                      <div class="module-button" (click)="modalClose()">
+                        <button type="button" class="btn btn-primary"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                          <span class="content-text">Cancel</span>
+                        </div>
+                      </div>
+                      <div class="module-button" (click)="AddMachineData()">
+                        <button type="submit" class="btn btn-secondary"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                          <span class="content-text">Submit</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Message Box -->
+    <div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <!-- <div class="modal-close" *ngIf = "expired">
+                  <div class="module-button ">
+                      <button type="button" class="btn btn-link " (click)="gotologin()"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                          <i class="icon icon-dc_close" style="color: white;"></i>
+                      </div>
+                  </div>
+              </div> -->
+              <div class="modal-close">
+                <div class="module-button ">
+                    <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <i class="icon icon-dc_close" style="color: white;"></i>
+                    </div>
+                </div>
+            </div>
+              <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+                  <p class="headline h5 modal-title" style="color: white;">
+                      Messagebox
+                  </p>
+              </div>
+              <div class="modal-body">
+                  <p style="font-size: 20px;">
+                     {{message}}
+                  </p>
+                  <!-- <div class="col-12" style="text-align: right; padding-right: 0;" *ngIf = "expired">
+                      <div class="module-button fasttrack">
+                          <button type="button" class="btn btn-primary " (click)="gotologin()"></button>
+                          <div class="button-animation"></div>
+                          <div class="button-content">
+                              <span class="content-text">CLOSE</span>
+                          </div>
+                      </div>
+                  </div> -->
+
+                  <div class="col-12" style="text-align: right; padding-right: 0;">
+                    <div class="module-button fasttrack">
+                        <button type="button" class="btn btn-primary " (click)="deletemodelclose()"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <span class="content-text">CLOSE</span>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+          </div>
+      </div>
+    </div>
+    <!-- End -->
+    <!-- Pagination Starts -->
+    <div class="module-pagination module-block" data-plugin="modulePagination" *ngIf = "!countrecord">
+      <div class="paging-container">
+        <div class="results-per-page">
+          <p class="paging-title">Results per page:</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button " (click)="onChangeRowsPerPage(10)">
+              <a class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==10}">
+                <span class="content-text">10</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onChangeRowsPerPage(15)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==15}">
+                <span class="content-text">15</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onChangeRowsPerPage(20)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==20}">
+                <span class="content-text">20</span>
+              </div>
+            </div>
+            <!-- <div class="module-button " (click)="onChangeRowsPerPage(100)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==100}">
+                <span class="content-text">ALL</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="paging">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button " *ngIf="actualPage !== 1" (click)="onPageChange(actualPage-1)">
+              <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-button " *ngIf="actualPage-1>0" (click)="onPageChange(actualPage-1)">
+              <a class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content" style="background-color: white; color: black; border: black;">
+                <span class="content-text">{{actualPage-1}}</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onPageChange(actualPage)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content active-class">
+                <span class="content-text ">{{actualPage}}</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile" *ngIf="endPaging>=2 && actualPage+1<=endPaging"
+              (click)="onPageChange(actualPage+1)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{actualPage+1}}</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile" *ngIf="actualPage-1==0 && endPaging>2"
+              (click)="onPageChange(actualPage+2)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{actualPage+2}}</span>
+              </div>
+            </div>
+            <!-- option -->
+            <div class="module-button" *ngIf="endPaging>=5">
+              <button type="button" class="btn btn-light btn-sm btn-ghost dots" (click)="prevnext()"></button>
+              <div class="button-content">
+                <i class="icon icon-dc_options"></i>
+              </div>
+            </div>
+            <!-- option end -->
+
+
+            <div class="module-button " *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging"
+              (click)="onPageChange(endPaging)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{endPaging}}</span>
+              </div>
+            </div>
+            <div class="module-button " *ngIf="actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">
+              <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+</div>
+<app-footer class="footer"></app-footer>
+</body>

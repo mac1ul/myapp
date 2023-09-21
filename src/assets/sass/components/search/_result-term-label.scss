@@ -1,0 +1,37 @@
+.component-search-term-label {
+	color: var(--color-smalt-blue);
+	display: none;
+	margin-bottom: 40px;
+	text-transform: uppercase;
+
+	&.show {
+		display: block;
+	}
+
+	.no-results,
+	.spelling-results {
+		.text-holder {
+			color: var(--color-prussian-blue);
+			text-transform: none;
+
+			h3 {
+				margin-bottom: rem(40);
+			}
+
+			h5 {
+				margin-bottom: rem(14);
+			}
+		}
+	}
+
+	.spelling-results {
+		p {
+			color: var(--color-mine-shaft);
+			line-height: rem(26);
+			margin-bottom: rem(40);
+			text-transform: none;
+		}
+	}
+
+
+}

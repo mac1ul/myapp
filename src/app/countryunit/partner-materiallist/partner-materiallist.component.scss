@@ -1,0 +1,150 @@
+.setview{
+    margin: 15px;
+    padding: 10px;
+    margin-bottom:30px;
+}
+// .selectedRow {
+//     background-color: skyblue;
+// }
+.breadcrumb{
+    margin: 15px;
+    padding: 10px;
+}
+.button{
+    margin-bottom: 15px;
+}
+
+table tr th{
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+table tr td{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.iconheader{
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 30px;
+}
+
+.iconheadertext{
+    margin-left: 12px;
+    font-size: 30px;
+}
+
+.icon{
+    margin-right: 5px;
+}
+
+.mainlabel{
+    margin-bottom: 0;
+}
+
+.data .top{
+    // border: 1px solid black;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: .25rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    border: 0;
+}
+
+.head{
+    background-color: #00CCFF;
+    color: white;
+    text-align: center;
+    padding: 3px;
+}
+
+.mqty{
+    padding-left: 5px;
+    padding-right: 5px;    
+    margin-top: 0;
+}
+.inlinetitle{
+    color: black;
+}
+
+.fasttrack{
+    margin-right: 10px;
+}
+.materialbutton{
+    // margin-left: 150px;
+    text-align: right;
+    margin-left: 151px;
+    padding-right: 0;
+}
+
+.xng-breadcrumb-trail {
+    align-items: center;
+    /* color: rgba(0,0,0,.9); */
+    color: gray!important;
+    display: flex;
+    margin-bottom: 0!important;
+}
+.yes{
+    background-color: green; border: none; outline: none; margin-right: 10px;
+}
+
+.no{
+    background-color: red; border: none; outline: none; margin-right: 10px;
+}
+
+.warning{
+    border: 3px solid red!important;
+}
+
+.nowarning{
+    border: 3px solid green!important;
+}
+
+.mainnn .bodyyy {
+    top: 55%;
+    width: auto;
+    max-width: 95%;
+    max-height: 100%;
+    margin: 0 auto;
+    // box-shadow: 0 10px 20px 0 #c0ced8;
+    // box-shadow: 0 10px 20px 0 var(--color-heather);
+    transition: transform 250ms;
+}
+
+.danger{
+    color: red;
+    background-color: white;
+    font-size: 16px;
+}
+
+body { min-height:100%;  margin:0; }
+body{ 
+display: table;
+width: 100%; 
+}
+.footer {
+height: 50px;
+}
+
+body > .footer{
+display: table-row; 
+}
+.maintitle{
+    font-size: 1.75rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+.pn{
+    height: 47px;
+    width: 335px;
+    margin-right: 20px;
+    // background-color: white;
+    outline: none;
+}

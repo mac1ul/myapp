@@ -1,0 +1,93 @@
+.setview{
+    margin: 15px;
+    padding: 10px;
+    user-select: none;
+}
+.module-table {
+    margin-bottom: 0;
+    position: relative;
+    background: #ffffff;
+    background: var(--color-white);
+    color: #002b49;
+    color: var(--color-prussian-blue);
+    font-size: 0.875rem;
+}
+.module-block {
+    margin-bottom: 0;
+}
+.breadcrumb{
+    margin: 15px;
+    padding: 10px;
+}
+.button{
+    float: right;
+    margin-bottom: 15px;
+}
+
+table tr th{
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+table tr td{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.icon{
+    margin-right: 5px;
+}
+
+.danger{
+    color: red;
+    background-color: white;
+    font-size: 16px;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid #BD001E;
+}
+
+.form-control.ng-touched.ng-valid{
+    border: 2px solid #528236;
+}
+
+
+.deletemodel .deletemodeldialog{
+    top: 50%;
+    width: auto;
+    max-width: 560px;
+    max-height: 100%;
+    margin: 0 auto;
+    // box-shadow: 0 10px 20px 0 #c0ced8;
+    // box-shadow: 0 10px 20px 0 var(--color-heather);
+    transition: transform 250ms;
+}
+
+.buttonblue{
+    background-color: rgb(000, 043, 073);
+    color: #fff;
+}
+
+.maintitle{
+    font-size: 1.70rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+.div.row.upload{
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+hr{
+    height: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+
+}
+.component-file-selector.show-file-name .file-selector-wrapper .file-name-container {
+    max-width: 100px;
+    min-width: 0px;
+    font-size: 1rem;}
+

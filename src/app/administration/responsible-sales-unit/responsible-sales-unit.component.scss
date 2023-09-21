@@ -1,0 +1,46 @@
+// .sales-contact{
+//     height: 100vh;
+//     position: relative;
+// }
+
+// .footer{
+//     width: 100%;
+//     position: fixed;
+//     bottom: 0;
+// }
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+  }
+
+  /* Custom page CSS
+  -------------------------------------------------- */
+  /* Not required for template or sticky footer method. */
+  body > .container {
+    padding-top: 50px;
+  }
+  .container .col-sm-6 {
+    padding: 0;
+  }
+  .navbar {
+    margin-bottom: 0;
+  }
+  .footer {
+    width: 100%;
+    padding: 15px 0;
+
+  }
+  
+  .main-content {
+    padding: 20px;
+    height:calc(100vh - 110px);
+  }
+
+  .danger{
+    color: red;
+    background-color: white;
+    font-size: 16px;
+}

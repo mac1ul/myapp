@@ -1,0 +1,32 @@
+{
+  "comfortCookieDescription":{
+     "link":{
+        "url":""
+     }
+  },
+  "marketingCookieDescription":{
+     "link":{
+        "url":"https://www.boschrexroth.com/en/dc/data-protection-notice/"
+     }
+  },
+  "smallprint":{
+     "policy":{
+        "link":{
+           "url":"https://www.boschrexroth.com/en/dc/data-protection-notice/"
+        }
+     },
+     "imprint":{
+        "link":{
+           "url":"https://www.boschrexroth.com/en/dc/imprint/"
+        }
+     }
+  },
+  "showComfortOptIn":false,
+  "showMarketingOptIn":true,
+  "localizationDirPath":"https://dc-ncj-portal.dev.dxf.bosch.tech/xrm/cookie-manager/i18n",
+  "showLanguageSelector":false,
+
+  "triggerLinkSelector":"[data-show-privacy-settings]",
+  "cookieName":"privacy-settings",
+  "domain":".bosch.com"
+}

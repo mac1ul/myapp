@@ -1,0 +1,48 @@
+<body>
+  <app-admin-navigation></app-admin-navigation>
+  <div class="setview">
+    <p> <span style="cursor: pointer;" (click)="onclickSales()">Country Unit List</span> > <span
+        style="cursor: pointer; color: black; font-weight: bold;">Solution Partner List</span></p>
+    <h1>Partner List</h1>
+    <div class="module-table table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">
+              Global Customer Number
+            </th>
+            <th class="text-center">
+              Partner Company Name
+            </th>
+            <th class="text-center">
+              Country
+            </th>
+            <th class="text-center">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let partnerdetail of partnerdetails">
+            <td class="text-center">{{partnerdetail.global_id}}</td>
+            <td class="text-center">{{partnerdetail.solution_partner_company_name}}</td>
+            <td class="text-center">{{partnerdetail.location_name}}</td>
+            <td class="text-center">
+              <div class="module-button icon"
+                [routerLink]="['/Project_overview', partnerdetail.solutionpartner_registered_id]">
+                <button type="button" class="btn btn-secondary"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <i class="icon icon-dc_folder_open"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footer">
+    <app-footer></app-footer>
+  </div>
+</body>

@@ -1,0 +1,15 @@
+.module-media-text {
+	@include content-block();
+	@include line-spacing-big();
+
+	@media #{$media-to-sm} {
+		.row > div:first-child {
+			margin-bottom: 30px;
+		}
+	}
+
+	.row div *:last-child {
+		// no margin-bottom for last element in container
+		margin-bottom: 0;
+	}
+}

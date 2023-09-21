@@ -1,0 +1,206 @@
+<!-- Navigation Tab for Administrator -->
+<!-- <app-navigation></app-navigation> -->
+<div class="page-wrapper container-fluid start mt-5">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="AddContactData">
+        <div *ngFor="let data of prefilleddata">
+          <h1>Contact Form</h1>
+          <div class="row">
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-1"> First Name * </label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-1" class="form-control" placeholder="Enter First Name"
+                    name="demo-default-input-1" data-bouncer-target="#demo-default-input-1-error" required="required"
+                    formControlName="first_name" readonly/>
+                  <!-- <div *ngIf="submitted && f.first_name.errors">
+                    <div *ngIf="f.first_name.errors.required" class="danger">Firstname is required.</div>
+                  </div> -->
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-2"> Last Name * </label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-2" class="form-control" value=""
+                    placeholder="Enter Last Name" name="demo-default-input-2"
+                    data-bouncer-target="#demo-default-input-2-error" required="required" formControlName="last_name"
+                    readonly/>
+                  <!-- <div *ngIf="submitted && f.last_name.errors">
+                    <div *ngIf="f.last_name.errors.required" class="danger">Lastname is required.</div>
+                  </div> -->
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-3"> E-Mail * </label>
+                <div class="input-animation-wrapper">
+                  <input type="email" id="demo-default-input-3" class="form-control" placeholder="Company E-Mail *"
+                    name="demo-default-input-3" data-bouncer-target="#demo-email-input-error" required="required"
+                    formControlName="email" readonly/>
+                  <!-- <div *ngIf="submitted && f.email.errors">
+                    <div *ngIf="f.email.errors.required" class="danger">Email is required.</div>
+                  </div> -->
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-3-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-4"> Telephone / Mobile</label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-4" class="form-control" value=""
+                    placeholder="Enter Contact Nr" name="demo-default-input-4"
+                    data-bouncer-target="#demo-default-input-4-error" required="required" minlength="7" maxlength="24"
+                    formControlName="mobile" />
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-4-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-5"> Postal Code</label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-5" class="form-control" value=""
+                    placeholder="Enter Postal Code" name="demo-default-input-5"
+                    data-bouncer-target="#demo-default-input-5-error" required="required" minlength="1" maxlength="24"
+                    formControlName="postalcode" />
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-5-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-6"> City *</label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-6" class="form-control" value="" placeholder="Enter City"
+                    name="demo-default-input-6" data-bouncer-target="#demo-default-input-6-error" required="required"
+                    minlength="2" maxlength="24" formControlName="city" [ngClass]="{ 'is-invalid': submitted && f.city.errors }"/>
+                  <div *ngIf="submitted && f.city.errors">
+                    <div *ngIf="f.city.errors.required" class="danger">City is required.</div>
+                  </div>
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-6-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-7"> Country * </label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-7" class="form-control" placeholder="Enter City"
+                    name="demo-default-input-7" data-bouncer-target="#demo-default-input-7-error" required="required"
+                    formControlName="country" readonly/>
+                  <!-- <div *ngIf="submitted && f.country.errors">
+                    <div *ngIf="f.country.errors.required" class="danger">Please select country.</div>
+                  </div> -->
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-7-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-7"> Company Name * </label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-7" class="form-control" value=""
+                    placeholder="Enter Company Name" name="demo-default-input-7"
+                    data-bouncer-target="#demo-default-input-7-error" required="required" formControlName="company_name"
+                    readonly/>
+                  <!-- <div *ngIf="submitted && f.company_name.errors">
+                    <div *ngIf="f.company_name.errors.required" class="danger">Company name is required.</div>
+                  </div> -->
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-7-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="module-dropdown">
+                <div class="input-animation-wrapper">
+                  <label for="demo-dropdown-2">Contact Area * </label>
+                  <select id="demo-dropdown-2" class="custom-select " name="demo-dropdown-2"
+                    data-bouncer-target="#demo-dropdown-2-error" required="required"
+                    formControlName="reason_for_contact" [ngClass]="{ 'is-invalid': submitted && f.reason_for_contact.errors }">
+                    <option disabled selected value="">--- Please select ---</option>
+                    <option value="generalenquiries">General Enquiries</option>
+                    <option value="products">Products</option>
+                    <option value="service">Service</option>
+                    <option value="training">Training</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="bugreport">Report a Bug</option>
+                    <option value="featurerequest">Feature Request</option>
+                    <option value="suggestion">Suggestion's</option>
+                  </select>
+                  <div *ngIf="submitted && f.reason_for_contact.errors">
+                    <div *ngIf="f.reason_for_contact.errors.required" class="danger">Please select reason for contact list.</div>
+                  </div>
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-dropdown-2-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="module-textarea form-group floating-label max-length" data-plugin="moduleInput">
+                <label for="demo-textarea-4"> </label>
+                <div class="input-animation-wrapper">
+                  <textarea id="demo-textarea-4" class="form-control" name="demo-textarea-4" rows="9"
+                    placeholder="Description *" data-bouncer-target="#demo-textarea-4-error" required="required"
+                    formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                  <div *ngIf="submitted && f.description.errors">
+                    <div *ngIf="f.description.errors.required" class="danger">Description is required.</div>
+                  </div>
+                  <div class="label-area"></div>
+                  <div class="input-animation"></div>
+                </div>
+                <div class="remaining-characters" data-text=" characters left"> </div>
+                <div id="demo-textarea-4-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-2">
+              <span class="mandatory-info">* Mandatory</span>
+            </div>
+            <div class="col-6"></div>
+            <div class="col-4 text-right">
+              <div class="module-button">
+                <button type="submit" class="btn btn-secondary" (click)="SendContactForm()"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">Send</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Footer Tab for Administrator  -->
+<!-- <app-footer></app-footer> -->

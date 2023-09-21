@@ -1,0 +1,242 @@
+<body style="user-select: none;">
+	<app-spheader></app-spheader>
+  <div class="wrapper">
+	<div class="mt-5" style="padding: 15px; margin: 10px;" *ngIf="!showdetailss">
+		<h2 class="maintitle">List of Fast-track Prototype Delivery Request</h2>
+		<!-- <div class="module-form " data-plugin="moduleForm" style="min-height: 388px;">
+		<div class="row">
+			<div class="col-sm-12 col-md-3" *ngFor="let item of list ; let i=index;" >
+				<div class="" [ngClass] = "item.flag === 1 ? 'green' : 'red'">
+					<table class="table maintable">
+						<thead>
+							<tr>
+								<th colspan=2 class="text-center">
+									Number {{i+1}}
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="highlight" colspan=1><b> OEM Name:</b></td>
+								<td align=center colspan=1>{{ item.oem_name }}</td>
+							</tr>
+							<tr>
+								<td class="highlight" colspan=1><b> Request Date:</b></td>
+								<td align=center colspan=1>{{item.request_date}}</td>
+							</tr>
+							<tr>
+								<td class="highlight" colspan=1><b> Prototype Data Quantity:</b></td>
+								<td align=center colspan=1>{{item.prototype_data_qty}}</td>
+							</tr>
+							<tr>
+								<td class="highlight" colspan=1><b> SOP:</b></td>
+								<td align=center colspan=1>{{item.sop_date}}</td>
+							</tr>
+							<tr>
+								<td class="highlight" colspan=1><b> Status:</b></td>
+								<td align=center colspan=1 *ngIf = "item.flag === 1">Review</td>
+								<td align=center colspan=1 *ngIf = "item.flag === 0">Processing</td>
+							</tr>
+							<tr>
+								<td align="right" colspan = 2 style="color: blue; cursor: pointer;" (click)="showdetails(item.fid, item.message)">See More</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div> -->
+		<div class="module-table table-responsive">
+			<table class="table
+				  table-hover" style="width: 100%;">
+				<thead>
+					<tr>
+						<th class="highlight text-center">
+							ID
+						</th>
+						<th class="highlight text-center">
+							Customer Name
+						</th>
+						<!-- <th class="highlight text-center">
+							Machine Name
+						</th> -->
+						<th class="highlight text-center">
+							Prototype Date
+						</th>
+						<!-- <th class="highlight text-center">
+							Prototype Data Quantity
+						</th> -->
+						<th class="highlight text-center">
+							SOP
+						</th>
+						<th class="text-center highlight">
+							Status
+						</th>
+						<th class="text-center highlight">
+							Details
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of list ; let i=index;">
+						<td class="text-center">
+							{{i+1}}
+						</td>
+						<td class="text-center">
+							{{ item.oem_name }}
+						</td>
+						<td class="text-center">
+							{{item.request_date}}
+						</td>
+						<!-- <td class="text-center">
+							{{item.prototype_data_qty}}
+						</td> -->
+						<td class="text-center">
+							{{item.sop_date}}
+						</td>
+						<td class="text-center" *ngIf="item.flag === 1">
+							Solved
+						</td>
+						<td class="text-center" *ngIf="item.flag === 0">
+							Processing
+						</td>
+						<td class="text-center" style="color: blue; cursor: pointer;"
+							(click)="showdetails(item.fid, item.message)">
+							Show more
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="mt-5" style="padding: 15px; margin: 10px;" *ngIf="showdetailss">
+
+		<div class="row" data-plugin="moduleInput">
+			<label class="col-6 col-form-label" for="demo-small">
+				<h2 class="maintitle ml-2">Detailed information about Fast-track Request</h2>
+			</label>
+			<div class="col-6 ml-auto " style="text-align: right;">
+				<!-- <div class="module-button mr-3">
+				<button type="button" class="btn btn-secondary " (click)="openMsg()"></button>
+				<div class="button-animation"></div>
+				<div class="button-content">
+					<span class="content-text">Show Message</span>
+				</div>
+			</div> -->
+				<div class="module-button">
+					<button type="button" class="btn btn-secondary " (click)="goBack()"></button>
+					<div class="button-animation"></div>
+					<div class="button-content">
+						<span class="content-text">BACK</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Show all data in a table format -->
+		<div class="col-12">
+
+			<div class="module-table table-responsive">
+				<table class="table" style="margin-bottom: 0px;">
+					<thead>
+						<tr>
+							<th colspan=8 class="text-center">
+								Customer Details & Project Information
+							</th>
+						</tr>
+					</thead>
+					<!-- <p *ngIf="!alert">Please select partner company name from left side filters</p> -->
+					<tbody *ngFor="let fasttrack_body of fasttrack_body">
+
+						<tr colspan=8>
+						<tr>
+							<td class="highlight" width=600 colspan=2><b> Company Name:</b></td>
+							<td width=900 align=center colspan=2>{{fasttrack_body.customer_name}}</td>
+							<td class="highlight" width=500 colspan=2> <b>Global Company ID:</b></td>
+							<td width=900 class="text-center" align=center colspan=2>{{fasttrack_body.customer_number}}
+							</td>
+						</tr>
+						<tr>
+							<td class="highlight" colspan=2><b> Contact Person:</b> </td>
+							<td colspan=2 class="text-center"> {{fasttrack_body.contact_person}} </td>
+							<td class="highlight" colspan=2><b> Prototype Required Date:</b></td>
+							<td class="text-center" colspan=2>{{fasttrack_body.request_date}}</td>
+						</tr>
+						<tr>
+							<td class="highlight" colspan=2><b> Customer Name:</b> </td>
+							<td colspan=2 class="text-center"> {{fasttrack_body.oem_name}} </td>
+							<td class="highlight" colspan=2><b> Business Experience:</b></td>
+							<td class="text-center" colspan=2>{{fasttrack_body.business_exp}}</td>
+						</tr>
+						<tr>
+							<td class="highlight" colspan=2><b> Business Type:</b> </td>
+							<td colspan=2 class="text-center"> {{fasttrack_body.business_type}} </td>
+							<td class="highlight" colspan=2><b>Machine Name:</b></td>
+							<td class="text-center" colspan=2>{{fasttrack_body.machine_name}}</td>
+						</tr>
+						<!-- <tr>
+							<td class="highlight" colspan=2><b> Business Type:</b> </td>
+							<td colspan=2 class="text-center"> {{fasttrack_body.business_type}} </td>
+							<td class="highlight" colspan=2><b>Machine Type:</b></td>
+							<td class="text-center" colspan=2>{{fasttrack_body.machine_type}}</td>
+						</tr> -->
+						<!-- <tr>
+							<td class="highlight" colspan=2><b> Hydraulic Function:</b> </td>
+							<td colspan=2 class="text-center"> {{fasttrack_body.hydraulic_function}} </td>
+							<td class="highlight" colspan=2><b> Machine Quantity:</b></td>
+							<td class="text-center" colspan=2>{{fasttrack_body.machineQuantity}}</td>
+						</tr> -->
+						<!-- <tr>
+							<td class="highlight" colspan=2><b> Prototype Data Quantity:</b> </td>
+							<td colspan=2 class="text-center"> {{fasttrack_body.prototype_data_qty}} </td>
+							<td class="highlight" colspan=2><b> SOP(Start of Project) Date:</b></td>
+							<td class="text-center" colspan=2>{{fasttrack_body.sop_date}}</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+			<div class="module-table table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th colspan=6 class="text-center" style="border: none;">
+								<h3 class="text-center"><strong>Material List</strong></h3>
+							</th>
+						</tr>
+						<tr>
+							<th class="text-center highlight">Part Number</th>
+							<th class="text-center highlight">Type Code</th>
+							<th class="text-center highlight">Expected Material Qty</th>
+							<th class="text-center highlight">Net Price SI</th>
+							<th class="text-center highlight">Technical Settings</th>
+							<th class="text-center highlight">Competitor</th>
+
+						</tr>
+					</thead>
+					<tbody *ngFor="let fasttrack_body of fasttrack_body">
+						<tr *ngFor="let fasttrack_body of fasttrack_body[0]">
+							<td class="text-center">{{fasttrack_body.partnumber}}</td>
+							<td class="text-center">{{fasttrack_body.typecode}}</td>
+							<td class="text-center">{{fasttrack_body.expected_rexrpth_qty}}</td>
+							<td class="text-center">{{fasttrack_body.nettpriceSI}}</td>
+							<td class="text-center">{{fasttrack_body.technical_settings}}</td>
+							<td class="text-center">{{fasttrack_body.competition}}</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- End -->
+		</div>
+		<div class="module-form hover" data-plugin="moduleForm" *ngIf="showmsg">
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<div class="buttonblue">
+						<p class="msg">{{message}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<app-footer class="footer"></app-footer>
+</body>

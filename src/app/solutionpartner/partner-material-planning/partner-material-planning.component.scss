@@ -1,0 +1,41 @@
+.page-wrapper {
+    width: auto;
+    max-width: 1920px;
+    min-height: 30vh;
+    margin: 0 auto;
+}
+.module-block {
+    margin-bottom: 15px;
+}
+// table tr th{
+//     font-size: 1rem;
+//     font-weight: 900;
+// }
+
+// table tr td{
+//     font-size: 1rem;
+//     font-weight: 400;
+// }
+
+.iconheader{
+    margin-left: 12px;
+    font-size: 35px;
+    margin-right: 12px;
+    font-weight: 500;
+}
+
+.maintitle{
+    font-size: 1.70rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+.highlight:hover{
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: transparent;
+}
+.module-table .highlight {
+    color: #00add9;
+    background-color: transparent;
+}

@@ -1,0 +1,228 @@
+.module-textarea,
+.module-textarea-small {
+	@include subpixel-fix();
+	@include validation-message-animation($transition-duration);
+	z-index: 1;
+
+	$form-element-error-spacing: 27px;
+
+	margin-bottom: rem(24);
+
+	&:hover .form-control ~ .input-animation {
+		animation-name: animation-widget-border-in;
+	}
+
+	.error-message-wrapper {
+		//animation: error-out ($transition-duration * 2) forwards;
+	}
+
+	&.form-group {
+
+		label {
+			text-transform: uppercase;
+			font-size: 12px;
+			font-weight: normal;
+			line-height: 26px;
+			margin-bottom: 5px;
+			color: var(--color-smalt-blue);
+			cursor: pointer;
+			text-align: left;
+			z-index: 2;
+
+			&.col-form-label {
+				padding-top: 0;
+				padding-bottom: 0;
+				margin-bottom: 0;
+				line-height: 1.5;
+				display: flex;
+				padding-top: 10px;
+				padding-right: 0;
+			}
+		}
+
+		.label-area {
+			position: absolute;
+			left: 1px;
+			right: 1px;
+			top: 1px;
+			height: 28px;
+			background: var(--color-white);
+			border: 1px solid transparent;
+			border-bottom: none;
+			transition: all $transition-duration;
+		}
+	}
+
+	&.floating-label {
+		position: relative;
+
+		> label {
+			position: absolute;
+			top: 14px;
+			left: 0;
+			right: 0;
+			max-width: 100%;
+			padding: 0 rem(17) 0 rem(17);
+			transition: all $transition-duration;
+			font-size: $font-size-text-m;
+			z-index: 2;
+
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		&.is-focused label {
+			font-size: $font-size-text-xs;
+			transform: translate(0, -11px);
+		}
+
+		textarea {
+			padding: 0 16px 7px;
+		}
+	}
+
+	&.max-length {
+		position: relative;
+
+		textarea {
+			padding-bottom: 34px;
+			margin-bottom: 0;
+		}
+	}
+
+	&.has-error {
+		position: relative;
+
+		textarea {
+			border-bottom-color: var(--color-monza);
+
+			&:focus {
+				border-bottom-color: var(--color-monza);
+			}
+		}
+
+		label {
+			color: var(--color-monza);
+		}
+
+		.error-message {
+			@include error-message-base;
+			padding-left: 16px;
+			border-top: 1px solid var(--color-monza);
+			color: var(--color-monza);
+			font-size: $font-size-text-xs;
+		}
+
+		.remaining-characters {
+			//bottom: ($form-element-error-spacing * 2) + 1;
+		}
+
+		.required-text {
+			display: none;
+		}
+	}
+
+	&.has-placeholder {
+		&.floating-label {
+			label {
+				font-size: rem(12);
+				transform: translate(0, -11px);
+			}
+		}
+	}
+
+	.input-animation-wrapper {
+		position: relative;
+		overflow: auto;
+		z-index: 1;
+
+		.input-animation {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			display: block;
+			width: 100%;
+			height: 100%;
+			padding: 1px;
+			background: linear-gradient(to bottom right, #5a7c91 0%, #5a7c91 50%, #c0ced8 50%, #c0ced8 100%) 100% 100%;
+			background-size: 206% 200%;
+			pointer-events: none;
+			animation: animation-widget-border-out 200ms linear forwards;
+		}
+
+		@keyframes animation-widget-border-in {
+			0% {
+				background-position: 100% 100%;
+			}
+			100% {
+				background-position: 0 0;
+			}
+		}
+
+		@keyframes animation-widget-border-out {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: 100% 100%;
+			}
+		}
+	}
+
+	.form-control {
+		position: relative;
+		display: block;
+		margin-top: 27px;
+		box-sizing: border-box;
+		background-color: white;
+		border-color: transparent;
+		box-shadow: none;
+		resize: none;
+
+		&:focus ~ .input-animation {
+			animation-name: animation-widget-border-in;
+		}
+	}
+
+	.remaining-characters {
+		position: absolute;
+		right: 1px;
+		bottom: 1px;
+		left: 1px;
+
+		line-height: 27px;
+		padding-right: $spacing-tiny;
+
+		color: var(--color-smalt-blue);
+		font-size: $font-size-text-s;
+		font-weight: normal;
+		text-align: right;
+		text-transform: uppercase;
+
+		background-color: white;
+	}
+
+	&.has-error .remaining-characters {
+		bottom: 27px;
+	}
+
+	.required-text {
+		padding-left: 16px;
+		color: var(--color-prussian-blue);
+		font-size: $font-size-text-xs;
+	}
+}
+
+.module-textarea-small {
+	.form-control {
+		margin-top: 0;
+	}
+
+	&.has-error {
+		.error-message {
+			padding-left: 12px;
+		}
+	}
+}

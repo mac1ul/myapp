@@ -1,0 +1,90 @@
+.module-radio {
+	@include module-name('Radio');
+	@include validation-message-animation($transition-duration);
+
+	margin-bottom: $spacing-tiny;
+
+	.custom-control-label {
+		color: var(--color-smalt-blue);
+		font-size: $font-size-text-s;
+		padding-left: $spacing-tiny;
+		transition: all 0.2s ease 0.1s;
+
+		&::after {
+			content: '';
+			color: var(--color-prussian-blue);
+			background: transparent;
+			top: rem(7);
+			left: rem(-19);
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			transition: all 0.5s ease;
+			transform: scale(2);
+		}
+	}
+
+	.custom-control-label::before {
+		border: 2px solid var(--color-casper);
+		transition: all 0.2s ease 0.1s;
+	}
+
+	.custom-control-input:disabled ~ .custom-control-label,
+	.custom-control-input:disabled ~ .custom-label-wrapper .custom-control-label {
+		opacity: 0.2;
+	}
+
+	.custom-control-input:checked ~ .custom-control-label,
+	.custom-control-input:checked ~ .custom-label-wrapper .custom-control-label {
+		color: var(--color-prussian-blue);
+	}
+
+	.custom-control-input:checked ~ .custom-control-label::before,
+	.custom-control-input:checked ~ .custom-label-wrapper .custom-control-label::before {
+		border-color: var(--color-prussian-blue);
+		background-color: var(--color-white);
+	}
+
+	.custom-control-input:checked ~ .custom-control-label::after,
+	.custom-control-input:checked ~ .custom-label-wrapper .custom-control-label::after {
+		background-image: none;
+		background-color: var(--color-prussian-blue);
+		transform: scale(1);
+	}
+
+	&:hover {
+
+		.custom-control-input ~ .custom-control-label::before {
+			border-color: var(--color-prussian-blue);
+			transition: all 0.2s ease 0.1s;
+		}
+
+		.custom-control-label {
+			color: var(--color-prussian-blue);
+			cursor: pointer;
+		}
+
+		.custom-control-input:disabled ~ .custom-control-label {
+			cursor: default;
+
+			&:before {
+				border-color: var(--color-casper);
+			}
+		}
+	}
+
+	&.has-error {
+		.error-message {
+			@include error-message-base;
+
+			color: var(--color-monza);
+			font-size: $font-size-text-xs;
+			line-height: $line-height-text-xs;
+			padding-left: $spacing-tiny;
+
+			> div[id^='bouncer-error_'] {
+				padding-left: 10px;
+			}
+		}
+	}
+}

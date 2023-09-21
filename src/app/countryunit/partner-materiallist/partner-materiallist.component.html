@@ -1,0 +1,386 @@
+<body>
+<app-su-navigation></app-su-navigation>
+<div class="setview">
+    <p> <span style="cursor: pointer;" (click)="onclickPartner()">Partner List</span> > <span style="cursor: pointer;"
+            (click)="onclickProject()">Customer List</span> > <span style="cursor: pointer;"
+            (click)="onclickMachine()">Machine List</span> > <span style="cursor: pointer; font-weight: bold;">Material
+            List</span></p>
+    <form [formGroup]="AddMaterial">
+        <div class="row">
+            <div class="module-input form-group has-placeholder read-only hover-demo col-md-2"
+                data-plugin="moduleInput">
+                <p class="mainlabel">Machine Name:</p>
+                <div class="input-animation-wrapper">
+                    <input type="text" id="demo-placeholder44" class="form-control" formControlName="model" readonly />
+                    <div class="input-animation"></div>
+                </div>
+            </div>
+            <div class="module-dropdown col-md-2  " style="margin-top: 28px;">
+                <div class="input-animation-wrapper">
+                    <label class="label-above-sm" for="demo-default">
+                        Your Application Experience: *
+                    </label>
+                    <select id="demo-default" class="custom-select " formControlName="experience" readonly>
+                        <option value="Select">Please Select</option>
+                        <option value="Projects 0">Projects 0</option>
+                        <option value="Projects < 5">Projects < 5</option>
+                        <option value="Projects < 10">Projects < 10</option>
+                        <option value="Projects > 10">Projects > 10</option>
+                        <option value="Projects > 20">Projects > 20</option>
+                    </select>
+                    <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-error" class="error-message-wrapper"></div>
+            </div>
+            <div class="module-date-picker form-group col-md-2">
+                <p class="mainlabel">Prototype Required: *</p>
+                <div class="input-animation-wrapper">
+                    <input type="text" id="demo-value" class="form-control" formControlName="prototype" readonly/>
+                    <div class="input-animation"></div>
+                </div>
+            </div>
+            <div class="module-date-picker form-group col-md-2">
+                <p class="mainlabel">SOP: *</p>
+                <div class="input-animation-wrapper">
+                    <input type="text" id="demo-value1" class="form-control" formControlName="sop" readonly/>
+                    <div class="input-animation"></div>
+                </div>
+            </div>
+            <div class="module-date-picker form-group col-md-2">
+                <p class="mainlabel">EOP: *</p>
+                <div class="input-animation-wrapper">
+                    <input type="text" id="demo-value2" class="form-control " formControlName="eop" readonly/>
+                    <div class="input-animation"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row data">
+            <div class="col-md-2">
+                <div class="top">
+                    <p class="head">{{ previousYear2 }}</p>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder1" class="inlinetitle">
+                            Machine Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder1" class="form-control " formControlName="mqty2019"
+                                placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder2" class="inlinetitle">
+                            Rexroth Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder2" class="form-control "
+                                formControlName="rexroth2019" placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="top">
+                    <p class="head">{{ previousYear1 }}</p>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder3" class="inlinetitle">
+                            Machine Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder3" class="form-control " formControlName="mqty2020"
+                                placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder4" class="inlinetitle">
+                            Rexroth Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder4" class="form-control "
+                                formControlName="rexroth2020" placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="top">
+                    <p class="head">Actual {{ currentYear }}</p>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder5" class="inlinetitle">
+                            Machine Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder5" class="form-control " formControlName="mqty2021"
+                                placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder6" class="inlinetitle">
+                            Rexroth Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder6" class="form-control "
+                                formControlName="rexroth2021" placeholder="Enter Quantity" readonly />
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="top">
+                    <p class="head" style="background-color: #002B49;">Plan {{ futureYear1 }}</p>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder7" class="inlinetitle">
+                            Machine Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder7" class="form-control " formControlName="mqty2022"
+                                placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder8" class="inlinetitle">
+                            Rexroth Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder8" class="form-control "
+                                formControlName="rexroth2022" placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="top">
+                    <p class="head" style="background-color: #002B49;">Plan {{ futureYear2 }}</p>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder9" class="inlinetitle">
+                            Machine Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder9" class="form-control " formControlName="mqty2023"
+                                placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder10" class="inlinetitle">
+                            Rexroth Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder10" class="form-control "
+                                formControlName="rexroth2023" placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="top">
+                    <p class="head" style="background-color: #002B49;">Plan {{ futureYear3 }}</p>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder11" class="inlinetitle">
+                            Machine Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder11" class="form-control "
+                                formControlName="mqty2024" placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                    <div class="module-input form-group has-placeholder mqty" data-plugin="moduleInput">
+                        <label for="demo-placeholder12" class="inlinetitle">
+                            Rexroth Qty:
+                        </label>
+                        <div class="input-animation-wrapper">
+                            <input type="number" id="demo-placeholder12" class="form-control "
+                                formControlName="rexroth2024" placeholder="Enter Quantity" readonly/>
+                            <div class="input-animation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <!-- <div class="module-button button" style="float: right;" (click)="AddMachineDetails()">
+        <button type="button" class="btn btn-secondary "></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+            <i class="iconheader rb-save"></i>
+        </div>
+    </div> -->
+    <br><br>
+
+    <div class="component-headline">
+        <div class="row col-12" style="margin: 0; padding: 0;" *ngIf="showmateriallist">
+                <h2 class="maintitle">Material List</h2>
+        </div>
+        <div class="subline lead" *ngIf="showmateriallist">
+            <div class="module-table table-responsive">
+                <table class="table
+                              table-hover">
+                    <thead>
+                        <tr>
+                            <th class="highlight text-center">
+                                Part Number
+                            </th>
+                            <th class="text-center highlight">
+                                Description
+                            </th>
+                            <th class="text-center highlight" *ngIf="warning && getcomname">
+                                Product
+                            </th>
+                            <th class="text-center highlight" *ngIf="warning && getcomname">
+                                Product Detailed
+                            </th>
+                            <th class="text-center highlight" *ngIf="warning && getcomname">
+                                Product Family
+                            </th>
+                            <th class="text-center highlight" *ngIf="!warning">
+                                Delivery time(Days)
+                            </th>
+                            <th class="text-center highlight">
+                                Supplier
+                            </th>
+                            <th class="text-center highlight" *ngIf="!warning">
+                                Material Status
+                            </th>
+                            <th class="text-center highlight">
+                                Material Quantity
+                            </th>
+                            <th class="text-center highlight" *ngIf="!warning">
+                              Actual {{ previousYear2 }}
+                            </th>
+                            <th class="text-center highlight" *ngIf="!warning">
+                                Actual {{ previousYear1 }}
+                            </th>
+                            <th class="text-center highlight" *ngIf="!warning">
+                                Actual {{ currentYear }}
+                            </th>
+                            <th class="text-center highlight" *ngIf="!warning">
+                                Actual {{ futureYear1 }}
+                            </th>
+                            <th class="text-center highlight" *ngIf="!warning">
+                                Actual {{ futureYear2 }}
+                            </th>
+                            <th class="text-center highlight" *ngIf="!warning">
+                                Actual {{ futureYear3 }}
+                            </th>
+                            <th class="text-center highlight">
+                                Comment
+                            </th>
+                            <!-- <th class="highlight">
+                                Actions
+                            </th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let materials of Material_list; let i = index">
+                            <td class="text-center">
+                                <span *ngIf="!materials.editable">{{materials.part_number}}</span>
+                                <input type="text" style="text-align: center; width: 215px;" class="form-control"
+                                    [(ngModel)]="materials.part_number" *ngIf="materials.editable" />
+                            </td>
+                            <td class="text-center">
+                                <span *ngIf="!materials.editable">{{materials.description}}</span>
+                                <input type="text" style="text-align: center; width: 215px;" class="form-control"
+                                    [(ngModel)]="materials.description" *ngIf="materials.editable" />
+                            </td>
+                            <td class="text-center" *ngIf="warning && materials.show === true && getcomname">
+                                <span *ngIf="!materials.editable">{{materials.product}}</span>
+                                <input type="text" style="text-align: center; width: 215px;" class="form-control"
+                                    [(ngModel)]="materials.product" *ngIf="materials.editable" />
+                            </td>
+                            <td class="text-center" *ngIf="warning && materials.show === true && getcomname">
+                                <span *ngIf="!materials.editable">{{materials.product_detailed}}</span>
+                                <input type="text" style="text-align: center; width: 215px;" class="form-control"
+                                    [(ngModel)]="materials.product_detailed" *ngIf="materials.editable" />
+                            </td>
+                            <td class="text-center" *ngIf="warning && materials.show === true && getcomname">
+                                <span *ngIf="!materials.editable">{{materials.product_family}}</span>
+                                <input type="text" style="text-align: center; width: 150px;" class="form-control"
+                                    [(ngModel)]="materials.product_family" *ngIf="materials.editable" />
+                            </td>
+                            <td class="text-center" *ngIf="!warning">
+                                <span *ngIf="!materials.editable">{{materials.quick_delivery_time}}</span>
+                                <input type="text" style="text-align: center; width: 150px;" class="form-control"
+                                    [(ngModel)]="materials.quick_delivery_time" *ngIf="materials.editable" />
+                            </td>
+                            <td class="text-center">
+                                <span *ngIf="!materials.editable">{{materials.supplier}}</span>
+                                <input type="text" style="text-align: center; width: 150px;" class="form-control"
+                                    [(ngModel)]="materials.supplier" *ngIf="materials.editable" />
+                            </td>
+                            <td class="text-center" *ngIf="!warning">
+                                <span *ngIf="!materials.editable && materials.material_phase === true">
+                                    <div class="module-button">
+                                        <button type="button" class="btn btn-secondary btn-sm " (click)="checkmaterialstatus(materials)"></button>
+                                        <div class="button-animation"></div>
+                                        <div class="button-content">
+                                          <span class="content-text">Check</span>
+                                        </div>
+                                      </div>
+                                </span>
+                                <span *ngIf="!materials.editable && materials.material_phase !== true">{{materials.material_phase}}</span>
+                                <input type="text" style="text-align: center; width: 215px;" class="form-control"
+                                    [(ngModel)]="materials.material_phase" *ngIf="materials.editable" />
+                            </td>
+                            <td class="text-center">
+                                <span *ngIf="!materials.editable">{{materials.qtypermachine}}</span>
+                                <input type="text" style="text-align: center; width: 100px;" class="form-control"
+                                    [(ngModel)]="materials.qtypermachine" *ngIf="materials.editable" />
+
+                            </td>
+                            <td class="text-center" *ngIf="!warning">
+                                {{materials.previousYear2Qty}}
+                            </td>
+                            <td class="text-center" *ngIf="!warning">
+                                {{materials.previousYear1Qty}}
+                            </td>
+                            <td class="text-center" *ngIf="!warning">
+                                {{materials.currentYearQty}}
+                            </td>
+                            <td class="text-center" *ngIf="!warning">
+                                {{materials.futureYear1Qty}}
+                            </td>
+                            <td class="text-center" *ngIf="!warning">
+                                {{materials.futureYear2Qty}}
+                            </td>
+                            <td class="text-center" *ngIf="!warning">
+                                {{materials.futureYear3Qty}}
+                            </td>
+                            <td class="text-center">
+                                {{materials.commentt}}
+                            </td>
+                            <!-- <td>
+                                <div class="module-button icon" *ngIf="!materials.editable && !warning">
+                                    <button type="button" class="btn btn-light "
+                                        (click)="editmaterial(materials, materials.supplier)"></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_edit"></i>
+                                    </div>
+                                </div>
+                                <div class="module-button icon" (click)="save(materials)" *ngIf="materials.editable">
+                                    <button type="button" class="btn btn-secondary "></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_save"></i>
+                                    </div>
+                                </div>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer class="footer"></app-footer>
+</body>

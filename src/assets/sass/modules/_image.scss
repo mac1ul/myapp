@@ -1,0 +1,44 @@
+.module-image {
+	@include module-name('Image');
+
+	&.offgrid {
+		.description-text {
+			@media #{$media-to-sm}{
+				padding-left: $spacing-atomic-tiny;
+				padding-right: $spacing-atomic-tiny;
+			}
+		}
+	}
+
+	img {
+		display: block;
+		width: 100%;
+
+		&.lazyload,
+    &.lazyloaded {
+			opacity: 1;
+			transition: opacity .3s ease-in-out, visibility .3s ease-in-out
+		}
+		&.lazyloading {
+			opacity: .4;
+			transition: opacity .3s, visibility .3s ease-in-out
+		}
+
+
+	}
+
+	.description-text {
+		color: var(--color-mine-shaft);
+		padding: rem(10) 0 rem(10);
+		margin-bottom: 0;
+	}
+}
+
+//Helper Class for OFF Grid Elements to get Padding in Module
+.off-grid-padding {
+	@media #{$media-to-sm}{
+		padding-left: $spacing-atomic-tiny;
+		padding-right: $spacing-atomic-tiny;
+	}
+}
+

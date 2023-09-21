@@ -1,0 +1,132 @@
+.module-zoom {
+	@include module-name('Zoom');
+
+	$thumbnail-grid: 16px;
+
+	.zoom-btn {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+
+		@media #{$media-to-sm} {
+			visibility: hidden;
+		}
+	}
+
+	&.has-gallery {
+		.zoom-preview {
+			.module-image {
+				display: none;
+				width: auto;
+
+				&.tns-item,
+				&:first-child {
+					display: block;
+				}
+			}
+		}
+
+		.image-container {
+			height: 0;
+			padding-bottom: 100%;
+			position: relative;
+			overflow: hidden;
+
+			&[data-aspect-ratio="16:9"] {
+				background-color: var(--color-white);
+				padding-bottom: 56.25%;
+
+				.module-image {
+					img {
+						height: 100%;
+						width: auto;
+					}
+				}
+			}
+
+			.module-image {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+
+				img {
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					max-height: 100%;
+					max-width: 100%;
+					width: 100%;
+					height: auto;
+					opacity: 1;
+
+					&.portrait {
+						width: auto;
+						height: 100%;
+					}
+				}
+			}
+		}
+
+		.tns-outer {
+			overflow: hidden;
+		}
+	}
+
+	.zoom-preview {
+		cursor: pointer;
+		position: relative;
+		border: 1px solid var(--color-heather);
+	}
+
+	.zoom-thumbnails {
+		display: flex;
+		flex-flow: row wrap;
+		margin-top: 22px;
+		margin-left: -$thumbnail-grid;
+		margin-right: -$thumbnail-grid;
+
+		&[data-aspect-ratio="16:9"] {
+			.zoom-thumbnail {
+				height: 38px;
+				width: auto;
+
+				img {
+					left: auto;
+					height: 100%;
+					position: relative;
+					top: auto;
+					transform: unset;
+					width: auto;
+				}
+			}
+		}
+
+		.zoom-thumbnail {
+			border: 1px solid var(--color-black-haze);;
+			cursor: pointer;
+			margin-left: $thumbnail-grid;
+			margin-right: $thumbnail-grid;
+			margin-bottom: $thumbnail-grid;
+			width: 68px;
+			height: 68px;
+			transition: border-color .17s ease-in-out;
+			position: relative;
+			overflow: hidden;
+
+			img {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				max-height: 100%;
+				max-width: 100%;
+				width: auto;
+			}
+
+			&.tns-nav-active {
+				border-color: var(--color-prussian-blue);
+			}
+		}
+	}
+}

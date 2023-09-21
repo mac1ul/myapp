@@ -1,0 +1,94 @@
+.module-image-zoom {
+	position: relative;
+	border: 1px solid black;
+	overflow: hidden;
+	max-height: 100%;
+	max-width: 100%;
+
+	.zoom-wrapper {
+		position: relative;
+	}
+
+	.module-value-indicator {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		z-index: 1;
+
+		@media #{$media-to-sm} {
+			display: none;
+		}
+	}
+
+	.zoom-icon {
+		display: none;
+
+		@media #{$media-to-sm} {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: var(--color-white);
+			opacity: 0.5;
+
+			.icon {
+				font-size: 40px;
+			}
+		}
+	}
+
+	.zoom-message {
+		position: absolute;
+		display: none;
+		justify-content: center;
+		align-items: center;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background: var(--color-white);
+		opacity: 0;
+		pointer-events: none;
+		font-size: 26px;
+
+		@media #{$media-to-sm} {
+			display: flex;
+			animation: fadeout 3s forwards;
+			animation-delay: 3s;
+		}
+	}
+
+	@keyframes fadeout {
+		0% {
+			opacity: 0;
+		}
+
+		20%{
+			opacity: 0.5;
+		}
+
+		80% {
+			opacity: 0.5;
+		}
+
+		100% {
+			opacity: 0;
+		}
+	}
+
+	.module-image {
+		background: none;
+
+		img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.pinch-zoom {
+		cursor: grab;
+
+		&:active {
+			cursor: grabbing;
+		}
+	}
+}

@@ -1,0 +1,601 @@
+<!-- Navigation Tab for Administrator -->
+<app-admin-navigation></app-admin-navigation>
+
+<!-- DropDown for Filter -->
+<div class=" mt-5" style="margin: 20px; padding: 10px;">
+  <h1>Material Planning - Dashboard</h1>
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="module-dropdown">
+        <div class="input-animation-wrapper">
+          <label for="demo-dropdown-1"> Select Country *</label>
+          <select id="demo-dropdown-1" #countryname (change)="onchangecountry(countryname.value);search(countryname.value, 'partner')" (click)="onchangecountry(countryname.value);search(countryname.value, 'partner')" class="custom-select " name="demo-dropdown-1" data-bouncer-target="#demo-dropdown-1-error" required="required">
+            <option value="">--- Please select ---</option>
+            <option [value]="country.location" *ngFor = "let country of country">{{country.location}}</option>
+          </select>
+          <div class="input-animation"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="module-dropdown   ">
+        <div class="input-animation-wrapper">
+          <label for="demo-dropdown-1"> Select Solution Partner *</label>
+          <select id="demo-dropdown-1" #solutionname (change)="onchangepartner(solutionname.value);search(solutionname.value, 'partnerdetails')" (click)="onchangepartner(solutionname.value);search(solutionname.value, 'parohne anmeldungnerdetails')"  [(ngModel)]="set_table_value_SPartner" class="custom-select " name="demo-dropdown-1" data-bouncer-target="#demo-dropdown-1-error" required="required">
+            <option value="">--- Please select ---</option>
+            <option [value]="spname.solutionpartner_registered_id" *ngFor = "let spname of solution_partner">{{spname.partner_company_name}}</option>
+          </select>
+          <div class="input-animation"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="module-dropdown">
+        <div class="input-animation-wrapper">
+          <label for="demo-dropdown-1"> Select Project *</label>
+          <select id="demo-dropdown-1" #projectname (change)="onchangeproject(projectname.value); search(projectname.value, 'project')" (click)="onchangeproject(projectname.value); search(projectname.value, 'project')" [(ngModel)]="set_table_value_project" class="custom-select " name="demo-dropdown-1" data-bouncer-target="#demo-dropdown-1-error" required="required">
+            <option value="">--- Please select ---</option>
+            <option [value]="projectinfo.project_id" *ngFor = "let projectinfo of project">{{projectinfo.project_name}}</option>
+          </select>
+          <div class="input-animation"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="module-dropdown   ">
+        <div class="input-animation-wrapper">
+          <label for="demo-dropdown-1">Select Machine *</label>
+          <select id="demo-dropdown-1" #machiness class="custom-select " (change)="search(machiness.value, 'machine')" (click)="search(machiness.value, 'machine')" [(ngModel)]="set_table_value_machine" name="demo-dropdown-1" data-bouncer-target="#demo-dropdown-1-error" required="required">
+            <option   value="">--- Please select ---</option>
+            <option [value]="machineinfo.machine_id" *ngFor = "let machineinfo of machine">{{machineinfo.machine_name}}</option>
+          </select>
+          <div class="input-animation"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="demo-dropdown-1-error" class="error-message-wrapper"></div>
+  <div class="required-text">* Mandatory</div>
+</div>
+
+<!-- Material Planning for Table -->
+<div class="mt-5" style="margin: 20px; padding: 10px;">
+  <!-- Heading and Print PDF and Excel Button -->
+  <div class="row">
+    <div class="col-6">
+      <h1>Planning Table</h1>
+    </div>
+    <div class="col-6 text-right">
+      <!-- <div class="module-button mr-3">
+        <button type="button" class="btn btn-secondary " ></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="icon icon-dc_print"></i>
+        </div>
+      </div> -->
+      <div class="module-button ">
+        <button type="button" class="btn btn-secondary" (click)="exportElmToExcel()"></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="icon rb-document-xls"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div><br>
+    <h2 *ngIf = "showhideerrmsg">{{showerrmessage}}</h2>
+    <!-- List of partners -->
+    <div class="page-wrapper module-table table-responsive" *ngIf = "showpartnerdetails">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Company Name</th>
+            <th class="text-center">First Name</th>
+            <th class="text-center">Last Name</th>
+            <th class="text-center">Contact Details</th>
+          </tr>
+        </thead>
+        <tbody *ngFor = "let pd of showProducts; let i=index">
+          <tr>
+            <td class="text-center">{{i+1}}</td>
+            <!-- <td class="text-center highlight" style="font-weight: bold; cursor: pointer" (click)="search(pd.solutionpartner_registered_id, 'partnerdetails')">{{pd.partner_company_name}}</td> -->
+            <td class="text-center highlight" (click)="search(pd.solutionpartner_registered_id, 'partnerdetails')">{{pd.partner_company_name}}</td>
+            <td class="text-center">{{pd.first_name}}</td>
+            <td class="text-center">{{pd.last_name}}</td>
+            <td class="text-center">{{pd.partner_email_address}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- End -->
+    <!-- Table 1 for When Select Solution Partner  -->
+    <div class="page-wrapper module-table table-responsive" *ngIf = "showpartner">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Partner Name</th>
+            <th class="text-center" >Project Name</th>
+            <th class="text-center">Project Number</th>
+            <th class="text-center">Machine Name</th>
+            <th class="text-center">Machine Phase</th>
+            <th class="text-center">Industry Sector</th>
+            <th class="text-center">Application</th>
+            <th class="text-center">Part Number</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Product Family</th>
+            <th class="text-center">Material Status</th>
+            <th class="text-center">Materiay Qty</th>
+            <th class="text-center"> 2019</th>
+            <th class="text-center"> 2020</th>
+            <th class="text-center"> 2021</th>
+            <th class="text-center">Actual 2022</th>
+            <th class="text-center">Plan 2023</th>
+            <th class="text-center">Plan 2024</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let pd of showProducts; let i=index">
+            <td class="text-center">{{pd.partner_company_name}}</td>
+            <td class="text-center highlight" (click)="search(pd.project_id, 'project')">{{pd.project_name}}</td>
+            <td class="text-center">{{pd.project_number}}</td>
+            <td class="text-center">{{pd.machine_name}}</td>
+            <td class="text-center">{{pd.machine_phase}}</td>
+            <td class="text-center">{{pd.industry_sector}}</td>
+            <td class="text-center">{{pd.application}}</td>
+            <td class="text-center">{{pd.part_number}}</td>
+            <td class="text-center">{{pd.description}}</td>
+            <td class="text-center">{{pd.product_family}}</td>
+            <td class="text-center">{{pd.material_phase}}</td>
+            <td class="text-center">{{pd.qtypermachine}}</td>
+            <td class="text-center">{{pd.actual2019}}</td>
+            <td class="text-center">{{pd.actual2020}}</td>
+            <td class="text-center">{{pd.actual2021}}</td>
+            <td class="text-center">{{pd.actual2022}}</td>
+            <td class="text-center">{{pd.actual2023}}</td>
+            <td class="text-center">{{pd.actual2024}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div>
+    <!-- Table 2 for When Select Project / OEM Customer  -->
+    <div class="page-wrapper module-table table-responsive" *ngIf = "showproject">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Solution Partner Name</th>
+            <th class="text-center">Project Title</th>
+            <th class="text-center">Project Number</th>
+            <th class="text-center">Machine List</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Machine Phase</th>
+            <th class="text-center">Industry Sector</th>
+            <th class="text-center">Application</th>
+            <th class="text-center">Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of showProducts">
+            <td class="text-center">{{i.partner_company_name}}</td>
+            <td class="text-center">{{i.project_name}}</td>
+            <td class="text-center">{{i.project_number}}</td>
+            <td class="text-center highlight" (click)="search(i.machine_id, 'machine')">{{i.machine_name}}</td>
+            <td class="text-center">{{i.machine_description}}</td>
+            <td class="text-center">{{i.machine_phase}}</td>
+            <td class="text-center">{{i.industry_sector}}</td>
+            <td class="text-center">{{i.application}}</td>
+            <td class="text-center">{{i.location}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination Starts -->
+    <!-- <div class="module-pagination module-block" data-plugin="modulePagination">
+      <div class="paging-container">
+        <div class="results-per-page">
+          <p class="paging-title">Results per page:</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">10</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">25</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">50</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">ALL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="paging">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">1</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">2</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">3</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">4</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="paging mobile">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-input-small">
+              <div class="input-animation-wrapper">
+                <input type="number" id="page-number" name="page" class="form-control form-control-sm" value="1">
+                <div class="input-animation"></div>
+              </div>
+            </div>
+            <div class="available-pages">
+              <span class="separator">/</span>
+              <span class="max-pages">555</span>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div *ngIf = "showmachine">
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">
+            <p><strong>Country:</strong></p>
+            <p><strong>Solution Partner:</strong></p>
+            <p><strong>Project Title:</strong></p>
+            <p><strong>Machine Model:</strong></p>
+          </div>
+          <div class="col-6">
+            <p>{{location}}</p>
+            <p>{{partner_company_name}}</p>
+            <p>{{project_name}}</p>
+            <p>{{machine_name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">
+            <p><strong>Description:</strong></p>
+            <p><strong>Machine Phase:</strong></p>
+            <p><strong>Industry Sector:</strong></p>
+            <p><strong>Application:</strong></p>
+          </div>
+          <div class="col-6">
+            <p>{{machine_description}}</p>
+            <p>{{machine_phase}}</p>
+            <p>{{industry_sector}}</p>
+            <p>{{application}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Table 3 for When Select Machine  -->
+    <div class="page-wrapper module-table table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Machine List</th>
+            <th class="text-center">Part Nr.</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Qty / Machine</th>
+            <th class="text-center">Actual 2019</th>
+            <th class="text-center">Actual 2020</th>
+            <th class="text-center">Plan 2021</th>
+            <th class="text-center">Plan 2022</th>
+            <th class="text-center">Plan 2023</th>
+            <th class="text-center">Plan 2024</th>
+            <th class="text-center">Product Family</th>
+            <th class="text-center">Delivery Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of showProducts">
+            <td>{{i.machine_name}}</td>
+            <td>{{i.part_number}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.material_phase}}</td>
+            <td>{{i.qtypermachine}}</td>
+            <td>{{i. actual2019}}</td>
+            <td>{{i. actual2020}}</td>
+            <td>{{i. actual2021}}</td>
+            <td>{{i. actual2022}}</td>
+            <td>{{i. actual2023}}</td>
+            <td>{{i. actual2024}}</td>
+            <td>{{i.product_family}}</td>
+            <td>{{i.quick_delivery_time}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination Starts -->
+    <!-- <div class="module-pagination module-block" data-plugin="modulePagination">
+      <div class="paging-container">
+        <div class="results-per-page">
+          <p class="paging-title">Results per page:</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">10</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">25</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">50</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">ALL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="paging">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">1</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">2</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">3</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">4</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="paging mobile">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-input-small">
+              <div class="input-animation-wrapper">
+                <input type="number" id="page-number" name="page" class="form-control form-control-sm" value="1">
+                <div class="input-animation"></div>
+              </div>
+            </div>
+            <div class="available-pages">
+              <span class="separator">/</span>
+              <span class="max-pages">555</span>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!-- Pagination Starts -->
+  <div class="module-pagination module-block" data-plugin="modulePagination" *ngIf = "showpagination">
+    <div class="paging-container">
+      <div class="results-per-page">
+        <p class="paging-title">Results per page:</p>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="module-button " (click)="onChangeRowsPerPage(10)">
+            <a class="btn btn-light btn-sm "></a>
+            <div class="button-animation"></div>
+            <div class="button-content" [ngClass]="{'active-class': rowsPerPage==10}">
+              <span class="content-text">10</span>
+            </div>
+          </div>
+          <div class="module-button " (click)="onChangeRowsPerPage(15)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" [ngClass]="{'active-class': rowsPerPage==15}">
+              <span class="content-text">15</span>
+            </div>
+          </div>
+          <div class="module-button " (click)="onChangeRowsPerPage(20)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" [ngClass]="{'active-class': rowsPerPage==20}">
+              <span class="content-text">20</span>
+            </div>
+          </div>
+          <!-- <div class="module-button " (click)="onChangeRowsPerPage(100)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" [ngClass]="{'active-class': rowsPerPage==100}">
+              <span class="content-text">ALL</span>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="paging">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="module-button " *ngIf="actualPage !== 1" (click)="onPageChange(actualPage-1)">
+            <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_backward_left"></i>
+            </div>
+          </div>
+          <div class="module-button " *ngIf="actualPage-1>0" (click)="onPageChange(actualPage-1)">
+            <a class="btn btn-light btn-sm "></a>
+            <div class="button-animation"></div>
+            <div class="button-content" style="background-color: white; color: black; border: black;">
+              <span class="content-text">{{actualPage-1}}</span>
+            </div>
+          </div>
+          <div class="module-button " (click)="onPageChange(actualPage)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content active-class">
+              <span class="content-text ">{{actualPage}}</span>
+            </div>
+          </div>
+          <div class="module-button hide-mobile" *ngIf="endPaging>=2 && actualPage+1<=endPaging"
+            (click)="onPageChange(actualPage+1)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">{{actualPage+1}}</span>
+            </div>
+          </div>
+          <div class="module-button hide-mobile" *ngIf="actualPage-1==0 && endPaging>2"
+            (click)="onPageChange(actualPage+2)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">{{actualPage+2}}</span>
+            </div>
+          </div>
+          <div class="module-button" *ngIf="endPaging>=5">
+            <button type="button" class="btn btn-light btn-sm btn-ghost dots" (click)="prevnext()"></button>
+            <div class="button-content">
+              <i class="icon icon-dc_options"></i>
+            </div>
+          </div>
+          <!-- option end -->
+
+          <div class="module-button " *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging"
+            (click)="onPageChange(endPaging)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">{{endPaging}}</span>
+            </div>
+          </div>
+          <div class="module-button " *ngIf="actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">
+            <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_forward_right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End -->
+</div>
+
+<!-- Footer Tab for Administrator  -->
+<app-footer></app-footer>

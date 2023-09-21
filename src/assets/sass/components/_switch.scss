@@ -1,0 +1,76 @@
+.component-switch {
+	label {
+		display: inline-block;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+
+		i {
+			position: relative;
+			display: inline-block;
+			width: 45px;
+			height: 20px;
+			background-color: var(--color-dusty-gray);
+			border-radius: 10px;
+			vertical-align: text-bottom;
+			transition: all 0.3s linear;
+
+			&:after {
+				content: "";
+				position: absolute;
+				left: 1px;
+				top: 1px;
+				width: 18px;
+				height: 18px;
+				background-color: var(--color-white);
+				border-radius: 50%;
+				transition: all 0.2s ease-in-out;
+			}
+		}
+
+		&:active {
+			input {
+
+				&:checked {
+
+					i {
+						&:after {
+							left: 26px;
+						}
+					}
+				}
+			}
+		}
+
+		input {
+			display: none;
+
+			&:checked {
+				+ i {
+					background: var(--color-aqua);
+
+					&:after {
+						left: 26px;
+					}
+				}
+			}
+
+			&:disabled {
+
+				&:checked {
+					+ i {
+						background: #BFF2FF;
+					}
+				}
+
+				+ i {
+					background: var(--color-black-haze);
+				}
+			}
+		}
+		
+		&.disabled {
+			cursor: default;
+		}
+
+	}
+}

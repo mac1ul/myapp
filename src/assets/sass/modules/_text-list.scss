@@ -1,0 +1,106 @@
+//@include module-name('Enumeration');
+
+ul.text-list {
+	padding-left: rem(16);
+
+	li.text-list-item {
+		list-style: square;
+		margin-bottom: $spacing-tiny;
+		padding-left: 13px;
+	}
+}
+
+ol {
+	&.text-list {
+		counter-reset: i;
+		padding-left: 0;
+		position: relative;
+
+		li.text-list-item {
+			display: flex;
+			list-style: none;
+			margin-bottom: $spacing-tiny;
+			padding-left: 29px;
+
+			&:before {
+				content: counter(i) '. ';
+				counter-increment: i;
+				font-weight: bold;
+				margin-right: 4px;
+				position: absolute;
+				left: 0;
+			}
+		}
+	}
+
+	&.numbered-list-big {
+		li {
+			@extend .line-spacing-big;
+
+			&.text-list-item {
+				margin-bottom: rem(30);
+				padding-left: 0;
+
+				&:before {
+					@extend .hsuperbig;
+
+					font-weight: 900;
+					left: auto;
+					margin-bottom: 0;
+					margin-right: rem(30);
+					position: relative;
+				}
+			}
+		}
+	}
+}
+
+.link-list {
+	padding-left: 0;
+
+	li.link-list-item {
+		@include icon($icon-dc_forward_right);
+		display: flex;
+		align-items: center;
+		list-style: none;
+		margin-bottom: $spacing-small;
+
+		&:before {
+			font-size: 24px;
+			color: var(--color-aqua);
+			margin-right: 9px;
+			transition: color $transition-duration;
+		}
+
+		&:hover {
+			&:before {
+				color: var(--color-cerulian);
+			}
+		}
+	}
+}
+
+.vertical-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+
+	li {
+		width: calc(100% / 3);
+
+		@media #{$media-to-md} {
+			width: 50%;
+		}
+
+		@media #{$media-to-sm} {
+			width: 100%;
+		}
+
+	}
+}
+
+.list-header {
+	padding-top: 1.875rem;
+}

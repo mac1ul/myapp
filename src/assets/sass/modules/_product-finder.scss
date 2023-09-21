@@ -1,0 +1,267 @@
+.module-product-finder {
+	margin-bottom: $spacing-offset;
+
+	@media #{$media-to-lg} {
+		margin-bottom: $spacing-largest;
+	}
+
+	// @TODO Find a better name, since "small" refers to not having select and auto complete together.
+	&.module-product-finder-small {
+		margin-top: 25px;
+		margin-bottom: 60px;
+
+		@media #{$media-to-lg} {
+			margin-bottom: 30px;
+		}
+
+		.visibility-hidden {
+			visibility: hidden;
+		}
+
+		.finder-headline {
+			margin-bottom: 10px;
+		}
+
+		.finder-box {
+			padding: 13px 100px 20px;
+			display: block;
+
+			@media #{$media-to-md} {
+				padding: 13px 30px 20px;
+			}
+
+			@media #{$media-to-sm} {
+				padding: 13px 20px 20px;
+			}
+
+			form {
+				padding: 0;
+				border: none;
+			}
+
+			.search-wrapper {
+				display: flex;
+				position: relative;
+			}
+
+			.form-category {
+				display: flex;
+
+				@media #{$media-to-md} {
+					flex-wrap: wrap;
+
+					.module-button {
+						width: 100%;
+						text-align: center;
+					}
+				}
+
+				.select-wrapper {
+					display: flex;
+					flex-grow: 1;
+
+					.select-item {
+						flex: 50%;
+						margin-right: 30px;
+
+						&:last-of-type {
+							margin-right: 0;
+						}
+					}
+
+					@media #{$media-to-md} {
+						flex-wrap: wrap;
+
+						p {
+							display: none;
+						}
+
+						.select-item {
+							flex: auto;
+							margin-bottom: 20px;
+							margin-right: 0;
+							width: 100%;
+						}
+					}
+				}
+
+				.category-element {
+					& > div {
+						margin-left: 30px;
+					}
+
+					@media #{$media-to-md} {
+						width: 100%;
+						margin-bottom: 30px;
+
+						& > div {
+							margin-left: 0;
+						}
+
+
+						p {
+							display: none;
+						}
+					}
+
+					&:last-of-type {
+						align-self: flex-end;
+
+						@media #{$media-to-md} {
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+
+			.form-keyword {
+				margin-top: 0;
+
+				@media #{$media-to-md} {
+
+					p {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	&.product-search {
+		color: var(--color-prussian-blue);
+
+		.finder-box {
+			padding: 50px 200px 60px;
+
+			@media #{$media-to-lg} {
+				padding: 30px 64px 40px;
+			}
+
+			@media #{$media-to-md} {
+				padding: 30px 20px 40px;
+			}
+		}
+
+		.form-keyword {
+			padding: 0;
+			margin: 0; 
+		}
+
+		.search-wrapper {
+			width: 100%;
+		}
+	}
+
+	.product-finder-headline {
+		text-align: center;
+		margin-bottom: 40px;
+	}
+
+	.finder-box {
+		display: flex;
+		background: var(--color-smalt-blue);
+		padding: 60px 100px 80px;
+		position: relative;
+
+		@media #{$media-to-lg} {
+			padding: 48px 32px 50px;
+		}
+
+		@media #{$media-to-md} {
+			flex-wrap: wrap;
+			padding: 40px 20px 50px;
+		}
+
+		.form-category,
+		.form-keyword {
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex-basis: 0;
+
+			@media #{$media-to-md} {
+				flex: 100%;
+			}
+		}
+	}
+
+	.form-category {
+		padding-right: 85px;
+
+		@media #{$media-to-lg} {
+			padding-right: 32px;
+		}
+
+		@media #{$media-to-md} {
+			padding: 0;
+			padding-bottom: 40px;
+			border-bottom: 1px solid var(--color-bali-hai);
+		}
+
+		.no-margin {
+			margin-bottom: 0;
+		}
+	}
+
+	.form-keyword {
+		padding-left: 85px;
+
+		.module-input {
+			width: 100%;
+			margin-bottom: 0;
+		}
+
+		.module-button {
+			flex-shrink: 0;
+			z-index: 10;
+
+			button[type=submit] {
+				&.active ~ .button-content {
+					color: var(--color-prussian-blue);
+				}
+			}
+		}
+
+		@media #{$media-to-lg} {
+			padding-left: 32px;
+		}
+
+		@media #{$media-to-md} {
+			margin-top: 40px;
+			padding: 0;
+		}
+
+		.module-input:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	.split-line {
+		position: absolute;
+		width: 1px;
+		background: var(--color-bali-hai);
+		left: 50%;
+		top: 60px;
+		bottom: 40px;
+
+		@media #{$media-to-md} {
+			display: none;
+		}
+	}
+
+	p {
+		color: var(--color-white);
+	}
+
+	.default-hidden {
+		display: none;
+	}
+
+	form {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+.autocomplete-suggestions.product-autocomplete {
+	padding: 0;
+}

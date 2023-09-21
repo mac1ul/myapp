@@ -1,0 +1,155 @@
+<body>
+    <app-navigation></app-navigation>
+    <div class="page-wrapper container-fluid start mt-5">
+        <div class="row">
+            <div class="col-12">
+                <form [formGroup]="RequestForm" (ngSubmit)="SendContactForm()">
+                    <div>
+                        <h1 class="maintitle">Request Access to SPM</h1>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                    <label for="demo-default-input-1"> First Name * </label>
+                                    <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-1" class="form-control"
+                                            placeholder="Enter first name" name="demo-default-input-1"
+                                            data-bouncer-target="#demo-default-input-1-error" required="required"
+                                            formControlName="first_name" />
+                                        <p *ngIf="RequestForm.get('first_name').touched && RequestForm.get('first_name').invalid"
+                                            class="danger">Please enter first name.</p>
+                                        <div class="input-animation"></div>
+                                    </div>
+                                    <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                    <label for="demo-default-input-2"> Last Name * </label>
+                                    <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-2" class="form-control"
+                                            placeholder="Enter last name" name="demo-default-input-2"
+                                            data-bouncer-target="#demo-default-input-2-error" required="required"
+                                            formControlName="last_name" />
+                                        <p *ngIf="RequestForm.get('last_name').touched && RequestForm.get('last_name').invalid"
+                                            class="danger">Please enter last name.</p>
+                                        <div class="input-animation"></div>
+                                    </div>
+                                    <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                    <label for="demo-default-input-3"> E-Mail * </label>
+                                    <div class="input-animation-wrapper">
+                                        <input type="email" id="demo-default-input-3" class="form-control"
+                                            placeholder="Enter company email address" name="demo-default-input-3"
+                                            data-bouncer-target="#demo-email-input-error" required="required"
+                                            formControlName="email" />
+                                        <p *ngIf="RequestForm.get('email').touched && RequestForm.get('email').invalid"
+                                            class="danger">Please enter email address.</p>
+                                        <div class="input-animation"></div>
+                                    </div>
+                                    <div id="demo-default-input-3-error" class="error-message-wrapper"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                    <label for="demo-default-input-7"> Company Name * </label>
+                                    <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-7" class="form-control"
+                                            placeholder="Enter company name" name="demo-default-input-7"
+                                            data-bouncer-target="#demo-default-input-7-error" required="required"
+                                            formControlName="company_name" />
+                                        <p *ngIf="RequestForm.get('company_name').touched && RequestForm.get('company_name').invalid"
+                                            class="danger">Please enter company name.</p>
+                                        <div class="input-animation"></div>
+                                    </div>
+                                    <div id="demo-default-input-7-error" class="error-message-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                    <label for="demo-default-input-6"> City *</label>
+                                    <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-6" class="form-control" value=""
+                                            placeholder="Enter City" name="demo-default-input-6"
+                                            data-bouncer-target="#demo-default-input-6-error" required="required"
+                                            minlength="2" maxlength="24" formControlName="city" />
+                                        <p *ngIf="RequestForm.get('city').touched && RequestForm.get('city').invalid"
+                                            class="danger">Please enter city name.</p>
+                                        <div class="input-animation"></div>
+                                    </div>
+                                    <div id="demo-default-input-6-error" class="error-message-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                    <label for="demo-default-input-7"> Country * </label>
+                                    <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-7" class="form-control"
+                                            placeholder="Enter city" name="demo-default-input-7"
+                                            data-bouncer-target="#demo-default-input-7-error" required="required"
+                                            formControlName="country" />
+                                        <p *ngIf="RequestForm.get('country').touched && RequestForm.get('country').invalid"
+                                            class="danger">Please select country.</p>
+                                        <div class="input-animation"></div>
+                                    </div>
+                                    <div id="demo-default-input-7-error" class="error-message-wrapper"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="module-textarea form-group floating-label max-length"
+                                    data-plugin="moduleInput">
+                                    <label for="demo-textarea-4"> </label>
+                                    <div class="input-animation-wrapper">
+                                        <textarea id="demo-textarea-4" class="form-control" name="demo-textarea-4"
+                                            placeholder="Description *" data-bouncer-target="#demo-textarea-4-error"
+                                            required="required" formControlName="description"></textarea>
+                                        <p *ngIf="RequestForm.get('description').touched && RequestForm.get('description').invalid"
+                                            class="danger" style="background-color: white;">Please enter description.
+                                        </p>
+                                        <div class="label-area"></div>
+                                        <div class="input-animation"></div>
+                                    </div>
+                                    <div class="remaining-characters" data-text=" characters left"> </div>
+                                    <div id="demo-textarea-4-error" class="error-message-wrapper"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2">
+                                <span class="mandatory-info">* Mandatory</span>
+                            </div>
+                            <div class="col-6"></div>
+                            <div class="col-4 text-right">
+                                <div class="module-button mr-3">
+                                    <button type="button" class="btn btn-primary" (click)="resetFormdata()"></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <span class="content-text">Reset</span>
+                                    </div>
+                                </div>
+                                <div class="module-button">
+                                    <button type="submit" class="btn btn-secondary"></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <span class="content-text">Send</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <app-footer class=".footer"></app-footer>
+</body>

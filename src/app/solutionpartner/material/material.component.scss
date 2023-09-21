@@ -1,0 +1,183 @@
+.setview{
+    margin: 15px;
+    padding: 10px;
+    margin-bottom:30px;
+}
+// .selectedRow {
+//     background-color: skyblue;
+// }
+.breadcrumb{
+    margin: 15px;
+    padding: 10px;
+}
+.button{
+    margin-bottom: 15px;
+}
+
+table tr th{
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+table tr td{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.icon{
+    margin-right: 5px;
+}
+
+.mainlabel{
+    margin-bottom: 0;
+}
+
+.data .top{
+    // border: 1px solid black;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: .25rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    border: 0;
+}
+
+.head{
+    background-color: #00CCFF;
+    color: white;
+    text-align: center;
+    padding: 3px;
+}
+
+.mqty{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 0;
+}
+.inlinetitle{
+    color: black;
+}
+
+.fasttrack{
+    margin-right: 10px;
+}
+.materialbutton{
+    margin-left: auto;
+    text-align: right;
+    // margin-left: 151px;
+    padding-right: 0;
+}
+
+.xng-breadcrumb-trail {
+    align-items: center;
+    /* color: rgba(0,0,0,.9); */
+    color: gray!important;
+    display: flex;
+    margin-bottom: 0!important;
+}
+.yes{
+    background-color: green; border: none; outline: none; margin-right: 10px;
+}
+
+.no{
+    background-color: red; border: none; outline: none; margin-right: 10px;
+}
+
+.warning{
+    border: 3px solid red!important;
+}
+
+.nowarning{
+    border: 3px solid green!important;
+}
+
+.mainnn .bodyyy {
+    top: 55%;
+    width: auto;
+    max-width: 95%;
+    max-height: 100%;
+    margin: 0 auto;
+    // box-shadow: 0 10px 20px 0 #c0ced8;
+    // box-shadow: 0 10px 20px 0 var(--color-heather);
+    transition: transform 250ms;
+}
+
+.danger{
+    color: red;
+    background-color: white;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid #BD001E;
+}
+
+.form-control.ng-touched.ng-valid{
+    border: 2px solid #528236;
+}
+
+.pn{
+    height: 47px;
+    width: 100%;
+    margin-right: 20px;
+    // background-color: white;
+    outline: none;
+}
+
+.iconheader{
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 30px;
+}
+
+.iconheadertext{
+    margin-left: 12px;
+    font-size: 30px;
+}
+
+.btn{
+    cursor: pointer;
+}
+
+.deletemodel .deletemodeldialog{
+    top: 50%;
+    width: auto;
+    max-width: 560px;
+    max-height: 100%;
+    margin: 0 auto;
+    // box-shadow: 0 10px 20px 0 #c0ced8;
+    // box-shadow: 0 10px 20px 0 var(--color-heather);
+    transition: transform 250ms;
+}
+
+.tableheader {
+  display: flex;
+  align-items: center;
+}
+
+.maintitle {
+  font-size: 1.70rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.stepnumber{
+  display: inline-block;
+  width: 30px; /* Adjust the width and height as needed */
+  height: 30px;
+  border-radius: 50%;
+  background-color: gray; /* Replace with your desired background color */
+  color: black; /* Replace with your desired text color */
+  text-align: center;
+  line-height: 30px;
+  align-items: center;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.component-file-selector.show-file-name .file-selector-wrapper .file-name-container {
+    max-width: 100px;
+    min-width: 0px;
+    font-size: 1rem;}

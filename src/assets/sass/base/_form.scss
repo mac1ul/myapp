@@ -1,0 +1,7 @@
+// @link https://blog.maximerouiller.com/post/remove-the-x-from-internet-explorer-and-chrome-input-type-search/
+input[type=search]::-ms-clear,
+input[type=search]::-ms-reveal {
+	display: none;
+	width : 0;
+	height: 0;
+}

@@ -1,0 +1,315 @@
+<app-spheader></app-spheader>
+<!-- DropDown for Filter -->
+<div class="mt-5" style="margin: 10px; padding: 15px; user-select: none;">
+  <h2 class="maintitle">Material Planning</h2>
+  <div class="row">
+    <div class="col-3">
+      <div class="module-dropdown">
+        <div class="input-animation-wrapper">
+          <label for="demo-dropdown-1"> Customer Name *</label>
+          <select id="demo-dropdown-1" #project (change)="onchangeproject(project.value);search(project.value, 'project')" (click)="search(project.value, 'project')" class="custom-select " name="demo-dropdown-1" data-bouncer-target="#demo-dropdown-1-error" required="required">
+            <!-- <option disabled selected  [value]="selectboxdefault">--- {{selectboxdefault}} ---</option> -->
+            <option  [value]="selectboxdefault" disabled selected>--- {{selectboxdefault}} ---</option>
+            <option *ngFor="let i of getproject" [value]="i.project_id">
+              {{i.project_name}}</option>
+          </select>
+          <div class="input-animation"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="module-dropdown">
+        <div class="input-animation-wrapper">
+          <label for="demo-dropdown-2">Select Machine *</label>
+          <select id="demo-dropdown-2" #machine (change) = "search(machine.value, 'machine')" (click) = "search(machine.value, 'machine')" [(ngModel)]="set_table_value_project" class="custom-select " name="demo-dropdown-2" data-bouncer-target="#demo-dropdown-2-error" required="required">
+            <!-- <option  [value]="selectboxdefault" selected disabled>--- {{selectboxdefault}} ---</option> -->
+            <option selected disabled value="Please select">--- Please select ---</option>
+            <option value = "all">ALL</option>
+            <option *ngFor="let i of getmachine" [value]="i.machine_id">
+              {{i.machine_name}}</option>
+          </select>
+          <div class="input-animation"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+    <div class="col-3">
+      <div class="module-checkbox custom-control custom-checkbox" style=" padding: 15px;">
+        <input type="checkbox" #checkbox
+               id="custom-check-1"
+               name="custom-check-1"
+               class="custom-control-input" [checked]="toggleBool" (change)="changeEvent(checkbox.checked, machine.value, project.value)">
+        <label class="custom-control-label"
+             for="custom-check-1">
+          Critical Delivery Times
+        </label>
+      </div>
+    </div>
+  </div>
+  <div id="demo-dropdown-1-error" class="error-message-wrapper"></div>
+  <div class="required-text">* Mandatory</div>
+</div>
+<!-- Material Planning for Table -->
+<div class="mt-5" style="margin: 10px; padding: 15px; user-select: none;">
+  <!-- Heading and Print PDF and Excel Button -->
+  <div class="row">
+    <div class="col-6">
+      <h2>Planning Table</h2>
+    </div>
+    <div class="col-6 text-right">
+      <div class="module-button mr-3">
+        <button type="button" class="btn btn-secondary " (click)="exportElmToExcel()"></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="iconheader rb-document-xls"></i>
+        </div>
+      </div>
+      <!-- <div class="module-button ">
+        <button type="button" class="btn btn-secondary" printSectionId="pdfTable"
+        ngxPrint
+         ></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="iconheader rb-print"></i>
+        </div>
+      </div> -->
+    </div>
+  </div><br>
+  <div *ngIf = "!showproject && !checkNullValue" id="pdfTable" #pdfTable>
+    <!-- Table 1 for When Select Solution Partner  -->
+    <div class="page-wrapper module-table table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Solution Partner Name</th>
+            <th class="text-center">Customer Title</th>
+            <th class="text-center">Customer Number</th>
+            <th class="text-center">Machine Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Machine Status</th>
+            <th class="text-center">Industry Sector</th>
+            <th class="text-center">Application</th>
+            <th class="text-center">Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of showProducts">
+            <td class="text-center">{{i.solution_partner_company_name}}</td>
+            <td class="text-center">{{i.project_name}}</td>
+            <td class="text-center">{{i.project_number}}</td>
+            <td class="text-center highlight" (click)="search(i.machine_id, 'machine')">{{i.machine_name}}</td>
+            <td class="text-center">{{i.machine_description}}</td>
+            <td class="text-center">{{i.machine_phase}}</td>
+            <td class="text-center">{{i.group1_name}}</td>
+            <td class="text-center">{{i.group3_name}}</td>
+            <td class="text-center">{{i.project_location}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-wrapper module-table table-responsive" *ngIf = "checkNullValue">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">Data is not found.</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div *ngIf = "showproject">
+    <div class="row" *ngIf="hideextraelement !== false">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-2">
+            <p><strong>Solution Partner:</strong></p>
+            <p><strong>Customer Name:</strong></p>
+            <p><strong>Location:</strong></p>
+            <p><strong>Machine Name:</strong></p>
+          </div>
+          <div class="col-4">
+            <p>{{partner_company_name}}</p>
+            <p>{{project_name}}</p>
+            <p>{{location}}</p>
+            <p>{{machine_name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-2">
+            <p><strong>Description:</strong></p>
+            <p><strong>Machine Status:</strong></p>
+            <p><strong>Industry Sector:</strong></p>
+            <p><strong>Application:</strong></p>
+          </div>
+          <div class="col-6">
+            <p>{{machine_description}}</p>
+            <p>{{machine_phase}}</p>
+            <p>{{industry_sector}}</p>
+            <p>{{application}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Table 3 for When Select Machine  -->
+    <div class="page-wrapper module-table table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Machine Name</th>
+            <th class="text-center">Part Nr.</th>
+            <th class="text-center">Typecode</th>
+            <th class="text-center">Product Family</th>
+            <th class="text-center">Delivery Time</th>
+            <th class="text-center">Material Status</th>
+            <th class="text-center">Qty / Machine</th>
+            <th class="text-center"> {{previousYear2}}</th>
+            <th class="text-center"> {{previousYear1}}</th>
+            <th class="text-center">{{currentYear}}</th>
+            <th class="text-center">{{futureYear1}}</th>
+            <th class="text-center">{{futureYear2}}</th>
+            <th class="text-center">{{futureYear3}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of showProducts">
+            <td class="text-center">{{i.machine_name}}</td>
+            <td class="text-center">{{i.part_number}}</td>
+            <td class="text-center">{{i.description}}</td>
+            <td class="text-center">{{i.product_family}}</td>
+            <td class="text-center" *ngIf = "i.quick_delivery_time == '0'">Not Found</td>
+            <td class="text-center" *ngIf = "i.quick_delivery_time != '0'">{{i.quick_delivery_time}}</td>
+            <td class="text-center" *ngIf = "i.material_phase === true">
+              <div class="module-button " (click)="checkms(i)">
+                <button type="button" class="btn btn-secondary btn-sm " ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">Check</span>
+                </div>
+              </div>
+            </td>
+            <td class="text-center" *ngIf = "i.material_phase !== true">{{i.material_phase}}</td>
+            <td class="text-center">{{i.qtypermachine}}</td>
+            <td class="text-center">{{i.previousYear2Qty}}</td>
+            <td class="text-center">{{i.previousYear1Qty}}</td>
+            <td class="text-center">{{i.currentYearQty}}</td>
+            <td class="text-center">{{i.futureYear1Qty}}</td>
+            <td class="text-center">{{i.futureYear2Qty}}</td>
+            <td class="text-center">{{i.futureYear3Qty}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+      <!-- Pagination Starts -->
+      <div class="module-pagination module-block" data-plugin="modulePagination" *ngIf = "recordcount && !checkNullValue">
+        <div class="paging-container">
+          <div class="results-per-page">
+            <p class="paging-title">Results per page:</p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <div class="module-button " (click)="onChangeRowsPerPage(10)">
+                <a class="btn btn-light btn-sm "></a>
+                <div class="button-animation"></div>
+                <div class="button-content" [ngClass]="{'active-class': rowsPerPage==10}">
+                  <span class="content-text">10</span>
+                </div>
+              </div>
+              <div class="module-button " (click)="onChangeRowsPerPage(15)">
+                <a class="btn btn-light btn-sm btn-ghost"></a>
+                <div class="button-animation"></div>
+                <div class="button-content" [ngClass]="{'active-class': rowsPerPage==15}">
+                  <span class="content-text">15</span>
+                </div>
+              </div>
+              <div class="module-button " (click)="onChangeRowsPerPage(20)">
+                <a class="btn btn-light btn-sm btn-ghost"></a>
+                <div class="button-animation"></div>
+                <div class="button-content" [ngClass]="{'active-class': rowsPerPage==20}">
+                  <span class="content-text">20</span>
+                </div>
+              </div>
+              <!-- <div class="module-button " (click)="onChangeRowsPerPage(100)">
+                <a class="btn btn-light btn-sm btn-ghost"></a>
+                <div class="button-animation"></div>
+                <div class="button-content" [ngClass]="{'active-class': rowsPerPage==100}">
+                  <span class="content-text">ALL</span>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="paging">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <div class="module-button " *ngIf="actualPage !== 1" (click)="onPageChange(actualPage-1)">
+                <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <i class="icon icon-dc_backward_left"></i>
+                </div>
+              </div>
+              <div class="module-button " *ngIf="actualPage-1>0" (click)="onPageChange(actualPage-1)">
+                <a class="btn btn-light btn-sm "></a>
+                <div class="button-animation"></div>
+                <div class="button-content" style="background-color: white; color: black; border: black;">
+                  <span class="content-text">{{actualPage-1}}</span>
+                </div>
+              </div>
+              <div class="module-button " (click)="onPageChange(actualPage)">
+                <a class="btn btn-light btn-sm btn-ghost"></a>
+                <div class="button-animation"></div>
+                <div class="button-content active-class">
+                  <span class="content-text ">{{actualPage}}</span>
+                </div>
+              </div>
+              <div class="module-button hide-mobile" *ngIf="endPaging>=2 && actualPage+1<=endPaging"
+                (click)="onPageChange(actualPage+1)">
+                <a class="btn btn-light btn-sm btn-ghost"></a>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">{{actualPage+1}}</span>
+                </div>
+              </div>
+              <div class="module-button hide-mobile" *ngIf="actualPage-1==0 && endPaging>2"
+                (click)="onPageChange(actualPage+2)">
+                <a class="btn btn-light btn-sm btn-ghost"></a>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">{{actualPage+2}}</span>
+                </div>
+              </div>
+              <!-- option -->
+              <div class="module-button" *ngIf="endPaging>=5">
+                <button type="button" class="btn btn-light btn-sm btn-ghost dots" (click)="prevnext()"></button>
+                <div class="button-content">
+                  <i class="icon icon-dc_options"></i>
+                </div>
+              </div>
+              <!-- option end -->
+
+
+              <div class="module-button " *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging"
+                (click)="onPageChange(endPaging)">
+                <a class="btn btn-light btn-sm btn-ghost"></a>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">{{endPaging}}</span>
+                </div>
+              </div>
+              <div class="module-button " *ngIf="actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">
+                <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <i class="icon icon-dc_forward_right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+</div>
+
+<!-- Footer Tab for Administrator  -->
+<app-footer></app-footer>

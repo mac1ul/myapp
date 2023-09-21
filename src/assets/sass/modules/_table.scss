@@ -1,0 +1,55 @@
+.module-table {
+	@include module-name('Table');
+    @include content-block();
+	position: relative;
+	background: var(--color-white);
+
+	//line-height: $line-height-text-s;
+
+	color: var(--color-prussian-blue);
+	font-size: $font-size-text-s;
+
+	.table {
+		margin-bottom: $spacing-default;
+	}
+
+	// Bootstrap selector.
+	.table th,
+	.table td {
+		min-width: 80px;
+		padding: $spacing-atomic-tiny $spacing-small;
+
+		@media (max-width: $screen-sm-min) {
+			white-space: nowrap;
+		}
+	}
+
+	// Bootstrap selector.
+	.table thead th {
+		border-color: var(--color-heather);
+		border-top-width: 3px;
+		border-bottom-width: 3px;
+		font-weight: 900;
+	}
+
+	.table-hover tr {
+		transition: background-color $transition-duration;
+	}
+
+	.highlight {
+		background-color: var(--color-catskill-white);
+	}
+
+	.light {
+		color: var(--color-smalt-blue);
+	}
+
+	.uppercase {
+		text-transform: uppercase;
+	}
+
+	.bold-uppercase {
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}

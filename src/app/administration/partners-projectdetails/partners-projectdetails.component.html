@@ -1,0 +1,78 @@
+<body>
+    <app-admin-navigation></app-admin-navigation>
+    <div class="setview">
+        <p> <span style="cursor: pointer;" (click)="onclickSales()">Country Unit List</span> > <span
+                style="cursor: pointer;" (click)="onclickPartner()">Solution Partner List</span> > <span
+                style="cursor: pointer; color: black; font-weight: bold;">Customer Details</span></p>
+        <div class="component-headline">
+            <h2>
+                Customer Information
+            </h2>
+            <div class="subline lead">
+                <div class="module-table table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="highlight text-center" colspan="5" style="background-color: #002B49; color:white">
+                                    {{partnerCompanyName}}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="highlight text-center" *ngIf="projectnumbercheck">
+                                    Message
+                                </th>
+                                <th class="highlight text-center" *ngIf="!projectnumbercheck">
+                                    ID
+                                </th>
+                                <th class="highlight text-center" *ngIf="!projectnumbercheck">
+                                    Customer NUMBER
+                                </th>
+                                <th class="text-center highlight" *ngIf="!projectnumbercheck">
+                                    Customer NAME
+                                </th>
+                                <th class="text-center highlight" *ngIf="!projectnumbercheck">
+                                    LOCATION
+                                </th>
+                                <th class="text-center highlight" *ngIf="!projectnumbercheck">
+                                    ACTIONS
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="projectnumbercheck">
+                                <td class="text-center">
+                                    <span>{{message}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngFor='let project of projectdata; let i = index;'>
+                                <td class="text-center">
+                                    <span>{{i+1}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span>{{project.project_number}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span>{{project.project_name}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span>{{project.project_location}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="module-button icon">
+                                        <button type="button" class="btn btn-secondary"
+                                            (click)="GoToMachine(project.project_id)"></button>
+                                        <div class="button-animation"></div>
+                                        <div class="button-content">
+                                            <i class="icon icon-dc_folder_open"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer class="footer"></app-footer>
+</body>

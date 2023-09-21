@@ -1,0 +1,133 @@
+<header class="module-header claim  lang-spacer" data-plugin="moduleHeader" data-event-bubbling-intercept="header.outsideClick">
+	<div class="fixed-container">
+		<div class="header-top">
+			<div class="module-button">
+				<button type="button" class="btn btn-navigation"></button>
+				<div class="button-content">
+					<span class="upper-line"></span>
+					<span class="middle-line"></span>
+					<span class="bottom-line"></span>
+				</div>
+			</div>
+			<div class="header-logo">
+				<a class="logo">
+					<!-- Image Template -->
+					<!-- indent-description is an optional Parameter for Large Images. The Description will be restricted to 10 Columns and centered under the Image -->
+					<!-- Important: Fallback Image inside srcset-Attribut needs to have the same aspect ratio as the Images in src and data-srcset -->
+					<div class="module-image  ">
+						<img class="lazyload"
+							 src="https://rb-mobileweb.de.bosch.com/2021/storage/rexroth_logo_animated_113.gif"
+						     alt="logo"
+						     data-sizes="auto"
+						     data-srcset="https://rb-mobileweb.de.bosch.com/2021/storage/rexroth_logo_animated_113.gif 768w,
+                 https://rb-mobileweb.de.bosch.com/2021/storage/rexroth_logo_animated_113.gif 920w"
+						/>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- LOGIN Page starts -->
+<div class="component-full-width-background section module-block container">
+  <div class="bg-content">
+    <div class="module-highlight module-block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="right-box ml-3">
+              <div class="box-headline h2">
+                SPM Version 3.0.1 - <br> Bosch Rexroth AG
+                <!-- All our services at hand -->
+              </div>
+              <p class="box-info">
+                SPM stands for SMART PROJECT MANAGEMENT, This Tool is launched Globally by Bosch Rexroth AG for Solution Partners and Sales Units to manage, customize and improvise their Projects.<br/>
+                <strong>WE MOVE, YOU WIN.</strong>
+              </p>
+              <!-- <div class="button-line">
+                <div class="text-center">
+                  <div class="module-button">
+                    <button type="button" class="btn btn-primary "></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                      <span class="content-text">Send Request</span>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <p>Download the app here in App Store and Google Play in Future:</p>
+
+              <div class="app-logo-wrapper">
+                <a class="app-logo apple" href="#"><img alt="ALT" src="https://rb-mobileweb.de.bosch.com/2021/storage/apple-appstore_en.svg" /></a>
+                <a class="app-logo google" href="#"><img alt="ALT" src="https://rb-mobileweb.de.bosch.com/2021/storage/google-play-badge_en.png" /></a>
+              </div> -->
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="right-box">
+              <div class="box-headline h2 text-center">
+                <br>
+                Login
+              </div>
+              <p class="box-info">
+                Only authenticated user will get OTP on registered email. Please check your mailbox.
+              </p>
+              <form [formGroup]="loginform">
+                <div class="row">
+                  <!-- <div class="col-12" *ngIf = "show">
+                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                      <label for="demo-default-input-6"> Email Address * </label>
+                      <div class="input-animation-wrapper">
+                        <input type="text" id="demo-default-input-6" class="form-control" value="" [ngModel] = "email"
+                          placeholder="Enter Email Address" name="demo-default-input-6"
+                          data-bouncer-target="#demo-default-input-6-error" required="required"
+                          formControlName="email"/>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-default-input-6-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div> -->
+                  <div class="col-12">
+                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                      <label for="demo-default-input-6"> Email Address * </label>
+                      <div class="input-animation-wrapper">
+                        <input type="text" id="demo-default-input-6" class="form-control"
+                          placeholder="Enter Email Address" name="demo-default-input-6"
+                          data-bouncer-target="#demo-default-input-6-error" required="required" formControlName="email"/>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-default-input-6-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                      <label for="demo-default-input-5"> Password * </label>
+                      <div class="input-animation-wrapper">
+                        <input type="text" id="demo-default-input-5" class="form-control"
+                          placeholder="Enter Password" name="demo-default-input-5"
+                          data-bouncer-target="#demo-default-input-5-error" required="required"
+                          formControlName="password"/>
+                        <div class="input-animation"></div>
+                      </div>
+                      <div id="demo-default-input-5-error" class="error-message-wrapper"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="text-center mt-5 " (click)="login()">
+                <div class="module-button">
+                  <button type="button" class="btn btn-secondary "></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <span class="content-text">Accept</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

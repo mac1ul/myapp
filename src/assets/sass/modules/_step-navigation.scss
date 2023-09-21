@@ -1,0 +1,126 @@
+.module-step-navigation {
+	@include module-name('Step Navigation');
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+
+	@media #{$media-to-sm} {
+		justify-content: flex-start;
+	}
+
+	.connecter {
+		background-color: var(--color-heather);
+		display: block;
+		flex-grow: 1;
+		height: 3px;
+		position: relative;
+		width: auto;
+
+		@media #{$media-to-md} {
+			display: none;
+		}
+	}
+
+	.step {
+		align-items: center;
+		display: flex;
+		padding: 0 $spacing-small;
+		text-transform: uppercase;
+		width: auto;
+
+		@media #{$media-to-sm} {
+			padding: 0 $spacing-atomic;
+		}
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		&:last-child {
+			padding-right: 0;
+
+			.label {
+				padding-right: 0;
+			}
+		}
+
+		&.active,
+		&.completed{
+
+			.anchor {
+				background-color: var(--color-smalt-blue);
+				color: var(--color-white);
+			}
+
+			& + .connecter {
+				&:after {
+					background-color: var(--color-smalt-blue);
+					content: '';
+					display: block;
+					height: 3px;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 50%;
+					z-index: 2;
+
+					@media #{$media-to-md} {
+						display: none;
+					}
+				}
+			}
+		}
+
+		&.completed {
+
+			.anchor {
+				@include icon($icon-dc_checkmark);
+				font-size: 0;
+
+				&:before {
+					font-size: 24px;
+					height: 50px;
+					line-height: 50px;
+				}
+			}
+
+			& + .connecter {
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+
+		&.active {
+			.label {
+				@media #{$media-to-sm} {
+					display: block;
+				}
+			}
+		}
+	}
+
+	.label {
+		color: var(--color-smalt-blue);
+		font-size: $font-size-text-xs;
+		font-weight: 500;
+		padding-left: $spacing-tiny;
+		padding-right: $spacing-tiny;
+
+		@media #{$media-to-sm} {
+			display: none;
+		}
+	}
+
+	.anchor {
+		align-items: center;
+		background-color: var(--color-catskill-white);
+		border-radius: 50%;
+		color: var(--color-smalt-blue);
+		display: flex;
+		font-weight: bold;
+		justify-content: center;
+		height: 50px;
+		width: 50px;
+	}
+}

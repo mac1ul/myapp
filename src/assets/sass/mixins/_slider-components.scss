@@ -1,0 +1,130 @@
+@mixin dot-styles() {
+	.dots {
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		pointer-events: auto;
+		transform: translate(-50%, 0);
+		display: flex;
+		align-items: center;
+		height: 12px;
+	}
+
+	.dot {
+		height: 8px;
+		width: 8px;
+		border-radius: 50%;
+		background: var(--color-heather);
+		display: inline-block;
+		margin-right: 16px;
+		transition: all $transition-duration;
+		outline: none;
+		cursor: pointer;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		&.tns-nav-active {
+			background: var(--color-prussian-blue);
+			height: 12px;
+			width: 12px;
+		}
+
+		&:hover {
+			background: var(--color-prussian-blue);
+		}
+	}
+}
+
+@mixin dot-styles-image-gallery() {
+	.dots {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		pointer-events: auto;
+		transform: translate(-50%, 0);
+		display: flex;
+		align-items: center;
+		height: 12px;
+	}
+
+	.dot {
+		height: 8px;
+		width: 8px;
+		border-radius: 50%;
+		background: var(--color-heather);
+		display: inline-block;
+		margin-right: 16px;
+		transition: all $transition-duration;
+		outline: none;
+		cursor: pointer;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		&.tns-nav-active {
+			background: var(--color-prussian-blue);
+			height: 12px;
+			width: 12px;
+		}
+
+		&:hover {
+			background: var(--color-prussian-blue);
+		}
+	}
+}
+
+@mixin arrow-styles() {
+	.arrows {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		pointer-events: auto;
+		cursor: pointer;
+		color: var(--color-white);
+		font-size: 48px;
+
+		@media #{$media-to-sm} {
+			display: none;
+		}
+
+		.module-button {
+			.button-content {
+				height: 72px;
+
+				.icon {
+					margin-left: 8px;
+					margin-right: 8px;
+					font-size: 40px;
+				}
+			}
+
+			@media #{$media-to-lg} {
+				.button-content {
+					height: 46px;
+
+					.icon {
+						margin-left: 6px;
+						margin-right: 6px;
+						font-size: 24px;
+					}
+				}
+			}
+		}
+
+		.prev {
+			position: absolute;
+			left: 0;
+			transform: translate(0, -50%);
+		}
+
+		.next {
+			position: absolute;
+			right: 0;
+			transform: translate(0, -50%);
+		}
+	}
+}

@@ -1,0 +1,37 @@
+.module-hero-stage-small {
+	position: relative;
+	margin-bottom: 60px;
+
+	@media #{$media-to-lg} {
+		margin-bottom: 30px;
+	}
+
+	@media #{$media-to-sm} {
+		margin-bottom: 20px;
+	}
+
+	.line-wrapper {
+		position: absolute;
+		height: 7vw;
+		overflow: hidden;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+
+		.diagonal-line {
+			&:before {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				border: 0 solid transparent {
+					top-width: 7vw;
+					top-color: transparent;
+					right-width: 100vw;
+					right-color: var(--color-white);
+				}
+			}
+		}
+	}
+}

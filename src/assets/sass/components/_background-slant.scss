@@ -1,0 +1,147 @@
+.component-background-slant {
+	position: relative;
+
+	.bg-content {
+		padding: 60px 0;
+
+		> :last-child {
+			margin-bottom: 0;
+
+			> :last-child {
+				margin-bottom: 0;
+
+				> :last-child {
+					margin-bottom: 0;
+
+					> :last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -$gutter-width / 2;
+			z-index: -1;
+
+			width: $screen-xs-min;
+			height: 100%;
+
+			background-color: var(--color-catskill-white);
+
+			@media #{$media-from-xs} {
+				left: 50%;
+
+				width: 100vw;
+				margin-left: -50vw;
+			}
+		}
+	}
+
+	.diagonal-line-wrapper-top {
+		position: relative;
+		left: 50%;
+		width: 100vw;
+		margin-left: -50vw;
+
+		.triangle {
+			position: relative;
+			background-color: var(--color-white);
+			width: 0;
+			height: 0;
+			border-left: 0px solid;
+			border-top: 7vw solid transparent;
+			border-right: 100vw solid var(--color-catskill-white);
+			border-bottom: 0px solid;
+		}
+	}
+
+	.diagonal-line-wrapper-bottom {
+		position: relative;
+		left: 50%;
+		width: 100vw;
+		margin-left: -50vw;
+
+		.triangle {
+			position: relative;
+			background-color: var(--color-white);
+			width: 0;
+			height: 0;
+			border-left: 0px solid;
+			border-top: 7vw solid var(--color-catskill-white);
+			border-right: 100vw solid transparent;
+			border-bottom: 0px solid;
+		}
+	}
+
+	&.blue {
+		.bg-content {
+			&::after {
+				background-color: var(--color-aqua);
+			}
+		}
+
+		.diagonal-line-wrapper-top {
+			.triangle {
+				border-right: 100vw solid var(--color-aqua);
+			}
+		}
+
+		.diagonal-line-wrapper-bottom {
+			.triangle {
+				border-top: 7vw solid var(--color-aqua);
+			}
+		}
+	}
+
+	&.smalt-blue {
+		.bg-content {
+			&::after {
+				background-color: $color-smalt-blue;
+			}
+
+			--color-prussian-blue: #{$color-white};
+			--color-black: #{$color-white};
+			--color-mine-shaft: #{$color-white};
+		}
+
+		.diagonal-line-wrapper-top {
+			.triangle {
+				border-right: 100vw solid $color-smalt-blue;
+			}
+		}
+
+		.diagonal-line-wrapper-bottom {
+			.triangle {
+				border-top: 7vw solid $color-smalt-blue;
+			}
+		}
+	}
+
+	&.dark-blue {
+		.bg-content {
+			&::after {
+				background-color: $color-prussian-blue;
+			}
+
+			--color-prussian-blue: #{$color-white};
+			--color-black: #{$color-white};
+			--color-mine-shaft: #{$color-white};
+		}
+
+		.diagonal-line-wrapper-top {
+			.triangle {
+				border-right: 100vw solid $color-prussian-blue;
+			}
+		}
+
+		.diagonal-line-wrapper-bottom {
+			.triangle {
+				border-top: 7vw solid $color-prussian-blue;
+			}
+		}
+	}
+}

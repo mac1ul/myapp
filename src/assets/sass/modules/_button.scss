@@ -1,0 +1,309 @@
+.module-button {
+	$buttons: (
+		btn-primary: (
+			background-color-default: --color-monza,
+			background-color-hover: --color-guardsman-red,
+			text-color: --color-white
+		),
+		btn-secondary: (
+			background-color-default: --color-aqua,
+			background-color-hover: --color-cerulian,
+			text-color: --color-white
+		),
+		btn-tertiary: (
+			background-color-default: --color-smalt-blue,
+			background-color-hover: --color-blue-bayoux,
+			text-color: --color-white
+		),
+		btn-dark: (
+			background-color-default: --color-prussian-blue,
+			background-color-hover: --color-midnight,
+			text-color: --color-white
+		),
+		btn-light: (
+			background-color-default: --color-casper,
+			background-color-hover: --color-bali-hai,
+			text-color: --color-white
+		),
+		btn-navigation: (
+			background-color-default: --color-monza,
+			background-color-hover: --color-guardsman-red,
+			text-color: --color-white
+		),
+		btn-start: (
+			background-color-default: --color-apple,
+			background-color-hover: --color-fern-green,
+			text-color: --color-white
+		)
+	);
+
+	@include module-name('Button');
+
+	position: relative;
+	display: inline-block;
+
+	/*
+	 * Required, otherwise a small space appears below the button to make
+	 * space for letter parts below baseline like jgyp require to have.
+	 */
+	vertical-align: bottom;
+
+	overflow: hidden;
+
+	@each $name, $colors in $buttons {
+		.#{$name} {
+			// Variable declaration must be inside this scope, otherwise everything renders with the last color.
+
+			$backgroundColorDefault: map-get($colors, background-color-default);
+			$backgroundColorHover: map-get($colors, background-color-hover);
+			$textColor: map-get($colors, text-color);
+
+			background-color: var($backgroundColorDefault);
+			border-color: var($backgroundColorDefault);
+			box-shadow: none !important; // Hard reset bootstrap style.
+
+			&.btn-ghost ~ .button-content {
+				color: var($backgroundColorDefault);
+			}
+
+			&:hover {
+				&.btn-ghost ~ .button-content {
+					color: var($textColor);
+				}
+			}
+
+			&:not(:disabled):not(.disabled) {
+				&.active,
+				&:active,
+				&:hover {
+					// @TODO Remove one animation when the final version is defined.
+					~ .button-animation {
+						animation: animation-in $transition-duration forwards;
+					}
+				}
+
+				// @TODO Remove one animation when the final version is defined.
+				~ .button-animation {
+					background-image: linear-gradient(-4deg, transparent 33%, var($backgroundColorHover) 34%, var($backgroundColorHover) 66%, transparent 67%);
+				}
+			}
+		}
+	}
+
+	// @TODO Remove one animation when the final version is defined.
+	.button-animation {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+
+		background-size: 300% 300%;
+		background-position: 0 0;
+
+		pointer-events: none;
+		animation: animation-out $transition-duration forwards;
+	}
+
+	@keyframes animation-out {
+		from {
+			background-position: 50% 50%;
+		}
+		to {
+			background-position: 100% 100%;
+		}
+	}
+
+	@keyframes animation-in {
+		from {
+			background-position: 0 0;
+		}
+		to {
+			background-position: 50% 50%;
+		}
+	}
+
+	.button-content {
+		position: relative;
+		z-index: 1;
+
+		display: inline-flex;
+		align-items: center;
+
+		height: 48px;
+		line-height: 48px;
+
+		color: var(--color-white);
+		text-transform: uppercase;
+
+		border: none;
+
+		cursor: pointer;
+		pointer-events: none;
+
+		transform: perspective(0) translateZ(0);
+
+		transition: color $transition-duration;
+
+		.icon {
+			margin-left: 12px;
+			margin-right: 12px;
+			font-size: 24px;
+
+			+ .content-text {
+				margin-left: -4px;
+			}
+		}
+
+		.content-text {
+			margin-left: 16px;
+			margin-right: 16px;
+			font-weight: $btn-font-weight;
+			line-height: $btn-line-height;
+		}
+	}
+
+	.btn-ghost {
+		background-color: transparent;
+	}
+
+	.btn {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+
+		&.btn-lg ~ .button-content {
+			line-height: 54px;
+			height: 54px;
+
+			.icon {
+				margin-left: 13px;
+				margin-right: 13px;
+				font-size: 28px;
+
+				+ .content-text {
+					margin-left: -8px;
+				}
+			}
+
+			.content-text {
+				margin-left: 20px;
+				margin-right: 20px;
+				font-size: $font-size-lg;
+			}
+		}
+
+		&.btn-sm ~ .button-content {
+			line-height: 32px;
+			height: 32px;
+
+			.icon {
+				margin-left: 6px;
+				margin-right: 6px;
+				font-size: 20px;
+
+				+ .content-text {
+					margin-left: -4px;
+				}
+			}
+
+			.content-text {
+				margin-left: 12px;
+				margin-right: 12px;
+				font-size: $font-size-sm;
+			}
+		}
+
+		&.disabled,
+		&:disabled {
+			pointer-events: none;
+			background-color: rgba($color-prussian-blue, 0.05);
+			border-color: transparent;
+
+			~ .button-content {
+				color: rgba($color-prussian-blue, 0.1);
+			}
+
+			&.btn-link {
+				background-color: transparent;
+
+				~ .button-content .content-text,
+				~ .button-content .icon {
+					color: rgba($color-smalt-blue, 0.2);
+				}
+			}
+		}
+	}
+
+	.btn-link {
+		background-color: transparent;
+		transition: color $transition-duration;
+
+		~ .button-content {
+			color: var(--color-smalt-blue);
+
+			.content-text {
+				font-size: $font-size-text-m;
+				font-weight: 500;
+				text-transform: none;
+			}
+		}
+
+		&:hover ~ .button-content .content-text,
+		&:hover ~ .button-content .icon {
+			color: var(--color-blue-bayoux);
+			transition: color $transition-duration;
+		}
+
+		&:not(:disabled):not(.disabled).active ~ .button-content,
+		&:not(:disabled):not(.disabled):active ~ .button-content {
+			color: var(--color-blue-bayoux);
+		}
+	}
+}
+
+.module-button-group {
+	display: flex;
+
+	.module-button {
+		margin-right: 20px;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+
+	@media #{$media-to-lg} {
+		.module-button {
+			margin-right: 30px;
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex-basis: 0;
+			text-align: center;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
+	@media #{$media-to-md} {
+		flex-wrap: wrap;
+
+		.module-button {
+			margin-right: 0;
+			margin-bottom: 10px;
+			flex: 100%;
+			text-align: center;
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

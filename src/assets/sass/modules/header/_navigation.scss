@@ -1,0 +1,352 @@
+.module-header-navigation {
+	@include module-name("Header Navigation");
+	@include drop-shadow(
+			inset 0 15px 30px 0 rgba($color-heather, 0.35)
+	);
+
+	$offset: $header-height;
+	$offset-mobile: $header-height-mobile;
+	$contact-image-width: 120px;
+
+	position: absolute;
+	top: 0;
+	z-index: $header-z-index - 1;
+
+	display: none;
+	width: 100vw;
+	max-width: $screen-max;
+	max-height: calc(100vh - #{$offset});
+
+	color: var(--color-prussian-blue);
+	background-color: var(--color-white);
+
+	overflow-y: auto;
+
+	opacity: 0;
+	transform: translateY(-20px);
+
+	transition: opacity $transition-duration-fast,
+	transform $transition-duration-fast; // Keep in sync with js #header-navigation.
+
+	@media #{$media-to-sm} {
+		position: fixed;
+		top: $offset-mobile;
+		max-height: calc(100vh - #{$offset-mobile});
+	}
+
+	&.show {
+		display: block;
+	}
+
+	&.animate {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	a.secondary {
+		color: var(--color-prussian-blue);
+
+		&:hover {
+			color: var(--color-aqua);
+		}
+	}
+
+	.header-navigation-wrapper {
+		position: relative;
+		margin-bottom: 25px;
+	}
+
+	.header-navigation-block {
+		display: none;
+		width: 100%;
+
+		opacity: 0;
+
+		animation-timing-function: ease-in-out;
+		animation-duration: $transition-duration-fast;
+		animation-fill-mode: forwards;
+
+		&.top-level {
+			.list-content .content-item {
+				font-weight: 900;
+				text-transform: uppercase;
+			}
+		}
+
+		&.show {
+			display: block;
+			opacity: 1;
+		}
+
+		&.animate-right-in {
+			animation-name: animation-right-in;
+		}
+
+		&.animate-right-out {
+			animation-name: animation-right-out;
+		}
+
+		&.animate-left-in {
+			animation-name: animation-left-in;
+		}
+
+		&.animate-left-out {
+			animation-name: animation-left-out;
+		}
+	}
+
+	.header-navigation-breadcrumbs {
+		margin-top: $spacing-small + $spacing-atomic;
+		margin-bottom: $spacing-default + $spacing-atomic;
+
+		font-size: $font-size-text-s;
+
+		.icon {
+			margin: 0 3px;
+			font-size: 13px;
+		}
+
+		a {
+			color: var(--color-smalt-blue);
+
+			&:hover {
+				color: var(--color-cerulian);
+			}
+
+			&.disabled {
+				color: rgba($color-prussian-blue, 0.2);
+			}
+		}
+	}
+
+	.header-navigation-title {
+		text-transform: uppercase;
+
+		.overview {
+			color: var(--color-smalt-blue);
+			margin-top: 8px;
+			margin-bottom: 15px;
+			text-transform: none;
+
+			@media #{$media-to-sm} {
+				margin-top: 0;
+				margin-bottom: 6px;
+			}
+		}
+	}
+
+	.list-content {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-content: flex-start;
+
+		margin-bottom: 0;
+		overflow: hidden;
+
+		.content-item {
+			display: block;
+			font-weight: 500;
+
+			@media #{$media-from-md} {
+				width: percentage(1 / 2);
+			}
+
+			@media #{$media-from-lg} {
+				width: percentage(1 / 3);
+			}
+		}
+
+		// Keep the link height in sync with js #header-navigation.
+		a.secondary {
+			padding: 12px 0;
+
+			@media #{$media-from-sm} {
+				padding-right: $spacing-default;
+			}
+		}
+	}
+
+
+	.header-navigation-location {
+		align-items: flex-start;
+		position: relative;
+
+		display: none;
+		flex-direction: column;
+
+		padding-top: 23px;
+		padding-bottom: 40px;
+		//padding-left: 35px;
+
+		border-top: 1px solid var(--color-mystic);
+
+		.icon {
+			color: var(--color-smalt-blue);
+			font-size: 28px;
+			margin-left: 0;
+		}
+
+		@media #{$media-to-md} {
+			display: flex;
+		}
+	}
+
+	.module-button .button-content .icon + .button-text-content .content-text,
+	.location-type {
+		font-size: $font-size-text-xs;
+		line-height: 20px;
+	}
+
+	.module-button .button-content {
+		height: auto;
+		line-height: 17px;
+		position: relative;
+
+		.icon {
+			margin-right: 8px;
+			position: absolute;
+			top: -4px;
+
+			& + .button-text-content {
+				margin-left: 36px;
+				position: relative;
+
+				.content-text {
+					color: var(--color-prussian-blue);
+					display: block;
+					font-weight: bold;
+					margin-left: 0;
+				}
+
+				.location-type {
+					color: var(--color-prussian-blue);
+					font-size: $font-size-text-xs;
+					text-transform: none;
+				}
+			}
+		}
+	}
+
+
+	.contact {
+		@media #{$media-to-lg} {
+			margin-top: $spacing-small;
+			padding-top: $spacing-default;
+
+			border-top: 1px solid var(--color-mystic);
+		}
+	}
+
+	.contact-title {
+		margin-bottom: $spacing-atomic;
+	}
+
+	.contact-content {
+		display: flex;
+		margin-bottom: $spacing-small;
+
+		span {
+			line-height: $line-height-text-xs;
+			min-height: $spacing-default;
+
+			font-size: $font-size-text-xs;
+		}
+	}
+
+	.content-data {
+		$difference: $contact-image-width + $spacing-atomic-tiny;
+
+		display: flex;
+		flex-direction: column;
+		width: calc(100% - #{$difference});
+
+		.contact-phone,
+		.contact-email {
+			line-height: $line-height-text-m;
+			font-size: $font-size-text-m;
+		}
+	}
+
+	.content-data-item {
+		margin-bottom: $spacing-atomic;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.content-image {
+		flex-grow: 0;
+		flex-shrink: 0;
+		flex-basis: $contact-image-width;
+
+		margin-right: $spacing-atomic-tiny;
+
+		img {
+			border-radius: 50%;
+		}
+	}
+
+	.contact-phone,
+	.contact-email {
+		a {
+			width: 100%;
+
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	/*
+	 * They want it to look like a slider, which is close to impossible
+	 * due to the extremely different structure. Hence one may use 100%
+	 * here, but it also looks really bad with text only going super fast.
+	 */
+	$transition-distance: 150px;
+
+	@keyframes animation-right-in {
+		0% {
+			opacity: 0;
+			transform: translateX(-$transition-distance);
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes animation-right-out {
+		0% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		100% {
+			opacity: 0;
+			transform: translateX($transition-distance);
+		}
+	}
+
+	@keyframes animation-left-in {
+		0% {
+			opacity: 0;
+			transform: translateX($transition-distance);
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes animation-left-out {
+		0% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		100% {
+			opacity: 0;
+			transform: translateX(-$transition-distance);
+		}
+	}
+}

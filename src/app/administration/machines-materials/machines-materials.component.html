@@ -1,0 +1,475 @@
+<app-admin-navigation></app-admin-navigation>
+<div class="setview">
+  <p> <span style="cursor: pointer;" (click)="onclickSales()">Salesunit List</span> > <span style="cursor: pointer;"
+      (click)="onclickPartner()">Partner List</span> > <span style="cursor: pointer;"
+      (click)="onclickProject()">Customer Details</span> > <span style="cursor: pointer;"
+      (click)="onclickMachine()">Machine Details</span> > <span
+      style="cursor: pointer; color: black; font-weight: bold;">Material Details</span></p>
+
+      <form [formGroup]="AddMaterial">
+        <div class="row">
+        <div class="col-sm-12 col-md-2 col-lg-2">
+            <div
+              class="module-input form-group has-placeholder read-only hover-demo"
+              data-plugin="moduleInput"
+            >
+              <p class="mainlabel">Machine Name:</p>
+              <div class="input-animation-wrapper">
+                <input
+                  type="text"
+                  id="demo-placeholder44"
+                  class="form-control"
+                  formControlName="model"
+                  readonly
+                />
+                <div class="input-animation"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-3 col-lg-3" style="margin-top: 0px">
+                     <label class="label-above-sm" for="demo-default">
+             Application Experience: *
+        </label>
+
+            <div class="module-dropdown   ">
+                <div class="input-animation-wrapper module-input bg-success">
+
+                    <select id="demo-dropdown-1"
+                    class="custom-select "
+                    formControlName="experience"
+                    name="demo-dropdown-1"
+                    data-bouncer-target="#demo-dropdown-1-error"
+                    required="required">
+                <option disabled
+                        selected
+                        value="">--- Please select ---</option>
+                        <option value="Projects 0">Projects 0</option>
+                        <option value="Projects < 5">Projects < 5</option>
+                        <option value="Projects < 10">Projects < 10</option>
+                        <option value="Projects > 10">Projects > 10</option>
+                        <option value="Projects > 20">Projects > 20</option>
+            <div class="input-animation"></div>
+            </select>                     </div>
+
+
+                <div id="demo-dropdown-1-error"
+                     class="error-message-wrapper">
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-3 col-lg-2">
+            <div class="module-date-picker form-group">
+              <p class="mainlabel">Prototype Required: *</p>
+              <div class="input-animation-wrapper">
+                <input
+                  type="date"
+                  id="demo-value"
+                  class="form-control"
+                  formControlName="prototype"
+                />
+                <div class="input-animation"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-2 col-lg-2">
+            <div class="module-date-picker form-group">
+              <p class="mainlabel" tooltip="Start of Production"
+              placement="top">SOP: *</p>
+              <div class="input-animation-wrapper">
+                <input
+                  type="date"
+                  id="demo-value1"
+                  class="form-control"
+                  formControlName="sop"
+                />
+                <div class="input-animation"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-2 col-lg-2">
+            <div class="module-date-picker form-group">
+              <p class="mainlabel" tooltip="End of Production"
+              placement="top">EOP: *</p>
+              <div class="input-animation-wrapper">
+                <input
+                  type="date"
+                  id="demo-value2"
+                  class="form-control"
+                  formControlName="eop"
+                />
+                <div class="input-animation"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row data">
+          <div class="col-md-2">
+            <div class="top">
+              <p class="head"> {{ previousYear2 }}</p>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder1" class="inlinetitle">
+                  Machine Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input #previousYear22
+                    type="number"
+                    id="demo-placeholder1"
+                    class="form-control"
+                    formControlName="previousyear2MachineQty"
+                    placeholder="Enter Quantity"
+                    disable-validation=""
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder2" class="inlinetitle">
+                  Rexroth Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input [max]="previousYear22.value"
+                    type="number"
+                    id="demo-placeholder2"
+                    class="form-control"
+                    formControlName="previousyear2RexrothQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="top">
+              <p class="head"> {{ previousYear1 }}</p>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder3" class="inlinetitle">
+                  Machine Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input #previousYear11
+                    type="number"
+                    id="demo-placeholder3"
+                    class="form-control"
+                    formControlName="previousyear1MachineQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder4" class="inlinetitle">
+                  Rexroth Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input [max]="previousYear11.value"
+                    type="number"
+                    id="demo-placeholder4"
+                    class="form-control"
+                    formControlName="previousyear1RexrothQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="top">
+              <p class="head" style="background-color: #0b6bb9">
+                {{ currentYear }}
+              </p>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder5" class="inlinetitle">
+                  Machine Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input #currentYearr
+                    type="number"
+                    id="demo-placeholder5"
+                    class="form-control"
+                    formControlName="presentyearMachineQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder6" class="inlinetitle">
+                  Rexroth Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input [max]="currentYearr.value"
+                    type="number"
+                    id="demo-placeholder6"
+                    class="form-control"
+                    formControlName="presentyearRexrothQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="top">
+              <p class="head" style="background-color: #002b49">
+                 {{ futureYear1 }}
+              </p>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder7" class="inlinetitle">
+                  Machine Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input #futureYear11
+                    type="number"
+                    id="demo-placeholder7"
+                    class="form-control"
+                    formControlName="futureyear1MachineQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder8" class="inlinetitle">
+                  Rexroth Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input [max]="futureYear11.value"
+                    type="number"
+                    id="demo-placeholder8"
+                    class="form-control"
+                    formControlName="featureyear1RexrothQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="top">
+              <p class="head" style="background-color: #002b49">
+                 {{ futureYear2 }}
+              </p>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder9" class="inlinetitle">
+                  Machine Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input #futureYear22
+                    type="number"
+                    id="demo-placeholder9"
+                    class="form-control"
+                    formControlName="futureyear2MachineQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder10" class="inlinetitle">
+                  Rexroth Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input [max]="futureYear22.value"
+                    type="number"
+                    id="demo-placeholder10"
+                    class="form-control"
+                    formControlName="featureyear2RexrothQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="top">
+              <p class="head" style="background-color: #002b49">
+                 {{ futureYear3 }}
+              </p>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder11" class="inlinetitle">
+                  Machine Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input #futureYear33
+                    type="number"
+                    id="demo-placeholder11"
+                    class="form-control"
+                    formControlName="futureyear3MachineQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+              <div
+                class="module-input form-group has-placeholder mqty"
+                data-plugin="moduleInput"
+              >
+                <label for="demo-placeholder12" class="inlinetitle">
+                  Rexroth Qty:
+                </label>
+                <div class="input-animation-wrapper">
+                  <input [max]="futureYear33.value"
+                    type="number"
+                    id="demo-placeholder12"
+                    class="form-control"
+                    formControlName="featureyear3RexrothQty"
+                    placeholder="Enter Quantity"
+                  />
+                  <div class="input-animation"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+  <br>
+
+  <div class="component-headline">
+    <div class="row col-12" style="margin: 0; padding: 0;" *ngIf="showmateriallist">
+      <div class="col-12">
+        <h2>Material List</h2>
+      </div>
+    </div>
+    <br>
+    <!-- End -->
+    <div class="subline lead" *ngIf="showmateriallist">
+      <div class="module-table table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="highlight text-center">
+                Part Number
+              </th>
+              <th class="text-center highlight">
+                Description
+              </th>
+              <th class="text-center highlight">
+                Product Family
+              </th>
+              <th class="text-center highlight">
+                Delivery time(Days)
+              </th>
+              <th class="text-center highlight">
+                Supplier
+              </th>
+              <th class="text-center highlight">
+                Material Status
+              </th>
+              <th class="text-center highlight">
+                Material Quantity
+              </th>
+              <th class="text-center highlight">
+                {{previousYear2}}
+              </th>
+              <th class="text-center highlight">
+                {{previousYear1}}
+              </th>
+              <th class="text-center highlight">
+                Actual {{currentYear}}
+              </th>
+              <th class="text-center highlight">
+                Plan {{futureYear1}}
+              </th>
+              <th class="text-center highlight">
+                Plan {{futureYear2}}
+              </th>
+              <th class="text-center highlight">
+                Plan {{futureYear3}}
+              </th>
+              <th class="text-center highlight">
+                Comments
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let materials of Material_list; let i = index">
+              <td class="text-center">
+                <span>{{materials.part_number}}</span>
+              </td>
+              <td class="text-center">
+                <span>{{materials.description}}</span>
+              </td>
+              <td class="text-center">
+                <span>{{materials.product_family}}</span>
+              </td>
+              <td class="text-center">
+                <span>{{materials.quick_delivery_time}}</span>
+              </td>
+              <td class="text-center">
+                <span>{{materials.supplier}}</span>
+              </td>
+              <td class="text-center">
+                <span>{{materials.material_phase}}</span>
+              </td>
+              <td class="text-center">
+                <span>{{materials.qtypermachine}}</span>
+
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{materials.previousYear2Qty}}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{materials.previousYear1Qty}}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{materials.currentYearQty}}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{materials.futureYear1Qty}}
+              </td>
+              <td class="text-center" *ngIf="!warning">
+                {{materials.futureYear2Qty}}
+              </td>
+              <td class="text-center">
+                {{materials.futureYear3Qty}}
+              </td>
+              <td class="text-center">
+                {{materials.commentt}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer class="footer"></app-footer>

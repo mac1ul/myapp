@@ -1,0 +1,12 @@
+.danger{
+    color: red;
+    background-color: white;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid #BD001E;
+}
+
+.form-control.ng-touched.ng-valid{
+    border: 2px solid #528236;
+}

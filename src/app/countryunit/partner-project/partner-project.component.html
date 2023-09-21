@@ -1,0 +1,350 @@
+<body>
+<app-su-navigation></app-su-navigation>
+<div class="setview">
+    <p> <span style="cursor: pointer;" (click)="onclickPartner()">Partner List</span> > <span style="cursor: pointer; color: black; font-weight: bold;">Customer List</span></p>
+    <!-- <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb> -->
+    <div class="component-headline">
+        <h2 class="maintitle">
+          Customer Information
+        </h2>
+        <div class="subline lead">
+            <!-- <div class="module-button button" style="float: right;" (click)="modalToOpen()" >
+                <button type="button" class="btn btn-secondary"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <i class="icon icon-dc_add" style="font-weight: bold;"></i>
+                  <span class="content-text" style="font-weight: 700; user-select: none;">Add Customer</span>
+                </div>
+            </div> -->
+
+            <div class="module-modal modal" data-plugin="moduleModal" id="createproject">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-close">
+                      <div class="module-button ">
+                        <button type="button" class="btn btn-link " (click)="modalClose()"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                          <i class="icon icon-dc_close"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-header">
+                      <p class="headline h5 modal-title">
+                        Create Customer
+                      </p>
+                    </div>
+                    <div class="modal-body">
+                      <!-- <p>
+                        Your registration id is: {{sp_registered_id}}
+                      </p> -->
+                        <form [formGroup]="addproject">
+                            <div class="row">
+                                <div class="col-12">
+                                  <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                    <label for="demo-default-input-1"> Customer Number * </label>
+                                    <div class="input-animation-wrapper">
+                                      <input type="text" id="demo-default-input-1" class="form-control" value=""
+                                        placeholder="Enter Customer Number" name="demo-default-input-1"
+                                        data-bouncer-target="#demo-default-input-1-error" required="required" formControlName="projectnumber" [ngClass]="{ 'is-invalid': submitted && f.projectnumber.errors }"/>
+                                        <!-- <p *ngIf = "addproject.get('projectnumber').touched && addproject.get('projectnumber').invalid" class="danger">Please enter unique project number.</p> -->
+                                        <div *ngIf="submitted && f.projectnumber.errors">
+                                          <div *ngIf="f.projectnumber.errors.required" class="danger">Customer number is required.</div>
+                                        </div>
+                                      <div class="input-animation"></div>
+                                    </div>
+                                    <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                      <label for="demo-default-input-2"> Customer Name * </label>
+                                      <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-2" class="form-control" value=""
+                                          placeholder="Enter Customer Name" name="demo-default-input-2"
+                                          data-bouncer-target="#demo-default-input-2-error" required="required"  formControlName="projectname" [ngClass]="{ 'is-invalid': submitted && f.projectname.errors }"/>
+                                          <!-- <p *ngIf = "addproject.get('projectname').touched && addproject.get('projectname').invalid" class="danger">Please enter project name.</p> -->
+                                          <div *ngIf="submitted && f.projectname.errors">
+                                            <div *ngIf="f.projectname.errors.required" class="danger">Customer name is required.</div>
+                                          </div>
+                                        <div class="input-animation"></div>
+                                      </div>
+                                      <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+                                    </div>
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                                      <label for="demo-default-input-3"> Location * </label>
+                                      <div class="input-animation-wrapper">
+                                        <input type="text" id="demo-default-input-3" class="form-control" value=""
+                                          placeholder="Enter Location" name="demo-default-input-3"
+                                          data-bouncer-target="#demo-default-input-3-error" required="required"  formControlName="location" [ngClass]="{ 'is-invalid': submitted && f.location.errors }"/>
+                                          <!-- <p *ngIf = "addproject.get('location').touched && addproject.get('location').invalid" class="danger">Please enter your location.</p> -->
+                                          <div *ngIf="submitted && f.location.errors">
+                                            <div *ngIf="f.location.errors.required" class="danger">Location is required.</div>
+                                          </div>
+                                        <div class="input-animation"></div>
+                                      </div>
+                                      <div id="demo-default-input-3-error" class="error-message-wrapper"></div>
+                                    </div>
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="module-button-group">
+                                        <div class="module-button" (click)="OnSubmitPartner()">
+                                          <button type="submit" class="btn btn-secondary"></button>
+                                          <div class="button-animation"></div>
+                                          <div class="button-content">
+                                            <span class="content-text">Submit</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                            </div>
+                        </form>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+
+            <div class="module-table table-responsive">
+                <table class="table
+                              table-hover">
+                    <thead>
+                        <tr>
+                            <th class="highlight text-center" *ngIf = "projectnumbercheck">
+                                Message
+                            </th>
+                            <th class="highlight text-center" *ngIf = "!projectnumbercheck">
+                                ID
+                            </th>
+                            <th class="highlight text-center" *ngIf = "!projectnumbercheck">
+                              Customer NUMBER
+                            </th>
+                            <th class="text-center highlight" *ngIf = "!projectnumbercheck">
+                              Customer NAME
+                            </th>
+                            <th class="text-center highlight" *ngIf = "!projectnumbercheck">
+                                LOCATION
+                            </th>
+                            <th class="text-center highlight" *ngIf = "!projectnumbercheck">
+                                ACTIONS
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf = "projectnumbercheck">
+                            <td class="text-center" >
+                                <span>{{message}}</span>
+                            </td>
+                        </tr>
+                        <tr *ngFor = 'let project of showProducts; let i = index;'>
+
+                            <td class="text-center">
+                                <span>{{i+1}}</span>
+                            </td>
+                            <td class="text-center">
+                              <span *ngIf="!project.editable">{{project.project_number}}</span>
+                              <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="project.project_number" *ngIf="project.editable"/>
+                            </td>
+                            <td class="text-center">
+                              <span *ngIf="!project.editable">{{project.project_name}}</span>
+                              <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="project.project_name" *ngIf="project.editable"/>
+                            </td>
+                            <td class="text-center">
+                              <span *ngIf="!project.editable">{{project.project_location}}</span>
+                              <input type="text" style="text-align: center;" class="form-control" [(ngModel)]="project.location" *ngIf="project.editable"/>
+                            </td>
+                            <td class="text-center">
+                                <div class="module-button icon">
+                                    <button type="button" class="btn btn-secondary"  (click)="GoToMachine(project.project_id)"></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_folder_open"></i>
+                                    </div>
+                                </div>
+                                <!-- <div class="module-button icon" (click)="editDomain(project)" *ngIf = "!project.editable">
+                                    <button type="button" class="btn btn-light " ></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_edit"></i>
+                                    </div>
+                                </div>
+                                <div class="module-button icon" (click)="save(project)" *ngIf = "project.editable">
+                                    <button type="button" class="btn btn-secondary " ></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <i class="icon icon-dc_save"></i>
+                                    </div>
+                                </div> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- message -->
+    <div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-close">
+                    <div class="module-button ">
+                        <button type="button" class="btn btn-link " (click)="gotologin()"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <i class="icon icon-dc_close" style="color: white;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-close">
+                  <div class="module-button ">
+                      <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                          <i class="icon icon-dc_close" style="color: white;"></i>
+                      </div>
+                  </div>
+              </div>
+                <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+                    <p class="headline h5 modal-title" style="color: white;">
+                        Messagebox
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size: 20px;">
+                       {{message}}
+                    </p>
+                    <div class="col-12" style="text-align: right; padding-right: 0;" *ngIf = "expired">
+                        <div class="module-button fasttrack">
+                            <button type="button" class="btn btn-primary " (click)="gotologin()"></button>
+                            <div class="button-animation"></div>
+                            <div class="button-content">
+                                <span class="content-text">CLOSE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12" style="text-align: right; padding-right: 0;" *ngIf = "!expired">
+                      <div class="module-button fasttrack">
+                          <button type="button" class="btn btn-primary " (click)="deletemodelclose()"></button>
+                          <div class="button-animation"></div>
+                          <div class="button-content">
+                              <span class="content-text">CLOSE</span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end -->
+    <!-- Pagination Starts -->
+    <div class="module-pagination module-block" data-plugin="modulePagination" *ngIf = "!projectnumbercheck">
+      <div class="paging-container">
+        <div class="results-per-page">
+          <p class="paging-title">Results per page:</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button " (click)="onChangeRowsPerPage(10)">
+              <a class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==10}">
+                <span class="content-text">10</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onChangeRowsPerPage(15)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==15}">
+                <span class="content-text">15</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onChangeRowsPerPage(20)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==20}">
+                <span class="content-text">20</span>
+              </div>
+            </div>
+            <!-- <div class="module-button " (click)="onChangeRowsPerPage(100)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" [ngClass]="{'active-class': rowsPerPage==100}">
+                <span class="content-text">ALL</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="paging">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button " *ngIf="actualPage !== 1" (click)="onPageChange(actualPage-1)">
+              <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-button " *ngIf="actualPage-1>0" (click)="onPageChange(actualPage-1)">
+              <a class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content" style="background-color: white; color: black; border: black;">
+                <span class="content-text">{{actualPage-1}}</span>
+              </div>
+            </div>
+            <div class="module-button " (click)="onPageChange(actualPage)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content active-class">
+                <span class="content-text ">{{actualPage}}</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile" *ngIf="endPaging>=2 && actualPage+1<=endPaging"
+              (click)="onPageChange(actualPage+1)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{actualPage+1}}</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile" *ngIf="actualPage-1==0 && endPaging>2"
+              (click)="onPageChange(actualPage+2)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{actualPage+2}}</span>
+              </div>
+            </div>
+            <!-- option -->
+            <div class="module-button" *ngIf="endPaging>=5 && !optionControl">
+              <button type="button" class="btn btn-light btn-sm btn-ghost dots" (click)="prevnext()"></button>
+              <div class="button-content">
+                <i class="icon icon-dc_options"></i>
+              </div>
+            </div>
+            <!-- option end -->
+
+
+            <div class="module-button " *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging"
+              (click)="onPageChange(endPaging)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">{{endPaging}}</span>
+              </div>
+            </div>
+            <div class="module-button " *ngIf="actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">
+              <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+</div>
+<app-footer class="footer"></app-footer>
+</body>

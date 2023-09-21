@@ -1,0 +1,48 @@
+.component-quotation {
+    @include content-block();
+
+    .quote {
+        position: relative;
+
+        &:before {
+            content: '„';
+            font-size: 72px;
+            font-weight: 900;
+            position: relative;
+            margin-right: 5px;
+        }
+
+        &:after {
+            content: '“';
+            font-size: 72px;
+            font-weight: 900;
+            position: relative;
+            line-height: 0;
+            top: 28px;
+            margin-left: 5px;
+        }
+    }
+
+    .quote-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .quote-image {
+        height: 48px;
+        width: 48px;
+        border-radius: 50px;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+    .quote-name {
+        margin-bottom: 0;
+    }
+
+    .quote-subtitle {
+        margin-bottom: 0 ;
+    }
+}

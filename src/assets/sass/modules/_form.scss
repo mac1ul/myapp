@@ -1,0 +1,108 @@
+.module-form {
+	@include module-name('Form');
+    @include content-block();
+
+	$form-element-spacing: 24px;
+	$form-element-error-spacing: 27px;
+
+	form {
+		animation: animation-form-opacity ($transition-duration * 2) forwards;
+	}
+
+	label {
+		user-select: none;
+	}
+
+	.validation-messages {
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+	}
+
+	&.has-background {
+		background-color: var(--color-catskill-white);
+		padding-top: 76px;
+		padding-bottom: 52px;
+
+		form {
+			margin: 0 auto;
+			max-width: 1200px;
+			padding-left: $spacing-atomic-tiny;
+			padding-right: $spacing-atomic-tiny;
+		}
+	}
+
+	.placeholder-element {
+		background-color: var(--color-aqua);
+		color: var(--color-white);
+		display: block;
+		margin-bottom: 24px;
+		height: 54px;
+		line-height: 54px;
+		text-align: center;
+	}
+
+	.text-right {
+		> div[class^='module'] {
+			justify-content: flex-end;
+		}
+
+		.placeholder-element {
+			text-align: right;
+		}
+	}
+
+	.row {
+		> div[class^='col'] {
+			> div[class^='module'] {
+				//margin-bottom: $form-element-spacing;
+
+				&.module-add-field {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.module-add-field {
+		.field-wrapper:last-child {
+			.control-wrapper {
+				margin-bottom: $form-element-spacing;
+			}
+		}
+	}
+
+	@keyframes animation-form-padding-in {
+		0% {
+			padding-bottom: 0;
+		}
+		100% {
+			//padding-bottom: $form-element-error-spacing * 2;
+			padding-bottom: 0;
+		}
+	}
+
+	@keyframes animation-form-padding-out {
+		0% {
+			//padding-bottom: $form-element-error-spacing * 2;
+			padding-bottom: 0;
+		}
+		100% {
+			padding-bottom: 0;
+		}
+	}
+
+	@keyframes animation-form-opacity {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+.mandatory-info {
+	font-size: 12px;
+	color: var(--color-prussian-blue);
+}

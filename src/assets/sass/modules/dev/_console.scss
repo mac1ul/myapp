@@ -1,0 +1,33 @@
+/* @ifdef DEV */
+
+.module-dev-console {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	z-index: 99999;
+
+	text-align: right;
+
+	&:before {
+		display: none !important;
+	}
+
+	.console-modal {
+		display: none;
+		padding: $spacing-default;
+		text-align: left;
+		border-right: none;
+		background-color: var(--color-prussian-blue);
+
+		h3 {
+			color: var(--color-white);
+			margin-top: 0;
+		}
+	}
+
+	.btn-console {
+		opacity: 0.5;
+	}
+}
+
+/* @endif */

@@ -1,0 +1,277 @@
+//
+//Fonts
+// --------
+
+// Bosch Sans Black
+@font-face {
+	font-family: "Bosch Sans";
+	src: url($font-bosch-sans-black-woff) format("woff"),
+		url($font-bosch-sans-black-eot) format("eot"),
+		url($font-bosch-sans-black-svg) format("svg");
+	font-weight: 900;
+	font-style: normal;
+}
+
+// Bosch Sans Black Italic
+@font-face {
+	font-family: "Bosch Sans";
+	src: url($font-bosch-sans-black-italic-woff) format("woff"),
+		url($font-bosch-sans-black-italic-eot) format("eot"),
+		url($font-bosch-sans-black-italic-svg) format("svg");
+	font-weight: 900;
+	font-style: italic;
+}
+
+// Bosch Sans Bold
+@font-face {
+	font-family: "Bosch Sans";
+	src: url($font-bosch-sans-bold-woff) format("woff"),
+		url($font-bosch-sans-bold-eot) format("eot"),
+		url($font-bosch-sans-bold-svg) format("svg");
+	font-weight: bold;
+	font-style: normal;
+}
+
+// Bosch Sans Bold Italic
+@font-face {
+	font-family: "Bosch Sans";
+	src: url($font-bosch-sans-bold-italic-woff) format("woff"),
+		url($font-bosch-sans-bold-italic-eot) format("eot"),
+		url($font-bosch-sans-bold-italic-svg) format("svg");
+	font-weight: bold;
+	font-style: italic;
+}
+
+// Bosch Sans Medium
+@font-face {
+	font-family: "Bosch Sans";
+	src: url($font-bosch-sans-medium-woff) format("woff"),
+		url($font-bosch-sans-medium-eot) format("eot"),
+		url($font-bosch-sans-medium-svg) format("svg");
+	font-weight: 500;
+	font-style: normal;
+}
+
+// Bosch Sans Medium Italic
+@font-face {
+	font-family: "Bosch Sans";
+	src: url($font-bosch-sans-medium-italic-woff) format("woff"),
+		url($font-bosch-sans-medium-italic-eot) format("eot"),
+		url($font-bosch-sans-medium-italic-svg) format("svg");
+	font-weight: 500;
+	font-style: italic;
+}
+
+// Bosch Sans Regular
+@font-face {
+	font-family: "Bosch Sans";
+	src: url($font-bosch-sans-regular-woff) format("woff"),
+		url($font-bosch-sans-regular-eot) format("eot"),
+		url($font-bosch-sans-regular-svg) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+// Bosch Sans Regular Italic
+@font-face {
+	font-family: "Bosch Sans";
+	src: url($font-bosch-sans-regular-italic-woff) format("woff"),
+		url($font-bosch-sans-regular-italic-eot) format("eot"),
+		url($font-bosch-sans-regular-italic-svg) format("svg");
+	font-weight: normal;
+	font-style: italic;
+}
+
+body {
+	font-family: "Bosch Sans", sans-serif;
+	font-size: $font-size-text-m;
+	line-height: $line-height-text-m;
+	color: var(--color-mine-shaft);
+}
+
+//
+// Headlines
+// -----------
+
+h1,
+.h1 {
+	font-size: $font-size-headline-xxl;
+	line-height: $line-height-headline-xxl;
+
+	@media #{$media-from-sm} {
+		font-size: $font-size-headline-xxxl;
+		line-height: $line-height-headline-xxxl;
+	}
+}
+
+h2,
+.h2 {
+	font-size: $font-size-headline-xl;
+	line-height: $line-height-headline-xl;
+
+	@media #{$media-from-sm} {
+		font-size: $font-size-headline-xxl;
+		line-height: $line-height-headline-xxl;
+	}
+}
+
+h3,
+.h3 {
+	font-size: $font-size-headline-l;
+	line-height: $line-height-headline-l;
+}
+
+h4,
+.h4 {
+	font-size: $font-size-headline-m;
+	line-height: $line-height-headline-m;
+}
+
+h5,
+.h5 {
+	font-size: $font-size-headline-s;
+	line-height: $line-height-headline-s;
+}
+
+h6,
+.h6 {
+	font-size: $font-size-headline-xs;
+	line-height: $line-height-headline-xs;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	color: var(--color-prussian-blue);
+	font-weight: 900;
+	margin-bottom: $spacing-default;
+}
+
+.hsuperbig {
+	font-size: rem(48);
+	font-weight: 900;
+	line-height: rem(60);
+	margin-bottom: rem(20);
+
+	@media #{$media-from-sm} {
+		font-size: rem(60);
+		line-height: rem(75);
+	}
+
+	@media #{$media-from-md} {
+		font-size: rem(72);
+		line-height: rem(90);
+	}
+}
+
+.hbig {
+	font-size: rem(36);
+	font-weight: 900;
+	line-height: rem(45);
+	margin-bottom: rem(30);
+
+	@media #{$media-from-sm} {
+		font-size: rem(48);
+		line-height: rem(60);
+	}
+
+	@media #{$media-from-md} {
+		font-size: rem(56);
+		line-height: rem(70);
+	}
+}
+
+//Paragraph
+p,
+strong {
+	//color: var(--color-mine-shaft);
+	line-height: $line-height-text-m;
+
+	&.lead {
+		font-size: $font-size-text-l;
+		line-height: $line-height-text-l;
+	}
+
+	&.midSize {
+		font-size: $font-size-text-s;
+		line-height: $line-height-text-s;
+	}
+
+	&.small {
+		font-size: $font-size-text-xs;
+		line-height: $line-height-text-xs;
+	}
+
+	&.blue {
+		color: var(--color-prussian-blue);
+	}
+
+	&.light-blue {
+		color: var(--color-smalt-blue);
+	}
+}
+
+strong.midSize,
+strong.small {
+	font-weight: 900;
+}
+
+.emphasized-text {
+	font-size: $font-size-text-xl;
+	font-weight: 900;
+	line-height: $line-height-text-xl;
+	margin-bottom: rem(40);
+
+	@media #{$media-from-sm} {
+		font-size: $font-size-text-xxl;
+		line-height: $line-height-text-xxl;
+	}
+}
+
+.emphasized-additional-text {
+	font-size: $font-size-text-m;
+	font-weight: bold;
+	line-height: 24px;
+}
+
+.hbig,
+.hsuperbig,
+.emphasized-additional-text,
+.emphasized-text {
+	color: var(--color-prussian-blue);
+}
+
+.description-text {
+	font-size: $font-size-text-s;
+	line-height: $line-height-text-s;
+}
+
+@mixin line-spacing-big {
+	font-size: rem(18);
+	line-height: rem(27);
+}
+
+.line-spacing-big {
+	@include line-spacing-big();
+}
+
+.strong-text-capital {
+	font-size: $font-size-text-m;
+	font-weight: 900;
+	line-height: $line-height-text-xs;
+	text-transform: uppercase;
+
+	@media #{$media-from-md} {
+		font-size: $font-size-text-xl;
+		line-height: $line-height-text-xl;
+	}
+}

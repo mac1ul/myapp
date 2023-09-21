@@ -1,0 +1,137 @@
+.module-horizontal-navigation {
+	@include module-name("Header Horizontal Navigation");
+	background: var(--color-white);
+	position: relative;
+
+	@media #{$media-to-lg} {
+		display: none;
+	}
+
+	.list {
+		background-color: var(--color-white);
+		margin-bottom: 0;
+		justify-content: center;
+		position: relative;
+		z-index: 99;
+	}
+
+	.horizontal-nav-flyout-wrapper {
+		position: absolute;
+		z-index: 5;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		a {
+			&:hover {
+				color: var(--color-aqua);
+			}
+		}
+	}
+
+	.horizontal-nav-flyout {
+		@include drop-shadow();
+		$offset: $header-height + 74;
+		$offset-mobile: $header-height-mobile;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: $header-z-index - 1;
+
+		display: none;
+		width: 100vw;
+		max-width: $screen-max;
+		max-height: calc(100vh - #{$offset});
+		margin: 0 auto;
+
+		color: var(--color-prussian-blue);
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-black-haze);
+
+		overflow-y: auto;
+
+		opacity: 0;
+		transform: translateY(-20px);
+
+		transition: opacity $transition-duration-fast, transform $transition-duration-fast;
+
+		&.show {
+			display: block;
+		}
+
+		&.animate {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.close-button {
+			position: absolute;
+			right: 15px;
+			top: 15px;
+			left: unset;
+
+			.icon {
+				font-size: 27px;
+			}
+		}
+
+		.list {
+			li {
+				margin-bottom: 26px;
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.horizontal-nav-header {
+
+		.toggle-flyout {
+			font-size: $font-size-text-m;
+			color: var(--color-prussian-blue);
+			font-weight: 900;
+			line-height: 22px;
+			text-transform: uppercase;
+			padding: 25px 35px;
+			cursor: pointer;
+
+			&:hover,
+			&.active,
+			&.history-active {
+				color: var(--color-aqua);
+			}
+		}
+	}
+
+	.horizontal-nav-wrapper {
+		position: relative;
+		padding: 30px 0 0;
+		font-weight: 500;
+		text-transform: none;
+
+		.col-md-4 {
+			margin-bottom: 60px;
+		}
+	}
+
+	.darker-link {
+		a {
+			color: var(--color-prussian-blue);
+		}
+	}
+
+	.flyout-headline {
+		margin-bottom: 60px;
+	}
+
+	.col-headline {
+		color: var(--color-prussian-blue);
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 30px;
+	}
+}

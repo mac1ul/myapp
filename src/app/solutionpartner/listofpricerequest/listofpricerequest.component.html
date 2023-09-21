@@ -1,0 +1,156 @@
+<body style="user-select: none;">
+    <app-spheader></app-spheader>
+    <div class="wrapper">
+    <div class="mt-5" style="padding: 15px; margin: 10px;" *ngIf="!showdetailss">
+        <h2 class="maintitle">List of Price Request</h2>
+        <div class="module-table table-responsive">
+            <table class="table  table-hover" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="highlight text-center">
+                            ID
+                        </th>
+                        <th class="highlight text-center">
+                            Customer Name
+                        </th>
+                        <th class="highlight text-center">
+                            Machine Name
+                        </th>
+                        <th class="highlight text-center">
+                            Application
+                        </th>
+                        <th class="highlight text-center">
+                            Price Request Date
+                        </th>
+                        <th class="text-center highlight">
+                            Status
+                        </th>
+                        <th class="text-center highlight">
+                            Details
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of list ; let i=index;">
+                        <td class="text-center">
+                            {{i+1}}
+                        </td>
+                        <td class="text-center">
+                            {{ item.project_name }}
+                        </td>
+                        <td class="text-center">
+                            {{ item.machine_name }}
+                        </td>
+                        <td class="text-center">
+                            {{item.application}}
+                        </td>
+                        <td class="text-center">
+                            {{item.price_req_date}}
+                        </td>
+                        <td class="text-center" *ngIf="item.flag == 1">
+                            Solved
+                        </td>
+                        <td class="text-center" *ngIf="item.flag == 0">
+                            Processing
+                        </td>
+                        <td class="text-center" style="color: blue; cursor: pointer;"
+                            (click)="showdetails(item.price_request_id)">
+                            Show more
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="mt-5" style="padding: 15px; margin: 10px;" *ngIf="showdetailss">
+
+        <div class="row" data-plugin="moduleInput">
+            <label class="col-6 col-form-label" for="demo-small">
+                <h2 class="maintitle ml-2">Detailed information about Price Request</h2>
+            </label>
+            <div class="col-6 ml-auto " style="text-align: right;">
+                <div class="module-button">
+                    <button type="button" class="btn btn-secondary " (click)="goBack()"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <span class="content-text">BACK</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Show all data in a table format -->
+        <div class="col-12">
+            <div class="module-table table-responsive">
+                <table class="table" style="margin-bottom: 0px;">
+                    <thead>
+                        <tr>
+                            <th colspan=8 class="text-center">
+                                Customer Details & Project Information
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let fasttrack_body of fasttrack_body">
+
+                        <tr colspan=8>
+                        <tr>
+                            <td class="highlight" width=600 colspan=2><b> Company Name:</b></td>
+                            <td width=900 align=center colspan=2>{{fasttrack_body.customer_name}}</td>
+                            <td class="highlight" width=500 colspan=2> <b>Quantity of Machines -{{currentYear}}</b></td>
+                            <td width=900 class="text-center" align=center colspan=2>{{fasttrack_body.currentYearQty}}</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight" colspan=2><b> Customer Name:</b> </td>
+                            <td colspan=2 class="text-center"> {{fasttrack_body.project_name}} </td>
+                            <td class="highlight" colspan=2><b> Quantity of Machines - {{futureYear1}}</b></td>
+                            <td class="text-center" colspan=2>{{fasttrack_body.futureYear1Qty}}</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight" colspan=2><b> Application / Machine Type:</b> </td>
+                            <td colspan=2 class="text-center"> {{fasttrack_body.application}} </td>
+                            <td class="highlight" colspan=2><b> Quantity of Machines - {{futureYear2}}</b></td>
+                            <td class="text-center" colspan=2>{{fasttrack_body.futureYear2Qty}}</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight" colspan=2><b> Machine Name:</b> </td>
+                            <td colspan=2 class="text-center"> {{fasttrack_body.machine_name}}</td>
+                            <td class="highlight" colspan=2><b>Quantity of Machines - {{futureYear3}}</b></td>
+                            <td class="text-center" colspan=2>{{fasttrack_body.futureYear3Qty}}</td>
+                        </tr>
+
+                        <!-- Material List -->
+                        <tr>
+                            <th colspan=8 class="text-center">
+                                <p class="text-center"><strong>Material List</strong></p>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="module-table table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center highlight">Part Number</th>
+                            <th class="text-center highlight">Type Code</th>
+                            <th class="text-center highlight">Parts per Machine</th>
+                            <th class="text-center highlight">Price per unit</th>
+                            <th class="text-center highlight">Competitor Products</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let fasttrack_body of fasttrack_body">
+                        <tr *ngFor="let fasttrack_body of fasttrack_body[0]">
+                            <td class="text-center">{{fasttrack_body.partnumber}}</td>
+                            <td class="text-center">{{fasttrack_body.typecode}}</td>
+                            <td class="text-center">{{fasttrack_body.parts_qty}}</td>
+                            <td class="text-center">{{fasttrack_body.price_per_unit}}</td>
+                            <td class="text-center">{{fasttrack_body.competitor_product}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End -->
+        </div>
+    </div>
+  </div>
+    <app-footer class="footer"></app-footer>
+</body>

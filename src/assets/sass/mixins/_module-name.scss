@@ -1,0 +1,8 @@
+@mixin module-name($module-name) {
+	/* @ifdef DEV */
+	&:before {
+		content: "Module: #{$module-name}" !important;
+		display: none;
+	}
+	/* @endif */
+}

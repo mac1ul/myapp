@@ -1,0 +1,14 @@
+.module-blog-search {
+	.finder-box {
+		padding: 60px 200px;
+		background: var(--color-catskill-white);
+
+		@media #{$media-to-lg} {
+			padding: 50px 64px;
+		}
+
+		@media #{$media-to-md} {
+			padding: 40px 20px;
+		}
+	}
+}

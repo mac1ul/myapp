@@ -1,0 +1,362 @@
+<body>
+<!--  Navigation Tab for Administrator -->
+<app-su-navigation></app-su-navigation>
+
+<!-- Prototype Request Collection  -->
+<div class="page-wrapper start mt-5">
+  <h1 class="mb-0 maintitle">Fast-track Request Collection</h1>
+  <p class="mt-0">Here you will get details about all the Fast-track Request from your Solution Partners. </p>
+  <div class="row">
+    <div class="col-3 p-0 m-0">
+      <h3 class="text-center mt-3"><strong>List of Queries</strong></h3>
+      <div class="module-accordion filter-accordion mt-4" data-plugin="moduleAccordion">
+        <div class="container-fluid">
+          <div class="accordion-item open">
+            <div class="">
+              <p> Prototype Request's </p>
+            </div>
+            <div class="accordion-content">
+              <div class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox"
+                            *ngFor="let fname of fasttrack_closed_results; let i = index">
+                            <input type="checkbox" class="custom-control-input" #checkbox [(ngModel)]="fname.check_status"
+                              (ngModelChange)="uncheckOther(fname,$event)"
+                              id="allgemeine_informationen_0{{fname.fasttrack_id}}"
+                              (click)="showfulldata(fname.fasttrack_id)" name="allgemeine_informationen_0">
+                            <label class="custom-control-label" for="allgemeine_informationen_0{{fname.fasttrack_id}}">
+                              <span class="label-title"
+                                [ngClass]="fname.status == true? 'yes' : 'no'">{{fname.fasttrack_date}}, {{fname.customer_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Closed -->
+      <div class="module-accordion filter-accordion" data-plugin="moduleAccordion">
+        <div class="container-fluid ">
+          <!-- Prototype Request's Column -->
+          <div class="accordion-item open parent">
+            <div class="">
+              <p> Prototype Request's (Closed)</p>
+            </div>
+            <div class="accordion-content">
+              <div class="content displaytext">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group sidebar-item" >
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox"
+                            *ngFor="let fname of fasttrack_closed_request; let i = index">
+                            <input type="checkbox" class="custom-control-input" #checkbox [(ngModel)]="fname.checked"
+                              (ngModelChange)="uncheckOthers(fname,$event)"
+                              id="allgemeine_informationen_0{{fname.fasttrack_id}}"
+                              (click)="showfulldata(fname.fasttrack_id)" name="allgemeine_informationen_0">
+                            <label class="custom-control-label" for="allgemeine_informationen_0{{fname.fasttrack_id}}">
+                              <span class="label-title"
+                                [ngClass]="fname.status == true? 'yes' : 'no'">{{fname.fasttrack_date}}, {{fname.customer_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+    </div>
+    <div class="col-9 setlayout" *ngIf="!alert">
+      <p><i class="rb-core-data setmiddle"></i></p>
+      <p class="setmiddletext">Select an item to read</p>
+    </div>
+    <div class="col-9 " *ngIf="alert">
+      <h3 class="text-center"><strong>Detailed Description</strong></h3>
+      <!-- Details of Person Request -->
+      <!-- Table -->
+      <div class="module-table table-responsive">
+        <table class="table" style="margin-bottom: 0px;">
+          <thead>
+            <tr>
+              <th colspan=8 class="text-center">
+                Customer Details & Project Information
+              </th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let fasttrack_body of fasttrack_body">
+
+            <tr colspan=8>
+            <tr>
+              <td class="highlight" width=600 colspan=2><b> Customer Name:</b></td>
+              <td width=900 align=center colspan=2>{{fasttrack_body.customer_name}}</td>
+              <td class="highlight" width=500 colspan=2> <b>Customer Number:</b></td>
+              <td width=900 class="text-center" align=center colspan=2>{{fasttrack_body.customer_number}}</td>
+            </tr>
+            <tr>
+              <td class="highlight" colspan=2><b> Contact Person:</b> </td>
+              <td colspan=2 class="text-center"> {{fasttrack_body.contact_person}} </td>
+              <td class="highlight" colspan=2><b> Request Data:</b></td>
+              <td class="text-center" colspan=2>{{fasttrack_body.request_date}}</td>
+            </tr>
+            <tr>
+              <td class="highlight" colspan=2><b> OEM Name:</b> </td>
+              <td colspan=2 class="text-center"> {{fasttrack_body.oem_name}} </td>
+              <td class="highlight" colspan=2><b> Business Experience:</b></td>
+              <td class="text-center" colspan=2>{{fasttrack_body.business_exp}}</td>
+            </tr>
+            <tr>
+              <td class="highlight" colspan=2><b> Business Type:</b> </td>
+              <td colspan=2 class="text-center"> {{fasttrack_body.business_type}} </td>
+              <td class="highlight" colspan=2><b>Machine Type:</b></td>
+              <td class="text-center" colspan=2>{{fasttrack_body.machine_type}}</td>
+            </tr>
+            <tr>
+              <td class="highlight" colspan=2><b> Hydraulic Function:</b> </td>
+              <td colspan=2 class="text-center"> {{fasttrack_body.hydraulic_function}} </td>
+              <td class="highlight" colspan=2><b> Machine Quantity:</b></td>
+              <td class="text-center" colspan=2>{{fasttrack_body.machineQuantity}}</td>
+            </tr>
+            <tr>
+              <td class="highlight" colspan=2><b> Prototype Data Quantity:</b> </td>
+              <td colspan=2 class="text-center"> {{fasttrack_body.prototype_data_qty}} </td>
+              <td class="highlight" colspan=2><b> SOP(Start of Project) Date:</b></td>
+              <td class="text-center" colspan=2>{{fasttrack_body.sop_date}}</td>
+            </tr>
+            <!-- Material List -->
+            <tr>
+              <th colspan=8 class="text-center">
+                <p class="text-center"><strong>Material List</strong></p>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module-table table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Part Number</th>
+              <th>Type Code</th>
+              <th>Nett. Price SI</th>
+              <th>Technical Settings</th>
+              <th>Competition</th>
+              <th>Expected Rexroth Qty</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let fasttrack_body of fasttrack_body">
+            <tr *ngFor="let fasttrack_body of fasttrack_body[0]">
+              <td>{{fasttrack_body.partnumber}}</td>
+              <td>{{fasttrack_body.typecode}}</td>
+              <td>{{fasttrack_body.nettpriceSI}}</td>
+              <td>{{fasttrack_body.technical_settings}}</td>
+              <td>{{fasttrack_body.competition}}</td>
+              <td>{{fasttrack_body.expected_rexrpth_qty}}</td>
+            </tr>
+            <tr>
+              <td colspan=6>
+                <div class="row">
+                  <div class="col-2">
+                    <!-- <span class="mandatory-info">* Pflichtfelder</span> -->
+                  </div>
+                  <div class="col-6"></div>
+                  <div class="col-4 text-right">
+                    <div class="module-button mr-3" *ngIf="showDeleteAction">
+                      <button type="button" class="btn btn-primary"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <span class="content-text">Delete</span>
+                      </div>
+                    </div>
+                    <div class="module-button" >
+                      <button type="submit" class="btn btn-secondary"
+                        (click)="sendReply(fasttrack_body.fasttrack_id)"></button>
+                      <div class="button-animation"></div>
+                      <div class="button-content">
+                        <span class="content-text">Solved</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End -->
+    </div>
+  </div>
+</div>
+<!-- message -->
+<div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-close">
+        <div class="module-button ">
+          <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="icon icon-dc_close" style="color: white;"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+        <p class="headline h5 modal-title" style="color: white;">
+          Messagebox
+        </p>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 20px;">
+          {{message}}
+        </p>
+        <!-- <p style="font-size: 16px;">
+          <b>Note :</b> They can read your reply to this Fast-track Request.
+        </p> -->
+        <br>
+        <div class=" col-12" style="margin-left: auto; text-align: right;">
+
+          <!-- <div class="module-button mr-2">
+            <button type="button" class="btn btn-secondary " (click)="replayModel()"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">YES</span>
+            </div>
+          </div>
+
+          <div class="module-button mr-2">
+            <button type="button" class="btn btn-primary "></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">NO</span>
+            </div>
+          </div> -->
+
+          <div class="module-button">
+            <button type="button" class="btn btn-primary " (click)="deletemodelclose()"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">CLOSE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end -->
+<!-- Email Model -->
+<div class="module-modal mainnn modal modal-dark" id="3dmodels" data-plugin="moduleModal">
+  <div class="modal-dialog bodyyy">
+    <div class="modal-content">
+      <div class="modal-close">
+        <div class="module-button ">
+          <button type="button" class="btn btn-link " (click)="modalClose2()"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="icon icon-dc_close"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-header">
+        <p class="headline h5 modal-title">
+          Messagebox
+        </p>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="mail">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="module-input-small form-group  read-only hover-demo row" data-plugin="moduleInput">
+                <label class="col-2 col-form-label" for="demo-small">
+                  From
+                </label>
+                <div class="col-10">
+                  <div class="input-animation-wrapper">
+                    <input type="text" id="demo-small" [ngModel]="email_address" class="form-control form-control-sm "
+                      readonly formControlName="from"/>
+                    <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                    <div class="input-animation"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="module-input-small form-group   read-only hover-demo  row" data-plugin="moduleInput">
+                <label class="col-2 col-form-label" for="demo-small">
+                  To
+                </label>
+                <div class="col-10">
+                  <div class="input-animation-wrapper">
+                    <input type="text" id="demo-small" class="form-control form-control-sm " [ngModel]="contact_person"
+                      readonly formControlName="to"/>
+                    <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                    <div class="input-animation"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="module-input-small form-group     row" data-plugin="moduleInput">
+                <label class="col-2 col-form-label" for="demo-small">
+                  Subject
+                </label>
+                <div class="col-10">
+                  <div class="input-animation-wrapper">
+                    <input type="text" id="demo-small" class="form-control form-control-sm " placeholder="Subject" formControlName="subject"/>
+                    <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                    <div class="input-animation"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="module-input-small form-group     row" data-plugin="moduleInput">
+                <label class="col-12 col-form-label" for="demo-small">
+                  body
+                </label>
+                <div class="col-12 mt-2">
+                  <div class="input-animation-wrapper">
+                    <textarea id="demo-small" class="form-control form-control-sm" rows="5" formControlName="message"
+                      placeholder="Message"></textarea>
+                    <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                    <div class="input-animation"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-12">
+              <div class="module-button">
+                <button type="button" class="btn btn-secondary " (click)="sendMail()"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">SEND</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End -->
+<!-- Footer Tab for Administrator  -->
+<app-footer class="footer"></app-footer>
+</body>

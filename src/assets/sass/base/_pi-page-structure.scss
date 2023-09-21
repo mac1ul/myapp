@@ -1,0 +1,15 @@
+.pi-wrapper {
+	display: flex;
+	left: 0;
+	padding-left: $sidebar-width;
+	transform: translateX(0) translateZ(0);
+
+	@media #{$media-to-sm} {
+		padding-left: 0;
+	}
+
+	.page-wrapper {
+		max-width: 1800px;
+		min-width: calc(100% - 80px);
+	}
+}

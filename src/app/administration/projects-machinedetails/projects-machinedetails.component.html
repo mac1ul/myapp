@@ -1,0 +1,85 @@
+<body>
+  <app-admin-navigation></app-admin-navigation>
+  <div class="setview">
+    <p> <span style="cursor: pointer;" (click)="onclickSales()">Country Unit</span> > <span style="cursor: pointer;"
+        (click)="onclickPartner()">Solution Partner List</span> > <span style="cursor: pointer;"
+        (click)="onclickProject()">Customer Details</span> > <span
+        style="cursor: pointer; color: black; font-weight: bold;">Machine Details</span></p>
+    <div class="component-headline">
+      <h2>
+        Machine List
+      </h2>
+      <div class="subline lead">
+
+        <div class="module-table table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="highlight text-center" colspan="8" style="background-color: #002B49; color:white;text-transform:uppercase">
+                    {{projectname}}
+                </th>
+            </tr>
+
+              <tr>
+                <th class="highlight ">
+                  Machine Name
+                </th>
+                <th class="highlight">
+                  Description
+                </th>
+                <th class="highlight">
+                  Phase
+                </th>
+                <th class=" highlight">
+                  Industry Sector 1
+                </th>
+                <th class=" highlight">
+                  Industry Sector 2
+                </th>
+                <th class="highlight">
+                  Application
+                </th>
+                <th class="text-center highlight">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let machinedetails of filterproject; let i = index">
+                <td class="">
+                  <span>{{machinedetails.machine_name}}</span>
+                </td>
+                <td class="">
+                  <span>{{machinedetails.machine_description}}</span>
+                </td>
+                <td class="">
+                  <span>{{machinedetails.machine_phase}}</span>
+                </td>
+                <td>
+                  <span>{{machinedetails.group1_name}}</span>
+                </td>
+                <td>
+                  <span>{{machinedetails.group2_name}}</span>
+                </td>
+                <td>
+                  <span>{{machinedetails.group3_name}}</span>
+                </td>
+                <td class="text-center">
+                  <div class="module-button icon">
+                    <button type="button" class="btn btn-secondary"
+                      [routerLink]="['/Machine_Materiallist', machinedetails.machine_id]"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                      <i class="icon icon-dc_folder_open"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer class="footer"></app-footer>
+</body>

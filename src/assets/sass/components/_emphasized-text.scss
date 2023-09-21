@@ -1,0 +1,39 @@
+.component-emphasized-text {
+    @include content-block();
+
+    .emphasized-text {
+        color: var(--color-prussian-blue);
+        margin-bottom: 0;
+    }
+
+    .ornament-top {
+        height: 12px;
+        display: flex;
+        margin-left: 100px;
+        margin-bottom: 20px;
+
+        @media #{$media-to-md} {
+            margin-left: 64px;
+        }
+    }
+
+    .ornament-bottom {
+        height: 12px;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 100px;
+        margin-top: 20px;
+
+        @media #{$media-to-md} {
+            margin-right: 64px;
+        }
+    }
+
+    .module-image {
+        height: 100%;
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+}

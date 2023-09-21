@@ -1,0 +1,122 @@
+<app-admin-navigation></app-admin-navigation>
+
+<div class="page-wrapper mt-5 ">
+  <div class="container-fluid">
+    <h1 class="mb-0"><b>Welcome, Administrator Dashboard</b></h1>
+    <div class="row">
+      <div class="col-md-12 col-xl-12 col-lg-12 col-sm-12">
+        <form class="form">
+          <div class="row mt-4">
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/Salesunit_overview']">
+                <div class="button-animation"></div>
+                <i class="icon icon-dc_grid_view"></i>
+                <br><strong class="fasbtn">Overview</strong>
+              </button>
+            </div>
+
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/entrysalesunit']">
+                <div class="button-animation"></div>
+                <i class="icon icon-dc_grid_view"></i>
+                <br><strong class="fasbtn">Create Sale's Unit</strong>
+              </button>
+            </div>
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/entrysolutionpartner']">
+                <div class="button-animation"></div>
+                <i class="icon icon-dc_add_folder"></i>
+                <br><strong class="fasbtn">Add Solution Partner</strong>
+              </button>
+            </div>
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/adminprototype']">
+                <i class="icon icon-dc_i_shipping_stock"></i>
+                <br><strong class="fasbtn">Prototype Delivery</strong>
+              </button>
+            </div>
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/logs']">
+                <i class="icon icon-dc_connectivity"></i>
+                <br><strong class="fasbtn">logs</strong>
+              </button>
+            </div>
+          </div>
+          <!-- <div class="row mt-1">
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/adminpricerequest']">
+                <i class="icon icon-dc_spare_parts"></i>
+                <br><strong class="fasbtn">Price Request</strong>
+              </button>
+            </div>
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/adminmaterialplanning']">
+                <i class="icon icon-dc_filter_02"></i>
+                <br><strong class="fasbtn">Material Planning</strong>
+              </button>
+            </div>
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/admingoto']">
+                <i class="icon icon-dc_GoTo"></i>
+                <br><strong class="fasbtn">GO TO</strong>
+              </button>
+            </div>
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/adminstockofsi']">
+                <i class="icon icon-dc_chart_line"></i>
+                <br><strong class="fasbtn">Stock of SI</strong>
+              </button>
+            </div>
+          </div> -->
+          <!-- <div class="row mt-1">
+            <div class="col-lg-3 col-xl-3 maindiv" (click)="myrexroth()">
+              <button class="buttonblue">
+                <i class="icon icon-dc_link"></i>
+                <br><strong class="fasbtn">MyRexroth</strong>
+              </button>
+            </div>
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/Upload_files']">
+                <div class="button-animation"></div>
+                <i class="icon icon-dc_grid_view"></i>
+                <br><strong class="fasbtn">Update 3D-MAP Data</strong>
+              </button>
+            </div>
+            <div class="col-lg-3 col-xl-3 maindiv" (click)="configurator()">
+              <a  target="_blank">
+                <button class="buttonblue">
+                  <i class="icon icon-dc_connectivity"></i>
+                  <br><strong class="fasbtn">Configurator</strong>
+                </button>
+              </a>
+            </div>
+
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/adminsupport']">
+                <i class="icon icon-dc_call"></i>
+                <br><strong class="fasbtn">Support Request</strong>
+              </button>
+            </div>
+          </div> -->
+          <!-- <div class="row mt-1">
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/Admin_3DMAP_GLOBAL']">
+                <i class="icon icon-dc_3D"></i>
+                <br><strong class="fasbtn">3D-MAP</strong>
+              </button>
+            </div>
+            </div> -->
+            <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/Responsible-SalesUnit']">
+                <i class="icon icon-dc_grid_view"></i>
+                <br><strong class="fasbtn"> Responsible For Sales Unit</strong>
+              </button>
+            </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

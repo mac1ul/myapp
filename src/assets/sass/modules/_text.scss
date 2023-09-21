@@ -1,0 +1,14 @@
+.module-text {
+	@include module-name('Text');
+	position: relative;
+
+	h1, h2, h3, p {
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}

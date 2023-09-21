@@ -1,0 +1,47 @@
+.buttonblue{
+    background-color: rgb(000, 043, 073)!important;
+    box-shadow: none;
+    color: #FFFFFF;
+    border-radius: 0px;
+    height: 135px;
+    width: 270px;
+    cursor: pointer;
+  }
+  
+  .maindiv{
+    text-align: center;
+    margin-top: 15px!important;
+    user-select: none;
+  }
+  strong{
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  i{
+    color: #659BDF;
+      font-size: 70px;
+      // margin-right: 45px;
+      text-align: center;
+      // font-weight: bold;
+  }
+  .page-wrapper{
+    width: auto;
+    max-width: 1920px;
+    min-height: 55vh;
+    margin: 0 auto;
+  }
+
+  body { min-height:100%;  margin:0; }
+  body{ 
+    display: table;
+    width: 100%; 
+  }
+  .footer {
+    height: 50px;
+  }
+  
+  body > .footer{
+    display: table-row; 
+  }

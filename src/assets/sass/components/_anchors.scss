@@ -1,0 +1,40 @@
+a {
+	display: inline-block;
+	transition: color $transition-duration;
+
+	.icon {
+		font-size: $font-size-text-xl;
+		padding-right: $spacing-atomic;
+		vertical-align: middle;
+	}
+
+	&.secondary {
+		color: var(--color-blue-bayoux);
+
+		&:hover {
+			color: var(--color-prussian-blue);
+		}
+	}
+
+	&.tertiary {
+		color: var(--color-prussian-blue);
+
+		&:hover {
+			color: var(--color-aqua);
+		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+		color: rgba($color-prussian-blue, 0.2); 
+	}
+
+	&.small-s {
+		font-size: $font-size-text-s;
+
+		.icon {
+			font-size: $font-size-text-xs;
+			padding-right: $spacing-atomic/2;
+		}
+	}
+}

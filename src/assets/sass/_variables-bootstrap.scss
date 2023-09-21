@@ -1,0 +1,95 @@
+//
+// Form Elements
+//
+$input-height: 54px;
+$input-height-sm: 32px;
+
+$input-color: var(--color-prussian-blue);
+$input-focus-color: var(--color-prussian-blue);
+
+$input-border-width: 1px;
+$input-border-color: var(--color-heather);
+$input-border-radius: 0;
+$input-border-radius-sm: 0;
+$input-focus-border-color: var(--color-smalt-blue);
+
+$input-placeholder-color: var(--color-casper);
+
+$custom-select-height: 54px;
+$custom-select-border-radius: 0;
+$custom-select-bg: var(--color-white);
+$custom-select-indicator-padding: 0;
+$custom-select-focus-border-color: none;
+$custom-select-focus-box-shadow: none;
+$custom-select-indicator: null;
+$custom-select-color: var(--color-prussian-blue);
+
+$custom-select-height-sm: 32px;
+$custom-select-font-size-sm: $font-size-text-s;
+
+//
+// Custom Checkbox / Radio Button
+//
+$custom-control-indicator-size: 1.25rem; // 20px
+$custom-checkbox-indicator-border-radius: 0;
+$custom-control-indicator-bg: 0;
+$custom-control-indicator-checked-bg: var(--color-prussian-blue);
+$custom-control-indicator-disabled-bg: var(--color-casper);
+$custom-control-label-disabled-color: var(--color-prussian-blue);
+$custom-control-indicator-focus-box-shadow: 0;
+$custom-checkbox-indicator-icon-checked: none;
+
+//
+// Buttons
+//
+$btn-border-width: 1px;
+$btn-border-radius: 0;
+$btn-border-radius-sm: 0;
+$btn-border-radius-lg: 0;
+
+$btn-padding-x-sm: 12px;
+$btn-padding-y-sm: 5px;
+$font-size-sm: 12px;
+
+$btn-padding-x: 16px;
+$btn-padding-y: 12px;
+
+$btn-padding-x-lg: 20px;
+$btn-padding-y-lg: 16px;
+$font-size-lg: 20px;
+
+$btn-line-height: 22px;
+$btn-line-height-sm: 22px;
+$btn-line-height-lg: 20px;
+$btn-font-weight: 900;
+
+//
+// Hyperlinks
+//
+$link-color: var(--color-aqua);
+$link-hover-color: var(--color-cerulian);
+$link-hover-decoration: none;
+
+//
+// Alerts
+//
+$alert-margin-bottom: $spacing-default;
+$alert-border-radius: 0;
+$alert-border-width: 0;
+
+//
+// Tables
+//
+$table-accent-bg: var(--color-catskill-white);
+$table-hover-bg: var(--color-catskill-white);
+$table-border-width: 1px;
+$table-border-color: var(--color-casper);
+
+//
+// Modals
+//
+$modal-content-border-radius: 0;
+$modal-header-border-width: 0;
+$modal-footer-border-width: 0;
+$modal-header-padding: $spacing-default;
+$modal-inner-padding: $spacing-default;

@@ -1,0 +1,34 @@
+.module-back-to-top {
+	display: none;
+	//width: 54px;
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 888;
+
+
+	.icon {
+		transform: rotate(180deg);
+	}
+
+	.container-max {
+		position: relative;
+		width: 100%;
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: auto;
+		margin-left: auto;
+		max-width: 1920px;
+	}
+
+
+	.module-button {
+		position: absolute;
+		right: 10%;
+		bottom: 0;
+
+		@media #{$media-to-lg}{
+			right: 15px;
+		}
+	}
+}

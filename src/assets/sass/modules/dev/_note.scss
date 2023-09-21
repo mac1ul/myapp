@@ -1,0 +1,22 @@
+.module-dev-note {
+	display: inline-flex;
+
+	font-size: $font-size-text-m;
+	vertical-align: super;
+
+	&:before {
+		display: none !important;
+	}
+
+	.badge {
+		margin-left: $spacing-tiny;
+	}
+
+	.badge-danger {
+		background-color: var(--color-monza);
+	}
+
+	.badge-info {
+		background-color: var(--color-smalt-blue);
+	}
+}

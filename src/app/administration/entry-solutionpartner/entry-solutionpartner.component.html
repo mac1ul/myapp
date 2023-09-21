@@ -1,0 +1,213 @@
+<!--  Navigation Tab for Administrator -->
+<app-admin-navigation></app-admin-navigation>
+<!-- Section 1 -->
+<!-- Solution Partner User Entry Form -->
+<div class="mt-5" style="margin: 20px; padding: 10px;">
+  <div class="">
+    <div class="row">
+      <div class="col-12">
+        <!--</editor-fold>-->
+        <form [formGroup]="addPartnerForm">
+          <h3>Solution Partner's - Entry</h3>
+          <div class="row">
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="browsers" style="width: 100%;"> Partner Company Name * </label>
+                  <div class="input-animation-wrapper">
+                    <input type="text" list="browsers" #cname id="demo-default-input-1" class="form-control"
+                      placeholder="Solution Partner Company Name" name="demo-default-input-1"
+                      data-bouncer-target="#demo-default-input-1-error" required="required"
+                      formControlName="partnername" (keydown)="fillname(cname.value)"
+                      (click)="fillnumber(cname.value)" />
+                    <datalist id="browsers" style="width: 100%;">
+                      <span *ngFor="let part of partnername">
+                        <option value="{{part.partner_company_name}}"></option>
+                      </span>
+                    </datalist>
+                    <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                    <div class="input-animation"></div>
+                  </div>
+                <div id="demo-default-input-1-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-2"> Partner's Company ID * </label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-2" class="form-control" value=""
+                    placeholder="Register Company ID" name="demo-default-input-2"
+                    data-bouncer-target="#demo-default-input-2-error" required="required" formControlName="partnerID"
+                    [ngModel]="partnerid" (click)="fillnumber(cname.value)" />
+                  <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                  <p style="background-color: white; color: blue; cursor: pointer;" (click)="generateid(cname.value)">
+                    Generate random id</p>
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-dropdown ">
+                <div class="input-animation-wrapper">
+                  <label for="demo-dropdown-1">Countries</label>
+                  <select id="demo-dropdown-1" class="custom-select " name="demo-dropdown-1"
+                    data-bouncer-target="#demo-dropdown-1-error" required="required" formControlName="country">
+                    <option disabled selected value="">--- Please select ---</option>
+                    <option *ngFor="let i of country" [value]="i.location_id">
+                      {{i.location_name}}</option>
+                  </select>
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-dropdown-1-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-dropdown">
+                <div class="input-animation-wrapper">
+                  <label for="demo-dropdown-2">Access Role</label>
+                  <select id="demo-dropdown-2" class="custom-select " name="demo-dropdown-2"
+                    data-bouncer-target="#demo-dropdown-2-error" required="required" formControlName="role">
+                    <option disabled selected value="">--- Please select ---</option>
+                    <option value="1">Superuser - All Permission</option>
+                    <option value="2">Employees</option>
+                    <!-- <option value="3">Solution Partner</option> -->
+                  </select>
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-dropdown-2-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-3"> E-Mail * </label>
+                <div class="input-animation-wrapper">
+                  <input type="email" id="demo-default-input-3" class="form-control" value=""
+                    placeholder="Solution Partner E-Mail *" name="demo-default-input-3"
+                    data-bouncer-target="#demo-email-input-error" required="required" formControlName="email" />
+                  <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-3-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-4"> First Name * </label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-4" class="form-control" value=""
+                    placeholder="Enter First Name" name="demo-default-input-4"
+                    data-bouncer-target="#demo-default-input-4-error" required="required" minlength="7" maxlength="24"
+                    formControlName="first_name" />
+                  <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-4-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+                <label for="demo-default-input-5"> Last Name * </label>
+                <div class="input-animation-wrapper">
+                  <input type="text" id="demo-default-input-5" class="form-control" value=""
+                    placeholder="Enter Last Name" name="demo-default-input-5"
+                    data-bouncer-target="#demo-default-input-5-error" required="required" minlength="7" maxlength="24"
+                    formControlName="last_name" />
+                  <!--data-search-url="url" is needed to use the AutoComplete function.-->
+                  <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-input-5-error" class="error-message-wrapper"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-2 col-md-2">
+              <span class="mandatory-info">* Mandatory</span>
+            </div>
+            <div class="col-xl-6 col-md-6"></div>
+            <div class="col-xl-4 col-md-4">
+              <div class="module-button-group">
+                <div class="module-button" (click)="OnClearSPFormData()">
+                  <button type="button" class="btn btn-primary"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <span class="content-text">Cancel</span>
+                  </div>
+                </div>
+                <div class="module-button">
+                  <button type="submit" class="btn btn-secondary"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <span class="content-text">Submit</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Section 2 -table -->
+<div class=" mt-5" style="margin: 20px; padding: 10px;">
+  <!-- Heading and Search Field for Table -->
+  <div class="row">
+    <div class="col-6">
+      <h3>Current SPM Users</h3>
+    </div>
+    <div class="col-6">
+      <div class="module-search" data-plugin="moduleSearch">
+        <form action="#" method="post">
+          <div class="module-input form-group floating-label" data-plugin="moduleInput">
+            <label for="inputID">  </label>
+            <div class="input-animation-wrapper">
+              <input type=search id="inputID" class="form-control " [(ngModel)]="search" (keydown)="searchnow()" value="" placeholder="Search here" name="search"
+                data-search-url="data/search-result.json?q={queue}&amount=5" />
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div class="module-button ">
+            <button type="submit" class="btn btn-link btn-lg " disabled="disabled"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_search"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <!-- Solution Partner User Table -->
+  <div class=" page-wrapper module-table table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">Country</th>
+          <th class="text-center">SalesUnit ID</th>
+          <th class="text-center">Company ID</th>
+          <th class="text-center">Company Name</th>
+          <th class="text-center">Email Address</th>
+          <th class="text-center">First Name</th>
+          <th class="text-center">Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sp of solution_partner">
+          <td class="text-center">{{sp.location}}</td>
+          <td class="text-center">{{sp.country_unit_registred_id}}</td>
+          <td class="text-center">{{sp.solutionpartner_registered_id}}</td>
+          <td class="text-center">{{sp.partner_company_name}}</td>
+          <td class="text-center">{{sp.partner_email_address}}</td>
+          <td class="text-center">{{sp.first_name}}</td>
+          <td class="text-center">{{sp.last_name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-footer></app-footer>

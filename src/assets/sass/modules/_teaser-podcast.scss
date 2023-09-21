@@ -1,0 +1,129 @@
+.module-teaser-podcast {
+	text-align: center;
+
+	.logo {
+		display: inline-block;
+		margin-bottom: 30px;
+		text-indent: -9999px;
+
+
+        img {
+            display: block;
+            height: 92px;
+            width: 100px;
+        }
+	}
+
+	h2 {
+		color: $color-prussian-blue;
+
+		@media #{$media-from-sm} {
+			margin-bottom: 50px;
+		}
+	}
+
+	.slide {
+		a {
+			display: block;
+			position: relative;
+			text-align: left;
+
+			.slide-img {
+				overflow: hidden;
+				padding-top: 100%;
+				position: relative;
+				width: 100%;
+
+				.module-image {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					right: 0;
+
+					img {
+						width: 100%;
+						transform: scale3d(1, 1, 1);
+						transition: all ($transition-duration * 3) ease-in-out;
+					}
+				}
+			}
+
+			.teaser-headline {
+				color: $color-prussian-blue;
+				margin-top: 30px;
+				margin-bottom: 15px;
+			}
+
+			&:hover {
+				.module-image {
+					img {
+						transform: scale3d(1.1, 1.1, 1);
+					}
+				}
+			}
+		}
+	}
+
+	.nav-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+
+		.module-button .btn-link ~ .button-content {
+			color: var(--color-blue-bayoux);
+		}
+
+		.module-button .btn-link:hover ~ .button-content .content-text, .module-button .btn-link:hover ~ .button-content .icon {
+			color: var(--color-prussian-blue);
+		}
+
+		.module-button .btn.btn-lg ~ .button-content .icon, .module-button .btn-group-lg > .btn ~ .button-content .icon {
+			margin-left: auto;
+			margin-right: auto;
+			font-size: 42px;
+		}
+	}
+
+	.tns-nav {
+		position: relative;
+		left: 50%;
+		height: 12px;
+		pointer-events: auto;
+		transform: translate(-50%, 0);
+		line-height: 8px;
+		white-space: nowrap;
+		align-items: center;
+		margin-top: 30px;
+
+		button {
+			height: 8px;
+			width: 8px;
+			border: none;
+			border-radius: 50%;
+			background: var(--color-heather);
+			display: inline-block;
+			margin-right: 16px;
+			transition: all $transition-duration;
+			outline: none;
+			cursor: pointer;
+			padding: 0;
+			vertical-align: middle;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+
+			&.tns-nav-active {
+				background: var(--color-prussian-blue);
+				height: 12px;
+				width: 12px;
+			}
+
+			&:hover {
+				background: var(--color-prussian-blue);
+			}
+		}
+	}
+}

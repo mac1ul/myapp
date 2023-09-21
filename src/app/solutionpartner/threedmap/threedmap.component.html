@@ -1,0 +1,334 @@
+<app-spheader></app-spheader>
+<app-threedmap-global></app-threedmap-global>
+<!-- <div class="modal-header">
+    <p class="headline h5 modal-title">
+        3D MAP
+    </p>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="module-input form-group has-placeholder col-md-3" data-plugin="moduleInput">
+            <p class="mainlabel">Part Number:</p>
+            <div class="input-animation-wrapper">
+                <input type="text" id="demo-placeholder44" class="form-control" placeholder="Search for Global Material" formControlName="model"/>
+                <div class="input-animation"></div>
+            </div>
+        </div>
+        <div class="module-input form-group has-placeholder col-md-3" data-plugin="moduleInput">
+            <p class="mainlabel">Type Code:</p>
+            <div class="input-animation-wrapper">
+                <input type="text" id="demo-placeholder44" class="form-control" placeholder="Search for Type Code" formControlName="model"/>
+                <div class="input-animation"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="module-dropdown col-md-3">
+            <div class="input-animation-wrapper">
+                <label class="label-above-sm" for="demo-default">
+                    Product:
+                </label>
+                <select id="demo-default" class="custom-select " [(ngModel)]="selected_product" (change)="selectedvalues('products')">
+                    <option value="null">Please Select</option>
+                    <option *ngFor = "let product of fill_product" [value]="product.value" selected>
+                        {{product.value}}
+                    </option>
+                </select>
+                <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-error"
+                class="error-message-wrapper"></div>
+        </div>
+
+        <div class="module-dropdown col-md-3">
+            <div class="input-animation-wrapper">
+                <label class="label-above-sm" for="demo-default">
+                    Product Detailed:
+                </label>
+                <select id="demo-default" class="custom-select" [(ngModel)]="selected_product_detailed" (change)="selectedvalues('productdetailed')">
+                    <option value="null">Please Select</option>
+                    <option selected *ngFor = "let fill_product_detailed of fill_product_detailed" [value]="fill_product_detailed.value">
+                        {{fill_product_detailed.value}}
+                    </option>
+                </select>
+                <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-error"
+                class="error-message-wrapper"></div>
+        </div>
+
+        <div class="module-dropdown col-md-3">
+            <div class="input-animation-wrapper">
+                <label class="label-above-sm" for="demo-default">
+                    PRODUCT FAMILY:
+                </label>
+                <select id="demo-default" class="custom-select" [(ngModel)]="selected_product_family" (change)="selectedvalues('profuctf')">
+                    <option value="null">Please Select</option>
+                    <option *ngFor = "let pf of fill_product_family" [value]="pf.value">
+                        {{pf.value}}
+                    </option>
+                </select>
+                <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-error"
+                class="error-message-wrapper"></div>
+        </div>
+        <div class="module-dropdown col-md-3">
+            <div class="input-animation-wrapper">
+                <label class="label-above-sm" for="demo-default">
+                    S3D_MODEL_AVAILABLE:
+                </label>
+                <select id="demo-default" class="custom-select" [(ngModel)]="selected_model" (change)="selectedvalues('models')">
+                    <option value="Please Select">Please Select</option>
+                    <option *ngFor = "let model of fill_model" [value]="model.value">
+                        {{model.value}}
+                    </option>
+                </select>
+                <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-error"
+                class="error-message-wrapper"></div>
+        </div>
+        <div class="module-dropdown col-md-3">
+            <div class="input-animation-wrapper">
+                <label class="label-above-sm" for="demo-default">
+                    GOTO EXPRESS:
+                </label>
+                <select id="demo-default" class="custom-select" [(ngModel)]="selected_gotoexpress" (change)="selectedvalues('gotoe')">
+                    <option value="Please Select">Please Select</option>
+                    <option *ngFor = "let goto of fill_gotoexpress" [value]="goto.value">{{goto.value}}</option>
+                </select>
+                <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-error"
+                class="error-message-wrapper"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="module-button">
+                <button type="button" class="btn btn-primary " ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                    <span class="content-text">RESET</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <h3 class="h3">Results</h3>
+            <b><label style ="text-align: right; ">RESULTS FOUND: </label></b>
+            <b><span style ="text-align: right;" id="counter">{{anzahl}}</span></b>
+            <div class="module-table table-responsive">
+                <table class="table
+                              table-hover">
+                    <thead>
+                        <tr>
+                            <th class="highlight text-center">
+                                Product
+                            </th>
+                            <th class="highlight text-center">
+                                Product Details
+                            </th>
+                            <th class="text-center highlight">
+                                Product Family
+                            </th>
+                            <th class="text-center highlight">
+                                Delivery Time (D)
+                            </th>
+                            <th class="text-center highlight">
+                                Global Material
+                            </th>
+                            <th class="text-center highlight">
+                                Type Code
+                            </th>
+                            <th class="text-center highlight">
+                                3D Model Available
+                            </th>
+                            <th class="text-center highlight">
+                                3D Model
+                            </th>
+                            <th class="text-center highlight">
+                                Spare Parts
+                            </th>
+                            <th class="text-center highlight">
+                                Data Sheets
+                            </th>
+                            <th class="text-center highlight">
+                                GoTo Express
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let products of showProducts">
+                            <td class="text-center">
+                                {{products.product}}
+                            </td>
+                            <td class="text-center">
+                                {{products.get_product_detailed}}
+                            </td>
+                            <td class="text-center">
+                                {{products.product_family}}
+                            </td>
+                            <td>
+                                {{products.quick_delivery_time}}
+                            </td>
+                            <td class="text-center">
+                                {{products.material_number}}
+                            </td>
+                            <td class="text-center" >
+                                {{products.type_code}}
+                            </td>
+                            <td class="text-center">
+                                {{products.s3d_model_available}}
+                            </td>
+                            <td class="text-center" *ngIf = "products.status === true">
+                                <a href="{{products.s3d_model_pdm}}" target="_blank">
+                                <div class="module-button" style="margin-left: 20px;">
+                                    <button type="button" class="btn btn-secondary "></button>
+                                    <div class="button-animation"></div>
+                                    <div class="button-content">
+                                        <span class="content-text">3DModel</span>
+                                    </div>
+                                </div></a>
+                            </td>
+                            <td class="text-center" *ngIf = "products.status === false"><div class="module-button" style="margin-left: 20px;">
+                                <button type="button" class="btn btn-secondary "></button>
+                                <div class="button-animation"></div>
+                                <div class="button-content">
+                                    <span class="content-text">Request</span>
+                                </div>
+                            </div></td>
+                            <td class="text-center" *ngIf = "products.nofound === false">
+                                <a href="https://www.boschrexroth.com/ics/spc/?p=p662658&language=en&typecode={{products.material}}" target="_blank">
+                                    <div class="module-button" style="margin-left: 20px;">
+                                        <button type="button" class="btn btn-secondary "></button>
+                                        <div class="button-animation"></div>
+                                        <div class="button-content">
+                                            <span class="content-text">SPARE PARTS</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="text-center" *ngIf = "products.nofound === false">
+                                <a href="https://www.boschrexroth.com/en/xc/myrexroth/myrexroth-search?_3_formDate=1636549221764&p_p_id=3&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_3_struts_action=%2Fsearch%2Fsearch&_3_cur=1&_3_format=&_3_keywords={{products.product_family}}&_3_sortField=&_3_sortReverted=undefined&_3_applyFilter=false&_3_vocabId_3825778=3832111&_3_vocabId_4354720=&_3_vocabId_3833197=&_3_groupId=0&_3_vocabId_5334676=&_3_assetTagNames=" target="_blank">
+                                    <div class="module-button" style="margin-left: 20px;">
+                                        <button type="button" class="btn btn-secondary "></button>
+                                        <div class="button-animation"></div>
+                                        <div class="button-content">
+                                            <span class="content-text">DATA SHEETS</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="text-center" *ngIf = "products.nofound === false">
+                                xx
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr class="my-0" />
+    <br>
+    
+    <div class="module-pagination module-block" data-plugin="modulePagination">
+        <div class="paging-container">
+            <div class="results-per-page">
+                <p class="paging-title">Results per page:</p>
+                <div class="btn-group btn-group-toggle"
+                    data-toggle="buttons">
+                    <div class="module-button" (click)="onChangeRowsPerPage(10)">
+                        <a class="btn btn-light btn-sm btn-ghost"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <span class="content-text">10</span>
+                        </div>
+                    </div>
+                    <div class="module-button " (click)="onChangeRowsPerPage(15)">
+                        <a class="btn btn-light btn-sm btn-ghost"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <span class="content-text">15</span>
+                        </div>
+                    </div>
+                    <div class="module-button " (click)="onChangeRowsPerPage(20)">
+                        <a class="btn btn-light btn-sm btn-ghost"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <span class="content-text">20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="paging">
+                <div class="btn-group btn-group-toggle"
+                    data-toggle="buttons" *ngIf="endPaging/2 >= actualPage || 5>=endPaging "> 
+                    <div class="module-button " (click)="onPageChange(actualPage-1)">
+                        <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <i class="icon icon-dc_backward_left"></i>
+                        </div>
+                    </div>
+                    <div class="module-button " *ngIf="actualPage-1>0">
+                        <a class="btn btn-light btn-sm "></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content" (click)="onPageChange(actualPage-1)">
+                            <span class="content-text">{{actualPage-1}}</span>
+                        </div>
+                    </div>
+                    <div class="module-button ">
+                        <a  class="btn btn-light btn-sm btn-ghost"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content" (click)="onPageChange(actualPage)">
+                            <span class="content-text">{{actualPage}}</span>
+                        </div>
+                    </div>
+                    <div class="module-button hide-mobile" *ngIf="endPaging>=2 && actualPage+1<=endPaging">
+                        <a class="btn btn-light btn-sm btn-ghost"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content" (click)="onPageChange(actualPage+1)">
+                            <span class="content-text">{{actualPage+1}}</span>
+                        </div>
+                    </div>
+                    <div class="module-button hide-mobile" *ngIf="actualPage-1==0 && endPaging>2">
+                        <a class="btn btn-light btn-sm btn-ghost"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content" (click)="onPageChange(actualPage+2)">
+                            <span class="content-text">{{actualPage+2}}</span>
+                        </div>
+                    </div>
+                    <div class="module-button hide-mobile"  *ngIf="endPaging>=5">
+                        <a class="btn btn-light btn-sm btn-ghost"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <span class="content-text">...</span>
+                        </div>
+                    </div>
+                    <div class="module-button hide-mobile"  *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging">
+                        <a class="btn btn-light btn-sm btn-ghost"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content" (click)="onPageChange(endPaging)">
+                            <span class="content-text">{{endPaging}}</span>
+                        </div>
+                    </div>
+                    <div class="module-button " *ngIf="actualPage+1<=endPaging">
+                        <a class="btn btn-light btn-sm btn-ghost arrow" (click)="onPageChange(actualPage+1)"></a>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <i class="icon icon-dc_forward_right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<app-checkdeliverytime *ngIf="!showloader"></app-checkdeliverytime> -->
+
+<app-footer><app-footer>

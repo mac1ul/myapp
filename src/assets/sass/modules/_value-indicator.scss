@@ -1,0 +1,66 @@
+.module-value-indicator {
+	@include module-name('Counter');
+
+	$element-size: 32px;
+	$width-breakpoint-big: 130px;
+	$width-breakpoint-small: 100%;
+
+	width: $width-breakpoint-big;
+
+	@media #{$media-to-sm} {
+		max-width: none;
+		width: $width-breakpoint-small;
+	}
+
+	.btn-group {
+		height: $element-size;
+		position: relative;
+		width: 100%;
+	}
+
+	.module-button {
+		position: absolute;
+
+		&:first-child {
+			left: 0;
+		}
+
+		&:last-child {
+			right: 0;
+		}
+
+		.btn.btn-sm ~ .button-content {
+			line-height: $element-size;
+			width: $element-size;
+			height: $element-size;
+
+			.icon {
+				width: 100%;
+				text-align: center;
+			}
+		}
+	}
+
+	.module-input-small {
+		margin-bottom: 0;
+		position: absolute;
+		left: $element-size;
+		right: $element-size;
+
+		input {
+			color: var(--color-smalt-blue);
+			height: $element-size;
+			text-align: center;
+		}
+	}
+
+	input[type=number]::-webkit-outer-spin-button,
+	input[type=number]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type=number] {
+		-moz-appearance:textfield;
+	}
+}

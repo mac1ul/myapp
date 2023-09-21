@@ -1,0 +1,79 @@
+.component-file-selector {
+	@include module-name("File Selector");
+	position: relative;
+
+	&.show-file-name {
+		.file-selector-wrapper {
+			display: inline-flex;
+
+			@media #{$media-to-sm} {
+				display: block;
+			}
+
+			.module-button {
+				order: 1;
+
+				@media #{$media-to-sm} {
+					width: 100%;
+				}
+
+				.button-content {
+					@media #{$media-to-sm} {
+						justify-content: center;
+						width: 100%;
+					}
+				}
+			}
+
+			.file-name-container {
+				border: 1px solid var(--color-casper);
+				min-width: $spacing-offset;
+				opacity: 0;
+				order: 2;
+				padding: $spacing-tiny $spacing-small;
+				text-align: center;
+
+				.file-name {
+					display: block;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+			}
+		}
+
+		&.active .file-name-container {
+			opacity: 1;
+		}
+	}
+
+	.file-selector-wrapper {
+		display: inline-block;
+		position: relative;
+	}
+
+	.file-selector {
+		cursor: pointer;
+		font-size: 0;
+		height: 100%;
+		left: 0;
+		opacity: 0;
+		position: absolute;
+		text-indent: -99999px;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+
+		&:hover {
+			& + .module-button .button-animation,
+			& + .file-name-container + .module-button .button-animation {
+				animation: animation-in $transition-duration forwards;
+			}
+		}
+	}
+
+	.error-message {
+		color: var(--color-monza);
+		font-size: $font-size-text-xs;
+	}
+}

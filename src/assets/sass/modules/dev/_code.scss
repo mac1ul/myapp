@@ -1,0 +1,65 @@
+.module-dev-code {
+	@include module-name('Dev Code');
+	position: relative;
+
+	backface-visibility: hidden; /* fixes the blurry text in some cases (opened state) */
+	display: block;
+	line-height: $line-height-text-s;
+
+	padding: 0;
+	margin: 0;
+	margin-bottom: $spacing-default;
+
+	font-size: $font-size-text-s;
+	background-color: var(--color-catskill-white);
+
+	opacity: 0;
+	transition: opacity $transition-duration-fast;
+
+	&.initialized {
+		opacity: 1;
+	}
+
+	pre {
+		padding: 0;
+		margin: 0;
+	}
+
+	code {
+		position: relative;
+
+		&.hljs {
+			padding: $spacing-atomic-tiny $spacing-small;
+			background-color: transparent;
+		}
+
+		&:before {
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			line-height: $line-height-text-xs;
+			padding: 0 $spacing-atomic;
+
+			font-size: $font-size-text-xs;
+
+			background-color: var(--color-alabaster);
+		}
+
+		&.html:before {
+			content: 'html';
+		}
+
+		&.scss:before {
+			content: 'scss';
+		}
+
+		&.javascript:before {
+			content: 'javascript';
+		}
+
+		&.json:before {
+			content: 'json';
+		}
+	}
+}

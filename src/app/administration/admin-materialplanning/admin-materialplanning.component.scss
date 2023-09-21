@@ -1,0 +1,25 @@
+.page-wrapper {
+    width: auto;
+    max-width: 1920px;
+    min-height: 10vh;
+    margin: 0 auto;
+}
+
+
+.module-table .highlight {
+    color: #00add9;
+    background-color: transparent;
+}
+.highlight:hover{
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+//    .highlight:hover{
+//     font-weight: bolder;
+//     cursor: pointer;
+//    }
+//    .module-table .highlight {
+//        background-color: transparent;
+//    }

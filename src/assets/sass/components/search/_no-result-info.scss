@@ -1,0 +1,11 @@
+.component-no-result-info {
+	padding: 20px;
+
+	p {
+		margin-bottom: 5px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}

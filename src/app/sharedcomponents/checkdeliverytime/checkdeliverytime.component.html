@@ -1,0 +1,179 @@
+<body>
+<div class="modal-header">
+    <h1 class="headline h5 modal-title" style="font-weight: bold;">
+        Check Delivery Time ( Plant: Elchingen, HORB and other plant in preparation )
+    </h1>
+</div>
+<div class="modal-body">
+    <form [formGroup]="searchDT">
+        <div class="row">
+            <div class="module-input form-group has-placeholder col-md-3" data-plugin="moduleInput">
+                <p class="mainlabel">Part Number:</p>
+                <div class="input-animation-wrapper">
+                    <input type="text" id="demo-placeholder1" class="pn"
+                        placeholder="Search for Global Material" formControlName="partnumber" />
+                    <div class=""></div>
+                </div>
+            </div>
+
+            <div class="module-input form-group has-placeholder col-md-3" data-plugin="moduleInput">
+                <p class="mainlabel">Type Code:</p>
+                <div class="input-animation-wrapper">
+                    <input type="text" id="demo-placeholder2" class="pn" placeholder="Search for Type Code"
+                        formControlName="description" />
+                    <div class=""></div>
+                </div>
+            </div>
+          </div>
+        <!-- search from here -->
+        <div class="row">
+            <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                    <label class="label-above-sm" for="demo-default">
+                        Product:
+                    </label>
+                    <!-- <p class="mainlabel">Your Application Experience:</p> -->
+                    <select id="demo-default" class="custom-select " #manualproduct formControlName="product"
+                        (change)="onchangeproduct(manualproduct.value)">
+                        <option selected disabled value="null">Please Select</option>
+                        <option *ngFor="let product of manual_product" [value]="product.product">
+                            {{product.product}}
+                        </option>
+                    </select>
+                    <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-error" class="error-message-wrapper"></div>
+            </div>
+
+            <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                    <label class="label-above-sm" for="demo-default">
+                        Product Detailed:
+                    </label>
+                    <!-- <p class="mainlabel">Your Application Experience:</p> -->
+                    <select id="demo-default" class="custom-select" #productdetailedref
+                        formControlName="productdetailed" (change)="filterPF(productdetailedref.value)">
+                        <option selected disabled value="null">Please Select</option>
+                        <option selected *ngFor="let fill_product_detailed of manual_product_detailed"
+                            [value]="fill_product_detailed.product_detailed">
+                            {{fill_product_detailed.product_detailed}}
+                        </option>
+                    </select>
+                    <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-error" class="error-message-wrapper"></div>
+            </div>
+
+            <div class="module-dropdown col-md-3">
+                <div class="input-animation-wrapper">
+                    <label class="label-above-sm" for="demo-default">
+                        PRODUCT FAMILY:
+                    </label>
+                    <!-- <p class="mainlabel">Your Application Experience:</p> -->
+                    <select id="demo-default" class="custom-select" formControlName="family">
+                        <option selected disabled value="null">Please Select</option>
+                        <option *ngFor="let pf of manual_product_family" [value]="pf.product_family">
+                            {{pf.product_family}}
+                        </option>
+                    </select>
+                    <div class="input-animation"></div>
+                </div>
+                <div id="demo-default-error" class="error-message-wrapper"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="module-button">
+                    <button type="button" class="btn btn-primary " (click)="Checkdeliverytime()"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <span class="content-text">Check</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- message -->
+<div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-close">
+                <div class="module-button ">
+                    <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+                    <div class="button-animation"></div>
+                    <div class="button-content">
+                        <i class="icon icon-dc_close" style="color: white;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+                <p class="headline h5 modal-title" style="color: white;">
+                    Delivery Time (Days)
+                </p>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 20px;">
+                    <b>{{delivery_time}}</b>
+                </p>
+                <!-- <p *ngIf="showelchingen">
+                    Lead times are only valid for:</p>
+                <p *ngIf="showelchingen">
+                    - ordering volume five per type max - Larger quantities as to agreement only
+                </p>
+                <p *ngIf="showelchingen">
+                    - unique classified part numbers
+                </p>
+
+                <p *ngIf="showhorb">
+                    With our customers aligned pre-plannings are of course not affected from these delivery guidelines
+                    unless orders haven't been placed within the agreed
+                    ordering time line.<br>
+                </p>
+                <p *ngIf="showhorb">
+                    Ordering volume two of per type max. Larger quantities and special pump models as to agreement only.
+                </p> -->
+                <br>
+                <div class=" col-12" style="margin-left: auto; text-align: right;">
+                    <div class="module-button">
+                        <button type="button" class="btn btn-primary " (click)="deletemodelclose()"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                            <span class="content-text">CLOSE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Delete Model -->
+ <div class="module-modal modal modal-dark modal-danger deletemodel" id="dtnotfoundmodel" data-plugin="moduleModal">
+  <div class="modal-dialog deletemodeldialog">
+      <div class="modal-content">
+          <div class="modal-close">
+              <div class="module-button ">
+                  <button type="button" class="btn btn-link " (click)="deliverytimeclosemodel()"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                      <i class="icon icon-dc_close" style="color: white;"></i>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: rgba(223, 00, 36);">
+              <p class="headline h5 modal-title" style="color: white;">
+                Delivery Time
+              </p>
+          </div>
+          <div class="modal-body">
+              <p style="font-size: 20px;">
+                <i class="icon icon-dc_warning" style="color: red; font-size: 24px;"></i> Delivery time not available for this material.
+              </p>
+          </div>
+
+      </div>
+  </div>
+</div>
+<!-- End -->
+</body>

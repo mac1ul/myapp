@@ -1,0 +1,29 @@
+.component-progress {
+
+	&.progress {
+		border-radius: 0;
+		background-color: var(--color-catskill-white);
+	}
+	
+	.progress-bar {
+		position: relative;
+		background-color: var(--color-aqua);
+		transition: width $transition-duration * 2;
+	}
+
+	.progress-value {
+		position: absolute;
+		top: 50%;
+		transform: translate(100%, -50%);
+		right: -10px;
+		color: var(--color-white);
+		font-size: 16px;
+		font-weight: 900;
+		transition: all $transition-duration;
+
+		&.fit-inside {
+			right: 10px;
+			transform: translate(0, -50%);
+		}
+	}
+}

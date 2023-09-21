@@ -1,0 +1,59 @@
+body.dev-mode {
+	.page-wrapper {
+		background-color: #bdd4d5;
+		background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, #96babc 30px, #96babc 60px);
+	}
+
+	.row {
+		background-color: #dad3b8;
+
+		> div[class*='col-'] {
+			background-color: #c4b98f;
+			background-clip: content-box;
+		}
+	}
+
+	.grid-demo {
+		.container {
+			position: relative;
+			background-color: red;
+
+			&:before {
+				content: 'Nested containers reset any container style to not mess up the grid layout.';
+
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1500;
+
+				padding: $spacing-tiny $spacing-small;
+
+				color: var(--color-prussian-blue);
+				background-color: fade($color-alabaster, 60);
+			}
+		}
+
+		.row > div[class*='col-'] {
+			min-height: 60px;
+		}
+	}
+
+	*[class*="module-"]:before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10000;
+
+		display: block;
+		content: 'Module';
+
+		padding: $spacing-atomic $spacing-tiny;
+
+		color: var(--color-white) !important;
+		font-size: $font-size-text-s;
+		text-transform: none;
+		white-space: nowrap;
+
+		background-color: rgba($color-allports, 0.6);
+	}
+}

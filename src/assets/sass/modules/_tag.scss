@@ -1,0 +1,146 @@
+.module-tags {
+	.tag-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+
+		.tag {
+			display: flex;
+
+			.tag-inner {
+				background: var(--color-prussian-blue);
+				border-radius: 4px;
+				color: var(--color-white);
+				display: inline-flex;
+				margin: 0 10px 10px 0;
+				max-width: 200px; //just for demo .. remove on real use
+				padding: 6px 34px 6px 8px;
+				position: relative;
+			}
+
+			p {
+				display: inline-block;
+				margin: 0;
+				padding: 0;
+				font-size: 12px;
+				line-height: 20px;
+				color: var(--color-white);
+			}
+
+			i {
+				position: absolute;
+				right: 8px;
+				top: 50%;
+				transform: translateY(-50%);
+				font-size: 18px;
+				cursor: pointer;
+			}
+		}
+
+		.hide {
+			display: none;
+		}
+	}
+
+	&.tags-10 {
+		.tag:nth-child(n + 11) {
+			display: none;
+		}
+	}
+
+	&.tags-9 {
+		.tag:nth-child(n + 10) {
+			display: none;
+		}
+	}
+
+	&.tags-8 {
+		.tag:nth-child(n + 9) {
+			display: none;
+		}
+	}
+
+	&.tags-7 {
+		.tag:nth-child(n + 8) {
+			display: none;
+		}
+	}
+
+	&.tags-6 {
+		.tag:nth-child(n + 7) {
+			display: none;
+		}
+	}
+
+	&.tags-5 {
+		.tag:nth-child(n + 6) {
+			display: none;
+		}
+	}
+
+	&.tags-4 {
+		.tag:nth-child(n + 5) {
+			display: none;
+		}
+	}
+
+	&.tags-3 {
+		.tag:nth-child(n + 4) {
+			display: none;
+		}
+	}
+
+	&.show-all {
+		.tag {
+			display: flex !important;
+		}
+	}
+
+	.button-wrapper {
+		display: flex;
+		flex: 100%;
+		justify-content: space-between;
+
+		.clear-wrapper,
+		.show-wrapper {
+			display: block;
+
+			&.hide {
+				display: none;
+			}
+		}
+
+		.show-wrapper {
+			.module-button {
+				.btn-link {
+					~ .button-content {
+						color: var(--color-aqua);
+					}
+
+					&:hover ~ .button-content .content-text {
+						color: var(--color-cerulian);
+					}
+				}
+
+				.button-content {
+					.content-text {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+
+		.module-button {
+			.button-content {
+				.icon {
+					font-size: 15px;
+					margin-left: 0;
+				}
+
+				.content-text {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}

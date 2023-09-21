@@ -1,0 +1,209 @@
+<!-- Navigation Tab for Administrator -->
+<app-admin-navigation></app-admin-navigation>
+<div class="container-fluid mt-5">
+  <h1>GoTo</h1>
+  <!-- Search Bar, Download and Select File And Upload Buttons -->
+  <div class="row">
+    <div class="col-6">
+      <div class="module-search" data-plugin="moduleSearch">
+        <form>
+          <div class="module-input form-group floating-label" data-plugin="moduleInput">
+            <label for="inputID">Material Search</label>
+            <div class="input-animation-wrapper">
+              <input type=search #searchbymaterial id="inputID"
+                (keydown)="searchbymaterials(searchbymaterial.value, 'material')" class="form-control " value=""
+                placeholder="" name="search" data-search-url="data/search-result.json?q={queue}&amount=5" />
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div class="module-button ">
+            <button type="submit" class="btn btn-link btn-lg " disabled="disabled"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_search" style="color: black"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="module-search" data-plugin="moduleSearch">
+        <form action="#" method="post">
+          <div class="module-input form-group floating-label" data-plugin="moduleInput">
+            <label for="inputID">Description Search </label>
+            <div class="input-animation-wrapper">
+              <input type=search #searchbydescription id="inputID" (keydown) = "searchbydescriptions(searchbydescription.value, 'description')"  class="form-control " value="" placeholder="" name="search"
+                data-search-url="data/search-result.json?q={queue}&amount=5" />
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div class="module-button ">
+            <button type="submit" class="btn btn-link btn-lg " disabled="disabled"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_search"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table for the GoTo Materials -->
+  <div class="mt-5">
+    <h3>Please find your material here:</h3>
+    <!-- Table 3 for When Select Machine  -->
+    <div class="page-wrapper module-table table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Material</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Plant</th>
+            <th class="text-center">Product Hierarchy</th>
+            <th class="text-center">Region</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let goto_data of showProducts; let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{goto_data.material}}</td>
+            <td>{{goto_data.description}}</td>
+            <td>{{goto_data.plant}}</td>
+            <td>{{goto_data.product_hierarchy}}</td>
+            <td>{{goto_data.region}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+   <!-- Pagination Starts -->
+   <div class="module-pagination module-block" data-plugin="modulePagination">
+    <div class="paging-container">
+      <div class="results-per-page">
+        <p class="paging-title">Results per page:</p>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="module-button " (click)="onChangeRowsPerPage(10)">
+            <a class="btn btn-light btn-sm "></a>
+            <div class="button-animation"></div>
+            <div class="button-content" [ngClass]="{'active-class': rowsPerPage==10}">
+              <span class="content-text">10</span>
+            </div>
+          </div>
+          <div class="module-button " (click)="onChangeRowsPerPage(15)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" [ngClass]="{'active-class': rowsPerPage==15}">
+              <span class="content-text">15</span>
+            </div>
+          </div>
+          <div class="module-button " (click)="onChangeRowsPerPage(20)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" [ngClass]="{'active-class': rowsPerPage==20}">
+              <span class="content-text">20</span>
+            </div>
+          </div>
+          <div class="module-button " (click)="onChangeRowsPerPage(100)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" [ngClass]="{'active-class': rowsPerPage==100}">
+              <span class="content-text">ALL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="paging" >
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" >
+          <div class="module-button " *ngIf="actualPage !== 1" (click)="onPageChange(actualPage-1)">
+            <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_backward_left"></i>
+            </div>
+          </div>
+          <div class="module-button " *ngIf="actualPage-1>0" (click)="onPageChange(actualPage-1)">
+            <a class="btn btn-light btn-sm "></a>
+            <div class="button-animation"></div>
+            <div class="button-content" style="background-color: white; color: black; border: black;">
+              <span class="content-text" >{{actualPage-1}}</span>
+            </div>
+          </div>
+          <div class="module-button " (click)="onPageChange(actualPage)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content active-class">
+              <span class="content-text ">{{actualPage}}</span>
+            </div>
+          </div>
+          <div class="module-button hide-mobile" *ngIf="endPaging>=2 && actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" >
+              <span class="content-text">{{actualPage+1}}</span>
+            </div>
+          </div>
+          <div class="module-button hide-mobile" *ngIf="actualPage-1==0 && endPaging>2" (click)="onPageChange(actualPage+2)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" >
+              <span class="content-text">{{actualPage+2}}</span>
+            </div>
+          </div>
+          <!-- <div *ngFor="let number of [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,10,41,42,43,44,45,46,47]">
+            <div class="module-button hide-mobile" *ngIf="actualPage-1==0 && endPaging>2" (click)="onPageChange(actualPage+number)">
+              <a class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content" >
+                <span class="content-text">{{actualPage+number}}</span>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="module-button hide-mobile" *ngIf=" showprevnext" (click)="onPageChange(actualPage+2)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" >
+              <span class="content-text">{{actualPage+2}}</span>
+            </div>
+          </div> -->
+          <!-- option -->
+          <div class="module-button" *ngIf="endPaging>=5">
+            <button type="button" class="btn btn-light btn-sm btn-ghost dots" (click)="prevnext()"></button>
+            <div class="button-content">
+              <i class="icon icon-dc_options"></i>
+            </div>
+          </div>
+          <!-- option end -->
+          <!-- <div class="module-button hide-mobile" *ngIf="showprevnext" (click)="onPageChange(endPaging-2)">
+            <a class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" >
+              <span class="content-text">{{endPaging-2}}</span>
+            </div>
+          </div> -->
+
+          <div class="module-button " *ngIf="endPaging>=4 && actualPage!=endPaging && actualPage+1!=endPaging" (click)="onPageChange(endPaging)">
+            <a  class="btn btn-light btn-sm btn-ghost"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" >
+              <span class="content-text">{{endPaging}}</span>
+            </div>
+          </div>
+          <div class="module-button " *ngIf="actualPage+1<=endPaging" (click)="onPageChange(actualPage+1)">
+            <a class="btn btn-light btn-sm btn-ghost arrow"></a>
+            <div class="button-animation"></div>
+            <div class="button-content" >
+              <i class="icon icon-dc_forward_right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End -->
+  </div>
+</div>
+<!-- Footer Tab for Administrator  -->
+<app-footer></app-footer>

@@ -1,0 +1,51 @@
+
+.component-file-drag-area {
+
+	&.error {
+		.file-drag-area {
+			border-color: var(--color-monza);
+		}
+
+		label {
+			color: var(--color-monza);
+		}
+	}
+
+	.file-drag-area {
+		background-color: var(--color-white);
+		border: 2px dashed var(--color-heather);
+		cursor: pointer;
+		min-height: rem(150);
+		padding: 54px;
+		position: relative;
+		text-align: center;
+		transition: background-color 0.35s ease-in-out;
+
+		&.highlight,
+		&:hover {
+			background-color: var(--color-athens-gray);
+		}
+
+		label {
+			align-items: center;
+			cursor: pointer;
+			display: flex;
+			height: 100%;
+			left: 0;
+			justify-content: center;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		.file-drag-input {
+			display: none;
+		}
+	}
+
+	.error-message {
+		color: var(--color-monza);
+		font-size: $font-size-text-xs;
+	}
+}
+

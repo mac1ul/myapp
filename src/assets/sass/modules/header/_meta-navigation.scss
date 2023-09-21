@@ -1,0 +1,83 @@
+.module-header-meta-navigation {
+	@include module-name("Header Meta Navigation");
+	@include drop-shadow;
+
+	$offset: $header-height;
+	$offset-mobile: $header-height-mobile;
+
+	position: fixed;
+	top: $offset;
+	z-index: $header-z-index - 1;
+
+	display: none;
+	width: 100%;
+
+	background-color: var(--color-white);
+
+	overflow-y: auto;
+
+	opacity: 0;
+	transform: translateY(-20px);
+
+	transition:
+		opacity $transition-duration,
+		transform $transition-duration; // Keep in sync with js #header-meta-navigation.
+
+	&.activate {
+		display: block;
+	}
+
+	&.show {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.meta-nav {
+		display: block;
+		height: rem(85);
+		padding-right: 0;
+
+		ul {
+			height: 100%;
+
+			li:last-child a {
+				margin-right: 0;
+			}
+
+			a.basket {
+				.icon-notification {
+					right: 26px;
+				}
+			}
+		}
+	}
+
+	@media #{$media-from-md} {
+		&.activate {
+			display: none;
+		}
+	}
+
+	@media #{$media-to-md} {
+		.meta-nav ul li {
+			margin-left: rem(20);
+			margin-right: rem(20);
+
+			a {
+				margin-right: 0;
+			}
+		}
+	}
+
+	@media #{$media-to-sm} {
+		top: $offset-mobile;
+
+		.meta-nav {
+			height: auto;
+
+			ul {
+				flex-flow: row wrap;
+			}
+		}
+	}
+}

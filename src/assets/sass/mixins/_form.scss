@@ -1,0 +1,36 @@
+@mixin validation-message-animation($transition-duration) {
+	//animation: animation-form-padding-out $transition-duration forwards;
+
+	&.has-error {
+/*		animation: animation-form-padding-in $transition-duration forwards;
+
+		div[id^='bouncer-error_'] {
+			animation: animation-form-opacity ($transition-duration * 2) forwards;
+		}*/
+
+		.error-message-wrapper {
+			margin-bottom: 24px;
+			animation: error-in ($transition-duration * 2) forwards;
+		}
+	}
+}
+
+@mixin subpixel-fix() {
+	// chrome fix for subpixel bug (https://stackoverflow.com/a/24042956)
+
+	transform: rotate(-0.0000000001deg);
+}
+
+@mixin error-message-base() {
+	position: relative;
+	background: transparent;
+
+	> div[id^='bouncer-error_'] {
+		//opacity: 0;
+		//border: 0;
+		//left: 0;
+		//line-height: $line-height-headline-xs;
+		//padding-top: 3px;
+		//padding-left: 0;
+	}
+}

@@ -1,0 +1,43 @@
+  <app-admin-navigation></app-admin-navigation>
+  <div class="page-wrapper ml-5 mr-5 mt-5">
+    <div class="setview">
+      <h1><b>Overview of Country Units</b></h1>
+      <div class="module-table table-responsive">
+        <table class="table table-hover" width="100%">
+          <thead>
+            <tr>
+              <th>
+                Index
+              </th>
+              <th>
+                Company Name
+              </th>
+              <th>
+                Country
+              </th>
+              <th>
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let salesunitdetails of salesunitdata; let i=index; ">
+              <td>{{i+1}}</td>
+              <td>{{salesunitdetails.salesunit_name}}</td>
+              <td>{{salesunitdetails.location_name}}</td>
+              <td>
+                <div class="module-button icon" [routerLink]="['/Partner_overview', salesunitdetails.salesunit_registered_id]">
+                  <button type="button" class="btn btn-secondary"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <i class="icon icon-dc_folder_open"></i>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <app-footer class="footer"></app-footer>

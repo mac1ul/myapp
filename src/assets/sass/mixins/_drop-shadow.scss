@@ -1,0 +1,12 @@
+@mixin drop-shadow($additional-shadow: null) {
+	$default-box-shadow: 0 15px 30px 0 rgba($color-smalt-blue, 0.35);
+
+	@if ($additional-shadow) {
+		box-shadow:
+			$default-box-shadow,
+			$additional-shadow;
+	}
+	@else {
+		box-shadow: $default-box-shadow;
+	}
+}

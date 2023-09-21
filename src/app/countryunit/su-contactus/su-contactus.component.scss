@@ -1,0 +1,12 @@
+body { min-height:100%;  margin:0; }
+body{ 
+display: table;
+width: 100%; 
+}
+.footer {
+height: 50px;
+}
+
+body > .footer{
+display: table-row; 
+}

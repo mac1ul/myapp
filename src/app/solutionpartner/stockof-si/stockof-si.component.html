@@ -1,0 +1,381 @@
+<app-spheader></app-spheader>
+<!-- Search of Solution Partner -->
+<div class="mt-5" style="margin: 10px; padding: 15px">
+  <h2 class="maintitle">Stock of System Integrator</h2>
+  <!-- Search Bar, Download and Select File And Upload Buttons -->
+  <div class="row">
+    <div class="col-3">
+      <div class="module-search" data-plugin="moduleSearch">
+        <form action="#" method="post">
+          <div class="module-input form-group floating-label" data-plugin="moduleInput">
+            <label for="inputID"></label>
+            <div class="input-animation-wrapper">
+              <input type=search #searchbytypecode id="inputID" (keyup)="searchbytypecodes(searchbytypecode.value, 'typecode')" class="form-control " value="" placeholder="Type Code Search" name="search" data-search-url="data/search-result.json?q={queue}&amount=5" />
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div class="module-button ">
+            <button type="submit" class="btn btn-link btn-lg"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_search"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="module-search" data-plugin="moduleSearch">
+        <form action="#" method="post">
+          <div class="module-input form-group floating-label" data-plugin="moduleInput">
+            <label for="inputID1">  </label>
+            <div class="input-animation-wrapper">
+              <input type=search #searchbypartnumber id="inputID1" (keyup)="searchbypartnumbers(searchbypartnumber.value, 'partnumber')" class="form-control " value="" placeholder="Part Number Search" name="search" data-search-url="data/search-result.json?q={queue}&amount=5" />
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+          </div>
+          <div class="module-button ">
+            <button type="submit" class="btn btn-link btn-lg " disabled="disabled"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <i class="icon icon-dc_search"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="module-button ">
+        <button type="button" class="btn btn-primary " (click)="downloadFile()"></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="icon icon-dc_download"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="component-file-selector show-file-name "
+          data-plugin="moduleFileSelector" >
+        <div class="form-group" style="border: 1px solid black;">
+          <div class="file-selector-wrapper">
+            <input type="file" name="file" id="file" class="file-selector" (change)="incomingfile($event)" multiple="false">
+            <div class="file-name-container">
+              <span class="file-name"></span>
+            </div>
+            <div class="module-button ">
+              <button type="button" class="btn btn-light " ></button>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">Select File</span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="error-message">Please select a different file.</div> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="module-button ">
+        <button type="button" class="btn btn-secondary " (click)="sendFiledata()"></button>
+        <div class="button-animation"></div>
+        <div class="button-content">
+          <i class="icon icon-dc_upload"></i>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-4">
+        <input type="file" (change)="incomingfile($event)" multiple="false">
+    </div> -->
+    <!-- <div class="col-4">
+      <div class="component-file-selector show-file-name " data-plugin="moduleFileSelector">
+        <div class="form-group">
+          <div class="file-selector-wrapper">
+            <input type="file" name="file" id="file" class="file-selector">
+            <div class="file-name-container">
+              <span class="file-name"></span>
+            </div>
+            <div class="module-button ">
+              <button type="button" class="btn btn-secondary" ></button>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">Select File</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!-- System Integrator Product List Table -->
+  <div class="mt-5" >
+      <div class="row">
+          <div class="col-12">
+            <p style="font-size: 1.10rem; font-weight: 600;">Please find your Stock here:</p>
+          </div>
+          <!-- <div class="col-4" style="text-align: right;">
+            <div class="module-button ">
+                <button type="button" class="btn btn-secondary" ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">Your Stock</span>
+                </div>
+            </div> &nbsp;&nbsp;&nbsp;
+            <div class="module-button ">
+                <button type="button" class="btn btn-secondary" ></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <span class="content-text">Global Stock</span>
+                </div>
+              </div>
+          </div> -->
+      </div>
+    <!-- Table 3 for When Select Machine  -->
+    <!-- tab navigation -->
+
+    <div class="module-tab-navigation module-block" data-plugin="moduleTabNavigation">
+        <div class="">
+            <div class="tab-head">
+                <div class="head-item">
+                  <button type="button" class="btn btn-secondary">
+                    Your Stock
+                  </button>
+                </div>
+                <div class="head-item">
+                  <button type="button" class="btn btn-secondary">
+                    Global Stock
+                  </button>
+                </div>
+            </div>
+          <div class="tab-content">
+            <div class="content-item">
+              <section class="module-text">
+                <h3>
+                  Last updated on: {{lastupdatedate}}
+                </h3>
+                  <div class="page-wrapper module-table table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th class="text-center highlight">Part Nr.</th>
+                          <th class="text-center highlight">Type Code</th>
+                          <th class="text-center highlight">Country</th>
+                          <th class="text-center highlight">Quantity</th>
+                          <th class="text-center highlight">Company</th>
+                          <th class="text-center highlight">Email</th>
+                          <th class="text-center highlight">Telephone</th>
+                          <th class="text-center highlight">Mobile</th>
+                          <th class="text-center highlight">Website</th>
+                          <th class="text-center highlight">Update</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor = "let stock of partner_stock">
+                          <td class="text-center">{{stock.partnumber}}</td>
+                          <td class="text-center">{{stock.typecode}}</td>
+                          <td class="text-center">{{stock.country}}</td>
+                          <td class="text-center">{{stock.quantity}}</td>
+                          <td class="text-center">{{stock.company_name}}</td>
+                          <td class="text-center">{{stock.contact_person_email}}</td>
+                          <td class="text-center">{{stock.telephone}}</td>
+                          <td class="text-center">{{stock.mobile}}</td>
+                          <td class="text-center">{{stock.website}}</td>
+                          <td class="text-center">{{stock.update}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </section>
+            </div>
+            <div class="content-item">
+              <div class="page-wrapper module-table table-responsive">
+
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="text-center highlight">Part Nr.</th>
+                      <th class="text-center highlight">Type Code</th>
+                      <th class="text-center highlight">Country</th>
+                      <th class="text-center highlight">Quantity</th>
+                      <th class="text-center highlight">Company</th>
+                      <th class="text-center highlight">Email</th>
+                      <th class="text-center highlight">Telephone</th>
+                      <th class="text-center highlight">Mobile</th>
+                      <th class="text-center highlight">Website</th>
+                      <th class="text-center highlight">Update</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor = "let global of global_stock">
+                      <td class="text-center">{{global.partnumber}}</td>
+                      <td class="text-center">{{global.typecode}}</td>
+                      <td class="text-center">{{global.country}}</td>
+                      <td class="text-center">{{global.quantity}}</td>
+                      <td class="text-center">{{global.company_name}}</td>
+                      <td class="text-center">{{global.contact_person_email}}</td>
+                      <td class="text-center">{{global.telephone}}</td>
+                      <td class="text-center">{{global.mobile}}</td>
+                      <td class="text-center">{{global.website}}</td>
+                      <td class="text-center">{{global.update | date: 'dd-MM-yyyy'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+ </div>
+
+    <!-- End -->
+    <!-- <div class="page-wrapper module-table table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Part Nr.</th>
+            <th class="text-center">Type Code</th>
+            <th class="text-center">Country</th>
+            <th class="text-center">Company</th>
+            <th class="text-center">Contact</th>
+            <th class="text-center">Telephone</th>
+            <th class="text-center">Mobile</th>
+            <th class="text-center">Email Order</th>
+            <th class="text-center">Website</th>
+            <th class="text-center">Update</th>
+            <th class="text-center">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+    <!-- Pagination Starts -->
+    <!-- <div class="module-pagination module-block" data-plugin="modulePagination">
+      <div class="paging-container">
+        <div class="results-per-page">
+          <p class="paging-title">Results per page:</p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">10</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">25</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">50</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">ALL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="paging">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm "></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">1</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">2</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">3</span>
+              </div>
+            </div>
+            <div class="module-button hide-mobile">
+              <a href="" class="btn btn-light btn-sm btn-ghost"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <span class="content-text">4</span>
+              </div>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="paging mobile">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_backward_left"></i>
+              </div>
+            </div>
+            <div class="module-input-small">
+              <div class="input-animation-wrapper">
+                <input type="number" id="page-number" name="page" class="form-control form-control-sm" value="1">
+                <div class="input-animation"></div>
+              </div>
+            </div>
+            <div class="available-pages">
+              <span class="separator">/</span>
+              <span class="max-pages">555</span>
+            </div>
+            <div class="module-button ">
+              <a href="" class="btn btn-light btn-sm btn-ghost arrow"></a>
+              <div class="button-animation"></div>
+              <div class="button-content">
+                <i class="icon icon-dc_forward_right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<!-- Footer Tab for Administrator  -->
+<app-footer></app-footer>

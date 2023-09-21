@@ -1,0 +1,57 @@
+table tr th{
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+table tr td{
+  font-size: 1rem;
+  font-weight: 400;
+}
+.green{
+    background-color: #01CCFF;
+}
+.red{
+    background-color: #BD001E;
+}
+
+.hover {
+    position: absolute;
+    top: 149px;
+    right: 20px;
+    // border: 2px solid black;
+    min-width: 251px;
+    transition: background-color 0.5s;
+}
+
+.buttonblue{
+    background: linear-gradient(40deg,#eff7fa,#ebecf1)!important;
+    box-shadow: none;
+    color: #FFFFFF;
+    border-radius: 0px;
+    cursor: pointer;
+    min-height: 100px;
+    opacity: 1;
+  }
+  .msg{
+      color: black;
+      text-align: justify;
+      font-size: 16px;
+      font-weight: 800;
+      min-height: 100px;
+      max-width: 470px;
+      padding: 5px;
+  }
+  body{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+  .wrapper{
+    flex:1;
+  }
+
+  .maintitle{
+    font-size: 1.70rem;
+    line-height: 2rem;
+    font-weight: 600;
+}

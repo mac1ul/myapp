@@ -1,0 +1,13 @@
+.module-area {
+	.area-top {
+		margin-bottom: 80px;
+
+		@media #{$media-to-md} {
+			margin-bottom: 50px;
+		}
+
+		@media #{$media-to-sm} {
+			margin-bottom: 40px;
+		}
+	}
+}

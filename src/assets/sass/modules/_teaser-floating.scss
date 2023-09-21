@@ -1,0 +1,75 @@
+.module-teaser-floating {
+
+
+    .headline,
+    .subline {
+        text-align: center;
+        color: var(--color-mine-shaft);
+    }
+
+    .subline {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+
+    .teaser {
+        a {
+            display: block;
+            text-decoration: none;
+        }
+    }
+
+    .teaser-image-wrapper {
+        padding-top: 150%;
+        position: relative;
+        width: 100%;
+
+        .module-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &.image1-1 {
+            padding-top: 100%;
+        }
+
+        &.image16-9 {
+            padding-top: 56.25%
+        }
+    }
+
+    .teaser-text-wrapper {
+        --color-prussian-blue: #{$color-prussian-blue};
+        --color-black: #{$color-black};
+        --color-mine-shaft: #{$color-mine-shaft};
+
+
+        background: $color-white;
+        padding: 20px 20px 30px;
+
+        .headline {
+            margin-bottom: 10px;
+        }
+
+        .headline,
+        .subline {
+            color: var(--color-prussian-blue);
+            text-align: left;
+        }
+
+        .subline {
+            font-size: 16px;
+            line-height: 26px;
+            margin-bottom: 0;
+        }
+    }
+}

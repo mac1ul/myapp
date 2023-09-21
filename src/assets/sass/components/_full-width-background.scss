@@ -1,0 +1,59 @@
+.component-full-width-background {
+
+	&:after,
+	.bg-content:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -$gutter-width / 2;
+		z-index: -1;
+	
+		width: $screen-xs-min;
+		height: 100%;
+	
+		background-color: var(--color-catskill-white);
+	
+		@media #{$media-from-xs} {
+			left: 50%;
+	
+			width: 100vw;
+			margin-left: -50vw;
+		}
+	}
+
+	&.section {
+		.bg-content {
+			position: relative;
+			padding: 80px 0;
+
+			@media #{$media-to-lg} {
+				padding: 50px 0;
+			}
+
+			@media #{$media-to-md} {
+				padding: 40px 0;
+			}
+
+			.module-block:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+
+		&:after {
+			content: none;
+		}
+	}
+
+	&.dark-blue {
+		&:after,
+		.bg-content:after {
+			background-color: var(--color-prussian-blue);
+		}
+
+		&.section {
+			.bg-content {
+				background-color: var(--color-prussian-blue);
+			}
+		}
+	}
+}

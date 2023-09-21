@@ -1,0 +1,105 @@
+.module-checkbox {
+	//@include module-name('Checkbox');
+	@include validation-message-animation($transition-duration);
+
+	margin-bottom: $spacing-tiny;
+
+	.custom-control-label {
+		@include icon($icon-dc_checkmark, after);
+		color: var(--color-smalt-blue);
+		font-size: $font-size-text-s;
+		padding-left: $spacing-tiny;
+		transition: all 0.2s ease-in-out 0.1s;
+
+		&::after {
+			color: var(--color-white);
+			font-size: $font-size-text-l;
+			top: 3px;
+			//transform: scale(0.5);
+			opacity: 0;
+			transition: all 0.2s ease-in-out 0.1s;
+		}
+	}
+
+	.custom-control-label::before {
+		border: 2px solid var(--color-casper);
+		//box-shadow: 0 0 0 0 $color-prussian-blue inset;
+		transition: all 0.2s ease-in-out 0.1s;
+	}
+
+	.custom-control-input:checked ~ .custom-control-label,
+	.custom-control-input:indeterminate ~ .custom-control-label {
+		color: var(--color-prussian-blue);
+
+		&::after {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
+	.custom-control-input:checked ~ .custom-control-label::before {
+		border-color: var(--color-prussian-blue);
+		box-shadow: 0 0 0 10px var(--color-prussian-blue) inset;
+	}
+
+	.custom-control-input:indeterminate ~ .custom-control-label::before {
+		background-color: var(--color-casper);
+		border-color: var(--color-casper);
+		box-shadow: 0 0 0 10px var(--color-casper) inset;
+	}
+
+	.custom-control-input:indeterminate ~ .custom-control-label::after {
+		background-image: none;
+	}
+
+	.custom-control-input:disabled ~ .custom-control-label {
+		opacity: 0.2;
+
+		&::after {
+			content: '';
+		}
+	}
+
+	&:hover {
+
+		.custom-control-input ~ .custom-control-label::before {
+			border-color: var(--color-prussian-blue);
+		}
+
+		.custom-control-input:indeterminate ~ .custom-control-label::before {
+			border-color: var(--color-casper);
+		}
+
+		.custom-control-label {
+			color: var(--color-prussian-blue);
+			cursor: pointer;
+		}
+
+		.custom-control-input:disabled ~ .custom-control-label {
+			cursor: default;
+
+			&:before {
+				border-color: var(--color-casper);
+			}
+		}
+	}
+
+	&:focus {
+		outline: 0;
+	}
+
+	&.has-error {
+		.error-message {
+			@include error-message-base;
+
+			color: var(--color-monza);
+			font-size: $font-size-text-xs;
+			line-height: $line-height-text-xs;
+			padding-left: 11px;
+
+			> div[id^='bouncer-error_'] {
+				//padding-left: 10px;
+			}
+		}
+	}
+}

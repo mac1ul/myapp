@@ -1,0 +1,82 @@
+.module-teaser-article {
+	.article-container {
+		margin-bottom: -15px;
+	}
+
+	.article-block {
+		display: none;
+		margin: 0 -15px;
+		overflow: auto; // Clearfixes floating.
+
+		&.show {
+			display: block;
+		}
+
+		@media #{$media-from-md-to-lg} {
+			.article-frame:nth-child(3n) {
+				width: 100%;
+			}
+		}
+
+		@media #{$media-from-lg} {
+			&:nth-child(odd) .article-frame:nth-child(4),
+			&:nth-child(even) .article-frame:nth-child(5) {
+				width: 100% * 2 / 3;
+
+				.component-image-teaser {
+					width: calc(100% + 24px); // I honestly don't know why 24 pixels, but it fits.
+					margin-left: -12px;
+				}
+			}
+
+			&:nth-child(even) .article-frame:nth-child(5) {
+				float: right;
+			}
+		}
+	}
+
+	.article-frame {
+		float: left;
+
+		width: 100%;
+		padding: 15px;
+
+		overflow: hidden;
+
+		@media #{$media-from-md-to-lg} {
+			width: 50%;
+		}
+
+		@media #{$media-from-lg} {
+			width: 100% * 1 / 3 ;
+		}
+	}
+
+	.frame-limiter {
+		opacity: 0;
+		overflow: hidden;
+		&.animate {
+			opacity: 1;
+			animation: animate-teaser-article-fade-in $transition-duration;
+		}
+	}
+
+	.load-more-container {
+		margin-top: 40px;
+		text-align: center;
+
+		&.hide {
+			display: none;
+		}
+	}
+}
+
+@keyframes animate-teaser-article-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+	}
+}

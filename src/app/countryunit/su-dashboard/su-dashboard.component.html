@@ -1,0 +1,137 @@
+<body>
+  <!-- Navigation Bar for Sales Unit Dashboard -->
+  <app-su-navigation></app-su-navigation>
+
+  <!-- <app-breadcrumb></app-breadcrumb> -->
+  <!-- <router-outlet></router-outlet> -->
+  <!-- <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb> -->
+  <!-- Dashboard Option -->
+  <div class="page-wrapper mt-5">
+    <div class="container-fluid">
+      <h1 class="mb-0"><b>Welcome, Bosch Rexroth - Sales Unit Dashboard</b></h1>
+      <div class="row">
+        <div class="col-md-12 col-xl-12 col-lg-12 col-sm-12">
+          <form class="form">
+            <div class="row mt-4">
+              <!-- <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/suaddemployee']">
+                <div class="button-animation"></div>
+                <i class="icon icon-dc_grid_view"></i>
+                <br><strong class="fasbtn">Sale's Unit</strong>
+              </button>
+            </div> -->
+              <!-- <div class="col-lg-3 col-xl-3 maindiv">
+              <button class="buttonblue" [routerLink]="['/suaddsolutionpartner']">
+                <div class="button-animation"></div>
+                <i class="icon icon-dc_add_folder"></i>
+                <br><strong class="fasbtn">Solution Partner</strong>
+              </button>
+            </div> -->
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/SalesUnitDashboard/partner_list']">
+                  <i class="icon icon-dc_grid_view"></i>
+                  <br><strong class="fasbtn">Partners Overview</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/suprototype']">
+                  <i class="icon icon-dc_i_shipping_stock"></i>
+                  <br><strong class="fasbtn">Fast-track Request <span style="color: red;">({{count}})</span></strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/supricerequest']">
+                  <i class="icon icon-dc_spare_parts"></i>
+                  <br><strong class="fasbtn">Price Request <span style="color: red;">({{price_count}})</span></strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/susupport']">
+                  <i class="icon icon-dc_call"></i>
+                  <br><strong class="fasbtn">Support Request</strong>
+                </button>
+              </div>
+            </div>
+            <div class="row mt-1">
+
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/sumaterialplanning']">
+                  <i class="icon icon-dc_filter_02"></i>
+                  <br><strong class="fasbtn">Material Planning</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/Delivery-time']">
+                  <i class="icon rb-hierarchy-search"></i>
+                  <br><strong class="fasbtn">Check Delivery Time</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/sugoto']">
+                  <i class="icon icon-dc_GoTo"></i>
+                  <br><strong class="fasbtn">GO TO</strong>
+                </button>
+              </div>
+
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/sustockofsi']">
+                  <i class="icon icon-dc_chart_line"></i>
+                  <br><strong class="fasbtn">Stock of SI</strong>
+                </button>
+              </div>
+            </div>
+            <div class="row mt-1">
+              <div class="col-lg-3 col-xl-3 maindiv" (click)="myrexroth()">
+                <button class="buttonblue">
+                  <i class="icon icon-dc_link"></i>
+                  <br><strong class="fasbtn">MyRexroth</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv" (click)="configurator()">
+                <a>
+                  <button class="buttonblue">
+                    <i class="icon icon-dc_connectivity"></i>
+                    <br><strong class="fasbtn">configurator</strong>
+                  </button>
+                </a>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/3D-MAP']">
+                  <i class="icon icon-dc_3D"></i>
+                  <br><strong class="fasbtn">3D-MAP</strong>
+                </button>
+              </div>
+
+              <!-- <div class="col-lg-3 col-xl-3 maindiv">
+                    <button mdbBtn class="buttonblue" mdbWavesEffect id="bt" >
+                        <i class="icon-shoppingcart-add"></i>
+                        <br><strong class="fasbtn" style="text-transform: none;">eShop</strong>
+                    </button>
+                </div>
+                <div class="col-lg-3 col-xl-3 maindiv">
+                    <button mdbBtn class="buttonblue" mdbWavesEffect id="bt" >
+                        <i class="icon-externallink-landscape"></i>
+                        <br><strong class="fasbtn">Presentation</strong>
+                    </button>
+                </div>
+                <div class="col-lg-3 col-xl-3 maindiv">
+                    <button mdbBtn class="buttonblue" mdbWavesEffect id="bt" >
+                        <i class="icon-externallink-landscape"></i>
+                        <br><strong class="fasbtn">Schemes</strong>
+                    </button>
+                </div>
+                <div class="col-lg-3 col-xl-3 maindiv">
+                   <button mdbBtn class="buttonblue" mdbWavesEffect id="bt">
+                    <i class="icon-externallink-landscape"></i>
+                        <br><strong class="fasbtn">HPI Documents</strong>
+                    </button>
+                </div> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer for Sales Unit Dashboard -->
+  <app-footer class=".footer"></app-footer>
+</body>

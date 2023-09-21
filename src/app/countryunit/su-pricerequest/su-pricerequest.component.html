@@ -1,0 +1,231 @@
+<body>
+  <!--  Navigation Tab for Administrator -->
+  <app-su-navigation></app-su-navigation>
+
+  <!-- Prototype Request Collection  -->
+  <div class="page-wrapper start mt-5">
+    <h1 class="mb-0 maintitle">Price Request Collection</h1>
+    <p class="mt-0">Here you will get details about all the Price Request from your Solution Partners.
+    </p>
+    <div class="row">
+      <div class="col-3 p-0 m-0">
+        <h3 class="text-center mt-2"><strong>List of Price Request</strong></h3>
+
+        <div class="module-accordion filter-accordion mt-4" data-plugin="moduleAccordion">
+          <div class="container-fluid">
+            <!-- Prototype Request's Column -->
+            <div class="accordion-item open">
+              <div class="">
+                <p> Price Request's (Active)</p>
+              </div>
+              <div class="accordion-content">
+                <div class="content">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="filter-group">
+                        <div class="filter-wrapper">
+                          <div class="checkbox-wrapper">
+                            <div class="module-checkbox custom-control custom-checkbox"
+                              *ngFor="let fname of closed_price_req; let i = index">
+                              <input type="checkbox" class="custom-control-input" [(ngModel)]="fname.checked"
+                                (ngModelChange)="uncheckOther(fname,$event)" id="allgemeine_informatioanen_0{{i}}"
+                                (click)="showfulldata(fname.price_request_id)" name="allgemeine_informatioanen_0{{i}}">
+                              <label class="custom-control-label" for="allgemeine_informatioanen_0{{i}}">
+                                <span class="label-title" (click)="showfulldata(fname.price_request_id)"
+                                  [ngClass]="fname.status == true? 'yes' : 'no'">{{fname.price_req_date}},
+                                  {{fname.customer_partner_name}}</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="module-accordion filter-accordion" data-plugin="moduleAccordion">
+          <div class="container-fluid">
+            <!-- Prototype Request's Column -->
+            <div class="accordion-item open parent">
+              <div class="">
+                <p> Price Request's (Closed) </p>
+              </div>
+              <div class="accordion-content">
+                <div class="content displaytext">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="filter-group sidebar-item">
+                        <div class="filter-wrapper">
+                          <div class="checkbox-wrapper">
+                            <div class="module-checkbox custom-control custom-checkbox"
+                              *ngFor="let fnames of price_closed_request; let i = index">
+                              <input type="checkbox" class="custom-control-input" [(ngModel)]="fnames.checked"
+                                (ngModelChange)="uncheckOtherss(fnames,$event)" id="allgemeine_informationen_0{{i}}"
+                                (click)="showfulldata(fnames.price_request_id)" name="allgemeine_informationen_0{{i}}">
+                              <label class="custom-control-label" for="allgemeine_informationen_0{{i}}">
+                                <span class="label-title"
+                                  (click)="showfulldata(fnames.price_request_id)">{{fnames.price_req_date}},
+                                  {{fnames.customer_name}}</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-9 setlayout" *ngIf="!alert">
+        <p><i class="rb-core-data setmiddle"></i></p>
+        <p class="setmiddletext">Select an item to read</p>
+      </div>
+      <div class="col-9 " *ngIf="alert">
+        <h3 class="text-center"><strong>Detailed Description</strong></h3>
+        <!-- Details of Person Request -->
+        <!-- Table -->
+        <div class="module-table table-responsive">
+          <table class="table" style="margin-bottom: 0px;">
+            <thead>
+              <tr>
+                <th colspan=8 class="text-center">
+                  Customer Details & Project Information
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let fasttrack_body of fasttrack_body">
+
+              <tr colspan=8>
+              <tr>
+                <td class="highlight" width=600 colspan=2><b> Customer Name:</b></td>
+                <td width=900 align=center colspan=2>{{fasttrack_body.customer_name}}</td>
+                <td class="highlight" width=500 colspan=2> <b>Quantity of Machines - {{currentYear}}:</b></td>
+                <td width=900 class="text-center" align=center colspan=2>{{fasttrack_body.currentYearQty}}</td>
+              </tr>
+              <tr>
+                <td class="highlight" colspan=2><b> Project Name:</b> </td>
+                <td colspan=2 class="text-center"> {{fasttrack_body.project_name}} </td>
+                <td class="highlight" colspan=2><b> Quantity of Machines - {{futureYear1}}</b></td>
+                <td class="text-center" colspan=2>{{fasttrack_body.futureYear1Qty}}</td>
+              </tr>
+              <tr>
+                <td class="highlight" colspan=2><b> Application / Machine Type:</b> </td>
+                <td colspan=2 class="text-center"> {{fasttrack_body.application}} </td>
+                <td class="highlight" colspan=2><b> Quantity of Machines - {{futureYear2}}</b></td>
+                <td class="text-center" colspan=2>{{fasttrack_body.futureYear2Qty}}</td>
+              </tr>
+              <tr>
+                <td class="highlight" colspan=2><b> Customer OEM Name:</b> </td>
+                <td colspan=2 class="text-center"> {{fasttrack_body.customer_name}} </td>
+                <td class="highlight" colspan=2><b>Quantity of Machines - {{futureYear3}}</b></td>
+                <td class="text-center" colspan=2>{{fasttrack_body.futureYear3Qty}}</td>
+              </tr>
+
+              <!-- Material List -->
+              <tr>
+                <th colspan=8 class="text-center">
+                  <p class="text-center"><strong>Material List</strong></p>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="module-table table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Part Number</th>
+                <th>Type Code</th>
+                <th>Parts per Machine</th>
+                <th>Price per unit</th>
+                <th>Competitor Products</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let fasttrack_body of fasttrack_body">
+              <tr *ngFor="let fasttrack_body of fasttrack_body[0]">
+                <td>{{fasttrack_body.partnumber}}</td>
+                <td>{{fasttrack_body.typecode}}</td>
+                <td>{{fasttrack_body.parts_qty}}</td>
+                <td>{{fasttrack_body.price_per_unit}}</td>
+                <td>{{fasttrack_body.competitor_product}}</td>
+              </tr>
+              <tr>
+                <td colspan=6>
+                  <div class="row">
+                    <div class="col-2">
+                      <!-- <span class="mandatory-info">* Pflichtfelder</span> -->
+                    </div>
+                    <div class="col-6"></div>
+                    <div class="col-4 text-right">
+                      <div class="module-button mr-3" *ngIf="showDeleteAction" >
+                        <button type="button" class="btn btn-primary" (click)="deletePriceRequest(fasttrack_body.price_request_id)"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                          <span class="content-text">Delete</span>
+                        </div>
+                      </div>
+                      <div class="module-button" *ngIf="!showDeleteAction">
+                        <button type="submit" class="btn btn-secondary"
+                          (click)="sendReply(fasttrack_body.price_request_id)"></button>
+                        <div class="button-animation"></div>
+                        <div class="button-content">
+                          <span class="content-text">Solved</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End -->
+      </div>
+      <!-- message -->
+      <div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-close">
+              <div class="module-button ">
+                <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+                <div class="button-animation"></div>
+                <div class="button-content">
+                  <i class="icon icon-dc_close" style="color: white;"></i>
+                </div>
+              </div>
+            </div>
+            <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+              <p class="headline h5 modal-title" style="color: white;">
+                Messagebox
+              </p>
+            </div>
+            <div class="modal-body">
+              <p style="font-size: 20px;">
+                {{message}}
+              </p>
+              <br>
+              <div class=" col-12" style="margin-left: auto; text-align: right;">
+                <div class="module-button">
+                  <button type="button" class="btn btn-primary " (click)="deletemodelclose()"></button>
+                  <div class="button-animation"></div>
+                  <div class="button-content">
+                    <span class="content-text">CLOSE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end -->
+    </div>
+  </div>
+  <!-- Footer Tab for Administrator  -->
+  <app-footer class="footer"></app-footer>
+</body>

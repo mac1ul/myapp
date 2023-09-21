@@ -1,0 +1,86 @@
+.component-progress-demo {
+	position: relative;
+	margin-bottom: 60px;
+
+	&.loading {
+		.component-progress-icon {
+			display: flex;
+			position: relative;
+			z-index: 10;
+		}
+	}
+}
+
+.component-progress-icon {
+	align-items: center;
+	bottom: 0;
+	display: none;
+	justify-content: center;
+	left: 0;
+	margin: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 90;
+
+	svg {
+		height: 58px;
+		width: 58px;
+	}
+
+	&.big-spinner {
+		svg {
+			height: 58px;
+			width: 58px;
+		}
+	}
+
+	&.small-spinner {
+		svg {
+			height: 28px;
+			width: 28px;
+		}
+	}
+
+	.spinner-wrapper {
+		display: block;
+		text-align: center;
+
+		span {
+			display: block;
+			margin-top: 16px;
+			max-width: 320px;
+		}
+	}
+
+	&.fixed {
+		position: fixed;
+		z-index: 1000;
+	}
+
+	&.relative {
+		position: relative;
+	}
+
+	&.background-opacity {
+		background: transparentize($color-white, 0.1);
+	}
+
+	&.loading {
+		display: flex;
+	}
+
+	&.as-icon {
+		margin-left: 13px;
+		margin-right: 13px;
+
+		svg {
+			height: 28px;
+			width: 28px;
+		}
+
+		&.loading {
+			display: flex;
+		}
+	}
+}

@@ -1,0 +1,19 @@
+.module-tab-navigation-dark .content-item {
+	--color-prussian-blue: #{$color-white};
+	--color-midnight: #{$color-alabaster};
+	--color-black: #{$color-white};
+	--color-mine-shaft: #{$color-white};
+	color: var(--color-black);
+
+	.module-table {
+		--color-prussian-blue: #{$color-prussian-blue};
+	}
+
+	.module-product-finder {
+		.module-dropdown,
+		.module-input {
+			--color-prussian-blue: #{$color-prussian-blue};
+		}
+	}
+
+}

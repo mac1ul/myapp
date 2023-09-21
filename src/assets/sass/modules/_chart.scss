@@ -1,0 +1,33 @@
+.module-chart {
+	@include module-name('Chart');
+
+	.chartjs-legend {
+
+		ul {
+			list-style: none;
+			padding-left: $spacing-default;
+			margin-top: $spacing-small;
+		}
+
+		li {
+			display: inline-block;
+			cursor: pointer;
+			margin-right: $spacing-default;
+
+			@media (max-width: $screen-sm-min) {
+				display: block;
+
+			}
+		}
+
+		li span {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			margin-right: $spacing-tiny;
+
+		}
+
+	}
+
+}

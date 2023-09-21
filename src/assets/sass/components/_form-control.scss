@@ -1,0 +1,11 @@
+.form-control {
+	cursor: pointer;
+
+	&:hover {
+		border-color: var(--color-smalt-blue);
+	}
+
+	&:focus {
+		box-shadow: none;
+	}
+}

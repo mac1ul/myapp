@@ -1,0 +1,143 @@
+// @TODO Find proper name and remove when not needed any more.
+
+.table-custom-wrap {
+	color: white;
+
+	.hidden-to-sm {
+		@media #{$media-to-sm} {
+			display: none !important;
+		}
+	}
+
+	.hidden-from-sm {
+		@media #{$media-from-sm} {
+			display: none !important;
+		}
+	}
+
+	.hidden-to-md {
+		@media #{$media-to-md} {
+			display: none !important;
+		}
+	}
+
+	.hidden-from-md {
+		@media #{$media-from-md} {
+			display: none !important;
+		}
+	}
+
+	.custom-wrap-tr {
+		background-color: #ffa800;
+
+		@media #{$media-to-md} {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+
+	.custom-wrap-th,
+	.custom-wrap-td {
+		background-color: #324143;
+		background-clip: padding-box !important;
+		border: 10px solid transparent !important;
+	}
+
+	.custom-wrap-td {
+		@media #{$media-to-sm} {
+			display: block;
+			width: calc(100% - 80px);
+
+			&:nth-child(2n+1) {
+				width: 30px;
+			}
+		}
+
+		@media #{$media-from-sm-to-md} {
+			display: block;
+			width: calc(50% - 40px); // -30px -20px border, both halved
+
+			&:nth-child(4n+1) {
+				width: 30px;
+			}
+		}
+	}
+
+	.table-content {
+		padding: 5px 10px;
+		background-color: #9d088d;
+
+		+ .table-content {
+			margin-top: 5px;
+		}
+	}
+
+
+	// The following styles are just for visual representation.
+
+	.table-content {
+		&.hidden-to-sm,
+		&.hidden-from-sm,
+		&.hidden-to-md,
+		&.hidden-from-md {
+			background-color: #b908a9;
+			background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, #9d088d 30px, #9d088d 60px);
+		}
+	}
+
+	.replacement-content {
+		display: inline-block;
+		padding: 5px 10px;
+		margin: 5px 0;
+
+		background-color: #b908a9;
+		background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, #9d088d 30px, #9d088d 60px);
+	}
+
+	.custom-wrap-th,
+	.custom-wrap-td {
+		&.hidden-to-sm,
+		&.hidden-from-sm,
+		&.hidden-to-md,
+		&.hidden-from-md {
+			background-color: #475759;
+			background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, #324143 30px, #324143 60px);
+		}
+	}
+
+	.replacement-cell {
+		display: inline-block;
+		padding: 5px 10px;
+		margin: 5px 0;
+
+		background-color: #475759;
+		background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, #324143 30px, #324143 60px);
+	}
+}
+
+
+.proof-of-concept {
+	.row {
+		background-color: #ffa800;
+
+		+ .row {
+			margin-top: 10px;
+		}
+	}
+
+	.common-container {
+		padding: 5px;
+		margin: 5px;
+
+		color: white;
+		background-color: #324143;
+
+		h1 {
+			color: white;
+		}
+	}
+
+	.vertical-container {
+		display: flex;
+	}
+}

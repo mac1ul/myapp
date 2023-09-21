@@ -1,0 +1,19 @@
+.component-headline {
+	margin-bottom: 30px;
+
+	.subline {
+		margin: 0;
+	}
+
+	&.centered {
+		text-align: center;
+	}
+
+	&.dark-mode {
+		color: var(--color-white);
+
+		h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+			color: var(--color-white);
+		}
+	}
+}

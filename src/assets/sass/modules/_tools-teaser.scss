@@ -1,0 +1,42 @@
+.module-tools-teaser {
+
+	h2 {
+		text-align: center;
+	}
+
+	.tools-slider {
+
+		.teaser-wrapper {
+			display: flex;
+			flex-wrap: wrap;
+
+			// tns fix for flex items
+			&.tns-horizontal {
+				&.tns-carousel {
+					&.tns-no-subpixel {
+						> .tns-item  {
+							margin-right: 0 !important;
+						}
+					}
+				}
+			}
+
+			.slide {
+				flex: 0 1 auto;
+
+				// tns fix for flex items
+				&.tns-item {
+					margin-left: 0 !important;
+				}
+
+				.module-teaserlist {
+					height: 100%;
+
+					.teaser-container {
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}

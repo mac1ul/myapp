@@ -1,0 +1,348 @@
+.module-detail-page-story {
+	.module-modal {
+		&.modal {
+			overflow: visible;
+		}
+
+		&.modal.modal-dark {
+			background-color: $color-prussian-blue;
+		}
+
+		.modal-close {
+			@media #{$media-to-sm} {
+				top: 35px;
+			}
+
+			.icon {
+				color: $color-white;
+				font-size: 28px;
+			}
+		}
+
+		.modal-body {
+			padding: 0;
+		}
+
+		.modal-dialog {
+			position: fixed;
+			top: 50%;
+			right: 0;
+
+			width: 100%;
+			height: 100%;
+ 
+			max-width: none;
+			max-height: none;
+
+			box-shadow: none;
+			overflow-y: auto;
+		}
+
+		.modal-content {
+			min-height: 100%;
+
+			background-color: transparent;
+			border: none;
+		}
+
+		.container-fluid {
+			padding-left: $gutter-width / 2;
+			padding-right: $gutter-width / 2;
+		}
+	}
+
+	//<editor-fold desc="Story">
+	.story {
+		display: none;
+
+		opacity: 0;
+		transition: opacity $transition-duration;
+
+		@media #{$media-from-sm} {
+			overflow: hidden;
+		}
+
+		&.show {
+			display: block;
+		}
+
+		&.initialized {
+			opacity: 1;
+		}
+	}
+
+	.story-meta-container {
+		@media #{$media-to-sm} {
+			position: relative;
+			z-index: 1;
+
+			display: flex;
+			flex-direction: column;
+
+			&:before {
+				content: '';
+
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				z-index: -1;
+
+				height: calc(100% + 50px);
+
+				background: linear-gradient(0deg, rgba($color-prussian-blue, 0) 0%, rgba($color-prussian-blue, 0.4) 100%);
+
+				pointer-events: none;
+			}
+		}
+	}
+
+	.story-container {
+		position: absolute;
+		top: 0;
+		left: 50%;
+
+		width: 100%;
+
+		margin: 0;
+		transform: translateX(-50%);
+
+		overflow: hidden;
+
+		@media #{$media-from-sm} {
+			position: relative;
+			width: auto;
+
+			margin-top: 120px;
+			margin-bottom: 160px;
+		}
+	}
+
+	.story-track {
+		@media #{$media-from-sm} {
+			width: $screen-lg-max;
+			margin: 0 auto;
+		}
+	}
+	//</editor-fold>
+
+	//<editor-fold desc="Navigation">
+	.story-navigation {
+		display: flex;
+		justify-content: space-between;
+
+		margin-top: 70px;
+
+		@media #{$media-to-sm} {
+			order: 3;
+
+			margin-top: 25px;
+		}
+	}
+
+	.btn-story {
+		@media #{$media-to-sm} {
+			color: $color-white;
+		}
+
+		&:before {
+			font-size: 20px;
+		}
+	}
+
+	.story-prev .icon {
+		display: inline-block;
+		transform: scaleX(-1);
+
+		padding-right: 0;
+		padding-left: 5px;
+	}
+	//</editor-fold>
+
+	//<editor-fold desc="Progress">
+	.story-progress {
+		display: flex;
+		margin: 20px -2px 0;
+
+		@media #{$media-to-sm} {
+			order: 1;
+		}
+	}
+
+	.progress-step {
+		width: 100%;
+
+		height: 2px;
+		padding: 0 2px;
+
+		background-color: rgba($color-white, 0.35);
+		background-clip: content-box;
+
+		&.waiting .step-indicator {
+			width: 0;
+		}
+
+		&.active .step-indicator {
+			// Duration must be synced with story progression. #storyProgress
+			animation: animate-story-step-progress 5s linear;
+		}
+	}
+
+	.step-indicator {
+		height: 100%;
+		background-color: $color-white;
+	}
+
+	@keyframes animate-story-step-progress {
+		0% {
+			width: 0;
+		}
+		100% {
+			width: 100%;
+		}
+	}
+	//</editor-fold>
+
+	//<editor-fold desc="Opener">
+	.story-opener {
+		display: flex;
+		margin-top: 20px;
+
+		@media #{$media-to-sm} {
+			order: 2;
+		}
+	}
+
+	.opener-icon {
+		position: relative;
+
+		width: 50px;
+		height: 50px;
+
+		// The image must be behind the circle, because the svg does not scale well.
+		.module-image {
+			position: absolute;
+			left: 1px;
+			top: 1px;
+			z-index: -1;
+
+			width: 48px;
+			height: 48px;
+
+			border-radius: 50%;
+			overflow: hidden;
+		}
+	}
+
+	.opener-topic {
+		padding: 12px 0 12px 20px;
+		color: $color-white;
+	}
+	//</editor-fold>
+
+	//<editor-fold desc="Slider">
+	.slide {
+		opacity: 0.35;
+
+		transition: opacity $transition-duration;
+
+		user-select: none; // Prevents accidental selection on mouse swiping.
+		cursor: auto;
+
+		&.active-center-slide {
+			opacity: 1;
+
+			.slide-story {
+				opacity: 1;
+			}
+		}
+	}
+
+	.slide-content {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+
+		@media #{$media-from-sm} {
+			width: 296px;
+			height: 641px;
+
+			margin: 0 15px;
+		}
+	}
+
+	.single-slide {
+		.slide-content {
+			margin: 0 auto;
+		}
+
+		.slider-navigation {
+			display: none;
+		}
+	}
+
+	.slide-image {
+		width: 100%;
+	}
+
+	.slide-story {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+
+		width: 100%;
+		padding: 25px;
+		margin: 0;
+
+		color: $color-white;
+
+		opacity: 0;
+		transition: opacity $transition-duration;
+
+		&:before {
+			content: '';
+
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+
+			height: calc(100% + 50px);
+
+			background: linear-gradient(0deg, rgba($color-prussian-blue, 0.4) 0%, rgba($color-prussian-blue, 0) 100%);
+
+			pointer-events: none;
+		}
+	}
+
+	.slider-navigation {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		display: flex;
+		justify-content: space-between;
+
+		width: 100%;
+		max-width: 1760px;
+
+		transform: translate(-50%, -50%);
+		pointer-events: none;
+
+		@media #{$media-to-lg} {
+			display: none;
+		}
+
+		.btn-link {
+			pointer-events: auto;
+		}
+
+		.icon {
+			color: $color-white;
+			font-size: 42px;
+		}
+	}
+	//</editor-fold>
+}

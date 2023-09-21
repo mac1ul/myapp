@@ -1,0 +1,58 @@
+<header class="module-header" data-plugin="moduleHeader" data-event-bubbling-intercept="header.outsideClick">
+  <div class="fixed-container">
+    <div class="header-top">
+      <div class="module-button" [routerLink]="['/SPDashboard']">
+        <button type="button" class="btn btn-navigation"></button>
+        <div class="button-content">
+          <span class="upper-line"></span>
+          <span class="middle-line"></span>
+          <span class="bottom-line"></span>
+        </div>
+      </div>
+      <div class="header-logo">
+        <a class="logo" [routerLink]="['/SPDashboard']">
+          <div class="module-image">
+            <img class="lazyload" src="https://rb-mobileweb.de.bosch.com/2021/storage/rexroth_logo_animated_113.gif"
+              alt="logo" data-sizes="auto"
+              data-srcset="assets/images/rexroth_logo_animated_113.gif 768w, assets/images/rexroth_logo_animated_113.gif 920w" />
+          </div>
+        </a>
+        <div class="title" [routerLink]="['/SPDashboard']">
+          <h5 class="titletext">SMART PROJECT MANAGEMENT (SPM)</h5>
+          <!-- <p class="textcontent">Test version 3.0</p> -->
+        </div>
+      </div>
+      <span class="toggle-meta-nav"></span>
+      <!-- @TODO The module-meta-navigation must not stand without it's wrapping container. -->
+      <div class="meta-nav mr-0">
+        <ul>
+          <li>
+            <a [routerLink]="['/SPDashboard']">
+              <i class="icon icon-dc_home"></i>
+              Home
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/SPDashboard/Contact_Us']">
+              <i class="icon icon-dc_mail"></i>
+              Support
+            </a>
+          </li>
+          <li (click)="logout()" style="cursor: pointer;">
+            <!-- @TODO Warning: Duplicated code due to missing modular setup of the meta navigation. -->
+            <a class="logged-in action-toggle-user-menu">
+              <span class="icon-wrapper">
+                <i class="icon icon-dc_close">
+                  <i class="bubble-wrapper">
+                    <i class="notification-bubble"></i>
+                  </i>
+                </i>
+              </span>
+              LogOut
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

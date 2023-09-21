@@ -1,0 +1,449 @@
+<body>
+<!-- Navigation Tab for Administrator -->
+<app-su-navigation></app-su-navigation>
+<!-- Suport Request and Information -->
+<div class="page-wrapper  start mt-5">
+  <h1 class="mb-0 maintitle">Support Request Collection</h1>
+  <p class="mt-0">Here you will get detail collection of all the Support Request from your Solution Partners. </p>
+  <div class="row">
+    <div class="col-3 p-0 m-0">
+      <h3 class="text-center"><strong>List of Queries</strong></h3>
+      <div class="module-accordion filter-accordion" data-plugin="moduleAccordion">
+        <div class="container-fluid">
+          <!-- Feedbacks -->
+          <div class="accordion-item open parent">
+            <div class="">
+              <p> Support's Request </p>
+            </div>
+            <div class="accordion-content">
+              <div class="content displaytext">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group sidebar-item">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox" *ngFor = "let Contact_us_details of contact_us_request;let i = index"> <input type="checkbox"
+                              class="custom-control-input" [(ngModel)]="Contact_us_details.checked" #currentid (click) = "getcontactdetails(Contact_us_details.contact_us_id)" (ngModelChange)="uncheckOther(Contact_us_details,$event)" id="allgemeine_informationen_{{Contact_us_details.company_name}}{{i+1}}"
+                              name="allgemeine_informationen_{{Contact_us_details.company_name}}{{i+1}}">
+                            <label class="custom-control-label" for="allgemeine_informationen_{{Contact_us_details.company_name}}{{i+1}}">
+                              <span class="label-title" (click) = "getcontactdetails(Contact_us_details.contact_us_id)">{{Contact_us_details.company_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- General Enquiries -->
+          <!-- <div class="accordion-item ">
+            <div class="item-head">
+              <p> General Enquiries</p>
+            </div>
+            <div class="accordion-content">
+              <div class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox" *ngFor = "let gi of generalenquiries;let i = index"> <input type="checkbox"
+                              class="custom-control-input" [(ngModel)]="gi.checked" (ngModelChange)="uncheckOther(gi,$event)" id="allgemeine_informationen_{{gi.company_name}}{{i+1}}"
+                              name="allgemeine_informationen_{{gi.company_name}}{{i+1}}">
+                            <label class="custom-control-label" for="allgemeine_informationen_{{gi.company_name}}{{i+1}}">
+                              <span class="label-title" (click) = "getcontactdetails(gi.contact_us_id)">{{gi.company_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- Products -->
+          <!-- <div class="accordion-item ">
+            <div class="item-head">
+              <p> Product Enquiries</p>
+            </div>
+            <div class="accordion-content">
+              <div class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox" *ngFor = "let pi of product;let j = index"> <input type="checkbox"
+                              class="custom-control-input" [(ngModel)]="pi.checked" (ngModelChange)="uncheckOther(pi,$event)" id="allgemeine_informationen_{{pi.company_name}}{{j+1}}"
+                              name="allgemeine_informationen_{{pi.company_name}}{{j+1}}">
+                            <label class="custom-control-label" for="allgemeine_informationen_{{pi.company_name}}{{j+1}}" >
+                              <span class="label-title" (click) = "getcontactdetails(pi.contact_us_id)">{{pi.company_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- Service -->
+          <!-- <div class="accordion-item ">
+            <div class="item-head">
+              <p> Service Request's </p>
+            </div>
+            <div class="accordion-content">
+              <div class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox" *ngFor = "let service of service;let i = index"> <input type="checkbox"
+                              class="custom-control-input" [(ngModel)]="service.checked" (ngModelChange)="uncheckOther(service,$event)" id="allgemeine_informationen_{{service.company_name}}{{i+1}}"
+                              name="allgemeine_informationen_{{service.company_name}}{{i+1}}">
+                            <label class="custom-control-label" for="allgemeine_informationen_{{service.company_name}}{{i+1}}">
+                              <span class="label-title" (click) = "getcontactdetails(service.contact_us_id)">{{service.company_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- Training -->
+          <!-- <div class="accordion-item ">
+            <div class="item-head">
+              <p> Training Request's </p>
+            </div>
+            <div class="accordion-content">
+              <div class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox" *ngFor = "let training of training;let i = index"> <input type="checkbox"
+                              class="custom-control-input" [(ngModel)]="training.checked" (ngModelChange)="uncheckOther(training,$event)" id="allgemeine_informationen_{{training.company_name}}{{i+1}}"
+                              name="allgemeine_informationen_{{training.company_name}}{{i+1}}">
+                            <label class="custom-control-label" for="allgemeine_informationen_{{training.company_name}}{{i+1}}">
+                              <span class="label-title" (click) = "getcontactdetails(training.contact_us_id)">{{training.company_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- Report a Bug -->
+          <!-- <div class="accordion-item ">
+            <div class="item-head">
+              <p> Bug Report's </p>
+            </div>
+            <div class="accordion-content">
+              <div class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox" *ngFor = "let br of bugreport;let i = index"> <input type="checkbox"
+                              class="custom-control-input" [(ngModel)]="br.checked" (ngModelChange)="uncheckOther(br,$event)" id="allgemeine_informationens_{{br.company_name}}{{i+1}}"
+                              name="allgemeine_informationens_{{br.company_name}}{{i+1}}">
+                            <label class="custom-control-label" for="allgemeine_informationens_{{br.company_name}}{{i+1}}">
+                              <span class="label-title" (click) = "getcontactdetails(br.contact_us_id)">{{br.company_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- Feature Request -->
+          <!-- <div class="accordion-item ">
+            <div class="item-head">
+              <p> Feature Request's</p>
+            </div>
+            <div class="accordion-content">
+              <div class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox" *ngFor = "let fr of featurerequest;let i = index"> <input type="checkbox"
+                              class="custom-control-input" [(ngModel)]="fr.checked" (ngModelChange)="uncheckOther(fr,$event)" id="allgemeine_informationen_{{fr.company_name}}{{i+1}}"
+                              name="allgemeine_informationen_{{fr.company_name}}{{i+1}}">
+                            <label class="custom-control-label" for="allgemeine_informationen_{{fr.company_name}}{{i+1}}">
+                              <span class="label-title" (click) = "getcontactdetails(fr.contact_us_id)">{{fr.company_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- Suggestion's -->
+          <!-- <div class="accordion-item ">
+            <div class="item-head">
+              <p> Suggestion's </p>
+            </div>
+            <div class="accordion-content">
+              <div class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="filter-group">
+                      <div class="filter-wrapper">
+                        <div class="checkbox-wrapper">
+                          <div class="module-checkbox custom-control custom-checkbox" *ngFor = "let suggestion of suggestion;let i = index"> <input type="checkbox"
+                              class="custom-control-input" [(ngModel)]="suggestion.checked" (ngModelChange)="uncheckOther(suggestion,$event)" id="allgemeine_informationen_{{suggestion.company_name}}{{i+1}}"
+                              name="allgemeine_informationen_{{suggestion.company_name}}{{i+1}}">
+                            <label class="custom-control-label" for="allgemeine_informationen_{{suggestion.company_name}}{{i+1}}">
+                              <span class="label-title" (click) = "getcontactdetails(suggestion.contact_us_id)">{{suggestion.company_name}}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-9 ">
+      <p class="text-center"><strong>Detailed Description</strong></p>
+      <!-- Details of Person Request -->
+      <form [formGroup]="AddContactDetails">
+      <div>
+      <div class="row">
+        <div class="col-6">
+          <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+            <label for="demo-default-input-2"> First Name * </label>
+            <div class="input-animation-wrapper">
+              <input type="text" id="demo-default-input-2" class="form-control"
+                placeholder="Enter First Name" name="demo-default-input-2"
+                data-bouncer-target="#demo-default-input-2-error" required="required" minlength="7"
+                maxlength="24" formControlName="first_name"/>
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+            <label for="demo-default-input-2"> Last Name * </label>
+            <div class="input-animation-wrapper">
+              <input type="text" id="demo-default-input-2" class="form-control"
+                placeholder="Enter Last Name" name="demo-default-input-2"
+                data-bouncer-target="#demo-default-input-2-error" required="required" minlength="7"
+                maxlength="24" formControlName="last_name"/>
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+            <label for="demo-default-input-2"> E-Mail * </label>
+            <div class="input-animation-wrapper">
+              <input type="email" id="demo-default-input-2" class="form-control"  placeholder="Company E-Mail *" name="demo-default-input-2"
+                data-bouncer-target="#demo-email-input-error" required="required" formControlName="email"/>
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+            <label for="demo-default-input-2"> Telephone / Mobile * </label>
+            <div class="input-animation-wrapper">
+              <input type="text" id="demo-default-input-2" class="form-control"
+                placeholder="Enter Contact Nr" name="demo-default-input-2"
+                data-bouncer-target="#demo-default-input-2-error" required="required" minlength="7"
+                maxlength="24" formControlName="mobile"/>
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+            <label for="demo-default-input-2"> Postal Code *  </label>
+            <div class="input-animation-wrapper">
+              <input type="text" id="demo-default-input-2" class="form-control"
+                placeholder="Enter Postal Code" name="demo-default-input-2"
+                data-bouncer-target="#demo-default-input-2-error" required="required" minlength="7"
+                maxlength="24" formControlName="postalcode"/>
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+            <label for="demo-default-input-2"> City *  </label>
+            <div class="input-animation-wrapper">
+              <input type="text" id="demo-default-input-2" class="form-control" value=""
+                placeholder="Enter City" name="demo-default-input-2"
+                data-bouncer-target="#demo-default-input-2-error" required="required" minlength="7"
+                maxlength="24" formControlName="city"/>
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+            <label for="demo-default-input-2"> Company Name *  </label>
+            <div class="input-animation-wrapper">
+              <input type="text" id="demo-default-input-2" class="form-control" value=""
+                placeholder="Enter Company Name" name="demo-default-input-2"
+                data-bouncer-target="#demo-default-input-2-error" required="required" minlength="7"
+                maxlength="24" formControlName="company_name"/>
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+            <label for="demo-default-input-2"> Country: </label>
+            <div class="input-animation-wrapper">
+              <input type="text" id="demo-default-input-2" class="form-control" value=""
+                placeholder="Enter Country Name" name="demo-default-input-2"
+                data-bouncer-target="#demo-default-input-2-error" required="required" minlength="7"
+                maxlength="24" formControlName="country"/>
+              <!--data-search-url="url" is needed to use the AutoComplete function.-->
+              <div class="input-animation"></div>
+            </div>
+            <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+       <div class="col-12">
+        <div class="module-input form-group has-placeholder" data-plugin="moduleInput">
+          <label for="demo-default-input-2"> Contact Area / Reason* </label>
+          <div class="input-animation-wrapper">
+            <input type="text" id="demo-default-input-2" class="form-control"
+              placeholder="Subject of Information" name="demo-default-input-2"
+              data-bouncer-target="#demo-default-input-2-error" required="required" formControlName="reason_for_contact"/>
+            <!--data-search-url="url" is needed to use the AutoComplete function.-->
+            <div class="input-animation"></div>
+          </div>
+          <div id="demo-default-input-2-error" class="error-message-wrapper"></div>
+        </div>
+       </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="module-textarea form-group floating-label max-length" data-plugin="moduleInput">
+            <label for="demo-textarea-4"></label>
+            <div class="input-animation-wrapper">
+              <textarea id="demo-textarea-4" class="form-control" name="demo-textarea-4" rows="5" placeholder="Description" data-bouncer-target="#demo-textarea-4-error"
+                    required="required" minlength="7" maxlength="2000" formControlName="description"></textarea>
+              <div class="label-area"></div>
+              <div class="input-animation"></div>
+            </div>
+            <div class="remaining-characters" data-text=" characters left"> </div> <!-- {{remainingCharacters}} -->
+            <div id="demo-textarea-4-error" class="error-message-wrapper"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <span class="mandatory-info">* Mandatory</span>
+        </div>
+        <div class="col-6"></div>
+        <div class="col-4 text-right">
+          <div class="module-button">
+            <button type="submit" class="btn btn-secondary" (click)="solvedrequest()"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">Solved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    </div>
+  </div>
+</div>
+<!-- message -->
+<div class="module-modal modal modal-dark modal-danger" id="messagebox" data-plugin="moduleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-close">
+        <div class="module-button ">
+          <button type="button" class="btn btn-link " (click)="deletemodelclose()"></button>
+          <div class="button-animation"></div>
+          <div class="button-content">
+            <i class="icon icon-dc_close" style="color: white;"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-header" style="padding-top: 15px; padding-bottom: 15px; background-color: #00CCFF;">
+        <p class="headline h5 modal-title" style="color: white;">
+          Messagebox
+        </p>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 20px;">
+          {{message}}
+        </p>
+        <br>
+        <div class=" col-12" style="margin-left: auto; text-align: right;">
+          <div class="module-button">
+            <button type="button" class="btn btn-primary " (click)="deletemodelclose()"></button>
+            <div class="button-animation"></div>
+            <div class="button-content">
+              <span class="content-text">CLOSE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end -->
+<!-- Footer Tab for Administrator  -->
+<app-footer class=".footer"></app-footer>
+</body>

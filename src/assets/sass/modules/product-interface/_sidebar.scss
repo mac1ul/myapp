@@ -1,0 +1,159 @@
+.module-sidebar {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 80px;
+	min-width: 80px;
+	z-index: 2;
+	background: var(--color-white);
+	transition: width $transition-duration ease-in;
+	box-shadow: 0 10px 20px 0 rgba(214, 222, 227, 0.5);
+	// top value is defined in header.scss
+
+	.navi {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 80px;
+		padding: 30px 0;
+		overflow: hidden; 
+		background: var(--color-white);
+		transition: all $transition-duration ease-out;
+		box-shadow: 0 10px 20px 0 rgba(214, 222, 227, 0.5);
+	}
+
+	&.zindex {
+		z-index: 1;
+	}
+
+	.menu-text {
+		white-space: nowrap;
+		overflow: hidden;
+		width: 0;
+		margin-left: 10px;
+	}
+
+	.sidebar-nav {
+		list-style: none;
+		padding: 0 28px;
+		margin-bottom: 0;
+
+		li {
+			position: relative;
+			margin-bottom: 30px;
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+
+			a {
+				color: var(--color-prussian-blue);
+				display: flex;
+				flex-wrap: nowrap;
+				transition: all $transition-duration-fast ease-in;
+
+				i {
+					color: var(--color-smalt-blue);
+					transition: all $transition-duration-fast ease-in;
+				}
+
+				&:hover {
+					color: var(--color-aqua);
+
+					i {
+						color: var(--color-aqua);
+					}
+				}
+			}
+		}
+
+		.sub-menu-content {
+			display: none;
+			padding-left: 39px;
+
+			ul {
+				list-style: none;
+				padding: 30px 0 0 0;
+
+				.menu-text {
+					margin: 0;
+				}
+			}
+		}
+
+		.sub-menu-trigger {
+			display: none;
+			opacity: 0;
+			position: absolute;
+			height: 24px;
+			width: 24px;
+			right: 0;
+			top: 0;
+			justify-content: center;
+			align-items: center;
+			transition: all $transition-duration-fast ease-in;
+			cursor: pointer;
+
+			&.active {
+				rotate: -90deg;
+			}
+
+			.icon {
+				font-size: 18px;
+			}
+		}
+
+	}
+
+	.nav-separator {
+		height: 1px;
+		background: var(--color-catskill-white);
+		margin: 30px 18px;
+	}
+
+	// menu active/open
+	@media #{$media-from-sm} {
+		&.active {
+			.navi {
+				width: 375px;
+			}
+
+			.menu-text {
+				width: auto;
+			}
+
+			.sub-menu-trigger {
+				display: flex;
+				opacity: 1;
+			}
+		}
+	}
+
+	@media #{$media-to-sm} {
+		width: 100%;
+		left: -100%;
+		box-shadow: none;
+		transition: width $transition-duration ease-in, left $transition-duration ease-in;
+		overflow: scroll;
+
+		&.active {
+			left: 0;
+		}
+
+		.navi {
+			position: relative;
+			width: 100% !important;
+			box-shadow: none;
+
+			.menu-text {
+				width: auto;
+			}
+
+			.sub-menu-trigger {
+				display: flex;
+				opacity: 1;
+			}
+		}
+	}
+}

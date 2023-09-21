@@ -1,0 +1,121 @@
+.module-pi-nested-checkboxes {
+	@include module-name('pi-nested-checkboxes');
+
+	background-color: var(--color-white);
+	position: relative;
+
+	ul {
+		list-style: none;
+
+		&.checkbox-list {
+			padding: 0;
+		}
+
+		li {
+			list-style: none;
+		}
+	}
+
+	.module-accordion {
+		margin-bottom: 0;
+
+		.accordion-item {
+			border-top: none 0 transparent;
+			border-bottom: none 0 transparent;
+
+			&.active {
+				> .list-head {
+					padding: 0 0 15px;
+				}
+			}
+
+			.list-head {
+				display: flex;
+				padding: 0;
+
+				&:before {
+					content: '';
+				}
+
+				.accordion-trigger {
+					@include icon($icon-dc_down);
+
+					flex-grow: 1;
+					height: 26px;
+					margin-left: auto;
+					position: relative;
+					width: 26px;
+
+					&:before {
+						bottom: 0;
+						cursor: pointer;
+						font-size: 26px;
+						left: auto;
+						position: absolute;
+						right: 0;
+						top: 0;
+						transition: all $transition-duration;
+					}
+				}
+			}
+
+			.accordion-content {
+				padding-left: 32px;
+
+				li {
+					padding: 15px 0;
+
+					&:last-of-type {
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+
+	> .module-accordion {
+		> .accordion-item {
+			border-top: 2px solid var(--color-heather);
+			padding: 15px 0;
+		}
+	}
+
+	.module-checkbox {
+		margin-bottom: 0;
+	}
+}
+
+.nested-checkboxes-wrapper {
+	background-color: var(--color-mystic);
+	padding: 20px;
+
+	.module-pi-nested-checkboxes {
+		&:nth-of-type(1) {
+			> .module-accordion {
+				> .accordion-item {
+					border-top: none 0 transparent;
+				}
+			}
+		}
+	}
+
+	> .module-pi-nested-checkboxes {
+		> .module-accordion {
+			> .accordion-item {
+				border-bottom: none 0 transparent;
+				border-top: 2px solid var(--color-heather);
+				padding: 15px;
+
+				&.active {
+					> .list-head {
+						padding: 0 0 15px;
+					}
+				}
+
+				> .list-head {
+					padding: 0;
+				}
+			}
+		}
+	}
+}

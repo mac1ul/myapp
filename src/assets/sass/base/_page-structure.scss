@@ -1,0 +1,98 @@
+html.modal-active {
+	overflow: hidden;
+}
+
+body {
+	min-width: $screen-xs-min;
+	overflow-x: hidden;
+}
+
+.body-no-scroll {
+	overflow: hidden;
+}
+
+// The final frontier of the website, nothing must cross the page edge.
+.page-edge {
+	width: auto;
+	max-width: $screen-max;
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+
+// Wraps the page content and bootstrap containers.
+.page-wrapper {
+	width: auto;
+	max-width: $screen-max;
+	min-height: 100vh;
+	margin: 0 auto;
+}
+
+
+/*
+ * This is almost the same as the .page-wrapper but must only
+ * be used outside the page wrapper when modules must attach
+ * to the off-grid width.
+ *
+ * Applicable to header or footer extensions for example.
+ */
+.off-page-wrapper {
+	width: auto;
+	max-width: $screen-lg-max;
+	margin: 0 auto;
+}
+
+.container-fluid{
+	max-width: $screen-lg-min;
+}
+
+.container-fluid .container-fluid {
+	padding: 0;
+}
+
+.module-block {
+	margin-bottom: $spacing-apart;
+
+	@media #{$media-to-md} {
+		margin-bottom: $spacing-offset;
+	}
+
+	@media #{$media-to-sm} {
+		margin-bottom: $spacing-largest + $spacing-small;
+	}
+}
+
+@mixin content-block {
+    margin-bottom: 40px;
+
+    @media #{$media-to-md} {
+        margin-bottom: 20px;
+    }
+}
+
+.content-block {
+    @include content-block();
+}
+
+@media #{$media-to-sm} {
+	.mobile-hidden {
+		display: none !important;
+	}
+}
+
+body.alt-grid {
+	.container-fluid{
+		max-width: 1800px;
+	}
+
+	.page-wrapper {
+		max-width: 1800px;
+	}
+
+}
+
+hr {
+	height: 1px;
+	background: var(--color-casper);
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

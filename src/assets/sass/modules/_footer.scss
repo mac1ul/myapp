@@ -1,0 +1,127 @@
+footer.module-footer {
+	@include module-name('Footer');
+
+	position: relative;
+	background: var(--color-prussian-blue);
+	max-width: $screen-max;
+	margin: 0 auto;
+
+	.headline {
+		color: var(--color-white);
+		font-weight: 900;
+	}
+
+	a {
+		max-width: 100%;
+		word-wrap: break-word;
+		color: var(--color-casper);
+
+		&:hover {
+			color: var(--color-white);
+		}
+	}
+
+	.footer-link {
+		cursor: pointer;
+		color: var(--color-casper);
+		transition: color $transition-duration;
+
+		&:hover {
+			color: var(--color-white);
+		}
+
+		i {
+			font-size: rem(24);
+			padding-right: 5px;
+			vertical-align: middle;
+		}
+	}
+
+	.footer-links {
+
+		@media #{$media-from-sm}{
+			margin-bottom: $spacing-largest;
+		}
+		@media #{$media-to-sm}{
+
+			.col-md-4 {
+				margin-bottom: $spacing-largest;
+			}
+		}
+
+		li {
+			margin-bottom: $spacing-small;
+		}
+	}
+
+	.footer-meta {
+		display: flex;
+
+		@media #{$media-to-md} {
+			flex-direction: column;
+		}
+	}
+
+	.footer-copyright {
+		color: var(--color-smalt-blue);
+		font-size: $font-size-text-s;
+		font-weight: bold;
+		margin: 0 $spacing-default $spacing-tiny 0;
+		white-space: nowrap;
+
+		@media #{$media-to-md} {
+			margin-bottom: $spacing-default;
+			margin-right: 0;
+			white-space: normal;
+		}
+	}
+
+	.meta-links {
+		font-size: $font-size-text-xs;
+		margin-bottom: $spacing-tiny;
+
+		a {
+			display: inline-block;
+			margin: 0 $spacing-default $spacing-tiny 0;
+		}
+	}
+
+	// diagonal line
+	.diagonal-line-wrapper {
+		position: relative;
+		height: 7vw;
+		overflow: hidden;
+		margin-bottom: $spacing-default;
+	}
+
+	.diagonal-line {
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			border: 0 solid transparent {
+				top-width: 7vw;
+				top-color: var(--color-white);
+				right-width: 100vw;
+				right-color: var(--color-prussian-blue);
+			}
+		}
+	}
+}
+
+.only-mobile {
+	display: none;
+
+	@media #{$media-to-md} {
+		display: inline-block;
+	}
+}
+
+.only-desktop {
+	display: inline-block;
+
+	@media #{$media-to-md} {
+		display: none;
+	}
+}

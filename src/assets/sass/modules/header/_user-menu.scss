@@ -1,0 +1,146 @@
+.module-header-user-menu {
+	@include module-name('Header User Menu');
+	position: fixed;
+	top: auto; // Do not change this, except you want to remove the relative positioning!
+	left: 0;
+	right: 0;
+	z-index: $header-z-index - 1;
+
+	display: none;
+	max-height: 100vh; // Gets set via JavaScript.
+
+	padding-bottom: 30px; // Makes the shadow visible.
+
+	overflow-y: auto;
+
+	opacity: 0;
+	transform: translateY(-20px);
+
+	transition:
+		opacity $transition-duration-fast,
+		transform $transition-duration-fast; // Keep in sync with js #header-user-menu.
+
+	&.offset {
+		max-height: calc(100vh - #{$header-height-mobile + 3 * $header-height}); // Subtract enough, since we do not know the remaining height.
+		margin-top: 0; // Gets set via JavaScript.
+
+	}
+
+	&.show {
+		display: block;
+	}
+
+	&.animate {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	hr {
+		height: 2px;
+		margin: $spacing-small + $spacing-atomic-tiny 0;
+
+		background-color: var(--color-black-haze);
+		border: none;
+	}
+
+	.user-menu-container {
+		position: relative;
+
+		padding: 12px $spacing-default $spacing-large;
+
+		background-color: var(--color-white);
+		border: 1px solid var(--color-catskill-white);
+
+		box-shadow: 0 10px 20px 0 rgba($color-heather, 0.5);
+
+		@media #{$media-from-md} {
+			margin-top: -1px;
+		}
+
+		@media #{$media-from-lg} {
+			margin-left: auto;
+			width: 1064px;
+		}
+	}
+
+	.menu-head-top-row {
+		@media #{$media-to-sm} {
+			.module-button {
+				margin-right: -$spacing-atomic-tiny;
+			}
+		}
+
+		.btn-group {
+			display: flex;
+			justify-content: space-between;
+
+			@media #{$media-to-sm} {
+				justify-content: flex-end;
+			}
+		}
+	}
+
+	.module-button-close {
+		margin-left: 80px;
+	}
+
+	.module-button-close .btn-link:hover ~ .button-content .icon {
+		color: var(--color-aqua);
+	}
+
+	.menu-head-bottom-row .module-button {
+		width: 100%;
+		margin-top: $spacing-tiny;
+		margin-bottom: $spacing-atomic-tiny;
+
+		text-align: center;
+	}
+
+	.user-menu-head {
+		padding-bottom: 13px;
+		margin-bottom: $spacing-default;
+
+		border-bottom: 1px solid var(--color-black-haze);
+
+		.h5 {
+			display: inline-block;
+
+			margin-top: 12px;
+			margin-bottom: 0;
+		}
+	}
+
+	.user-menu-body {
+		.user-menu-overview {
+			margin-bottom: 30px;
+
+			a.secondary {
+				&:hover {
+					color: var(--color-aqua);
+				}
+			}
+		}
+	}
+
+	.list {
+		margin-bottom: 0;
+	}
+
+	.list-title {
+		color: var(--color-prussian-blue);
+		text-transform: uppercase;
+	}
+
+	.list-item {
+		margin-top: $spacing-small + $spacing-atomic;
+
+		a.secondary {
+			color: var(--color-prussian-blue);
+			font-weight: 500;
+
+			&:hover {
+				color: var(--color-aqua);
+			}
+		}
+	}
+}

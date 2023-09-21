@@ -1,0 +1,111 @@
+
+  <app-spheader></app-spheader>
+  <!-- Body -->
+  <router-outlet></router-outlet>
+  <div class="page-wrapper mt-5" *ngIf="ManagepagesService.currenturl() === true">
+    <div class="container-fluid">
+      <h1 class="mb-0"><b>Welcome, {{info}}</b></h1>
+      <div class="row">
+        <div class="col-md-12 col-xl-12 col-lg-12 col-sm-12">
+          <form class="form">
+            <div class="row mt-4">
+              <div class="col-lg-3 col-xl-3 maindiv" [routerLink]="['/SPDashboard/Add_project']">
+                <button class="buttonblue">
+                  <div class="button-animation"></div>
+                  <i class="icon icon-dc_grid_view"></i>
+                  <br><strong class="fasbtn">Project Database</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/SPDashboard/Material_Planning']">
+                  <i class="icon icon-dc_filter_02"></i>
+                  <br><strong class="fasbtn">Material Planning</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/SPDashboard/ListofFastTrack']">
+                  <i class="icon icon-dc_i_shipping_stock"></i>
+                  <br><strong class="fasbtn">Fast-track Request</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv" [routerLink]="['/SPDashboard/ListofPriceRequest']">
+                <button class="buttonblue">
+                  <i class="icon icon-dc_spare_parts"></i>
+                  <br><strong class="fasbtn">Price Request</strong>
+                </button>
+              </div>
+            </div>
+            <div class="row mt-1">
+              <div class="col-lg-3 col-xl-3 maindiv" [routerLink]="['/SPDashboard/Check_Materials_Deliverytime']">
+                <button class="buttonblue">
+                  <i class="icon rb-hierarchy-search"></i>
+                  <br><strong class="fasbtn">Check Delivery Time</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/SPDashboard/GoTo']">
+                  <i class="icon icon-dc_GoTo"></i>
+                  <br><strong class="fasbtn">GO TO</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/SPDashboard/StockofSI']">
+                  <i class="icon icon-dc_chart_line"></i>
+                  <br><strong class="fasbtn">Stock of SI</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv" (click)="myrexroth()">
+                <button class="buttonblue">
+                  <i class="icon icon-dc_link"></i>
+                  <br><strong class="fasbtn">MyRexroth</strong>
+                </button>
+              </div>
+            </div>
+            <div class="row mt-1">
+              <div class="col-lg-3 col-xl-3 maindiv" (click)="configurator()">
+                <button class="buttonblue">
+                  <i class="icon icon-dc_connectivity"></i>
+                  <br><strong class="fasbtn">configurator</strong>
+                </button>
+              </div>
+              <div class="col-lg-3 col-xl-3 maindiv">
+                <button class="buttonblue" [routerLink]="['/SPDashboard/3DMAP']">
+                  <i class="icon icon-dc_3D"></i>
+                  <br><strong class="fasbtn">3D-MAP</strong>
+                </button>
+              </div>
+
+              <!-- <div class="col-lg-3 col-xl-3 maindiv">
+                      <button mdbBtn class="buttonblue" mdbWavesEffect id="bt" >
+                          <i class="icon-shoppingcart-add"></i>
+                          <br><strong class="fasbtn" style="text-transform: none;">eShop</strong>
+                      </button>
+                  </div>
+                  <div class="col-lg-3 col-xl-3 maindiv">
+                      <button mdbBtn class="buttonblue" mdbWavesEffect id="bt" >
+                          <i class="icon-externallink-landscape"></i>
+                          <br><strong class="fasbtn">Presentation</strong>
+                      </button>
+                  </div>
+                  <div class="col-lg-3 col-xl-3 maindiv">
+                      <button mdbBtn class="buttonblue" mdbWavesEffect id="bt" >
+                          <i class="icon-externallink-landscape"></i>
+                          <br><strong class="fasbtn">Schemes</strong>
+                      </button>
+                  </div>
+                  <div class="col-lg-3 col-xl-3 maindiv">
+                     <button mdbBtn class="buttonblue" mdbWavesEffect id="bt">
+                      <i class="icon-externallink-landscape"></i>
+                          <br><strong class="fasbtn">HPI Documents</strong>
+                      </button>
+                  </div> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=".footer">
+    <app-footer></app-footer>
+  </div>
+
