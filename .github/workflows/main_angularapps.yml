@@ -21,6 +21,14 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: check the config list
+        run: npm config list
+
+      - name: disable proxies
+        run: npm config delete proxy
+             npm config delete http-proxy
+             npm config delete https-proxy
+
       - name: npm install, build, and test
         run: |
           npm install -force
