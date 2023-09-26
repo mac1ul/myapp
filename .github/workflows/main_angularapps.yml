@@ -21,7 +21,8 @@ jobs:
         with:
           node-version: '16.x'
 
-      
+      - name: npm installation
+        run:   npm install -g npm@8.15.0
         
       # - name: proxy configuration
       #   run: npm config set proxy http://rb-proxy-de.bosch.com:8080;
