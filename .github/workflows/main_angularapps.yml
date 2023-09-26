@@ -51,9 +51,7 @@ jobs:
       - name: check the config list
         run: npm config list
         
-      # - name: cli installation
-      #   run: npm install -g @angular/cli
-	 
+    
 
       # - name: check proxy registry
       #   run:  npm config get registry
