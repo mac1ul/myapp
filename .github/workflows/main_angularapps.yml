@@ -24,11 +24,15 @@ jobs:
       - name: check the config list
         run: npm config list
         
-      - name: proxy configuration
-        run: npm config set proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
-             npm config set https-proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
-             npm config set strict-ssl=true;
-             
+      # - name: proxy configuration
+      #   run: npm config set proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
+      #        npm config set https-proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
+      #        npm config set strict-ssl=true;
+       
+      - name:  proxy configuration
+        run: npm config set proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080
+             npm config set https-proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080
+             npm config set strict-ssl=true  
 
       # - name: disable proxies
       #   run: npm config delete proxy
@@ -37,7 +41,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm install --force
+          npm install 
           npm run build --if-present
           
       - name: Zip artifact for deployment
