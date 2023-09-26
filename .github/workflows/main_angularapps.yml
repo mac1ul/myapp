@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '18.x'
+          node-version: '16.x'
 
       
         
@@ -45,7 +45,7 @@ jobs:
         run:  npm config set registry https://registry.npmjs.org/
         
       - name: refreshing npm installation
-        run:  npm install @angular/common
+        run:  npm install @angular/common --force
        
 
       # - name: disable proxies
