@@ -25,8 +25,8 @@ jobs:
         run: npm config list
         
       # - name: proxy configuration
-      #   run: npm config set proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
-      #        npm config set https-proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
+      #   run: npm config set proxy http://rb-proxy-de.bosch.com:8080;
+      #        npm config set https-proxy http://rb-proxy-de.bosch.com:8080;
       #        npm config set strict-ssl=true;
        
       - name:  proxy configuration1
