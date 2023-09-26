@@ -21,11 +21,20 @@ jobs:
         with:
           node-version: '16.x'
 
-      - name: npm installation
-        run:   npm install -g npm@8.15.0
-      - name: refreshing angular installation
-        run:  npm install @angular/common --force
+      # - name: npm installation
+      #   run:   npm install -g npm@8.15.0
+      # - name: refreshing angular installation
+      #   run:  npm install @angular/common --force
+
+      - name: preconfigs
+        run:  npm config delete proxy
+              npm cache clean --force
+              npm cache verify
+      - name: server proxy
+        run:  export http_proxy='http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080'
       
+
+      # https://rb-artifactory.bosch.com
         
       # - name: proxy configuration
       #   run: npm config set proxy http://rb-proxy-de.bosch.com:8080;
@@ -33,20 +42,24 @@ jobs:
       #        npm config set strict-ssl=true;
        
       - name:  proxy configuration1
-        run: npm config set proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
+        run: npm config set proxy 'http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080'
       - name:  proxy configuration2
-        run: npm config set https-proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
+        run: npm config set https-proxy 'http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080'
       - name:  proxy configuration3
         run: npm config set strict-ssl=true;
            
       - name: check the config list
         run: npm config list
+        
+      - name: cli installation
+        run:  npm install -g @angular/cli
+	 
 
-      - name: check proxy registry
-        run:  npm config get registry
+      # - name: check proxy registry
+      #   run:  npm config get registry
 
-      - name: setting reg config
-        run:  npm config set registry https://registry.npmjs.org/
+      # - name: setting reg config
+      #   run:  npm config set registry https://registry.npmjs.org/
 
       # - name: npm installation
       #   run:   npm install -g npm@8.15.0
