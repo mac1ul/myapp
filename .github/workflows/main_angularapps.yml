@@ -29,8 +29,12 @@ jobs:
       #        npm config set https-proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080;
       #        npm config set strict-ssl=true;
        
-      - name:  proxy configuration
+      - name:  proxy configuration1
         run: npm config set proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080
+      - name:  proxy configuration2
+        run: npm config set https-proxy http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080
+      - name:  proxy configuration3
+        run: npm config set strict-ssl=true
            
 
       # - name: disable proxies
