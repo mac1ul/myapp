@@ -23,6 +23,9 @@ jobs:
 
       - name: npm installation
         run:   npm install -g npm@8.15.0
+      - name: refreshing angular installation
+        run:  npm install @angular/common --force
+      
         
       # - name: proxy configuration
       #   run: npm config set proxy http://rb-proxy-de.bosch.com:8080;
@@ -45,11 +48,11 @@ jobs:
       - name: setting reg config
         run:  npm config set registry https://registry.npmjs.org/
 
-      - name: npm installation
-        run:   npm install -g npm@8.15.0
+      # - name: npm installation
+      #   run:   npm install -g npm@8.15.0
         
-      - name: refreshing angular installation
-        run:  npm install @angular/common --force
+      # - name: refreshing angular installation
+      #   run:  npm install @angular/common --force
       
 
       # - name: disable proxies
