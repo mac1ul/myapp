@@ -48,11 +48,11 @@ jobs:
        
       - name:  proxy configuration1
         # run: npm config set proxy 'http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080'
-        run: npm config set proxy http://localhost:3128
+        run: npm config set proxy rb-proxy-de.bosch.com:8080
 
       - name:  proxy configuration2
         # run: npm config set https-proxy 'http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080'
-        run: npm config set https-proxy http://localhost:3128
+        run: npm config set https-proxy rb-proxy-de.bosch.com:8080
 
       - name:  proxy configuration3
         run: npm config set registry http://registry.npmjs.org ;
