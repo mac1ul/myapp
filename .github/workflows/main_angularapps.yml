@@ -30,13 +30,13 @@ jobs:
         run:  npm config delete proxy
               npm cache clean --force
               npm cache verify
-      - name: server proxy
-        run:  export http_proxy='http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080'
-      - name: server proxy2
-        run:     export HTTPS=localhost:3128
-                 export HTTP=localhost:3128
-                 export https_proxy=http://localhost:3128
-                 export http_proxy=http://localhost:3128
+      # - name: server proxy
+      #   run:  export http_proxy='http://mac1ul:°!Sherlocked1998@rb-proxy-de.bosch.com:8080'
+      # - name: server proxy2
+      #   run:     export HTTPS=localhost:3128
+      #            export HTTP=localhost:3128
+      #            export https_proxy=http://localhost:3128
+      #            export http_proxy=http://localhost:3128
    
 
       # https://rb-artifactory.bosch.com
@@ -55,7 +55,7 @@ jobs:
         run: npm config set https-proxy rb-proxy-de.bosch.com:8080
 
       - name:  proxy configuration3
-        run: npm config set registry http://registry.npmjs.org ;
+        run: npm config set registry http://rb-npm-registry.de.bosch.com/  ;
              npm config set strict-ssl=false;
              # npm config set registry http://fe-artifactoryha.de.bosch.com/artifactory/api/npm/npm-repo/
 
